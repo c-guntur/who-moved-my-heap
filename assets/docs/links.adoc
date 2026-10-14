@@ -1,0 +1,5 @@
+
+
+* https://donraab.medium.com/allocation-hungry-any-all-none-findfirst-and-count-methods-on-java-stream-e3ca6d66b265?source=friends_link&sk=84629376cedf192618276bfc6668e97a[Allocation Hungry Any/All/None, FindFirst, and Count Methods on Java Stream]
+
+* https://donraab.medium.com/save-memory-in-java-by-making-memory-efficiency-your-top-priority-32fe9443eb8d?source=friends_link&sk=5ae3e714963aa9a7e40fa109ebe53283[Save Memory in Java by Making Memory Efficiency Your Top Priority]
