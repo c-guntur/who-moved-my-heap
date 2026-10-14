@@ -1,7 +1,6 @@
 package conf.session;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.collections.impl.list.Interval;
@@ -33,22 +32,35 @@ public class FindFirstUtilityBenchmark
     private final List<Integer> jdkList = List.copyOf(Interval.oneTo(COUNT));
 
     @Benchmark
-    public Optional<Integer> jdkFindFirst()
+    public Integer jdkFindFirst()
     {
         return jdkList.stream()
                 .filter(Integer.valueOf(this.test)::equals)
-                .findFirst();
+                .findFirst()
+                .orElse(0);
     }
 
     @Benchmark
-    public Optional<Integer> ecDetectOptional()
+    public Integer ecDetectOptional()
     {
-        return Iterate.detectOptional(jdkList, Integer.valueOf(this.test)::equals);
+        return Iterate.detectOptional(jdkList, Integer.valueOf(this.test)::equals).orElse(0);
     }
 
     @Benchmark
-    public Optional<Integer> ecDetectWithOptional()
+    public Integer ecDetectWithOptional()
     {
-        return Iterate.detectWithOptional(jdkList, Integer::equals, this.test);
+        return Iterate.detectWithOptional(jdkList, Integer::equals, this.test).orElse(0);
+    }
+
+    @Benchmark
+    public Integer ecDetectIfNone()
+    {
+        return Iterate.detectIfNone(jdkList, Integer.valueOf(this.test)::equals, 0);
+    }
+
+    @Benchmark
+    public Integer ecDetectWithIfNone()
+    {
+        return Iterate.detectWithIfNone(jdkList, Integer::equals, this.test, 0);
     }
 }
