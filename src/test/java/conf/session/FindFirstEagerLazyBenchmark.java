@@ -48,6 +48,12 @@ public class FindFirstEagerLazyBenchmark
     }
 
     @Benchmark
+    public Integer ecLazyDetectOptional()
+    {
+        return ecList.asLazy().detectOptional(Integer.valueOf(this.test)::equals).orElse(0);
+    }
+
+    @Benchmark
     public Integer ecDetectWithOptional()
     {
         return ecList.detectWithOptional(Integer::equals, this.test).orElse(0);
@@ -57,6 +63,12 @@ public class FindFirstEagerLazyBenchmark
     public Integer ecDetectIfNone()
     {
         return ecList.detectIfNone(Integer.valueOf(this.test)::equals, () -> 0);
+    }
+
+    @Benchmark
+    public Integer ecLazyDetectIfNone()
+    {
+        return ecList.asLazy().detectIfNone(Integer.valueOf(this.test)::equals, () -> 0);
     }
 
     @Benchmark
