@@ -1,0 +1,2 @@
+JMH - -XX:+UseCompactObjectHeaders -prof gc
+
