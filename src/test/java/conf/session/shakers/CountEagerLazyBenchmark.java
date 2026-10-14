@@ -1,4 +1,4 @@
-package conf.session;
+package conf.session.shakers;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

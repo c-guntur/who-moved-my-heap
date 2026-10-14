@@ -1,4 +1,4 @@
-package conf.session;
+package conf.session.shakers;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +22,7 @@ import org.openjdk.jmh.annotations.Warmup;
 @Fork(2)
 @Warmup(iterations = 10, time = 2)
 @Measurement(iterations = 10, time = 2)
-public class FindFirstUtilityBenchmark
+public class CountUtilityBenchmark
 {
     private static final int COUNT = 1_000;
 
@@ -32,35 +32,22 @@ public class FindFirstUtilityBenchmark
     private final List<Integer> jdkList = List.copyOf(Interval.oneTo(COUNT));
 
     @Benchmark
-    public Integer jdkFindFirst()
+    public long jdkCount()
     {
         return jdkList.stream()
                 .filter(Integer.valueOf(this.test)::equals)
-                .findFirst()
-                .orElse(0);
+                .count();
     }
 
     @Benchmark
-    public Integer ecDetectOptional()
+    public int ecCount()
     {
-        return Iterate.detectOptional(jdkList, Integer.valueOf(this.test)::equals).orElse(0);
+        return Iterate.count(jdkList, Integer.valueOf(this.test)::equals);
     }
 
     @Benchmark
-    public Integer ecDetectWithOptional()
+    public int ecCountWith()
     {
-        return Iterate.detectWithOptional(jdkList, Integer::equals, this.test).orElse(0);
-    }
-
-    @Benchmark
-    public Integer ecDetectIfNone()
-    {
-        return Iterate.detectIfNone(jdkList, Integer.valueOf(this.test)::equals, 0);
-    }
-
-    @Benchmark
-    public Integer ecDetectWithIfNone()
-    {
-        return Iterate.detectWithIfNone(jdkList, Integer::equals, this.test, 0);
+        return Iterate.countWith(jdkList, Integer::equals, this.test);
     }
 }

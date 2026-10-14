@@ -1,10 +1,10 @@
-package conf.session;
+package conf.session.shakers;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.impl.list.Interval;
+import org.eclipse.collections.impl.utility.Iterate;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
@@ -22,7 +22,7 @@ import org.openjdk.jmh.annotations.Warmup;
 @Fork(2)
 @Warmup(iterations = 10, time = 2)
 @Measurement(iterations = 10, time = 2)
-public class AnyMatchEagerLazyBenchmark
+public class AnyMatchUtilityBenchmark
 {
     private static final int COUNT = 1_000;
 
@@ -30,7 +30,6 @@ public class AnyMatchEagerLazyBenchmark
     int test;
 
     private final List<Integer> jdkList = List.copyOf(Interval.oneTo(COUNT));
-    private final ImmutableList<Integer> ecList = Interval.oneTo(COUNT).toImmutableList();
 
     @Benchmark
     public boolean jdkAnyMatch()
@@ -41,18 +40,12 @@ public class AnyMatchEagerLazyBenchmark
     @Benchmark
     public boolean ecAnySatisfy()
     {
-        return ecList.anySatisfy(Integer.valueOf(this.test)::equals);
+        return Iterate.anySatisfy(jdkList, Integer.valueOf(this.test)::equals);
     }
 
     @Benchmark
     public boolean ecAnySatisfyWith()
     {
-        return ecList.anySatisfyWith(Integer::equals, this.test);
-    }
-
-    @Benchmark
-    public boolean ecLazyAnySatisfy()
-    {
-        return ecList.asLazy().anySatisfy(Integer.valueOf(this.test)::equals);
+        return Iterate.anySatisfyWith(jdkList, Integer::equals, this.test);
     }
 }

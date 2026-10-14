@@ -1,4 +1,4 @@
-package conf.session;
+package conf.session.shakers;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
