@@ -21,7 +21,9 @@ CONFIGS = ['coh-on', 'coh-off', 'ea-off']
 TESTS = [1, 500, 1000]
 MEASURE_S = 40.0  # 2 forks x 10 iterations x 2 s
 
-histo = {c: parse_histo(f'{RUN_DIR}/all-{c}.histo') for c in ['histo-coh-on', 'histo-coh-off']}
+# histo-ea-off (escape analysis off) is optional so older runs without it still regenerate.
+HISTO_CFGS = [c for c in ['histo-coh-on', 'histo-coh-off', 'histo-ea-off'] if os.path.exists(f'{RUN_DIR}/all-{c}.histo')]
+histo = {c: parse_histo(f'{RUN_DIR}/all-{c}.histo') for c in HISTO_CFGS}
 meta = open(f'{RUN_DIR}/meta.txt').read()
 
 
@@ -91,7 +93,7 @@ def gen_class(cls):
                  'ea-off': '-XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis'}[c]
         r += [f'== {c} (`-XX:+UseG1GC -Xms2g -Xmx2g {flags}`)', '', '....',
               open(f'{RUN_DIR}/{cls}-{c}.txt', encoding='utf-8').read().rstrip(), '....', '']
-    for c in ['histo-coh-on', 'histo-coh-off']:
+    for c in HISTO_CFGS:
         r += [f'== Object counts: {c}', '',
               'Per-class lines averaged over clean iterations (no GC during the iteration). '
               'Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); '

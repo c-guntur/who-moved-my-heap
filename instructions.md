@@ -50,6 +50,10 @@ not as typical production behaviour.
 - If the local Mac user says "stop", halt the current step and do not copy any more files.
 - Never use a person's name in these instructions or in any output (docs, charts, reports).
   Refer to the machine and its user as "local Mac".
+- Java style, if a run ever needs a Java change (for example the HistoProfiler fix in 3.5): the
+  opening brace goes on its own line (Allman) for classes, records, methods, `if`/`try`/`catch` and
+  block lambdas, matching every existing class; prefer Eclipse Collections over `java.util`
+  collections in `HistoProfiler`, and comment any non-obvious logic.
 - Every number in an analysis doc must be traceable to a file in the run folder (section 2)
   and to a command in section 3.
 
@@ -399,7 +403,8 @@ MMDC=<tools>/node_modules/.bin/mmdc \
   python3 assets/runs/${RUN_TS}/tools/gen.py . ${RUN_TS} assets/runs/${RUN_TS}/tools/notes.json
 ```
 
-`gen.py` and `charts.py` (copy them from the previous run's `tools/` folder) hold the chart rules;
+`gen.py` and `charts.py` (copy them from the previous run's `tools/` folder) hold the chart rules
+and also write the Results2 object-count sections for every `all-histo-*.histo` file present;
 `notes.json` holds the per-class narrative and must be rewritten from the new numbers each run.
 `CLASSES=AnyMatchUtility,...` limits the classes. Look at every PNG before reporting.
 

@@ -33,10 +33,11 @@ for CONFIG in coh-on coh-off ea-off; do
       -o $R/${CLASS}-${CONFIG}.log
   done
 done
-for CONFIG in histo-coh-on histo-coh-off; do
+for CONFIG in histo-coh-on histo-coh-off histo-ea-off; do
   case $CONFIG in
     histo-coh-on)  COH="-XX:+UseCompactObjectHeaders" ;;
     histo-coh-off) COH="-XX:-UseCompactObjectHeaders" ;;
+    histo-ea-off)  COH="-XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis" ;;
   esac
   echo "$(date -u +%H:%M) $CONFIG all" >> progress
   java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." \
