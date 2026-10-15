@@ -22,35 +22,35 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 public class CountingCollectorsTest
 {
     private static final int COUNT = 1_000;
-    private static final int JDK_COUNT = 1_000;
-    public static final int EC_COUNT = 1;
+    private static final int JDK_EXPECTED_COUNT = 1_000;
+    public static final int EC_EXPECTED_COUNT = 1;
 
     @Test
     public void countingUniqueCollectors()
     {
         var jdkExpectedCollectorsAndCounts = ObjectIntMaps.mutable
                 .<IntToObjectFunction<Collector<?, ?, ?>>>empty()
-                .withKeyValue(i -> Collectors.toList(), JDK_COUNT)
-                .withKeyValue(i -> Collectors.toSet(), JDK_COUNT)
+                .withKeyValue(i -> Collectors.toList(), JDK_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors.toSet(), JDK_EXPECTED_COUNT)
                 // To simulate Bag type in JDK
                 .withKeyValue(
                         i -> Collectors.groupingBy(
                                 Function.identity(),
-                                Collectors.counting()), JDK_COUNT)
-                .withKeyValue(i -> Collectors.toUnmodifiableList(), JDK_COUNT)
-                .withKeyValue(i -> Collectors.toUnmodifiableSet(), JDK_COUNT)
-                .withKeyValue(i -> Collectors.joining(), JDK_COUNT)
+                                Collectors.counting()), JDK_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors.toUnmodifiableList(), JDK_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors.toUnmodifiableSet(), JDK_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors.joining(), JDK_EXPECTED_COUNT)
                 .toImmutable();
 
         var ecExpectedCollectorsAndCounts = ObjectIntMaps.mutable
                 .<IntToObjectFunction<Collector<?, ?, ?>>>empty()
-                .withKeyValue(i -> Collectors2.toList(), EC_COUNT)
-                .withKeyValue(i -> Collectors2.toSet(), EC_COUNT)
-                .withKeyValue(i -> Collectors2.toBag(), EC_COUNT)
-                .withKeyValue(i -> Collectors2.toImmutableList(), EC_COUNT)
-                .withKeyValue(i -> Collectors2.toImmutableSet(), EC_COUNT)
-                .withKeyValue(i -> Collectors2.toImmutableBag(), EC_COUNT)
-                .withKeyValue(i -> Collectors2.makeString(), EC_COUNT)
+                .withKeyValue(i -> Collectors2.toList(), EC_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors2.toSet(), EC_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors2.toBag(), EC_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors2.toImmutableList(), EC_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors2.toImmutableSet(), EC_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors2.toImmutableBag(), EC_EXPECTED_COUNT)
+                .withKeyValue(i -> Collectors2.makeString(), EC_EXPECTED_COUNT)
                 .toImmutable();
 
         var all = Lists.immutable.with(jdkExpectedCollectorsAndCounts, ecExpectedCollectorsAndCounts);
