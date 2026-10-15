@@ -1,7 +1,9 @@
 # Benchmark analysis instructions (v2, repeatable)
 
 How to re-run the `shakers` JMH benchmarks and turn the results into one analysis
-AsciiDoc per benchmark class, comparing the JDK Stream API with Eclipse Collections (EC).
+AsciiDoc per benchmark class, comparing the JDK Stream API with Eclipse Collections (EC), plus
+one JDK Stream ops analysis per run that shows where the JDK stream garbage comes from and what
+the EC versions of the same operations allocate instead (section 6).
 
 > Scope: `src/test/java/conf/session/shakers/` only. The `movers` (JOL) material
 > will get its own section later; ignore it here.
@@ -43,9 +45,11 @@ not as typical production behaviour.
 
 - **Do not edit or delete any existing file.** Only add new files. The only new files are the
   per-run outputs named in section 2. `pom-bench.xml` is a permanent project file, not a run output.
-- Before starting, ask Tony to confirm. Runs take several hours (see section 3.4) and
+- Before starting, get confirmation from the local Mac user. Runs take several hours (see section 3.4) and
   should run on a quiet machine on mains power.
-- If Tony says "stop", halt the current step and do not copy any more files.
+- If the local Mac user says "stop", halt the current step and do not copy any more files.
+- Never use a person's name in these instructions or in any output (docs, charts, reports).
+  Refer to the machine and its user as "local Mac".
 - Every number in an analysis doc must be traceable to a file in the run folder (section 2)
   and to a command in section 3.
 
@@ -69,6 +73,8 @@ If the run spans several shell sessions, reuse the same `RUN_TS` (it is in the f
 | Analysis docs | `assets/docs/${RUN_TS}-<Class>Analysis.adoc` |
 | Mermaid sources | `assets/docs/charts/${RUN_TS}-<Class>-<chart>.mmd` |
 | Rendered charts | `assets/docs/charts/${RUN_TS}-<Class>-<chart>.png` |
+| JDK Stream ops analysis (section 6) | `assets/jdkops/${RUN_TS}-JdkStreamOpsAnalysis.adoc` |
+| JDK Stream ops charts | `assets/jdkops/charts/${RUN_TS}-JdkStreamOps-<chart>.{mmd,png}` |
 
 `<Class>` is the benchmark class name without the `Benchmark` suffix. There are six:
 
@@ -114,7 +120,7 @@ mkdir -p assets/runs/${RUN_TS}
 The benchmarks live under `src/test/java`, and the main `pom.xml` only declares the shade
 plugin in `pluginManagement`, so `mvn package` does not produce a runnable JMH jar.
 `pom-bench.xml` at the project root does that. It is a permanent project file: **do not create,
-regenerate or edit it as part of a run**, and do not change `pom.xml`. If it is missing, stop and ask Tony.
+regenerate or edit it as part of a run**, and do not change `pom.xml`. If it is missing, stop and ask the local Mac user.
 
 What it does:
 
@@ -124,7 +130,7 @@ What it does:
 - Shades everything into `target-bench/microbenchmarks.jar` with main class `org.openjdk.jmh.Main`.
 - Builds into `target-bench/`, so it never touches the main `target/`.
 - Uses the same versions as `pom.xml` (Eclipse Collections 13.0.0, JMH 1.37). If `pom.xml`
-  changes those versions, Tony updates `pom-bench.xml` to match before the next run.
+  changes those versions, the local Mac user updates `pom-bench.xml` to match before the next run.
 
 ### 3.3 The three commands
 
@@ -188,17 +194,21 @@ JMH `-prof gc` reports bytes per call, not objects. `prof.HistoProfiler`
 `jcmd <pid> GC.class_histogram -all` before and after each measurement iteration and divides
 the per-class difference by the number of calls. It needs iterations with **no GC**, so use
 short iterations and a big young generation. Run it with compact headers on and off: object
-**counts** should match, while **bytes** show what compact headers save per class.
+**counts** should match, while **bytes** show what compact headers save per class. Run it a third
+time with escape analysis off (`histo-ea-off`): on a normal JVM the EC methods allocate nothing,
+so only this run shows which objects their code creates (capturing lambda, `Predicates.bind`
+wrapper, `asLazy()` adapter, `Optional`), which the JDK Stream ops analysis (section 6) compares.
 
 ```
-for CONFIG in histo-coh-on histo-coh-off; do
+for CONFIG in histo-coh-on histo-coh-off histo-ea-off; do
   case $CONFIG in
-    histo-coh-on)  COH="-XX:+UseCompactObjectHeaders" ;;
-    histo-coh-off) COH="-XX:-UseCompactObjectHeaders" ;;
+    histo-coh-on)  FLAGS="-XX:+UseCompactObjectHeaders" ;;
+    histo-coh-off) FLAGS="-XX:-UseCompactObjectHeaders" ;;
+    histo-ea-off)  FLAGS="-XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis" ;;
   esac
   java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." \
     -f 1 -wi 5 -w 1s -i 3 -r 100ms \
-    -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${COH}" \
+    -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${FLAGS}" \
     -prof prof.HistoProfiler -prof gc \
     -rf text -rff assets/runs/${RUN_TS}/all-${CONFIG}.txt \
     -o assets/runs/${RUN_TS}/all-${CONFIG}.log \
@@ -242,7 +252,8 @@ For each class, create `assets/runs/${RUN_TS}-<Class>Results2.adoc` (next to the
 1. A header with `RUN_TS` and the contents of `meta.txt`.
 2. One section per configuration (`coh-on`, `coh-off`, `ea-off`) with the JMH text table
    from `<Class>-<CONFIG>.txt` copied verbatim in a `....` literal block.
-3. An object-count section with a table per configuration (`histo-coh-on`, `histo-coh-off`):
+3. An object-count section with a table per configuration (`histo-coh-on`, `histo-coh-off`,
+   `histo-ea-off`):
    benchmark, test, objects per call and bytes per call (summed from the per-class lines,
    averaged over clean iterations, see 3.5), and the per-class `HISTO` lines themselves.
 4. The exact commands used (copied from this file with variables expanded).
@@ -399,9 +410,95 @@ image::charts/<RUN_TS>-<Class>-<chart>.png[<caption>]
 Mermaid source: link:charts/<RUN_TS>-<Class>-<chart>.mmd[...]
 ```
 
-## 6. Reporting back
+## 6. JDK Stream ops analysis
 
-- Report which files were created, the run folder, and any benchmarks with no clean
+One extra doc per run: which objects one JDK `stream()` call allocates, which part of the Stream
+API makes each one, and what that costs; then the same numbers for the Eclipse Collections (EC)
+versions of each operation, so every JDK number sits next to its EC equivalent. It explains *why*
+the numbers in the per-class docs are what they are.
+
+**Inputs:** `assets/runs/${RUN_TS}/all-histo-coh-on.histo`, `all-histo-coh-off.histo`,
+`all-histo-ea-off.histo` (section 3.5) and `summary.json` (written by `gen.py`, so run section 5
+first).
+
+**Outputs:**
+
+| What | Path |
+|---|---|
+| Analysis doc | `assets/jdkops/${RUN_TS}-JdkStreamOpsAnalysis.adoc` |
+| Bytes per call by origin (stacked bars) | `assets/jdkops/charts/${RUN_TS}-JdkStreamOps-bytes-by-origin.{mmd,png}` |
+| Size of each class, compact headers off vs on | `assets/jdkops/charts/${RUN_TS}-JdkStreamOps-class-sizes-coh.{mmd,png}` |
+| JDK vs every EC version, bytes by origin with escape analysis off, one per operation | `assets/jdkops/charts/${RUN_TS}-JdkStreamOps-vs-ec-{anyMatch,findFirst,count}.{mmd,png}` |
+
+**Command** (copy `jdk_ops.py` from the previous run's `tools/` folder; it needs `parse.py` and
+`charts.py` next to it; output goes to `assets/jdkops/` by default, or to a folder given as a
+third argument):
+
+```
+python3 assets/runs/${RUN_TS}/tools/jdk_ops.py . ${RUN_TS}
+```
+
+**What the doc contains** (the script writes all of it from the data):
+
+1. Summary: fixed objects and bytes per call, the Stream source share, how the terminal ops
+   differ, the cost of `filter`, escape analysis, compact headers, setup time.
+2. The three pipelines: the exact benchmark code for `anyMatch`, `findFirst` and `count`.
+3. Every object one call allocates (compact headers on, `test` = 500): class, origin, bytes for
+   each operation, and why the Stream API allocates it.
+4. Bytes by origin for every match position, and a stacked-bar chart of it.
+5. The terminal ops compared: MatchOps, FindOps and ReduceOps, new objects per call, and what
+   could be avoided.
+6. Escape analysis on vs off for the JDK benchmarks.
+7. Compact headers: per-class sizes off vs on (chart), and bytes per call off vs on.
+8. Cost to an application: MB/s at 1 M and 10 M calls/s, measured GC runs per billion calls, and
+   the setup time at match position 1 (JDK vs fastest EC).
+9. The same three operations in Eclipse Collections:
+   - where each JDK object goes in EC (a mapping table: Stream source, filter stage and terminal
+     op have no EC counterpart);
+   - on a normal JVM, one table per operation with every implementation (JDK, `Iterate` on the
+     JDK list, `ImmutableList` eager and `asLazy()`): lambda shape, ns per call at elements 1
+     and 500, bytes per call, GC runs per billion calls;
+   - with escape analysis off, one stacked-bar chart and one table per operation: the objects
+     each implementation creates, by origin, with its normal-JVM bytes beside it;
+   - every object the EC versions allocate and why;
+   - fat-free vs capturing, including which `*With` methods are not fat-free.
+10. Caveats and the reproduce command.
+
+**Rules:**
+
+- Every class in the JDK `HISTO` blocks is attributed to one origin: *Stream source*
+  (`stream()`: pipeline head, spliterator), *filter stage*, *terminal op* (MatchOps, FindOps,
+  ReduceOps sinks, ops and results), *caller lambda* (the benchmark's `$$Lambda`) or *Integer
+  box*. The mapping and the reason for each class are the `ORIGIN` table in `jdk_ops.py`. A class
+  the table does not know shows as `other`: check where it comes from and add it to the table
+  before reporting.
+- Check the origins against the JDK that ran the benchmarks, with
+  `javap -p -c java.util.stream.MatchOps` (and `FindOps`, `ReduceOps`, `ReferencePipeline`); the
+  JDK's `src.zip` may be missing. If a JDK update changes what is allocated or cached (for
+  example, if `ReduceOps.makeRefCounting()` starts returning a shared op), update the `ORIGIN`
+  table and the terminal-op notes in `jdk_ops.py`.
+- EC classes are attributed with the `EC_ORIGIN` table in `jdk_ops.py`: *caller lambda*,
+  *Integer box* or *EC object* (`Predicates$BindPredicate2`, `LazyIterableAdapter`, `CountProcedure`, the
+  `Optional` from `detectOptional`). Check them against the EC jar that ran, with
+  `javap -c -cp eclipse-collections-<version>.jar` on `Iterate`, `ImmutableArrayList` and
+  `RandomAccessListIterate`. If an EC update overrides the `*With` methods on `ImmutableList`
+  (so they no longer go through `Predicates.bind`), update `EC_ORIGIN`, the doc text and the
+  `classify()` rule in `charts.py`.
+- The EC implementations and their code are the `IMPLS` table in `jdk_ops.py`; when a benchmark
+  method is added or renamed, update it.
+- Use the `*Utility` runs for the JDK side. The `*EagerLazy` benchmarks run the same JDK code;
+  check that their JDK blocks match and say so in the doc if they do not.
+- Label anything not read from the data or the bytecode as inferred (for example, why escape
+  analysis gives up, or the saving from caching an op).
+- Charts follow section 5. Origin colours (Okabe-Ito): orange `#E69F00` = Stream source, sky blue
+  `#56B4E9` = filter stage, dark blue `#0072B2` = terminal op, reddish purple `#CC79A7` = caller
+  lambda, black with a hatch pattern = Integer box, vermillion `#D55E00` with a cross-hatch = EC
+  object. These six stay at least 17 CIELAB ΔE apart under protanopia, deuteranopia and
+  tritanopia simulation.
+
+## 7. Reporting back
+
+- Report which files were created (including the JDK Stream ops doc), the run folder, and any benchmarks with no clean
   histogram iteration or suspicious error bars.
 - Be ready to give the exact command behind any number.
-- Do not copy files to Tony's machine unless he names them.
+- Do not copy files to the local Mac unless they are named explicitly.
