@@ -28,7 +28,7 @@ public class CountingCollectorsTest
     @Test
     public void countingUniqueCollectors()
     {
-        var jdkExpectedCollectorsAndCounts = ObjectIntMaps.mutable
+        var jdkCollectorsAndExpectedCounts = ObjectIntMaps.mutable
                 .<IntToObjectFunction<Collector<?, ?, ?>>>empty()
                 .withKeyValue(i -> Collectors.toList(), JDK_EXPECTED_COUNT)
                 .withKeyValue(i -> Collectors.toSet(), JDK_EXPECTED_COUNT)
@@ -42,7 +42,7 @@ public class CountingCollectorsTest
                 .withKeyValue(i -> Collectors.joining(), JDK_EXPECTED_COUNT)
                 .toImmutable();
 
-        var ecExpectedCollectorsAndCounts = ObjectIntMaps.mutable
+        var ecCollectorsAndExpectedCounts = ObjectIntMaps.mutable
                 .<IntToObjectFunction<Collector<?, ?, ?>>>empty()
                 .withKeyValue(i -> Collectors2.toList(), EC_EXPECTED_COUNT)
                 .withKeyValue(i -> Collectors2.toSet(), EC_EXPECTED_COUNT)
@@ -53,7 +53,7 @@ public class CountingCollectorsTest
                 .withKeyValue(i -> Collectors2.makeString(), EC_EXPECTED_COUNT)
                 .toImmutable();
 
-        var all = Lists.immutable.with(jdkExpectedCollectorsAndCounts, ecExpectedCollectorsAndCounts);
+        var all = Lists.immutable.with(jdkCollectorsAndExpectedCounts, ecCollectorsAndExpectedCounts);
 
         all.forEach(map ->
                 map.forEachKeyValue(
