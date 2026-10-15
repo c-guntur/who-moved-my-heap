@@ -1,0 +1,60 @@
+= Run 20261015-0406: summary
+:toc:
+
+Full `shakers` run per `instructions.md`: 26 benchmarks × 3 match positions, with compact
+object headers on, off, and escape analysis off, plus object counts with compact headers on and off.
+Run in the Claude cloud sandbox (4 vCPU Intel Xeon KVM guest, OpenJDK 25.0.4, G1 with a 2 GB heap), not
+on the local Mac. Bytes and object counts do not depend on the machine; timings do.
+
+== Analysis docs
+
+* link:20261015-0406-AnyMatchUtilityAnalysis.adoc[AnyMatchUtility]: `stream().anyMatch` vs `Iterate.anySatisfy` / `anySatisfyWith`
+* link:20261015-0406-CountUtilityAnalysis.adoc[CountUtility]: `stream().filter().count()` vs `Iterate.count` / `countWith`
+* link:20261015-0406-FindFirstUtilityAnalysis.adoc[FindFirstUtility]: `stream().filter().findFirst()` vs `Iterate.detect*`
+* link:20261015-0406-AnyMatchEagerLazyAnalysis.adoc[AnyMatchEagerLazy]: the same on an EC `ImmutableList`, eager and lazy
+* link:20261015-0406-CountEagerLazyAnalysis.adoc[CountEagerLazy]
+* link:20261015-0406-FindFirstEagerLazyAnalysis.adoc[FindFirstEagerLazy]
+
+Inputs: `assets/runs/20261015-0406-<Class>Results2.adoc`; raw JMH output in `assets/runs/20261015-0406/`.
+
+== Findings
+
+. *The JDK stream leaves 6 to 8 objects (160 to 224 B) behind on every call; every EC variant leaves none.*
+  Measured by `gc.alloc.rate.norm` and confirmed object by object with the class histogram (all 468
+  measurement iterations were GC-free). At 10 million calls per second across an application, that is
+  1.6 to 2.2 GB/s of young-generation churn for the stream versions and effectively 0 for EC.
+. *Most of the JDK garbage is pipeline plumbing* (`ReferencePipeline$Head`, `$2`, spliterator, sinks,
+  `MatchOp`/`ReduceOps`), allocated whatever lambda is passed. The captured lambda (16 B) and the `Integer`
+  box (16 B, `test` = 500/1000) come on top, and escape analysis cannot remove them because they escape
+  into the pipeline.
+. *Fat-free lambdas matter when escape analysis cannot help.* With escape analysis on, EC's capturing
+  and `*With` calls both allocate nothing. With it off (`-XX:-DoEscapeAnalysis`, an upper bound), the
+  capturing `Iterate.anySatisfy` allocates 16 to 32 B per call and the fat-free `Iterate.anySatisfyWith`
+  0 to 16 B: the only remaining object is the `Integer` box from autoboxing the `int` parameter.
+. *Surprise worth raising with EC:* on an `ImmutableList` in EC 13.0.0, `anySatisfyWith`, `countWith` and
+  `detectWithIfNone` are inherited from `AbstractRichIterable`, which wraps the call in
+  `Predicates.bind(...)`. With escape analysis off they allocate exactly as much as the capturing
+  versions. Only `detectWithOptional` is overridden in `ImmutableArrayList` and stays fat-free. The
+  `Iterate.*With` utilities loop directly and do not have this problem. (Checked in the EC 13.0.0
+  bytecode.)
+. *Compact object headers trim the JDK garbage by 7 to 10%* (16 to 24 B per call; same object count),
+  because only objects that cross an 8-byte boundary shrink. Not allocating saves the whole 160 to 224 B.
+. *Unexpected:* the EC loops ran 8 to 25% *faster* with compact headers off on this machine (`test` =
+  500/1000). Inferred cause: `Integer.equals` checks every element's class, and with compact headers the
+  class pointer has to be decoded from the header word. Check this on the Mac before using it.
+. *Throughput:* EC is about 11 to 17x faster at `test` = 1 (stream setup dominates), 4 to 6x at
+  `test` = 500/1000, and about 2x for `count`, which always scans all 1000 elements.
+. The earlier run's ±35% error bars on `jdkCount` did not reproduce (±6% here).
+
+== Deviations from the instructions
+
+* The object-count `HISTO` lines go to the console, not the `-o` file; they were captured into
+  `assets/runs/20261015-0406/all-histo-coh-*.histo` (the instructions now say so).
+* The first `AnyMatchUtility` `coh-on` run overlapped with a short chart-rendering test, so that class was
+  rerun alone after the full run; the originals are kept as `AnyMatchUtility-coh-on.overlapped.*`.
+* Charts are grouped bar charts drawn with matplotlib (PNG, embedded in the docs): plain-English
+  titles, a "lower/higher is better" subtitle with the takeaway, a legend for every bar and the value
+  printed on each bar. Mermaid `xychart-beta` cannot show a legend or per-bar colours, so the `.mmd`
+  files next to them carry the same data as labelled horizontal bars. The throughput chart is relative
+  to the JDK (JDK = 1x) because absolute M calls/s span 1000x across `test`; the coh chart shows bytes
+  saved; an extra `ea-off-bytes` chart shows the fat-free effect most clearly.

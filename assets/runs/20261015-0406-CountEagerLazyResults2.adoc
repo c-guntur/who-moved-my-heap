@@ -1,0 +1,373 @@
+= CountEagerLazyBenchmark results (run 20261015-0406)
+:toc:
+
+Assembled from the raw JMH output in `assets/runs/20261015-0406/`. Numbers are copied verbatim.
+
+== Run metadata
+
+....
+run_ts: 20261015-0406
+environment: Claude cloud sandbox (KVM guest), not the local Mac
+openjdk version "25.0.4.1" 2026-08-18
+OpenJDK Runtime Environment (build 25.0.4.1+1-1-24.04.4-Ubuntu)
+OpenJDK 64-Bit Server VM (build 25.0.4.1+1-1-24.04.4-Ubuntu, mixed mode, sharing)
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: /opt/maven
+Java version: 25.0.4.1, vendor: Ubuntu, runtime: /usr/lib/jvm/java-25-openjdk-amd64
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.18.44-fc-v114", arch: "amd64", family: "unix"
+Linux vm 6.18.44-fc-v114 #1 SMP PREEMPT_DYNAMIC @0 x86_64 x86_64 x86_64 GNU/Linux
+CPU(s):                                  4
+Model name:                              Intel(R) Xeon(R) Processor @ 2.10GHz
+Hypervisor vendor:                       KVM
+L3 cache:                                260 MiB (1 instance)
+               total        used        free      shared  buff/cache   available
+Mem:              15           0          13           0           1          15
+     bool DoEscapeAnalysis                         = true                                   {C2 product} {default}
+     bool UseCompactObjectHeaders                  = true                           {product lp64_product} {command line}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseParallelGC                            = false                                     {product} {default}
+     bool UseSerialGC                              = false                                     {product} {default}
+     bool UseShenandoahGC                          = false                                     {product} {default}
+     bool UseZGC                                   = false                                     {product} {default}
+sources: copied from the local Mac 2026-10-15 (not a git checkout); sha256:
+56929d3dad6a2bf23338760be0a6c9a767dbf97d8da1d2d94baad5eda95c248b  pom-bench.xml
+82df362f31213dca649cf12d50dc7044106f6f6320e5d8f729de6bc54bf99abb  src/test/java/conf/session/shakers/AnyMatchEagerLazyBenchmark.java
+6415fce978b63da995e13a939fd8abfb5a0a07899531a8d009e53e54d6c28e59  src/test/java/conf/session/shakers/AnyMatchUtilityBenchmark.java
+1755b09c8ea3c1525c920cf34d09840f02fd920a07d9275ace70cb5e6ba8bdc7  src/test/java/conf/session/shakers/CountEagerLazyBenchmark.java
+f86d606f03a5990df32f7601458a6130115ab55cfa1abf0cb5bfe024097fcd64  src/test/java/conf/session/shakers/CountUtilityBenchmark.java
+de1b37f470fd9462429182ed3fc5013a09f844df2743effc40017006098630d1  src/test/java/conf/session/shakers/FindFirstEagerLazyBenchmark.java
+fc95a4381ce6b6c04f2eef6fedeb1a172128b953f65eb9aa1fdff63cbbca935c  src/test/java/conf/session/shakers/FindFirstUtilityBenchmark.java
+bacce7602f8fb1d6eb2e03e63b27d5e1df1be31c77da86893dddd0fec8b4f324  src/test/java/prof/HistoProfiler.java
+....
+
+== coh-on (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders`)
+
+....
+Benchmark                                               (test)  Mode  Cnt     Score    Error   Units
+CountEagerLazyBenchmark.ecCount                              1  avgt   20   685.539 ± 28.020   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate                1  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm           1  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                     1  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCount                            500  avgt   20   685.973 ± 27.009   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate              500  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm         500  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                   500  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCount                           1000  avgt   20   679.520 ± 38.517   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate             1000  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm        1000  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                  1000  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCountWith                          1  avgt   20   678.032 ± 41.483   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate            1  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm       1  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count                 1  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCountWith                        500  avgt   20   695.646 ± 42.747   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate          500  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm     500  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count               500  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCountWith                       1000  avgt   20   677.529 ± 56.864   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate         1000  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm    1000  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count              1000  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecLazyCount                          1  avgt   20   676.368 ± 37.981   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate            1  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm       1  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count                 1  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecLazyCount                        500  avgt   20   673.591 ± 44.999   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate          500  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm     500  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count               500  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecLazyCount                       1000  avgt   20   675.207 ± 45.241   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate         1000  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm    1000  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count              1000  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.jdkCount                             1  avgt   20  1378.552 ± 72.806   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate               1  avgt   20   144.340 ±  7.624  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm          1  avgt   20   208.004 ±  0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                    1  avgt   20     4.000           counts
+CountEagerLazyBenchmark.jdkCount:gc.time                     1  avgt   20    14.000               ms
+CountEagerLazyBenchmark.jdkCount                           500  avgt   20  1396.525 ± 61.254   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate             500  avgt   20   153.281 ±  6.786  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm        500  avgt   20   224.004 ±  0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                  500  avgt   20     4.000           counts
+CountEagerLazyBenchmark.jdkCount:gc.time                   500  avgt   20    15.000               ms
+CountEagerLazyBenchmark.jdkCount                          1000  avgt   20  1370.154 ± 83.099   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate            1000  avgt   20   156.610 ±  9.910  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm       1000  avgt   20   224.004 ±  0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                 1000  avgt   20     4.000           counts
+CountEagerLazyBenchmark.jdkCount:gc.time                  1000  avgt   20    15.000               ms
+....
+
+== coh-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:-UseCompactObjectHeaders`)
+
+....
+Benchmark                                               (test)  Mode  Cnt     Score     Error   Units
+CountEagerLazyBenchmark.ecCount                              1  avgt   20   524.893 ±  36.710   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate                1  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm           1  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                     1  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecCount                            500  avgt   20   542.167 ±  37.808   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate              500  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm         500  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                   500  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecCount                           1000  avgt   20   547.510 ±  48.313   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate             1000  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm        1000  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                  1000  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecCountWith                          1  avgt   20   563.504 ±  35.075   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm       1  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count                 1  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecCountWith                        500  avgt   20   640.758 ±  60.497   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm     500  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count               500  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecCountWith                       1000  avgt   20   588.355 ±  39.784   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count              1000  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecLazyCount                          1  avgt   20   547.202 ±  50.085   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm       1  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count                 1  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecLazyCount                        500  avgt   20   555.001 ±  27.647   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm     500  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count               500  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecLazyCount                       1000  avgt   20   563.736 ±  49.253   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count              1000  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.jdkCount                             1  avgt   20  1192.696 ±  55.708   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate               1  avgt   20   179.537 ±   8.475  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm          1  avgt   20   224.004 ±   0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                    1  avgt   20     6.000            counts
+CountEagerLazyBenchmark.jdkCount:gc.time                     1  avgt   20    19.000                ms
+CountEagerLazyBenchmark.jdkCount                           500  avgt   20  1394.905 ± 154.902   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate             500  avgt   20   166.419 ±  17.455  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm        500  avgt   20   240.005 ±   0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                  500  avgt   20     6.000            counts
+CountEagerLazyBenchmark.jdkCount:gc.time                   500  avgt   20    25.000                ms
+CountEagerLazyBenchmark.jdkCount                          1000  avgt   20  1386.979 ± 207.353   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate            1000  avgt   20   169.408 ±  23.905  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm       1000  avgt   20   240.005 ±   0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                 1000  avgt   20     6.000            counts
+CountEagerLazyBenchmark.jdkCount:gc.time                  1000  avgt   20    23.000                ms
+....
+
+== ea-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis`)
+
+....
+Benchmark                                               (test)  Mode  Cnt     Score     Error   Units
+CountEagerLazyBenchmark.ecCount                              1  avgt   20   719.435 ±  51.994   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate                1  avgt   20    21.342 ±   1.520  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm           1  avgt   20    16.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                     1  avgt   20     2.000            counts
+CountEagerLazyBenchmark.ecCount:gc.time                      1  avgt   20     8.000                ms
+CountEagerLazyBenchmark.ecCount                            500  avgt   20   779.993 ±  89.592   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate              500  avgt   20    39.746 ±   4.391  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm         500  avgt   20    32.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                   500  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecCount                           1000  avgt   20   745.462 ±  99.109   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate             1000  avgt   20    41.753 ±   5.037  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm        1000  avgt   20    32.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                  1000  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecCountWith                          1  avgt   20   704.764 ±  56.514   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate            1  avgt   20    21.813 ±   1.656  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm       1  avgt   20    16.002 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count                 1  avgt   20     2.000            counts
+CountEagerLazyBenchmark.ecCountWith:gc.time                  1  avgt   20     8.000                ms
+CountEagerLazyBenchmark.ecCountWith                        500  avgt   20   807.462 ±  77.085   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate          500  avgt   20    38.210 ±   3.585  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm     500  avgt   20    32.003 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count               500  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecCountWith                       1000  avgt   20   787.010 ±  95.312   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate         1000  avgt   20    39.417 ±   4.323  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm    1000  avgt   20    32.003 ±   0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count              1000  avgt   20       ≈ 0            counts
+CountEagerLazyBenchmark.ecLazyCount                          1  avgt   20   838.497 ± 111.065   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate            1  avgt   20    55.750 ±   7.109  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm       1  avgt   20    48.003 ±   0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count                 1  avgt   20     2.000            counts
+CountEagerLazyBenchmark.ecLazyCount:gc.time                  1  avgt   20    11.000                ms
+CountEagerLazyBenchmark.ecLazyCount                        500  avgt   20   797.672 ± 145.787   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate          500  avgt   20    79.189 ±  11.914  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm     500  avgt   20    64.003 ±   0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count               500  avgt   20     4.000            counts
+CountEagerLazyBenchmark.ecLazyCount:gc.time                500  avgt   20    25.000                ms
+CountEagerLazyBenchmark.ecLazyCount                       1000  avgt   20   797.231 ± 176.690   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate         1000  avgt   20    80.394 ±  14.040  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm    1000  avgt   20    64.003 ±   0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count              1000  avgt   20     4.000            counts
+CountEagerLazyBenchmark.ecLazyCount:gc.time               1000  avgt   20    20.000                ms
+CountEagerLazyBenchmark.jdkCount                             1  avgt   20  1474.909 ± 101.081   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate               1  avgt   20   135.266 ±   9.517  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm          1  avgt   20   208.005 ±   0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                    1  avgt   20     4.000            counts
+CountEagerLazyBenchmark.jdkCount:gc.time                     1  avgt   20    16.000                ms
+CountEagerLazyBenchmark.jdkCount                           500  avgt   20  1404.724 ±  97.601   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate             500  avgt   20   152.964 ±  10.793  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm        500  avgt   20   224.004 ±   0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                  500  avgt   20     6.000            counts
+CountEagerLazyBenchmark.jdkCount:gc.time                   500  avgt   20    20.000                ms
+CountEagerLazyBenchmark.jdkCount                          1000  avgt   20  1365.668 ±  88.366   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate            1000  avgt   20   157.176 ±   9.959  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm       1000  avgt   20   224.004 ±   0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                 1000  avgt   20     6.000            counts
+CountEagerLazyBenchmark.jdkCount:gc.time                  1000  avgt   20    22.000                ms
+....
+
+== Object counts: histo-coh-on
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkCount |1 |3/3 |7.001 |208.0
+|jdkCount |500 |3/3 |8.001 |224.0
+|jdkCount |1000 |3/3 |8.001 |224.0
+|ecCount |1 |3/3 |0.000 |0.0
+|ecCount |500 |3/3 |0.000 |0.0
+|ecCount |1000 |3/3 |0.000 |0.0
+|ecCountWith |1 |3/3 |0.000 |0.0
+|ecCountWith |500 |3/3 |0.000 |0.0
+|ecCountWith |1000 |3/3 |0.000 |0.0
+|ecLazyCount |1 |3/3 |0.000 |0.0
+|ecLazyCount |500 |3/3 |0.000 |0.0
+|ecLazyCount |1000 |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+jdkCount test=1
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+jdkCount test=500
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda
+jdkCount test=1000
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda
+ecCount test=1
+    (nothing at or above 0.5 objects per call)
+ecCount test=500
+    (nothing at or above 0.5 objects per call)
+ecCount test=1000
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=1
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=500
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=1000
+    (nothing at or above 0.5 objects per call)
+ecLazyCount test=1
+    (nothing at or above 0.5 objects per call)
+ecLazyCount test=500
+    (nothing at or above 0.5 objects per call)
+ecLazyCount test=1000
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-coh-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkCount |1 |3/3 |7.001 |224.0
+|jdkCount |500 |3/3 |8.001 |240.1
+|jdkCount |1000 |3/3 |8.001 |240.0
+|ecCount |1 |3/3 |0.000 |0.0
+|ecCount |500 |3/3 |0.000 |0.0
+|ecCount |1000 |3/3 |0.000 |0.0
+|ecCountWith |1 |3/3 |0.000 |0.0
+|ecCountWith |500 |3/3 |0.000 |0.0
+|ecCountWith |1000 |3/3 |0.000 |0.0
+|ecLazyCount |1 |3/3 |0.000 |0.0
+|ecLazyCount |500 |3/3 |0.000 |0.0
+|ecLazyCount |1000 |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+jdkCount test=1
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     56.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda
+jdkCount test=500
+      1.001 obj     56.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda
+jdkCount test=1000
+      1.001 obj     56.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+ecCount test=1
+    (nothing at or above 0.5 objects per call)
+ecCount test=500
+    (nothing at or above 0.5 objects per call)
+ecCount test=1000
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=1
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=500
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=1000
+    (nothing at or above 0.5 objects per call)
+ecLazyCount test=1
+    (nothing at or above 0.5 objects per call)
+ecLazyCount test=500
+    (nothing at or above 0.5 objects per call)
+ecLazyCount test=1000
+    (nothing at or above 0.5 objects per call)
+....
+
+== Commands
+
+....
+mvn -f pom-bench.xml clean compile
+mvn -f pom-bench.xml package
+# main runs, CONFIG/FLAGS = coh-on: -XX:+UseCompactObjectHeaders | coh-off: -XX:-UseCompactObjectHeaders
+#                          ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\.CountEagerLazyBenchmark\." \
+  -prof gc -jvmArgsAppend "-XX:+UseG1GC -Xms2g -Xmx2g ${FLAGS}" \
+  -rf text -rff assets/runs/20261015-0406/CountEagerLazy-${CONFIG}.txt -o assets/runs/20261015-0406/CountEagerLazy-${CONFIG}.log
+# object counts, COH = -XX:+UseCompactObjectHeaders | -XX:-UseCompactObjectHeaders
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." -f 1 -wi 5 -w 1s -i 3 -r 100ms \
+  -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${COH}" -prof prof.HistoProfiler -prof gc \
+  -rf text -rff assets/runs/20261015-0406/all-${CONFIG}.txt -o assets/runs/20261015-0406/all-${CONFIG}.log
+# HISTO lines go to the console, not to the -o file; they were saved to assets/runs/20261015-0406/all-${CONFIG}.histo
+....

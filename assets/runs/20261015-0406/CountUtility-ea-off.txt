@@ -1,0 +1,43 @@
+Benchmark                                             (test)  Mode  Cnt     Score     Error   Units
+CountUtilityBenchmark.ecCount                              1  avgt   20   659.863 ±  51.017   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate                1  avgt   20    23.285 ±   1.716  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm           1  avgt   20    16.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                     1  avgt   20     2.000            counts
+CountUtilityBenchmark.ecCount:gc.time                      1  avgt   20     6.000                ms
+CountUtilityBenchmark.ecCount                            500  avgt   20   804.737 ± 114.500   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate              500  avgt   20    38.827 ±   5.189  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm         500  avgt   20    32.003 ±   0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                   500  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.ecCount                           1000  avgt   20   792.397 ±  69.368   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate             1000  avgt   20    38.885 ±   3.506  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm        1000  avgt   20    32.003 ±   0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                  1000  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.ecCountWith                          1  avgt   20   710.041 ±  41.480   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm       1  avgt   20     0.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count                 1  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.ecCountWith                        500  avgt   20   757.053 ± 126.425   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate          500  avgt   20    20.643 ±   2.410  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm     500  avgt   20    16.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count               500  avgt   20     2.000            counts
+CountUtilityBenchmark.ecCountWith:gc.time                500  avgt   20     7.000                ms
+CountUtilityBenchmark.ecCountWith                       1000  avgt   20   709.757 ±  63.975   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate         1000  avgt   20    21.702 ±   1.850  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm    1000  avgt   20    16.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count              1000  avgt   20     2.000            counts
+CountUtilityBenchmark.ecCountWith:gc.time               1000  avgt   20     8.000                ms
+CountUtilityBenchmark.jdkCount                             1  avgt   20  1542.200 ± 156.963   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate               1  avgt   20   130.218 ±  12.830  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm          1  avgt   20   208.005 ±   0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                    1  avgt   20     4.000            counts
+CountUtilityBenchmark.jdkCount:gc.time                     1  avgt   20    18.000                ms
+CountUtilityBenchmark.jdkCount                           500  avgt   20  1423.809 ± 101.163   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate             500  avgt   20   150.926 ±  10.543  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm        500  avgt   20   224.005 ±   0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                  500  avgt   20     4.000            counts
+CountUtilityBenchmark.jdkCount:gc.time                   500  avgt   20    14.000                ms
+CountUtilityBenchmark.jdkCount                          1000  avgt   20  1407.020 ±  86.288   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate            1000  avgt   20   152.493 ±   9.332  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm       1000  avgt   20   224.004 ±   0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                 1000  avgt   20     5.000            counts
+CountUtilityBenchmark.jdkCount:gc.time                  1000  avgt   20    26.000                ms

@@ -1,0 +1,547 @@
+Benchmark                                                            (test)  Mode  Cnt     Score       Error   Units
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                                   1  avgt    3     3.379 ±    13.609   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate                     1  avgt    3     0.050 ±     0.015  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm                1  avgt    3    ≈ 10⁻⁴                B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                          1  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.bytes.norm                  1  avgt    3     5.421 ±    21.886    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.clean                       1  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.objs.norm                   1  avgt    3     0.001 ±     0.004  obj/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                                 500  avgt    3   390.295 ±   437.824   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate                   500  avgt    3     0.050 ±     0.006  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm              500  avgt    3     0.021 ±     0.022    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                        500  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.bytes.norm                500  avgt    3   624.764 ±   654.401    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.clean                     500  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.objs.norm                 500  avgt    3     0.117 ±     0.123  obj/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                                1000  avgt    3   882.917 ±   691.587   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate                  1000  avgt    3     0.050 ±     0.003  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm             1000  avgt    3     0.047 ±     0.040    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                       1000  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.bytes.norm               1000  avgt    3  1416.328 ±  1139.155    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.clean                    1000  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:histo.objs.norm                1000  avgt    3     0.265 ±     0.217  obj/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                               1  avgt    3     2.987 ±    10.219   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate                 1  avgt    3     0.050 ±     0.008  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm            1  avgt    3    ≈ 10⁻⁴                B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count                      1  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.bytes.norm              1  avgt    3     4.789 ±    16.310    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.clean                   1  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.objs.norm               1  avgt    3     0.001 ±     0.003  obj/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                             500  avgt    3   425.039 ±   496.742   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate               500  avgt    3     0.050 ±     0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm          500  avgt    3     0.023 ±     0.026    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count                    500  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.bytes.norm            500  avgt    3   681.795 ±   794.607    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.clean                 500  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.objs.norm             500  avgt    3     0.128 ±     0.150  obj/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                            1000  avgt    3   866.821 ±  1363.541   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate              1000  avgt    3     0.050 ±     0.002  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm         1000  avgt    3     0.046 ±     0.074    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count                   1000  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.bytes.norm           1000  avgt    3  1388.345 ±  2243.857    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.clean                1000  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:histo.objs.norm            1000  avgt    3     0.260 ±     0.423  obj/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                               1  avgt    3     3.481 ±    11.804   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate                 1  avgt    3     0.050 ±     0.016  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm            1  avgt    3    ≈ 10⁻⁴                B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count                      1  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.bytes.norm              1  avgt    3     5.521 ±    17.690    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.clean                   1  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.objs.norm               1  avgt    3     0.001 ±     0.003  obj/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                             500  avgt    3   487.261 ±  1579.024   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate               500  avgt    3     0.050 ±     0.003  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm          500  avgt    3     0.026 ±     0.084    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count                    500  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.bytes.norm            500  avgt    3   781.853 ±  2523.231    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.clean                 500  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.objs.norm             500  avgt    3     0.147 ±     0.475  obj/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                            1000  avgt    3   953.316 ±  1972.804   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate              1000  avgt    3     0.050 ±     0.008  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm         1000  avgt    3     0.051 ±     0.103    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count                   1000  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.bytes.norm           1000  avgt    3  1530.595 ±  3174.481    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.clean                1000  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:histo.objs.norm            1000  avgt    3     0.287 ±     0.600  obj/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                                    1  avgt    3   477.505 ±  8124.101   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate                      1  avgt    3   541.294 ±  7134.429  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm                 1  avgt    3   160.025 ±     0.432    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                           1  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.bytes.norm                   1  avgt    3   765.174 ± 13006.746    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.clean                        1  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.objs.norm                    1  avgt    3     6.144 ±     2.437  obj/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                                  500  avgt    3  2115.224 ± 10410.197   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate                    500  avgt    3    82.103 ±   356.283  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm               500  avgt    3   176.112 ±     0.570    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                         500  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.bytes.norm                 500  avgt    3  3376.859 ± 17128.198    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.clean                      500  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.objs.norm                  500  avgt    3     7.634 ±     3.218  obj/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                                 1000  avgt    3  4971.427 ± 17817.829   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate                   1000  avgt    3    34.429 ±   113.589  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm              1000  avgt    3   176.262 ±     1.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                        1000  avgt    3       ≈ 0              counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.bytes.norm                1000  avgt    3  7917.027 ± 29861.015    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.clean                     1000  avgt    3     1.000                bool
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:histo.objs.norm                 1000  avgt    3     8.486 ±     5.617  obj/op
+AnyMatchUtilityBenchmark.ecAnySatisfy                                     1  avgt    3     2.539 ±     6.572   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate                       1  avgt    3     0.049 ±     0.027  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm                  1  avgt    3    ≈ 10⁻⁴                B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                            1  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.bytes.norm                    1  avgt    3     3.945 ±     9.869    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.clean                         1  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.objs.norm                     1  avgt    3     0.001 ±     0.002  obj/op
+AnyMatchUtilityBenchmark.ecAnySatisfy                                   500  avgt    3   436.402 ±   387.611   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate                     500  avgt    3     0.050 ±     0.008  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm                500  avgt    3     0.023 ±     0.017    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                          500  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.bytes.norm                  500  avgt    3   699.005 ±   573.526    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.clean                       500  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.objs.norm                   500  avgt    3     0.130 ±     0.107  obj/op
+AnyMatchUtilityBenchmark.ecAnySatisfy                                  1000  avgt    3   653.688 ±   776.929   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate                    1000  avgt    3     0.050 ±     0.004  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm               1000  avgt    3     0.035 ±     0.041    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                         1000  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.bytes.norm                 1000  avgt    3  1049.028 ±  1242.445    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.clean                      1000  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.ecAnySatisfy:histo.objs.norm                  1000  avgt    3     0.195 ±     0.229  obj/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                                 1  avgt    3     3.155 ±    19.653   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate                   1  avgt    3     0.050 ±     0.002  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm              1  avgt    3    ≈ 10⁻⁴                B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count                        1  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.bytes.norm                1  avgt    3     5.063 ±    31.544    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.clean                     1  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.objs.norm                 1  avgt    3     0.001 ±     0.006  obj/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                               500  avgt    3   421.636 ±  1092.736   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate                 500  avgt    3     0.049 ±     0.018  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm            500  avgt    3     0.022 ±     0.065    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count                      500  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.bytes.norm              500  avgt    3   662.723 ±  1959.679    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.clean                   500  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.objs.norm               500  avgt    3     0.123 ±     0.365  obj/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                              1000  avgt    3   843.877 ±  2184.362   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate                1000  avgt    3     0.050 ±     0.011  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm           1000  avgt    3     0.044 ±     0.123    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count                     1000  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.bytes.norm             1000  avgt    3  1349.123 ±  3653.488    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.clean                  1000  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:histo.objs.norm              1000  avgt    3     0.251 ±     0.682  obj/op
+AnyMatchUtilityBenchmark.jdkAnyMatch                                      1  avgt    3   302.739 ±  1132.771   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate                        1  avgt    3   517.175 ±  2195.016  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm                   1  avgt    3   160.016 ±     0.071    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                             1  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.bytes.norm                     1  avgt    3   470.632 ±  2111.604    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.clean                          1  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.objs.norm                      1  avgt    3     6.088 ±     0.392  obj/op
+AnyMatchUtilityBenchmark.jdkAnyMatch                                    500  avgt    3  1824.345 ±   424.476   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate                      500  avgt    3    90.975 ±    20.123  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm                 500  avgt    3   176.096 ±     0.004    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                           500  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.bytes.norm                   500  avgt    3  2907.499 ±   119.999    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.clean                        500  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.objs.norm                    500  avgt    3     7.541 ±     0.020  obj/op
+AnyMatchUtilityBenchmark.jdkAnyMatch                                   1000  avgt    3  5754.584 ±  4170.468   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate                     1000  avgt    3    29.030 ±    21.415  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm                1000  avgt    3   176.306 ±     0.222    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                          1000  avgt    3       ≈ 0              counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.bytes.norm                  1000  avgt    3  9236.676 ±  6696.003    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.clean                       1000  avgt    3     1.000                bool
+AnyMatchUtilityBenchmark.jdkAnyMatch:histo.objs.norm                   1000  avgt    3     8.718 ±     1.247  obj/op
+CountEagerLazyBenchmark.ecCount                                           1  avgt    3   931.219 ±  3986.957   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate                             1  avgt    3     0.049 ±     0.032  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm                        1  avgt    3     0.049 ±     0.227    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                                  1  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecCount:histo.bytes.norm                          1  avgt    3  1471.640 ±  6791.226    B/op
+CountEagerLazyBenchmark.ecCount:histo.clean                               1  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecCount:histo.objs.norm                           1  avgt    3     0.276 ±     1.274  obj/op
+CountEagerLazyBenchmark.ecCount                                         500  avgt    3   878.847 ±   639.460   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate                           500  avgt    3     0.050 ±     0.004  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm                      500  avgt    3     0.047 ±     0.033    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                                500  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecCount:histo.bytes.norm                        500  avgt    3  1409.837 ±  1033.201    B/op
+CountEagerLazyBenchmark.ecCount:histo.clean                             500  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecCount:histo.objs.norm                         500  avgt    3     0.264 ±     0.191  obj/op
+CountEagerLazyBenchmark.ecCount                                        1000  avgt    3   826.325 ±  2321.377   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate                          1000  avgt    3     0.050 ±     0.013  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm                     1000  avgt    3     0.044 ±     0.125    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                               1000  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecCount:histo.bytes.norm                       1000  avgt    3  1325.886 ±  3711.830    B/op
+CountEagerLazyBenchmark.ecCount:histo.clean                            1000  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecCount:histo.objs.norm                        1000  avgt    3     0.248 ±     0.698  obj/op
+CountEagerLazyBenchmark.ecCountWith                                       1  avgt    3   943.881 ±   536.126   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate                         1  avgt    3     0.050 ±     0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm                    1  avgt    3     0.050 ±     0.028    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count                              1  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecCountWith:histo.bytes.norm                      1  avgt    3  1513.981 ±   858.176    B/op
+CountEagerLazyBenchmark.ecCountWith:histo.clean                           1  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecCountWith:histo.objs.norm                       1  avgt    3     0.284 ±     0.158  obj/op
+CountEagerLazyBenchmark.ecCountWith                                     500  avgt    3   869.064 ±  2028.005   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate                       500  avgt    3     0.050 ±     0.015  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm                  500  avgt    3     0.046 ±     0.112    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count                            500  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecCountWith:histo.bytes.norm                    500  avgt    3  1394.834 ±  3256.265    B/op
+CountEagerLazyBenchmark.ecCountWith:histo.clean                         500  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecCountWith:histo.objs.norm                     500  avgt    3     0.261 ±     0.612  obj/op
+CountEagerLazyBenchmark.ecCountWith                                    1000  avgt    3   810.760 ±   472.624   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate                      1000  avgt    3     0.050 ±     0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm                 1000  avgt    3     0.043 ±     0.025    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count                           1000  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecCountWith:histo.bytes.norm                   1000  avgt    3  1301.531 ±   758.863    B/op
+CountEagerLazyBenchmark.ecCountWith:histo.clean                        1000  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecCountWith:histo.objs.norm                    1000  avgt    3     0.244 ±     0.139  obj/op
+CountEagerLazyBenchmark.ecLazyCount                                       1  avgt    3   786.661 ±  2697.427   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate                         1  avgt    3     0.050 ±     0.006  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm                    1  avgt    3     0.042 ±     0.144    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count                              1  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecLazyCount:histo.bytes.norm                      1  avgt    3  1262.409 ±  4325.795    B/op
+CountEagerLazyBenchmark.ecLazyCount:histo.clean                           1  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecLazyCount:histo.objs.norm                       1  avgt    3     0.237 ±     0.810  obj/op
+CountEagerLazyBenchmark.ecLazyCount                                     500  avgt    3   817.728 ±  2576.402   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate                       500  avgt    3     0.050 ±     0.010  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm                  500  avgt    3     0.043 ±     0.143    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count                            500  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecLazyCount:histo.bytes.norm                    500  avgt    3  1304.701 ±  4383.824    B/op
+CountEagerLazyBenchmark.ecLazyCount:histo.clean                         500  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecLazyCount:histo.objs.norm                     500  avgt    3     0.245 ±     0.822  obj/op
+CountEagerLazyBenchmark.ecLazyCount                                    1000  avgt    3   828.349 ±  1216.773   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate                      1000  avgt    3     0.050 ±     0.010  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm                 1000  avgt    3     0.044 ±     0.065    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count                           1000  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.ecLazyCount:histo.bytes.norm                   1000  avgt    3  1329.020 ±  1949.485    B/op
+CountEagerLazyBenchmark.ecLazyCount:histo.clean                        1000  avgt    3     1.000                bool
+CountEagerLazyBenchmark.ecLazyCount:histo.objs.norm                    1000  avgt    3     0.250 ±     0.365  obj/op
+CountEagerLazyBenchmark.jdkCount                                          1  avgt    3  1900.088 ±  8012.229   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate                            1  avgt    3   107.212 ±   410.451  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm                       1  avgt    3   208.100 ±     0.445    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                                 1  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.jdkCount:histo.bytes.norm                         1  avgt    3  3020.127 ± 13419.434    B/op
+CountEagerLazyBenchmark.jdkCount:histo.clean                              1  avgt    3     1.000                bool
+CountEagerLazyBenchmark.jdkCount:histo.objs.norm                          1  avgt    3     7.565 ±     2.502  obj/op
+CountEagerLazyBenchmark.jdkCount                                        500  avgt    3  1693.284 ±  3744.541   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate                          500  avgt    3   126.556 ±   284.203  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm                     500  avgt    3   224.090 ±     0.192    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                               500  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.jdkCount:histo.bytes.norm                       500  avgt    3  2713.143 ±  5946.181    B/op
+CountEagerLazyBenchmark.jdkCount:histo.clean                            500  avgt    3     1.000                bool
+CountEagerLazyBenchmark.jdkCount:histo.objs.norm                        500  avgt    3     8.508 ±     1.112  obj/op
+CountEagerLazyBenchmark.jdkCount                                       1000  avgt    3  1662.411 ±  4084.861   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate                         1000  avgt    3   129.158 ±   297.937  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm                    1000  avgt    3   224.087 ±     0.167    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                              1000  avgt    3       ≈ 0              counts
+CountEagerLazyBenchmark.jdkCount:histo.bytes.norm                      1000  avgt    3  2618.938 ±  5039.684    B/op
+CountEagerLazyBenchmark.jdkCount:histo.clean                           1000  avgt    3     1.000                bool
+CountEagerLazyBenchmark.jdkCount:histo.objs.norm                       1000  avgt    3     8.490 ±     0.937  obj/op
+CountUtilityBenchmark.ecCount                                             1  avgt    3   867.462 ±   688.525   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate                               1  avgt    3     0.050 ±     0.010  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm                          1  avgt    3     0.046 ±     0.034    B/op
+CountUtilityBenchmark.ecCount:gc.count                                    1  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.ecCount:histo.bytes.norm                            1  avgt    3  1382.257 ±  1030.554    B/op
+CountUtilityBenchmark.ecCount:histo.clean                                 1  avgt    3     1.000                bool
+CountUtilityBenchmark.ecCount:histo.objs.norm                             1  avgt    3     0.257 ±     0.191  obj/op
+CountUtilityBenchmark.ecCount                                           500  avgt    3   663.377 ±   735.310   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate                             500  avgt    3     0.050 ±     0.005  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm                        500  avgt    3     0.035 ±     0.037    B/op
+CountUtilityBenchmark.ecCount:gc.count                                  500  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.ecCount:histo.bytes.norm                          500  avgt    3  1063.952 ±  1173.788    B/op
+CountUtilityBenchmark.ecCount:histo.clean                               500  avgt    3     1.000                bool
+CountUtilityBenchmark.ecCount:histo.objs.norm                           500  avgt    3     0.197 ±     0.220  obj/op
+CountUtilityBenchmark.ecCount                                          1000  avgt    3   699.501 ±   592.275   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate                            1000  avgt    3     0.050 ±     0.001  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm                       1000  avgt    3     0.037 ±     0.032    B/op
+CountUtilityBenchmark.ecCount:gc.count                                 1000  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.ecCount:histo.bytes.norm                         1000  avgt    3  1122.956 ±   953.299    B/op
+CountUtilityBenchmark.ecCount:histo.clean                              1000  avgt    3     1.000                bool
+CountUtilityBenchmark.ecCount:histo.objs.norm                          1000  avgt    3     0.208 ±     0.178  obj/op
+CountUtilityBenchmark.ecCountWith                                         1  avgt    3   698.218 ±   667.007   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate                           1  avgt    3     0.050 ±     0.015  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm                      1  avgt    3     0.037 ±     0.037    B/op
+CountUtilityBenchmark.ecCountWith:gc.count                                1  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.ecCountWith:histo.bytes.norm                        1  avgt    3  1107.493 ±  1128.460    B/op
+CountUtilityBenchmark.ecCountWith:histo.clean                             1  avgt    3     1.000                bool
+CountUtilityBenchmark.ecCountWith:histo.objs.norm                         1  avgt    3     0.206 ±     0.209  obj/op
+CountUtilityBenchmark.ecCountWith                                       500  avgt    3   858.051 ±   663.638   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate                         500  avgt    3     0.050 ±     0.003  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm                    500  avgt    3     0.046 ±     0.039    B/op
+CountUtilityBenchmark.ecCountWith:gc.count                              500  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.ecCountWith:histo.bytes.norm                      500  avgt    3  1375.740 ±  1058.092    B/op
+CountUtilityBenchmark.ecCountWith:histo.clean                           500  avgt    3     1.000                bool
+CountUtilityBenchmark.ecCountWith:histo.objs.norm                       500  avgt    3     0.256 ±     0.195  obj/op
+CountUtilityBenchmark.ecCountWith                                      1000  avgt    3   881.216 ±   439.975   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate                        1000  avgt    3     0.050 ±     0.006  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm                   1000  avgt    3     0.047 ±     0.022    B/op
+CountUtilityBenchmark.ecCountWith:gc.count                             1000  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.ecCountWith:histo.bytes.norm                     1000  avgt    3  1412.308 ±   684.930    B/op
+CountUtilityBenchmark.ecCountWith:histo.clean                          1000  avgt    3     1.000                bool
+CountUtilityBenchmark.ecCountWith:histo.objs.norm                      1000  avgt    3     0.262 ±     0.125  obj/op
+CountUtilityBenchmark.jdkCount                                            1  avgt    3  1853.544 ±  2772.806   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate                              1  avgt    3   105.553 ±   127.135  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm                         1  avgt    3   208.099 ±     0.149    B/op
+CountUtilityBenchmark.jdkCount:gc.count                                   1  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.jdkCount:histo.bytes.norm                           1  avgt    3  2973.005 ±  4481.167    B/op
+CountUtilityBenchmark.jdkCount:histo.clean                                1  avgt    3     1.000                bool
+CountUtilityBenchmark.jdkCount:histo.objs.norm                            1  avgt    3     7.552 ±     0.829  obj/op
+CountUtilityBenchmark.jdkCount                                          500  avgt    3  1569.347 ±  4048.235   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate                            500  avgt    3   137.282 ±   372.667  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm                       500  avgt    3   224.083 ±     0.245    B/op
+CountUtilityBenchmark.jdkCount:gc.count                                 500  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.jdkCount:histo.bytes.norm                         500  avgt    3  2491.240 ±  7382.888    B/op
+CountUtilityBenchmark.jdkCount:histo.clean                              500  avgt    3     1.000                bool
+CountUtilityBenchmark.jdkCount:histo.objs.norm                          500  avgt    3     8.462 ±     1.365  obj/op
+CountUtilityBenchmark.jdkCount                                         1000  avgt    3  1827.859 ±  9089.675   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate                           1000  avgt    3   121.319 ±   532.142  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm                      1000  avgt    3   224.097 ±     0.490    B/op
+CountUtilityBenchmark.jdkCount:gc.count                                1000  avgt    3       ≈ 0              counts
+CountUtilityBenchmark.jdkCount:histo.bytes.norm                        1000  avgt    3  2929.529 ± 14680.653    B/op
+CountUtilityBenchmark.jdkCount:histo.clean                             1000  avgt    3     1.000                bool
+CountUtilityBenchmark.jdkCount:histo.objs.norm                         1000  avgt    3     8.544 ±     2.728  obj/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone                                1  avgt    3     2.887 ±    10.195   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate                  1  avgt    3     0.050 ±     0.004  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm             1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                       1  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.bytes.norm               1  avgt    3     4.631 ±    16.260    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.clean                    1  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.objs.norm                1  avgt    3     0.001 ±     0.003  obj/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone                              500  avgt    3   346.944 ±   695.997   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate                500  avgt    3     0.050 ±     0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm           500  avgt    3     0.018 ±     0.037    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                     500  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.bytes.norm             500  avgt    3   556.444 ±  1118.764    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.clean                  500  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.objs.norm              500  avgt    3     0.104 ±     0.211  obj/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone                             1000  avgt    3   740.543 ±  3801.682   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate               1000  avgt    3     0.050 ±     0.003  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm          1000  avgt    3     0.039 ±     0.201    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                    1000  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.bytes.norm            1000  avgt    3  1185.894 ±  6043.207    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.clean                 1000  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectIfNone:histo.objs.norm             1000  avgt    3     0.222 ±     1.135  obj/op
+FindFirstEagerLazyBenchmark.ecDetectOptional                              1  avgt    3     2.581 ±     5.943   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate                1  avgt    3     0.050 ±     0.007  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm           1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                     1  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.bytes.norm             1  avgt    3     4.140 ±     9.622    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.clean                  1  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.objs.norm              1  avgt    3     0.001 ±     0.002  obj/op
+FindFirstEagerLazyBenchmark.ecDetectOptional                            500  avgt    3   311.509 ±  1158.899   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate              500  avgt    3     0.050 ±     0.005  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm         500  avgt    3     0.017 ±     0.063    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                   500  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.bytes.norm           500  avgt    3   499.684 ±  1858.766    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.clean                500  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.objs.norm            500  avgt    3     0.094 ±     0.346  obj/op
+FindFirstEagerLazyBenchmark.ecDetectOptional                           1000  avgt    3   803.190 ±  2630.261   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate             1000  avgt    3     0.049 ±     0.017  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm        1000  avgt    3     0.043 ±     0.140    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                  1000  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.bytes.norm          1000  avgt    3  1288.550 ±  4231.505    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.clean               1000  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectOptional:histo.objs.norm           1000  avgt    3     0.241 ±     0.794  obj/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                            1  avgt    3     2.799 ±     9.289   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate              1  avgt    3     0.050 ±     0.002  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm         1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                   1  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.bytes.norm           1  avgt    3     4.486 ±    15.040    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.clean                1  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.objs.norm            1  avgt    3     0.001 ±     0.003  obj/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                          500  avgt    3   365.296 ±   376.151   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate            500  avgt    3     0.050 ±     0.023  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm       500  avgt    3     0.019 ±     0.021    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                 500  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.bytes.norm         500  avgt    3   586.106 ±   611.798    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.clean              500  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.objs.norm          500  avgt    3     0.110 ±     0.116  obj/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                         1000  avgt    3   643.998 ±  1188.629   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate           1000  avgt    3     0.050 ±     0.002  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm      1000  avgt    3     0.034 ±     0.063    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                1000  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.bytes.norm        1000  avgt    3  1033.881 ±  1904.449    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.clean             1000  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:histo.objs.norm         1000  avgt    3     0.194 ±     0.360  obj/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                          1  avgt    3     2.313 ±     5.698   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate            1  avgt    3     0.050 ±     0.002  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm       1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count                 1  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.bytes.norm         1  avgt    3     3.708 ±     9.129    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.clean              1  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.objs.norm          1  avgt    3     0.001 ±     0.002  obj/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                        500  avgt    3   353.124 ±   539.952   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate          500  avgt    3     0.050 ±     0.003  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm     500  avgt    3     0.019 ±     0.028    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count               500  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.bytes.norm       500  avgt    3   566.422 ±   864.103    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.clean            500  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.objs.norm        500  avgt    3     0.106 ±     0.163  obj/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                       1000  avgt    3   625.873 ±  1478.139   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate         1000  avgt    3     0.050 ±     0.002  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm    1000  avgt    3     0.033 ±     0.079    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count              1000  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.bytes.norm      1000  avgt    3  1004.230 ±  2387.002    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.clean           1000  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:histo.objs.norm       1000  avgt    3     0.188 ±     0.450  obj/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                            1  avgt    3     2.291 ±     1.408   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate              1  avgt    3     0.050 ±     0.002  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm         1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                   1  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.bytes.norm           1  avgt    3     3.677 ±     2.286    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.clean                1  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.objs.norm            1  avgt    3     0.001 ±     0.001  obj/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                          500  avgt    3   382.135 ±   645.287   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate            500  avgt    3     0.050 ±     0.004  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm       500  avgt    3     0.020 ±     0.033    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                 500  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.bytes.norm         500  avgt    3   611.886 ±  1014.334    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.clean              500  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.objs.norm          500  avgt    3     0.115 ±     0.190  obj/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                         1000  avgt    3   734.174 ±  2230.337   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate           1000  avgt    3     0.050 ±     0.002  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm      1000  avgt    3     0.039 ±     0.118    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                1000  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.bytes.norm        1000  avgt    3  1178.746 ±  3570.838    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.clean             1000  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:histo.objs.norm         1000  avgt    3     0.222 ±     0.673  obj/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                          1  avgt    3     2.831 ±     8.378   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate            1  avgt    3     0.050 ±     0.011  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm       1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count                 1  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.bytes.norm         1  avgt    3     4.504 ±    13.072    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.clean              1  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.objs.norm          1  avgt    3     0.001 ±     0.002  obj/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                        500  avgt    3   368.770 ±   703.640   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate          500  avgt    3     0.050 ±     0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm     500  avgt    3     0.020 ±     0.037    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count               500  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.bytes.norm       500  avgt    3   591.766 ±  1122.178    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.clean            500  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.objs.norm        500  avgt    3     0.111 ±     0.209  obj/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                       1000  avgt    3   699.505 ±   735.016   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate         1000  avgt    3     0.050 ±     0.002  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm    1000  avgt    3     0.037 ±     0.039    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count              1000  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.bytes.norm      1000  avgt    3  1122.842 ±  1180.023    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.clean           1000  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:histo.objs.norm       1000  avgt    3     0.211 ±     0.224  obj/op
+FindFirstEagerLazyBenchmark.jdkFindFirst                                  1  avgt    3   696.833 ±  6782.047   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                    1  avgt    3   372.702 ±  5189.966  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm               1  avgt    3   200.036 ±     0.350    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                         1  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.bytes.norm                 1  avgt    3  1099.509 ± 10545.091    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.clean                      1  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.objs.norm                  1  avgt    3     7.206 ±     1.973  obj/op
+FindFirstEagerLazyBenchmark.jdkFindFirst                                500  avgt    3  1583.163 ±  4100.113   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                  500  avgt    3   131.194 ±   347.295  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm             500  avgt    3   216.084 ±     0.214    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                       500  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.bytes.norm               500  avgt    3  2541.972 ±  6571.352    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.clean                    500  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.objs.norm                500  avgt    3     8.476 ±     1.223  obj/op
+FindFirstEagerLazyBenchmark.jdkFindFirst                               1000  avgt    3  3360.626 ±  8094.430   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                 1000  avgt    3    61.564 ±   139.779  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm            1000  avgt    3   216.179 ±     0.433    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                      1000  avgt    3       ≈ 0              counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.bytes.norm              1000  avgt    3  5392.082 ± 13036.782    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.clean                   1000  avgt    3     1.000                bool
+FindFirstEagerLazyBenchmark.jdkFindFirst:histo.objs.norm               1000  avgt    3     9.010 ±     2.448  obj/op
+FindFirstUtilityBenchmark.ecDetectIfNone                                  1  avgt    3     2.837 ±    10.438   ns/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate                    1  avgt    3     0.049 ±     0.035  MB/sec
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate.norm               1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.count                         1  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.bytes.norm                 1  avgt    3     4.430 ±    18.182    B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.clean                      1  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.objs.norm                  1  avgt    3     0.001 ±     0.003  obj/op
+FindFirstUtilityBenchmark.ecDetectIfNone                                500  avgt    3   402.304 ±  1226.485   ns/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate                  500  avgt    3     0.050 ±     0.022  MB/sec
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate.norm             500  avgt    3     0.021 ±     0.071    B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.count                       500  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.bytes.norm               500  avgt    3   637.722 ±  2153.098    B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.clean                    500  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.objs.norm                500  avgt    3     0.118 ±     0.401  obj/op
+FindFirstUtilityBenchmark.ecDetectIfNone                               1000  avgt    3   739.964 ±   553.324   ns/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate                 1000  avgt    3     0.049 ±     0.031  MB/sec
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate.norm            1000  avgt    3     0.039 ±     0.051    B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.count                      1000  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.bytes.norm              1000  avgt    3  1166.876 ±  1482.909    B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.clean                   1000  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectIfNone:histo.objs.norm               1000  avgt    3     0.217 ±     0.274  obj/op
+FindFirstUtilityBenchmark.ecDetectOptional                                1  avgt    3     3.952 ±    15.287   ns/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate                  1  avgt    3     0.050 ±     0.004  MB/sec
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate.norm             1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.count                       1  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectOptional:histo.bytes.norm               1  avgt    3     6.344 ±    24.578    B/op
+FindFirstUtilityBenchmark.ecDetectOptional:histo.clean                    1  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectOptional:histo.objs.norm                1  avgt    3     0.001 ±     0.005  obj/op
+FindFirstUtilityBenchmark.ecDetectOptional                              500  avgt    3   340.241 ±    98.526   ns/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate                500  avgt    3     0.050 ±     0.019  MB/sec
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate.norm           500  avgt    3     0.018 ±     0.004    B/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.count                     500  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectOptional:histo.bytes.norm             500  avgt    3   540.317 ±   103.633    B/op
+FindFirstUtilityBenchmark.ecDetectOptional:histo.clean                  500  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectOptional:histo.objs.norm              500  avgt    3     0.100 ±     0.018  obj/op
+FindFirstUtilityBenchmark.ecDetectOptional                             1000  avgt    3   755.684 ±  2356.280   ns/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate               1000  avgt    3     0.050 ±     0.007  MB/sec
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate.norm          1000  avgt    3     0.040 ±     0.126    B/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.count                    1000  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectOptional:histo.bytes.norm            1000  avgt    3  1212.448 ±  3779.011    B/op
+FindFirstUtilityBenchmark.ecDetectOptional:histo.clean                 1000  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectOptional:histo.objs.norm             1000  avgt    3     0.225 ±     0.702  obj/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone                              1  avgt    3     2.670 ±     7.423   ns/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate                1  avgt    3     0.050 ±     0.003  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm           1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.count                     1  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.bytes.norm             1  avgt    3     4.278 ±    11.751    B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.clean                  1  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.objs.norm              1  avgt    3     0.001 ±     0.002  obj/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone                            500  avgt    3   356.706 ±   776.099   ns/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate              500  avgt    3     0.050 ±     0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm         500  avgt    3     0.019 ±     0.041    B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.count                   500  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.bytes.norm           500  avgt    3   572.786 ±  1248.714    B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.clean                500  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.objs.norm            500  avgt    3     0.106 ±     0.233  obj/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone                           1000  avgt    3   617.814 ±  1736.815   ns/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate             1000  avgt    3     0.050 ±     0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm        1000  avgt    3     0.033 ±     0.093    B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.count                  1000  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.bytes.norm          1000  avgt    3   990.558 ±  2762.894    B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.clean               1000  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectWithIfNone:histo.objs.norm           1000  avgt    3     0.184 ±     0.516  obj/op
+FindFirstUtilityBenchmark.ecDetectWithOptional                            1  avgt    3     2.567 ±     8.044   ns/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate              1  avgt    3     0.050 ±     0.009  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate.norm         1  avgt    3    ≈ 10⁻⁴                B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.count                   1  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.bytes.norm           1  avgt    3     4.110 ±    13.071    B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.clean                1  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.objs.norm            1  avgt    3     0.001 ±     0.002  obj/op
+FindFirstUtilityBenchmark.ecDetectWithOptional                          500  avgt    3   372.623 ±   614.122   ns/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate            500  avgt    3     0.050 ±     0.004  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate.norm       500  avgt    3     0.020 ±     0.033    B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.count                 500  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.bytes.norm         500  avgt    3   597.624 ±   995.927    B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.clean              500  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.objs.norm          500  avgt    3     0.111 ±     0.186  obj/op
+FindFirstUtilityBenchmark.ecDetectWithOptional                         1000  avgt    3   861.218 ±  2092.331   ns/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate           1000  avgt    3     0.050 ±     0.002  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate.norm      1000  avgt    3     0.046 ±     0.111    B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.count                1000  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.bytes.norm        1000  avgt    3  1381.974 ±  3359.752    B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.clean             1000  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.ecDetectWithOptional:histo.objs.norm         1000  avgt    3     0.257 ±     0.622  obj/op
+FindFirstUtilityBenchmark.jdkFindFirst                                    1  avgt    3   375.885 ±  2583.103   ns/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate                      1  avgt    3   552.556 ±  3636.796  MB/sec
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate.norm                 1  avgt    3   200.020 ±     0.143    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.count                           1  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.jdkFindFirst:histo.bytes.norm                   1  avgt    3   596.460 ±  4298.134    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:histo.clean                        1  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.jdkFindFirst:histo.objs.norm                    1  avgt    3     7.111 ±     0.798  obj/op
+FindFirstUtilityBenchmark.jdkFindFirst                                  500  avgt    3  1640.940 ±   529.582   ns/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate                    500  avgt    3   124.804 ±    46.670  MB/sec
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate.norm               500  avgt    3   216.086 ±     0.058    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.count                         500  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.jdkFindFirst:histo.bytes.norm                 500  avgt    3  2594.684 ±  1690.623    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:histo.clean                      500  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.jdkFindFirst:histo.objs.norm                  500  avgt    3     8.481 ±     0.319  obj/op
+FindFirstUtilityBenchmark.jdkFindFirst                                 1000  avgt    3  3377.410 ±  8745.730   ns/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate                   1000  avgt    3    61.422 ±   146.987  MB/sec
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate.norm              1000  avgt    3   216.180 ±     0.468    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.count                        1000  avgt    3       ≈ 0              counts
+FindFirstUtilityBenchmark.jdkFindFirst:histo.bytes.norm                1000  avgt    3  5419.512 ± 14113.822    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:histo.clean                     1000  avgt    3     1.000                bool
+FindFirstUtilityBenchmark.jdkFindFirst:histo.objs.norm                 1000  avgt    3     9.006 ±     2.625  obj/op

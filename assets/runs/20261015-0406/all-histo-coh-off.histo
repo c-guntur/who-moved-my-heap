@@ -1,0 +1,864 @@
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 4.0 B/op ops=40434105
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 4.2 B/op ops=38180956
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 2.8 B/op ops=56945417
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=500 clean=true
+HISTO   total 0.102 obj/op 544.6 B/op ops=295719
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=500 clean=true
+HISTO   total 0.102 obj/op 542.9 B/op ops=296686
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=500 clean=true
+HISTO   total 0.104 obj/op 554.7 B/op ops=290332
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=1000 clean=true
+HISTO   total 0.198 obj/op 1058.0 B/op ops=152236
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=1000 clean=true
+HISTO   total 0.191 obj/op 1019.5 B/op ops=157977
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfy test=1000 clean=true
+HISTO   total 0.193 obj/op 1032.8 B/op ops=155943
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=1 clean=true
+HISTO   total 0.001 obj/op 5.0 B/op ops=32530713
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=1 clean=true
+HISTO   total 0.001 obj/op 5.1 B/op ops=31711120
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=1 clean=true
+HISTO   total 0.001 obj/op 4.9 B/op ops=32938762
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=500 clean=true
+HISTO   total 0.107 obj/op 570.6 B/op ops=282263
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=500 clean=true
+HISTO   total 0.116 obj/op 619.3 B/op ops=260065
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=500 clean=true
+HISTO   total 0.107 obj/op 569.1 B/op ops=283035
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=1000 clean=true
+HISTO   total 0.157 obj/op 838.8 B/op ops=192003
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=1000 clean=true
+HISTO   total 0.259 obj/op 1381.5 B/op ops=116585
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecAnySatisfyWith test=1000 clean=true
+HISTO   total 0.182 obj/op 971.5 B/op ops=165786
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 5.3 B/op ops=30519194
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 3.6 B/op ops=44771997
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 3.2 B/op ops=50435842
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=500 clean=true
+HISTO   total 0.120 obj/op 638.6 B/op ops=252203
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=500 clean=true
+HISTO   total 0.089 obj/op 472.0 B/op ops=341235
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=500 clean=true
+HISTO   total 0.106 obj/op 563.0 B/op ops=286065
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=1000 clean=true
+HISTO   total 0.206 obj/op 1099.2 B/op ops=146531
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=1000 clean=true
+HISTO   total 0.211 obj/op 1122.7 B/op ops=143453
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy test=1000 clean=true
+HISTO   total 0.198 obj/op 1055.7 B/op ops=152568
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=1 clean=true
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x000000009c089c18
+HISTO   total 6.107 obj/op 569.8 B/op ops=282679
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=1 clean=true
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x000000009c089c18
+HISTO   total 6.258 obj/op 1374.7 B/op ops=117159
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=1 clean=true
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x000000009c089c18
+HISTO   total 6.138 obj/op 737.6 B/op ops=218349
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x0000000079089c18
+HISTO   total 7.498 obj/op 2656.9 B/op ops=60620
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x0000000079089c18
+HISTO   total 7.511 obj/op 2721.4 B/op ops=59184
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x0000000079089c18
+HISTO   total 7.497 obj/op 2645.2 B/op ops=60889
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.002 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x0000000076089c18
+HISTO   total 8.135 obj/op 6055.8 B/op ops=26596
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.002 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x0000000076089c18
+HISTO   total 7.882 obj/op 4700.1 B/op ops=34268
+HISTO conf.session.shakers.AnyMatchEagerLazyBenchmark.jdkAnyMatch test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.002 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda/0x0000000076089c18
+HISTO   total 8.207 obj/op 6427.8 B/op ops=25057
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 4.5 B/op ops=35898741
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 3.6 B/op ops=45239945
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=1 clean=true
+HISTO   total 0.001 obj/op 4.8 B/op ops=33492788
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=500 clean=true
+HISTO   total 0.104 obj/op 563.1 B/op ops=286032
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=500 clean=true
+HISTO   total 0.104 obj/op 559.4 B/op ops=287923
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=500 clean=true
+HISTO   total 0.105 obj/op 567.6 B/op ops=283740
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=1000 clean=true
+HISTO   total 0.211 obj/op 1138.8 B/op ops=141436
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=1000 clean=true
+HISTO   total 0.212 obj/op 1141.8 B/op ops=141055
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy test=1000 clean=true
+HISTO   total 0.241 obj/op 1300.5 B/op ops=123843
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=1 clean=true
+HISTO   total 0.001 obj/op 3.6 B/op ops=45342564
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=1 clean=true
+HISTO   total 0.001 obj/op 3.9 B/op ops=41546748
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=1 clean=true
+HISTO   total 0.001 obj/op 3.4 B/op ops=47151658
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=500 clean=true
+HISTO   total 0.098 obj/op 530.5 B/op ops=303619
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=500 clean=true
+HISTO   total 0.127 obj/op 682.5 B/op ops=235991
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=500 clean=true
+HISTO   total 0.115 obj/op 619.0 B/op ops=260199
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=1000 clean=true
+HISTO   total 0.203 obj/op 1092.9 B/op ops=147366
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=1000 clean=true
+HISTO   total 0.173 obj/op 928.4 B/op ops=173485
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith test=1000 clean=true
+HISTO   total 0.149 obj/op 803.0 B/op ops=200564
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=1 clean=true
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000097085b70
+HISTO   total 6.257 obj/op 1382.9 B/op ops=116465
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=1 clean=true
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000097085b70
+HISTO   total 6.118 obj/op 632.2 B/op ops=254770
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=1 clean=true
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000097085b70
+HISTO   total 6.056 obj/op 303.2 B/op ops=531274
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000074085b70
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   total 7.501 obj/op 2697.7 B/op ops=59703
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000074085b70
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   total 7.386 obj/op 2071.6 B/op ops=77748
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000074085b70
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   total 7.618 obj/op 3321.0 B/op ops=48498
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000030085b70
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   total 7.743 obj/op 3999.8 B/op ops=40267
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.002 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000030085b70
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   total 7.949 obj/op 5099.1 B/op ops=31586
+HISTO conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.002 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$$Lambda/0x800000004
+HISTO   1.000 obj  16.0 B  conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda/0x0000000030085b70
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$1MatchSink
+HISTO   1.000 obj  24.0 B  java.util.stream.MatchOps$MatchOp
+HISTO   total 8.066 obj/op 5730.3 B/op ops=28107
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=1 clean=true
+HISTO   total 0.186 obj/op 993.9 B/op ops=162051
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=1 clean=true
+HISTO   total 0.193 obj/op 1031.1 B/op ops=156203
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=1 clean=true
+HISTO   total 0.232 obj/op 1240.5 B/op ops=129832
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=500 clean=true
+HISTO   total 0.190 obj/op 1013.7 B/op ops=158877
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=500 clean=true
+HISTO   total 0.202 obj/op 1080.6 B/op ops=149048
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=500 clean=true
+HISTO   total 0.198 obj/op 1056.9 B/op ops=152394
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=1000 clean=true
+HISTO   total 0.154 obj/op 823.4 B/op ops=195608
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=1000 clean=true
+HISTO   total 0.194 obj/op 1036.7 B/op ops=155355
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCount test=1000 clean=true
+HISTO   total 0.217 obj/op 1156.7 B/op ops=139247
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=1 clean=true
+HISTO   total 0.171 obj/op 911.7 B/op ops=176670
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=1 clean=true
+HISTO   total 0.263 obj/op 1403.8 B/op ops=114732
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=1 clean=true
+HISTO   total 0.214 obj/op 1143.8 B/op ops=140807
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=500 clean=true
+HISTO   total 0.212 obj/op 1131.5 B/op ops=142340
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=500 clean=true
+HISTO   total 0.159 obj/op 846.4 B/op ops=190281
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=500 clean=true
+HISTO   total 0.224 obj/op 1194.7 B/op ops=134812
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=1000 clean=true
+HISTO   total 0.198 obj/op 1057.2 B/op ops=152344
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=1000 clean=true
+HISTO   total 0.209 obj/op 1114.7 B/op ops=144484
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecCountWith test=1000 clean=true
+HISTO   total 0.185 obj/op 987.7 B/op ops=163073
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=1 clean=true
+HISTO   total 0.253 obj/op 1346.9 B/op ops=119583
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=1 clean=true
+HISTO   total 0.192 obj/op 1021.5 B/op ops=157670
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=1 clean=true
+HISTO   total 0.195 obj/op 1035.8 B/op ops=155494
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=500 clean=true
+HISTO   total 0.193 obj/op 1030.0 B/op ops=156375
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=500 clean=true
+HISTO   total 0.191 obj/op 1018.1 B/op ops=158201
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=500 clean=true
+HISTO   total 0.214 obj/op 1141.0 B/op ops=141153
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=1000 clean=true
+HISTO   total 0.247 obj/op 1318.0 B/op ops=122197
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=1000 clean=true
+HISTO   total 0.183 obj/op 971.8 B/op ops=165743
+HISTO conf.session.shakers.CountEagerLazyBenchmark.ecLazyCount test=1000 clean=true
+HISTO   total 0.175 obj/op 933.6 B/op ops=172513
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x000000004e089c18
+HISTO   total 7.319 obj/op 1704.6 B/op ops=94485
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x000000004e089c18
+HISTO   total 7.379 obj/op 2021.4 B/op ops=79680
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x000000004e089c18
+HISTO   total 7.388 obj/op 2070.3 B/op ops=77798
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x0000000044089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.645 obj/op 3450.3 B/op ops=46680
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x0000000044089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.653 obj/op 3488.1 B/op ops=46174
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x0000000044089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.381 obj/op 2032.2 B/op ops=79256
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x0000000080089c18
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.406 obj/op 2170.6 B/op ops=74201
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x0000000080089c18
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.492 obj/op 2628.1 B/op ops=61285
+HISTO conf.session.shakers.CountEagerLazyBenchmark.jdkCount test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountEagerLazyBenchmark$$Lambda/0x0000000080089c18
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.365 obj/op 1947.3 B/op ops=82711
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=1 clean=true
+HISTO   total 0.133 obj/op 718.9 B/op ops=224045
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=1 clean=true
+HISTO   total 0.238 obj/op 1284.6 B/op ops=125383
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=1 clean=true
+HISTO   total 0.152 obj/op 817.7 B/op ops=196958
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=500 clean=true
+HISTO   total 0.152 obj/op 817.6 B/op ops=196997
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=500 clean=true
+HISTO   total 0.156 obj/op 842.0 B/op ops=191294
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=500 clean=true
+HISTO   total 0.170 obj/op 916.2 B/op ops=175799
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=1000 clean=true
+HISTO   total 0.155 obj/op 833.9 B/op ops=193152
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=1000 clean=true
+HISTO   total 0.155 obj/op 834.2 B/op ops=193065
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCount test=1000 clean=true
+HISTO   total 0.175 obj/op 941.8 B/op ops=171015
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=1 clean=true
+HISTO   total 0.158 obj/op 853.3 B/op ops=188749
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=1 clean=true
+HISTO   total 0.152 obj/op 819.0 B/op ops=196666
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=1 clean=true
+HISTO   total 0.156 obj/op 839.9 B/op ops=191769
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=500 clean=true
+HISTO   total 0.195 obj/op 1048.8 B/op ops=153572
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=500 clean=true
+HISTO   total 0.153 obj/op 824.2 B/op ops=195406
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=500 clean=true
+HISTO   total 0.206 obj/op 1109.4 B/op ops=145182
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=1000 clean=true
+HISTO   total 0.212 obj/op 1143.0 B/op ops=140913
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=1000 clean=true
+HISTO   total 0.227 obj/op 1223.9 B/op ops=131602
+HISTO conf.session.shakers.CountUtilityBenchmark.ecCountWith test=1000 clean=true
+HISTO   total 0.253 obj/op 1360.9 B/op ops=118348
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=1 clean=true
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x0000000013085b68
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 7.614 obj/op 3309.6 B/op ops=48665
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=1 clean=true
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x0000000013085b68
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 7.461 obj/op 2482.4 B/op ops=64881
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=1 clean=true
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x0000000013085b68
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 7.360 obj/op 1940.2 B/op ops=83013
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x000000005b085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.437 obj/op 2356.5 B/op ops=68348
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x000000005b085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.468 obj/op 2522.9 B/op ops=63839
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x000000005b085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.406 obj/op 2186.4 B/op ops=73664
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x0000000088085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.376 obj/op 2028.9 B/op ops=79384
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x0000000088085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.468 obj/op 2522.5 B/op ops=63849
+HISTO conf.session.shakers.CountUtilityBenchmark.jdkCount test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  java.util.stream.ReduceOps$5
+HISTO   1.000 obj  16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda/0x0000000088085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+HISTO   total 8.557 obj/op 3001.3 B/op ops=53663
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.6 B/op ops=44413858
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.6 B/op ops=44595319
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 4.1 B/op ops=39401140
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=500 clean=true
+HISTO   total 0.081 obj/op 430.0 B/op ops=374581
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=500 clean=true
+HISTO   total 0.088 obj/op 467.8 B/op ops=344307
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=500 clean=true
+HISTO   total 0.087 obj/op 466.4 B/op ops=345352
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=1000 clean=true
+HISTO   total 0.176 obj/op 941.6 B/op ops=171052
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=1000 clean=true
+HISTO   total 0.156 obj/op 830.6 B/op ops=193904
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectIfNone test=1000 clean=true
+HISTO   total 0.195 obj/op 1038.3 B/op ops=155123
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.9 B/op ops=41508081
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 4.0 B/op ops=39793384
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.8 B/op ops=42425322
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=500 clean=true
+HISTO   total 0.087 obj/op 465.1 B/op ops=346289
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=500 clean=true
+HISTO   total 0.082 obj/op 439.7 B/op ops=366292
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=500 clean=true
+HISTO   total 0.083 obj/op 442.7 B/op ops=363797
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=1000 clean=true
+HISTO   total 0.178 obj/op 953.9 B/op ops=168840
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=1000 clean=true
+HISTO   total 0.251 obj/op 1337.9 B/op ops=120385
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectOptional test=1000 clean=true
+HISTO   total 0.158 obj/op 842.4 B/op ops=191193
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.5 B/op ops=45457560
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 5.2 B/op ops=31146777
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.6 B/op ops=44964465
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=500 clean=true
+HISTO   total 0.078 obj/op 414.7 B/op ops=388359
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=500 clean=true
+HISTO   total 0.115 obj/op 614.0 B/op ops=262328
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=500 clean=true
+HISTO   total 0.084 obj/op 449.4 B/op ops=358367
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=1000 clean=true
+HISTO   total 0.160 obj/op 854.3 B/op ops=188526
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=1000 clean=true
+HISTO   total 0.169 obj/op 898.7 B/op ops=179223
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithIfNone test=1000 clean=true
+HISTO   total 0.155 obj/op 824.0 B/op ops=195467
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.6 B/op ops=44748622
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=1 clean=true
+HISTO   total 0.001 obj/op 4.5 B/op ops=35697306
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.7 B/op ops=43111445
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=500 clean=true
+HISTO   total 0.084 obj/op 450.1 B/op ops=357850
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=500 clean=true
+HISTO   total 0.104 obj/op 556.9 B/op ops=289227
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=500 clean=true
+HISTO   total 0.080 obj/op 426.1 B/op ops=377960
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=1000 clean=true
+HISTO   total 0.149 obj/op 793.7 B/op ops=202919
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=1000 clean=true
+HISTO   total 0.290 obj/op 1546.4 B/op ops=104154
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecDetectWithOptional test=1000 clean=true
+HISTO   total 0.150 obj/op 800.0 B/op ops=201336
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 4.1 B/op ops=39023345
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.1 B/op ops=51350340
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.2 B/op ops=49664104
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=500 clean=true
+HISTO   total 0.122 obj/op 648.7 B/op ops=248270
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=500 clean=true
+HISTO   total 0.115 obj/op 610.7 B/op ops=263713
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=500 clean=true
+HISTO   total 0.077 obj/op 411.9 B/op ops=391040
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=1000 clean=true
+HISTO   total 0.155 obj/op 824.9 B/op ops=195257
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=1000 clean=true
+HISTO   total 0.162 obj/op 862.6 B/op ops=186717
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectIfNone test=1000 clean=true
+HISTO   total 0.173 obj/op 920.3 B/op ops=175016
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.5 B/op ops=46189791
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.2 B/op ops=50923436
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.8 B/op ops=42712114
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=500 clean=true
+HISTO   total 0.127 obj/op 679.4 B/op ops=237048
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=500 clean=true
+HISTO   total 0.077 obj/op 410.4 B/op ops=392450
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=500 clean=true
+HISTO   total 0.072 obj/op 385.1 B/op ops=418222
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=1000 clean=true
+HISTO   total 0.166 obj/op 882.3 B/op ops=182556
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=1000 clean=true
+HISTO   total 0.260 obj/op 1386.4 B/op ops=116170
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.ecLazyDetectOptional test=1000 clean=true
+HISTO   total 0.231 obj/op 1229.2 B/op ops=131027
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x000000005b089c18
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 7.154 obj/op 825.4 B/op ops=195133
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x000000005b089c18
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 7.196 obj/op 1045.8 B/op ops=154005
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x000000005b089c18
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 7.118 obj/op 627.9 B/op ops=256515
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x0000000060089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.394 obj/op 2105.9 B/op ops=76482
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x0000000060089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.409 obj/op 2184.7 B/op ops=73724
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x0000000060089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.436 obj/op 2329.9 B/op ops=69127
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x000000006b089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.789 obj/op 4220.2 B/op ops=38164
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.002 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x000000006b089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 9.193 obj/op 6372.6 B/op ops=25274
+HISTO conf.session.shakers.FindFirstEagerLazyBenchmark.jdkFindFirst test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda/0x000000006b089c18
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.763 obj/op 4072.8 B/op ops=39546
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.5 B/op ops=45658117
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.5 B/op ops=45413310
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 2.8 B/op ops=57857736
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=500 clean=true
+HISTO   total 0.088 obj/op 473.6 B/op ops=340043
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=500 clean=true
+HISTO   total 0.117 obj/op 632.4 B/op ops=254699
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=500 clean=true
+HISTO   total 0.083 obj/op 449.6 B/op ops=358250
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=1000 clean=true
+HISTO   total 0.148 obj/op 798.2 B/op ops=201787
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=1000 clean=true
+HISTO   total 0.146 obj/op 788.2 B/op ops=204333
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectIfNone test=1000 clean=true
+HISTO   total 0.115 obj/op 621.8 B/op ops=259020
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.3 B/op ops=48453221
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.5 B/op ops=45496992
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.8 B/op ops=42414757
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=500 clean=true
+HISTO   total 0.108 obj/op 585.1 B/op ops=275292
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=500 clean=true
+HISTO   total 0.078 obj/op 421.8 B/op ops=381880
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=500 clean=true
+HISTO   total 0.101 obj/op 542.6 B/op ops=296855
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=1000 clean=true
+HISTO   total 0.169 obj/op 912.9 B/op ops=176427
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=1000 clean=true
+HISTO   total 0.177 obj/op 955.8 B/op ops=168510
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectOptional test=1000 clean=true
+HISTO   total 0.155 obj/op 835.8 B/op ops=192696
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.7 B/op ops=43764246
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.5 B/op ops=45484642
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=1 clean=true
+HISTO   total 0.001 obj/op 3.6 B/op ops=44927729
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=500 clean=true
+HISTO   total 0.078 obj/op 422.4 B/op ops=381341
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=500 clean=true
+HISTO   total 0.060 obj/op 321.5 B/op ops=501015
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=500 clean=true
+HISTO   total 0.103 obj/op 552.4 B/op ops=291561
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=1000 clean=true
+HISTO   total 0.138 obj/op 744.9 B/op ops=216227
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=1000 clean=true
+HISTO   total 0.223 obj/op 1198.2 B/op ops=134420
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithIfNone test=1000 clean=true
+HISTO   total 0.151 obj/op 811.3 B/op ops=198528
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.4 B/op ops=47812570
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.2 B/op ops=50786244
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=1 clean=true
+HISTO   total 0.001 obj/op 3.3 B/op ops=48871610
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=500 clean=true
+HISTO   total 0.102 obj/op 551.0 B/op ops=292291
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=500 clean=true
+HISTO   total 0.085 obj/op 457.7 B/op ops=351877
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=500 clean=true
+HISTO   total 0.085 obj/op 457.3 B/op ops=352208
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=1000 clean=true
+HISTO   total 0.184 obj/op 993.4 B/op ops=162131
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=1000 clean=true
+HISTO   total 0.149 obj/op 803.7 B/op ops=200404
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.ecDetectWithOptional test=1000 clean=true
+HISTO   total 0.142 obj/op 766.4 B/op ops=210148
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000016085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 7.411 obj/op 2214.5 B/op ops=72729
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000016085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 7.152 obj/op 820.1 B/op ops=196386
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=1 clean=true
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000016085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 7.109 obj/op 585.5 B/op ops=275093
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000053085b68
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.432 obj/op 2331.7 B/op ops=69076
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000053085b68
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.350 obj/op 1888.0 B/op ops=85307
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=500 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.0 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000053085b68
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.365 obj/op 1965.9 B/op ops=81929
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.002 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000078085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.816 obj/op 4402.0 B/op ops=36588
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.002 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000078085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 9.184 obj/op 6378.7 B/op ops=25250
+HISTO conf.session.shakers.FindFirstUtilityBenchmark.jdkFindFirst test=1000 clean=true
+HISTO   1.000 obj  16.0 B  java.lang.Integer
+HISTO   1.000 obj  56.0 B  java.util.stream.ReferencePipeline$2
+HISTO   1.000 obj  32.0 B  java.util.AbstractList$RandomAccessSpliterator
+HISTO   1.001 obj  56.1 B  java.util.stream.ReferencePipeline$Head
+HISTO   1.000 obj  24.0 B  java.util.stream.ReferencePipeline$2$1
+HISTO   1.000 obj  16.0 B  conf.session.shakers.FindFirstUtilityBenchmark$$Lambda/0x0000000078085b68
+HISTO   1.000 obj  24.0 B  java.util.stream.FindOps$FindSink$OfRef
+HISTO   1.000 obj  16.0 B  java.util.Optional
+HISTO   total 8.772 obj/op 4157.0 B/op ops=38745
