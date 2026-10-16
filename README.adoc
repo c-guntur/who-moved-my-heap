@@ -1,2 +1,3 @@
 JMH - -XX:+UseCompactObjectHeaders -prof gc
 
+JMAP - jmap -histo <pid> | grep "Lambda\|ReferencePipeline\|CollectorImpl\|HashMap\|HashSet\|ArrayList\|Integer\|Long\|Double\|Float\|Pair\|String\|\[B" | head -n 27
