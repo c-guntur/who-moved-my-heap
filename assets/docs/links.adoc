@@ -1,7 +1,13 @@
-
-
-* https://donraab.medium.com/allocation-hungry-any-all-none-findfirst-and-count-methods-on-java-stream-e3ca6d66b265?source=friends_link&sk=84629376cedf192618276bfc6668e97a[Allocation Hungry Any/All/None, FindFirst, and Count Methods on Java Stream]
-
-* https://donraab.medium.com/save-memory-in-java-by-making-memory-efficiency-your-top-priority-32fe9443eb8d?source=friends_link&sk=5ae3e714963aa9a7e40fa109ebe53283[Save Memory in Java by Making Memory Efficiency Your Top Priority]
-
-* https://medium.com/better-programming/sweating-the-small-stuff-in-java-dbd695166d13?source=friends_link&sk=aefca6a94a35340fccbcdbe9131036c1[Sweating the Small Stuff in Java]
+* Blogs
+** https://donraab.medium.com/save-memory-in-java-by-making-memory-efficiency-your-top-priority-32fe9443eb8d?source=friends_link&sk=5ae3e714963aa9a7e40fa109ebe53283[Save Memory in Java by Making Memory Efficiency Your Top Priority]
+** "Shakers"
+*** https://donraab.medium.com/allocation-hungry-any-all-none-findfirst-and-count-methods-on-java-stream-e3ca6d66b265?source=friends_link&sk=84629376cedf192618276bfc6668e97a[Allocation Hungry Any/All/None, FindFirst, and Count Methods on Java Stream]
+** "Movers"
+*** https://medium.com/better-programming/sweating-the-small-stuff-in-java-dbd695166d13?source=friends_link&sk=aefca6a94a35340fccbcdbe9131036c1[Sweating the Small Stuff in Java]
+*** https://medium.com/oracledevs/unifiedset-the-memory-saver-25b830745959[UnifiedSet: The Memory Saver]
+*** https://medium.com/oracledevs/unifiedmap-how-it-works-48af0b80cb37[UnifiedMap: How It Works]
+* Stack Overflow
+** https://stackoverflow.com/questions/42375003/why-lambda-intstream-anymatch-is-10-slower-than-naive-implementation[Why lambda IntStream.anyMatch() is 10 slower than naive implementation?]
+** https://stackoverflow.com/questions/76633739/is-there-a-reason-the-java-collection-interface-doesnt-have-direct-allmatch-an[Is there a reason the Java Collection interface doesn't have direct allMatch, anyMatch & noneMatch APIs using Predicates?]
+* Talks
+** https://wiki.jvmlangsummit.com/images/c/c2/Raab_Collections_Design.pdf[JVMLS 2012: A Java collections framework design - GS Collections explained]
