@@ -1,60 +1,171 @@
-= Run 20261015-0406: summary
+= Summary: shakers run 20261015-0406 and movers baselines 20261015-1503
 :toc:
+:toclevels: 2
 
-Full `shakers` run per `instructions.md`: 26 benchmarks × 3 match positions, with compact
-object headers on, off, and escape analysis off, plus object counts with compact headers on and off.
-Run in the Claude cloud sandbox (4 vCPU Intel Xeon KVM guest, OpenJDK 25.0.4, G1 with a 2 GB heap), not
-on the local Mac. Bytes and object counts do not depend on the machine; timings do.
+Regenerated on 2026-10-16 from the existing raw data only: nothing was benchmarked or tested again.
 
-== Analysis docs
+* *Shakers* (JMH): 26 benchmarks × 3 match positions (`test` = 1, 500, 1000), with compact object headers on,
+  off, and escape analysis off, plus class-histogram object counts in the same three configurations. Raw output:
+  `assets/runs/20261015-0406/`. Run in the Claude cloud sandbox (4 vCPU Intel Xeon KVM guest, OpenJDK 25.0.4.1,
+  G1 with a 2 GB heap), not on the local Mac.
+* *Movers* (JOL footprint, no JMH): four JUnit tests run with compact headers off and on. Raw output: the
+  `*Results-coh-{off,on}.md` files in `src/test/java/conf/session/movers/` (same sandbox and JDK; JOL 0.17,
+  Eclipse Collections 13.0.0).
 
-* link:20261015-0406-AnyMatchUtilityAnalysis.adoc[AnyMatchUtility]: `stream().anyMatch` vs `Iterate.anySatisfy` / `anySatisfyWith`
-* link:20261015-0406-CountUtilityAnalysis.adoc[CountUtility]: `stream().filter().count()` vs `Iterate.count` / `countWith`
-* link:20261015-0406-FindFirstUtilityAnalysis.adoc[FindFirstUtility]: `stream().filter().findFirst()` vs `Iterate.detect*`
-* link:20261015-0406-AnyMatchEagerLazyAnalysis.adoc[AnyMatchEagerLazy]: the same on an EC `ImmutableList`, eager and lazy
-* link:20261015-0406-CountEagerLazyAnalysis.adoc[CountEagerLazy]
-* link:20261015-0406-FindFirstEagerLazyAnalysis.adoc[FindFirstEagerLazy]
+Bytes, object counts and JOL sizes do not depend on the machine; timings do.
 
-Inputs: `assets/runs/20261015-0406-<Class>Results2.adoc`; raw JMH output in `assets/runs/20261015-0406/`.
+== Shakers: memory allocated per call
 
-== Findings
+=== What each call leaves behind
 
-. *The JDK stream leaves 6 to 8 objects (160 to 224 B) behind on every call; every EC variant leaves none.*
-  Measured by `gc.alloc.rate.norm` and confirmed object by object with the class histogram (all 468
-  measurement iterations were GC-free). At 10 million calls per second across an application, that is
-  1.6 to 2.2 GB/s of young-generation churn for the stream versions and effectively 0 for EC.
-. *Most of the JDK garbage is pipeline plumbing* (`ReferencePipeline$Head`, `$2`, spliterator, sinks,
-  `MatchOp`/`ReduceOps`), allocated whatever lambda is passed. The captured lambda (16 B) and the `Integer`
-  box (16 B, `test` = 500/1000) come on top, and escape analysis cannot remove them because they escape
-  into the pipeline.
-. *Fat-free lambdas matter when escape analysis cannot help.* With escape analysis on, EC's capturing
-  and `*With` calls both allocate nothing. With it off (`-XX:-DoEscapeAnalysis`, an upper bound), the
-  capturing `Iterate.anySatisfy` allocates 16 to 32 B per call and the fat-free `Iterate.anySatisfyWith`
-  0 to 16 B: the only remaining object is the `Integer` box from autoboxing the `int` parameter.
-. *Surprise worth raising with EC:* on an `ImmutableList` in EC 13.0.0, `anySatisfyWith`, `countWith` and
-  `detectWithIfNone` are inherited from `AbstractRichIterable`, which wraps the call in
-  `Predicates.bind(...)`. With escape analysis off they allocate exactly as much as the capturing
-  versions. Only `detectWithOptional` is overridden in `ImmutableArrayList` and stays fat-free. The
-  `Iterate.*With` utilities loop directly and do not have this problem. (Checked in the EC 13.0.0
-  bytecode.)
-. *Compact object headers trim the JDK garbage by 7 to 10%* (16 to 24 B per call; same object count),
-  because only objects that cross an 8-byte boundary shrink. Not allocating saves the whole 160 to 224 B.
-. *Unexpected:* the EC loops ran 8 to 25% *faster* with compact headers off on this machine (`test` =
-  500/1000). Inferred cause: `Integer.equals` checks every element's class, and with compact headers the
-  class pointer has to be decoded from the header word. Check this on the Mac before using it.
+From the six per-class analyses (links in <<docs>>).
+
+. *The JDK stream leaves 6 to 8 objects (160 to 224 B) behind on every call; every Eclipse Collections (EC)
+  variant leaves none.* Measured by `gc.alloc.rate.norm` and confirmed object by object with the class
+  histogram (all 702 measurement iterations across the three histogram runs were GC-free). At 10 million
+  calls per second across an application, that is 1.6 to 2.2 GB/s of young-generation churn for the stream
+  versions and effectively 0 for EC.
+. *Heap headroom for spikes (derived):* a 10-second spike at 1 million calls/s needs 1.6 to 2.2 GB of extra
+  young generation for the stream versions to get through without an extra collection, and none for EC.
+. *Fat-free lambdas matter when escape analysis cannot help.* With escape analysis on, EC's capturing and
+  `*With` calls both allocate nothing. With it off (`-XX:-DoEscapeAnalysis`, an upper bound), the capturing
+  `Iterate.anySatisfy` allocates 16 to 32 B per call and the fat-free `Iterate.anySatisfyWith` 0 to 16 B: the
+  only remaining object is the `Integer` box from autoboxing the `int` parameter.
+. *Compact object headers trim the JDK garbage by 16 to 24 B per call (7 to 11%)*, with the same number of
+  objects (per-class histogram), because only objects that cross an 8-byte boundary shrink. Not allocating
+  saves the whole 160 to 224 B.
 . *Throughput:* EC is about 11 to 17x faster at `test` = 1 (stream setup dominates), 4 to 6x at
   `test` = 500/1000, and about 2x for `count`, which always scans all 1000 elements.
+. *Unexpected:* the EC loops ran 8 to 25% *faster* with compact headers off on this machine (`test` =
+  500/1000). Inferred cause: `Integer.equals` checks every element's class, and with compact headers the
+  class pointer has to be decoded from the header word. Check this on the local Mac before using it.
 . The earlier run's ±35% error bars on `jdkCount` did not reproduce (±6% here).
 
-== Deviations from the instructions
+=== Where the JDK garbage comes from (JDK Stream ops)
+
+From link:shakers/20261015-0406-JdkStreamOpsAnalysis.adoc[the JDK Stream ops analysis].
+
+. *The garbage is fixed per call, not per element:* the pipeline is built and thrown away on every call,
+  wherever the match is.
+. *More than a third of it is the Stream source.* `list.stream()` alone costs 80 B (pipeline head 48 B +
+  spliterator 32 B) before any operation is chosen.
+. *The terminal op differs most:*
+  * `anyMatch` (MatchOps) allocates 3 objects, 64 B: `MatchOps.makeRef` builds a new `MatchOp` and a new
+    sink-supplier lambda on every call.
+  * `findFirst` (FindOps) allocates 2 objects, 32 B: the `FindOp` is a cached static, but the sink and the
+    `Optional` result are new.
+  * `count` (ReduceOps) allocates 2 objects, 40 B: a new `ReduceOps$5` op on every call plus the counting sink.
+. *`filter` adds a whole pipeline stage* (2 objects, 72 B). That is why `stream().anyMatch(p)` (160 B) is
+  cheaper than `stream().filter(p).findFirst()` (200 B) for the same question.
+. *Escape analysis removes none of it:* bytes per call are identical with `-XX:-DoEscapeAnalysis` for every
+  JDK benchmark. The captured lambda (16 B) and the `Integer` box (16 B at `test` = 500/1000) come on top and
+  escape into the pipeline.
+. *Speed at match position 1*, where almost nothing is scanned: a JDK call takes 29 to 38 ns against 2 to
+  3 ns for EC. Building and dropping these objects is most of that difference (inferred).
+
+=== The same operations in Eclipse Collections
+
+. *EC has no pipeline to build:* its methods are a loop over the list that calls the predicate, so the
+  Stream source, filter stage and terminal op have no EC counterpart. On a normal JVM every EC version,
+  capturing or fat-free, eager or lazy, allocates 0 B and needed 0 garbage collections.
+. *With escape analysis off, the lambda shape shows:* a fat-free `Iterate.*With` call leaves only the
+  `Integer` box the caller passes in (16 B, 0 B at element 1); a capturing call adds its lambda (32 B);
+  `asLazy()` adds a `LazyIterableAdapter`, and `asLazy().count` also a `CountProcedure`; the JDK stream
+  leaves 176 to 224 B.
+. *Surprise worth raising with EC:* on an `ImmutableList` in EC 13.0.0, `anySatisfyWith`, `countWith` and
+  `detectWithIfNone` are inherited from `AbstractRichIterable`, which wraps the call in
+  `Predicates.bind(...)`, so they are not fat-free: with escape analysis off they allocate as much as the
+  capturing versions. Only `detectWithOptional` is overridden in `ImmutableArrayList` and stays fat-free.
+  The `Iterate.*With` utilities loop directly and do not have this problem (checked in the EC 13.0.0 bytecode).
+
+== Movers: memory footprint (JOL)
+
+Retained size of a filled collection or an unevaluated pipeline (`GraphLayout.totalSize()`), not
+allocation or speed. Every figure is at 1,000,000 elements with compact headers on unless stated.
+
+=== Lists
+
+From link:movers/20261015-1503-ListMemoryAnalysis.adoc[the list analysis].
+
+. *Boxing is the cost:* a presized `ArrayList` or `FastList` holds 20.0 MB; `IntArrayList` holds 4.0 MB, 5x
+  less (20 B per element against 4 B, derived).
+. `ArrayList` and `FastList` are the same size, within 8 B, when presized.
+. *Growing instead of presizing wastes up to 49%* (unused capacity after the last resize).
+. Compact headers change almost nothing: a 16 B `Integer` stays 16 B.
+
+=== Sets
+
+From link:movers/20261015-1503-SetMemoryAnalysis.adoc[the set analysis].
+
+. *`HashSet` holds twice as much as `UnifiedSet`:* 48.4 MB against 24.4 MB; `IntHashSet` holds 8.4 MB,
+  about 6x less than `HashSet`.
+. *Without the `Integer`s the gap is 4x:* 32.4 MB against 8.4 MB, because `HashSet` makes a `HashMap$Node`
+  per element (24 B with compact headers, 32 B without).
+. *Compact headers save 8.0 MB on `HashSet`* and nothing on the EC sets.
+
+=== Maps
+
+From link:movers/20261015-1503-MapMemoryAnalysis.adoc[the map analysis].
+
+. *`HashMap<Integer, Integer>` holds 48.4 MB; `UnifiedMap` holds 32.8 MB; `IntIntHashMap` holds 16.8 MB*,
+  about 3x less than `HashMap`.
+. *Without the `Integer`s:* `HashMap` takes 32.4 MB, `UnifiedMap` 16.8 MB (key and value side by side in
+  one `Object[]`, no per-entry objects).
+. *Half-primitive maps do not help here:* `IntObjectHashMap` and `ObjectIntHashMap` hold 32.8 MB, the same
+  as `UnifiedMap`, because one side is still a boxed `Integer`.
+. *Compact headers save 8.0 MB on `HashMap`* (56.4 MB off, 48.4 MB on) and nothing on the EC maps.
+
+=== Stream vs LazyIterable pipelines
+
+From link:movers/20261015-1503-StreamVsLazyIterableMemoryAnalysis.adoc[the pipeline analysis].
+
+. *Starting is 5x cheaper in EC:* `list.stream()` is 80 B, the same 80 B the shakers object counts measured
+  per call; `ecList.asLazy()` is 16 B.
+. *Each JDK operation adds 48 to 72 B; each EC operation 0 to 48 B.* The 3-step chain is 272 B against 96 B.
+. These are pipeline graph sizes, not bytes per call: JOL counts the shared, non-capturing lambdas. For bytes
+  per call, see the JDK Stream ops subsection above.
+
+[[docs]]
+== Analysis docs
+
+Shakers (`assets/docs/shakers/`, PNGs in `assets/images/shakers/`, Mermaid sources in `assets/docs/shakers/mermaid/`):
+
+* link:shakers/20261015-0406-AnyMatchUtilityAnalysis.adoc[AnyMatchUtility]: `stream().anyMatch` vs `Iterate.anySatisfy` / `anySatisfyWith`
+* link:shakers/20261015-0406-CountUtilityAnalysis.adoc[CountUtility]: `stream().filter().count()` vs `Iterate.count` / `countWith`
+* link:shakers/20261015-0406-FindFirstUtilityAnalysis.adoc[FindFirstUtility]: `stream().filter().findFirst()` vs `Iterate.detect*`
+* link:shakers/20261015-0406-AnyMatchEagerLazyAnalysis.adoc[AnyMatchEagerLazy]: the same on an EC `ImmutableList`, eager and lazy
+* link:shakers/20261015-0406-CountEagerLazyAnalysis.adoc[CountEagerLazy]
+* link:shakers/20261015-0406-FindFirstEagerLazyAnalysis.adoc[FindFirstEagerLazy]
+* link:shakers/20261015-0406-JdkStreamOpsAnalysis.adoc[JDK Stream ops]: where each JDK object comes from, next to the EC equivalents
+
+Movers (`assets/docs/movers/`, PNGs in `assets/images/movers/`, Mermaid sources in `assets/docs/movers/mermaid/`):
+
+* link:movers/20261015-1503-ListMemoryAnalysis.adoc[Lists]
+* link:movers/20261015-1503-SetMemoryAnalysis.adoc[Sets]
+* link:movers/20261015-1503-MapMemoryAnalysis.adoc[Maps]
+* link:movers/20261015-1503-StreamVsLazyIterableMemoryAnalysis.adoc[Stream vs LazyIterable pipelines]
+
+Inputs: `assets/runs/shakers/20261015-0406-<Class>Results2.adoc` (regenerated, now including the
+escape-analysis-off object counts); raw JMH output in `assets/runs/20261015-0406/`; movers results in
+`src/test/java/conf/session/movers/`.
+
+== How this was regenerated
+
+....
+SHAKERS_RUN_DIR=assets/runs/20261015-0406 \
+  python3 assets/tools/shakers/gen.py . 20261015-0406 assets/runs/20261015-0406/tools/notes.json
+SHAKERS_RUN_DIR=assets/runs/20261015-0406 \
+  python3 assets/tools/shakers/jdk_ops.py . 20261015-0406
+MOVERS_RESULTS=src/test/java/conf/session/movers \
+  python3 assets/tools/movers/movers.py . 20261015-1503
+....
+
+This summary was written by hand from those docs.
+
+== Notes on the raw data
 
 * The object-count `HISTO` lines go to the console, not the `-o` file; they were captured into
-  `assets/runs/20261015-0406/all-histo-coh-*.histo` (the instructions now say so).
+  `assets/runs/20261015-0406/all-histo-*.histo`.
 * The first `AnyMatchUtility` `coh-on` run overlapped with a short chart-rendering test, so that class was
-  rerun alone after the full run; the originals are kept as `AnyMatchUtility-coh-on.overlapped.*`.
-* Charts are grouped bar charts drawn with matplotlib (PNG, embedded in the docs): plain-English
-  titles, a "lower/higher is better" subtitle with the takeaway, a legend for every bar and the value
-  printed on each bar. Mermaid `xychart-beta` cannot show a legend or per-bar colours, so the `.mmd`
-  files next to them carry the same data as labelled horizontal bars. The throughput chart is relative
-  to the JDK (JDK = 1x) because absolute M calls/s span 1000x across `test`; the coh chart shows bytes
-  saved; an extra `ea-off-bytes` chart shows the fat-free effect most clearly.
+  rerun alone after the full run; the originals are kept as `AnyMatchUtility-coh-on.overlapped.*` and are
+  not used.

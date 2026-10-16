@@ -3,14 +3,38 @@
 How to re-run the `shakers` JMH benchmarks and turn the results into one analysis
 AsciiDoc per benchmark class, comparing the JDK Stream API with Eclipse Collections (EC), plus
 one JDK Stream ops analysis per run that shows where the JDK stream garbage comes from and what
-the EC versions of the same operations allocate instead (section 6).
+the EC versions of the same operations allocate instead (Shakers, section 6).
 
-> Scope: `src/test/java/conf/session/shakers/` only. The `movers` (JOL) material
-> will get its own section later; ignore it here.
+The file has three parts:
+
+- **Ground rules** for everything below.
+- **Shakers** (sections 1 to 7): the JMH benchmarks in `src/test/java/conf/session/shakers/`,
+  their object counts, analysis docs, charts and the JDK Stream ops analysis.
+- **Movers**: the JOL footprint tests in `src/test/java/conf/session/movers/` (no JMH).
 
 ---
 
-## 0. Intent (read this first)
+## Ground rules (shakers and movers)
+
+- **Do not edit or delete any existing file.** Only add new files. The only new files are the
+  per-run outputs named in Shakers section 2 and the Movers part. Use the existing `pom-bench.xml`.
+- Before starting, get confirmation from the local Mac user. Runs take several hours (see Shakers section 3.4) and
+  should run on a quiet machine on mains power.
+- If the local Mac user says "stop", halt the current step and do not copy any more files.
+- Never use a person's name in these instructions or in any output (docs, charts, reports).
+  Refer to the machine and its user as "local Mac".
+- Java style, if a run ever needs a Java change (for example the HistoProfiler fix in Shakers 3.5): the
+  opening brace goes on its own line (Allman) for classes, records, methods, `if`/`try`/`catch` and
+  block lambdas, matching every existing class; prefer Eclipse Collections over `java.util`
+  collections in `HistoProfiler`, and comment any non-obvious logic.
+- Every number in an analysis doc must be traceable to a file in the run folder (Shakers section 2)
+  and to a command (Shakers section 3, or the Movers part).
+
+## Shakers (JMH benchmarks)
+
+Sections 1 to 7 cover the `shakers` benchmarks only.
+
+### 1. Intent (read this first)
 
 The story is **fat-free lambdas make less garbage**. This is about memory, not only speed:
 an application that allocates less per call needs less heap headroom to absorb a
@@ -41,23 +65,32 @@ look the same. That is why section 3.4 includes a run with EA off: real applicat
 the EA-off run shows the cost the lambda shape would carry there. Label it as an upper bound,
 not as typical production behaviour.
 
-## 1. Ground rules
+### Decisions and asks (shakers checklist)
 
-- **Do not edit or delete any existing file.** Only add new files. The only new files are the
-  per-run outputs named in section 2. `pom-bench.xml` is a permanent project file, not a run output.
-- Before starting, get confirmation from the local Mac user. Runs take several hours (see section 3.4) and
-  should run on a quiet machine on mains power.
-- If the local Mac user says "stop", halt the current step and do not copy any more files.
-- Never use a person's name in these instructions or in any output (docs, charts, reports).
-  Refer to the machine and its user as "local Mac".
-- Java style, if a run ever needs a Java change (for example the HistoProfiler fix in 3.5): the
-  opening brace goes on its own line (Allman) for classes, records, methods, `if`/`try`/`catch` and
-  block lambdas, matching every existing class; prefer Eclipse Collections over `java.util`
-  collections in `HistoProfiler`, and comment any non-obvious logic.
-- Every number in an analysis doc must be traceable to a file in the run folder (section 2)
-  and to a command in section 3.
+Every request made for the shakers work so far, and where this file covers it. Check a run
+against this list before reporting.
 
-## 2. Run identity and file layout
+| Ask | Covered in |
+|---|---|
+| Rerun only the `shakers` benchmarks; `movers` is a separate part | Scope, Movers part |
+| Every output file name starts with the run's datetime (`RUN_TS`) so runs sort by time | 2 |
+| `pom-bench.xml` is permanent at the project root; separate compile, jar and run commands; never create or edit it during a run | 3.2, 3.3 |
+| Maven runs on JDK 25 (compact object headers) | 3.1 |
+| Run with compact headers on **and off**, plus an escape-analysis-off run | 3.4 |
+| Object counts per class with the HistoProfiler (with the `jcmd`-to-file deadlock fix), compact headers on, off and escape analysis off | 3.5 |
+| HistoProfiler uses Eclipse Collections instead of `java.util` collections, has comments where the logic is complex, and follows the Allman brace style | Ground rules |
+| Regenerated results go to `assets/runs/${RUN_TS}-<Class>Results2.adoc`; raw output to `assets/runs/${RUN_TS}/` | 2, 3.6 |
+| One analysis doc per Results2 file, in `assets/docs/` | 4 |
+| The story: fat-free lambdas make less garbage; memory footprint and heap headroom for spikes, not only throughput, and not "EC wins because of `*With`" | 1, 4.5 |
+| Charts a viewer understands without the doc: plain titles, "better" subtitle with the takeaway, legend, a label on every bar | 5 |
+| Colour-blind-safe colours only (Okabe-Ito, never red with green), checked with a simulation when a colour is added | 5, 6 |
+| Every chart as a matplotlib PNG plus a Mermaid `.mmd` file | 5 |
+| A JDK Stream ops analysis (Stream, FindOps, MatchOps, ReduceOps allocations) written to `assets/jdkops/`, with the Eclipse Collections numbers and comparisons next to every JDK number | 6 |
+| EC 13.0.0 `ImmutableList` `*With` methods (except `detectWithOptional`) go through `Predicates.bind` and are not fat-free: say so wherever they appear | 5, 6 |
+| Never use a person's name; refer to the machine and its user as "local Mac" | Ground rules |
+| Copy only named files to the local Mac; stop when told "stop" | Ground rules, 7 |
+
+### 2. Run identity and file layout
 
 Set one timestamp per run and use it as the **prefix** of every output, so runs sort by time:
 
@@ -68,35 +101,35 @@ RUN_TS=$(date +%Y%m%d-%H%M)          # e.g. 20261015-0216
 If the run spans several shell sessions, reuse the same `RUN_TS` (it is in the first line of
 `assets/runs/${RUN_TS}/meta.txt`) instead of generating a new one.
 
-| What | Path |
-|---|---|
-| Alternate build file | `pom-bench.xml` (project root, permanent; not per run) |
-| Raw JMH output (logs, text, csv) | `assets/runs/${RUN_TS}/` |
-| Run metadata | `assets/runs/${RUN_TS}/meta.txt` |
-| Assembled results (analysis input) | `assets/runs/${RUN_TS}-<Class>Results2.adoc` |
-| Analysis docs | `assets/docs/${RUN_TS}-<Class>Analysis.adoc` |
-| Mermaid sources | `assets/docs/charts/${RUN_TS}-<Class>-<chart>.mmd` |
-| Rendered charts | `assets/docs/charts/${RUN_TS}-<Class>-<chart>.png` |
-| JDK Stream ops analysis (section 6) | `assets/jdkops/${RUN_TS}-JdkStreamOpsAnalysis.adoc` |
-| JDK Stream ops charts | `assets/jdkops/charts/${RUN_TS}-JdkStreamOps-<chart>.{mmd,png}` |
+| What | Path                                                             |
+|---|------------------------------------------------------------------|
+| Alternate build file | `pom-bench.xml` (project root, permanent; not per run)           |
+| Raw JMH output (logs, text, csv) | `assets/runs/${RUN_TS}/`                                         |
+| Run metadata | `assets/runs/${RUN_TS}/meta.txt`                                 |
+| Assembled results (analysis input) | `assets/runs/${RUN_TS}-<Class>Results2.adoc`                     |
+| Analysis docs | `assets/shakers/docs/${RUN_TS}-<Class>Analysis.adoc`             |
+| Mermaid sources | `assets/shakers/docs/charts/${RUN_TS}-<Class>-<chart>.mmd`       |
+| Rendered charts | `assets/shakers/docs/charts/${RUN_TS}-<Class>-<chart>.png`       |
+| JDK Stream ops analysis (section 6) | `assets/shakers/docs/${RUN_TS}-JdkStreamOpsAnalysis.adoc`        |
+| JDK Stream ops charts | `assets/shakers/charts/${RUN_TS}-JdkStreamOps-<chart>.{mmd,png}` |
 
 `<Class>` is the benchmark class name without the `Benchmark` suffix. There are six:
 
 | Benchmark class | `<Class>` | Compares |
 |---|---|---|
 | `AnyMatchUtilityBenchmark` | `AnyMatchUtility` | `stream().anyMatch` vs `Iterate.anySatisfy` / `anySatisfyWith` on a JDK `List` |
-| `CountUtilityBenchmark` | `CountUtility` | `stream().filter().count()` vs `Iterate.count` / `countWith` |
-| `FindFirstUtilityBenchmark` | `FindFirstUtility` | `stream().filter().findFirst()` vs `Iterate.detectOptional` / `detectWithOptional` / `detectIfNone` / `detectWithIfNone` |
 | `AnyMatchEagerLazyBenchmark` | `AnyMatchEagerLazy` | as above on an EC `ImmutableList`, plus `asLazy()` |
+| `CountUtilityBenchmark` | `CountUtility` | `stream().filter().count()` vs `Iterate.count` / `countWith` |
 | `CountEagerLazyBenchmark` | `CountEagerLazy` | as above on an EC `ImmutableList`, plus `asLazy()` |
+| `FindFirstUtilityBenchmark` | `FindFirstUtility` | `stream().filter().findFirst()` vs `Iterate.detectOptional` / `detectWithOptional` / `detectIfNone` / `detectWithIfNone` |
 | `FindFirstEagerLazyBenchmark` | `FindFirstEagerLazy` | as above on an EC `ImmutableList`, plus `asLazy()` |
 
 The previous `*Results.adoc` files are kept for reference only. The analysis uses the new
 `*Results2.adoc` files. If an analysis cites an old number, label it as from the earlier run.
 
-## 3. Build and run
+### 3. Build and run
 
-### 3.1 Prerequisites and metadata
+#### 3.1 Prerequisites and metadata
 
 - JDK 25 on `PATH` (`java`, `jcmd` must come from the **same** JDK; the object counter calls `jcmd`).
 - Maven 3.9+, **running on JDK 25**: set `JAVA_HOME` to the JDK 25 home and check that `mvn -v`
@@ -119,7 +152,7 @@ mkdir -p assets/runs/${RUN_TS}
 } > assets/runs/${RUN_TS}/meta.txt
 ```
 
-### 3.2 Alternate pom: `pom-bench.xml`
+#### 3.2 Alternate pom: `pom-bench.xml`
 
 The benchmarks live under `src/test/java`, and the main `pom.xml` only declares the shade
 plugin in `pluginManagement`, so `mvn package` does not produce a runnable JMH jar.
@@ -136,7 +169,7 @@ What it does:
 - Uses the same versions as `pom.xml` (Eclipse Collections 13.0.0, JMH 1.37). If `pom.xml`
   changes those versions, the local Mac user updates `pom-bench.xml` to match before the next run.
 
-### 3.3 The three commands
+#### 3.3 The three commands
 
 1. **Compile**
    ```
@@ -161,7 +194,7 @@ What it does:
    measurement), so do not override them. GC and heap are pinned so runs are comparable across
    machines; the earlier run used the JDK default (G1) and an unrecorded heap size.
 
-### 3.4 Run matrix
+#### 3.4 Run matrix
 
 Run every class in each configuration. `CONFIG` names the file; `FLAGS` goes into the template.
 
@@ -191,7 +224,7 @@ done
 Expected duration: 26 methods × 3 params × 2 forks × ~42 s ≈ 1.8 h per configuration,
 so about 5.5 h for all three (the smoke test of `AnyMatchUtility`, 9 of the 78, took 12 minutes). Time is measured per configuration so a partial run is still usable.
 
-### 3.5 Object counts (histogram profiler)
+#### 3.5 Object counts (histogram profiler)
 
 JMH `-prof gc` reports bytes per call, not objects. `prof.HistoProfiler`
 (`src/test/java/prof/HistoProfiler.java`, already in the jar) runs
@@ -248,7 +281,7 @@ How to read the output:
 - ParallelGC is used here only to make GC-free iterations easy. These numbers are for counting,
   not for timing.
 
-### 3.6 Assemble the Results2 files
+#### 3.6 Assemble the Results2 files
 
 For each class, create `assets/runs/${RUN_TS}-<Class>Results2.adoc` (next to the
 `assets/runs/${RUN_TS}/` folder, so results sort by run) containing:
@@ -264,17 +297,17 @@ For each class, create `assets/runs/${RUN_TS}-<Class>Results2.adoc` (next to the
 
 Copy numbers verbatim; do not round or reformat the raw tables.
 
-## 4. Analysis docs
+### 4. Analysis docs
 
 Write **one analysis doc per Results2 file** (six docs):
 `assets/docs/${RUN_TS}-<Class>Analysis.adoc`. Each doc covers the following, in this order.
 
-### 4.1 Summary (top of doc)
+#### 4.1 Summary (top of doc)
 
 Three to five sentences: how much garbage each approach creates per call, what that means for
 heap headroom under a spike, and the throughput difference. Lead with memory.
 
-### 4.2 Head-to-head table (`coh-on`)
+#### 4.2 Head-to-head table (`coh-on`)
 
 One combined table grouped by `test` (1, 500, 1000), with these columns:
 
@@ -290,7 +323,7 @@ Add a comparison row per group, for example
 "EC `anySatisfyWith` vs JDK: _N_x faster, _k_ fewer objects and _b_ fewer bytes per call, 0 vs _g_ GC runs per billion calls"
 (fill in from the data; do not reuse numbers from the earlier run).
 
-### 4.3 Normalize, don't compare raw totals
+#### 4.3 Normalize, don't compare raw totals
 
 - Compare per call or per fixed number of calls, never raw `gc.count` totals: a faster method
   fits more calls into the same window, so its raw totals look worse than they are.
@@ -300,10 +333,10 @@ Add a comparison row per group, for example
 - JMH omits `gc.time` when it is 0, and prints `≈ 0` for tiny values; treat both as 0 and say so.
 - Keep raw GC totals in a separate, clearly labelled section further down.
 
-### 4.4 Garbage: where it comes from
+#### 4.4 Garbage: where it comes from
 
 - Objects per call with a breakdown by class for each implementation (from the `HISTO` lines).
-- Split them into **pipeline garbage** and **lambda garbage** (section 0).
+- Split them into **pipeline garbage** and **lambda garbage** (section 1).
 - Use the `ea-off` run to show lambda garbage that EA hides: compare EC capturing vs EC
   `*With` bytes per call with EA off. State clearly that this is an upper bound.
 - Explain mechanisms, marking each as measured or inferred: stream pipeline objects created
@@ -311,7 +344,7 @@ Add a comparison row per group, for example
   `this.test`, an `int`, when passing it as `Object`); EA removing allocations; the `Optional`
   that `findFirst` and `detectOptional` must return.
 
-### 4.5 Spikes and heap headroom (derived)
+#### 4.5 Spikes and heap headroom (derived)
 
 This is the section that makes the memory point. Using bytes per call from 4.2, compute for
 each implementation at two example loads (1 M and 10 M calls/s):
@@ -325,13 +358,13 @@ Label every figure here as derived, not measured, and show the formula next to t
 Explain that `gc.alloc.rate` (MB/s) from JMH is misleading on its own because it scales with
 throughput; `gc.alloc.rate.norm` (bytes per call) is the figure to plan capacity with.
 
-### 4.6 Compact object headers
+#### 4.6 Compact object headers
 
 Compare `coh-on` vs `coh-off` for bytes per call and GC runs per billion calls, and
 `histo-coh-on` vs `histo-coh-off` per class. Object counts should match; if they do not, flag it.
 Note the effect on throughput if any, and whether it is within the error bars.
 
-### 4.7 Supporting analysis
+#### 4.7 Supporting analysis
 
 - Fixed cost vs per-element cost, from `test = 1` vs `test = 1000`. Note that `count`
   always scans all 1000 elements, so its cost should be flat across `test`.
@@ -342,11 +375,11 @@ Note the effect on throughput if any, and whether it is within the error bars.
 - Caveats: one machine, one JDK build, microbenchmark not application; mechanisms inferred, not
   profiled, unless the histogram shows them.
 
-### 4.8 Reproduce
+#### 4.8 Reproduce
 
 List the exact commands (section 3, variables expanded), the run folder, and the Results2 file used.
 
-## 5. Charts
+### 5. Charts
 
 Every chart must be understandable by someone who has not read the doc. Rules:
 
@@ -415,7 +448,7 @@ image::charts/<RUN_TS>-<Class>-<chart>.png[<caption>]
 Mermaid source: link:charts/<RUN_TS>-<Class>-<chart>.mmd[...]
 ```
 
-## 6. JDK Stream ops analysis
+### 6. JDK Stream ops analysis
 
 One extra doc per run: which objects one JDK `stream()` call allocates, which part of the Stream
 API makes each one, and what that costs; then the same numbers for the Eclipse Collections (EC)
@@ -501,9 +534,73 @@ python3 assets/runs/${RUN_TS}/tools/jdk_ops.py . ${RUN_TS}
   object. These six stay at least 17 CIELAB ΔE apart under protanopia, deuteranopia and
   tritanopia simulation.
 
-## 7. Reporting back
+### 7. Reporting back
 
 - Report which files were created (including the JDK Stream ops doc), the run folder, and any benchmarks with no clean
   histogram iteration or suspicious error bars.
 - Be ready to give the exact command behind any number.
 - Do not copy files to the local Mac unless they are named explicitly.
+
+## Movers (JOL footprint baselines)
+
+The `movers` package (`src/test/java/conf/session/movers/`) holds JUnit tests that print JOL
+retained sizes (`GraphLayout.parseInstance(x).totalSize()`): what a filled collection or an
+unevaluated pipeline holds in memory. They measure **footprint only**: no JMH, no allocation rate,
+no speed. `SweatingTheSmallStuffTest` is on hold; do not run it.
+
+| Test | Compares |
+|---|---|
+| `ListMemoryTest` | `ArrayList` vs `FastList` vs `IntArrayList`, grown and presized, 100k to 1M |
+| `SetMemoryTest` | `HashSet` vs `UnifiedSet` vs `IntHashSet`, plus structure only (Integers subtracted) |
+| `MapMemoryTest` | `HashMap` vs `UnifiedMap` vs `IntObjectHashMap`, `ObjectIntHashMap`, `IntIntHashMap`, plus structure only |
+| `StreamVsLazyIterableMemoryTest` | unevaluated `Stream` vs `LazyIterable` pipelines, 12 operations and one chain |
+
+**Run** each test twice, compact headers off then on (two baselines). JOL attaches an agent to its
+own VM, so the extra flags are required; without them JOL fails under surefire. Set and Map take
+about 13 minutes per configuration.
+
+```
+MOVERS_TS=$(date +%Y%m%d-%H%M)
+for CFG in coh-off coh-on; do
+  case $CFG in
+    coh-off) COH="-XX:-UseCompactObjectHeaders" ;;
+    coh-on)  COH="-XX:+UseCompactObjectHeaders" ;;
+  esac
+  for T in ListMemoryTest SetMemoryTest MapMemoryTest StreamVsLazyIterableMemoryTest; do
+    mvn -q -B test -Dtest=$T -Dsurefire.failIfNoSpecifiedTests=false \
+      -DargLine="${COH} -Djdk.attach.allowAttachSelf=true -XX:+EnableDynamicAgentLoading" > /tmp/$T-$CFG.log 2>&1
+  done
+done
+```
+
+**Results files:** for each test and configuration, save the printed lines (`... size: N Memory
+(bytes): B`, or the pipeline table) as `src/test/java/conf/session/movers/<Test minus "Test">Results-<CFG>.md`
+(e.g. `MapMemoryResults-coh-on.md`; the pipeline test writes `StreamVsLazyIterableMemoryResults-<CFG>.md`).
+Sort the size lines by collection, then size. Start each file with an HTML comment holding `java -version`,
+the flags, the JOL and EC versions and JOL's `VM.current().details()`. The older `*Results.md` files
+(no suffix) are kept as they are.
+
+**Analysis docs and charts:** one doc per test, written by `assets/movers/tools/movers.py`:
+
+```
+python3 assets/movers/tools/movers.py . ${MOVERS_TS}
+```
+
+| What | Path |
+|---|---|
+| Analysis doc per test | `assets/movers/${MOVERS_TS}-<Test>Analysis.adoc` (e.g. `MapMemoryAnalysis`) |
+| Charts | `assets/movers/charts/${MOVERS_TS}-<Test>-<chart>.{png,mmd}` |
+
+Charts: `footprint` (size at 100k, 500k, 1M) for every test except the pipelines; `growth-slack`
+for lists (grown vs presized, every size); `structure-only` for sets and maps; `coh` (compact
+headers off vs on) for sets, maps and pipelines; `pipeline-size` for the pipelines. They follow
+Shakers section 5: plain titles, a "better" subtitle with the takeaway, a label on every bar, a legend,
+and a parse-checked `.mmd` next to each PNG (`MMDC=<mmdc> python3 ...`). Colours by kind: orange =
+JDK, sky blue = EC boxed, dark blue = EC primitive, reddish purple = EC half-primitive maps and
+`LazyIterable`; presized and second members get a hatch, "structure only" a dotted hatch; compact
+headers off = grey `#999999`, on = dark blue. Look at every PNG before reporting.
+
+Rules: label layout explanations that are arithmetic (e.g. node size × count + table size) as
+derived; say in each doc that JOL sizes are footprint, not allocation or speed, and that the
+pipeline sizes count shared lambda constants.
+
