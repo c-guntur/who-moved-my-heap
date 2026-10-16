@@ -1,5 +1,6 @@
 * Blogs
 ** https://donraab.medium.com/save-memory-in-java-by-making-memory-efficiency-your-top-priority-32fe9443eb8d?source=friends_link&sk=5ae3e714963aa9a7e40fa109ebe53283[Save Memory in Java by Making Memory Efficiency Your Top Priority]
+** https://donraab.medium.com/what-if-java-consistently-used-intention-revealing-names-for-types-7b9cbc39f65f[What if Java Consistently Used Intention Revealing Names for Inner Classes?]
 ** "Shakers"
 *** https://donraab.medium.com/allocation-hungry-any-all-none-findfirst-and-count-methods-on-java-stream-e3ca6d66b265?source=friends_link&sk=84629376cedf192618276bfc6668e97a[Allocation Hungry Any/All/None, FindFirst, and Count Methods on Java Stream]
 ** "Movers"
@@ -11,3 +12,5 @@
 ** https://stackoverflow.com/questions/76633739/is-there-a-reason-the-java-collection-interface-doesnt-have-direct-allmatch-an[Is there a reason the Java Collection interface doesn't have direct allMatch, anyMatch & noneMatch APIs using Predicates?]
 * Talks
 ** https://wiki.jvmlangsummit.com/images/c/c2/Raab_Collections_Design.pdf[JVMLS 2012: A Java collections framework design - GS Collections explained]
+
+
