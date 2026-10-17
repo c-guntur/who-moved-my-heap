@@ -1,0 +1,348 @@
+= How to: every command in this project
+:toc: left
+:toclevels: 1
+:sectnums:
+:source-highlighter: rouge
+
+Run every command from the project root unless a section says otherwise.
+Each section is one thing you may want to do: the commands come first, then a numbered list that
+says what each step does and what it produces.
+The full rules for benchmark and footprint runs are in `instructions.md`; this page is the short version.
+
+[[pipeline]]
+== Run everything, or one stage, with one command
+
+[source,bash]
+----
+java src/main/java/tools/Pipeline.java all
+java src/main/java/tools/Pipeline.java run
+java src/main/java/tools/Pipeline.java reports 20261015-0406
+java src/main/java/tools/Pipeline.java slides
+java src/main/java/tools/Pipeline.java all --dry-run
+----
+
+. `Pipeline.java` runs the commands in the sections below in order. Its first argument is the stage:
+.. `run`: builds the benchmark jar and runs the shakers benchmarks, the object counts and the movers
+   JOL tests, writing the raw output of a new run (see <<run-ts>> to <<movers-run>>).
+.. `reports`: writes the reports, charts and summaries from raw output already on disk (see
+   <<shakers-gen>> to <<run-summary>>). Without a run timestamp it uses the newest run.
+.. `slides`: builds the slide HTML and PDFs (see <<slides-maven>>).
+.. `all`: `run`, then `reports`, then `slides`.
+. Without `shakers` or `movers` at the end, a stage does both parts. `run 20261015-0406 movers`
+  adds the movers part to an existing run.
+. `--dry-run` prints every command without running anything.
+. A full `run` takes several hours (mostly the shakers benchmarks).
+
+== Set up once
+
+[source,bash]
+----
+java -version                      # must print 25
+mvn -v                             # must print "Java version: 25..."
+npm install @mermaid-js/mermaid-cli@11     # optional, in a tools folder of your choice
+----
+
+. JDK 25 must be on `PATH`, and `java` and `jcmd` must come from the same JDK (the object-count
+  profiler calls `jcmd`). Set `JAVA_HOME` to the JDK 25 home so Maven compiles `release 25`.
+. Maven 3.9 or later. The Maven builds below download their own plugins; nothing else to install.
+. No Python is needed. The generators are Java source files in `src/main/java/tools/analysis/`, run with
+  `java <file>.java`; they draw the PNG charts with Java2D.
+. Mermaid CLI is optional. When `MMDC` points at its `mmdc`, the generators parse-check every
+  `.mmd` chart they write. Without it the charts are still written, just not checked.
+. For slide PDFs only: Google Chrome. Without it, the first PDF build downloads Playwright's own
+  Chromium once (see <<slides-maven>>).
+. Produces nothing in the project.
+
+== Build and clean the project
+
+[source,bash]
+----
+mvn clean
+mvn test-compile
+----
+
+. `mvn clean` deletes both build folders, `target/` (normal build) and `target-bench/`
+  (benchmark jar). It does the same with `-Pbench` or `-Pslides` added.
+. `mvn test-compile` compiles `src/main/java` (the tools and `prof/HistoProfiler`) into `target/classes`
+  and everything under `src/test/java` (benchmarks, JOL tests) into `target/test-classes`. Use it to check the code compiles.
+. The slide output in `assets/presentation/build/` and the run output in `generated/` are not
+  Maven build folders, so `mvn clean` leaves them alone.
+
+== Run a unit test
+
+[source,bash]
+----
+mvn test -Dtest=CountingCollectorsTest
+----
+
+. Runs one JUnit test class from `src/test/java` with surefire.
+. Output: the test report in `target/surefire-reports/` and the result on the console.
+. For the JOL footprint tests use <<movers-run>> instead: they need extra JVM flags and take minutes.
+. A plain `mvn test` runs every test, including the slow JOL tests without their flags, so name the test.
+
+[[bench-jar]]
+== Build the benchmark jar (shakers)
+
+[source,bash]
+----
+mvn -Pbench clean compile
+mvn -Pbench package
+java -jar target-bench/microbenchmarks.jar -l | grep shakers
+----
+
+. `-Pbench` turns on the `bench` profile in `pom.xml`. It adds `src/test/java` as a main source
+  folder and compiles only `conf/session/shakers/*Benchmark.java` and `prof/HistoProfiler.java` (in `src/main/java`),
+  with the JMH annotation processor. Tests are skipped.
+. `clean compile` removes `target/` and `target-bench/`, then compiles into `target-bench/classes`.
+. `package` writes `target-bench/microbenchmarks.jar` (everything shaded in, main class
+  `org.openjdk.jmh.Main`). The other jar in `target-bench/` is unshaded and will not run.
+. `-l` lists the benchmarks in the jar, to check the build.
+
+[[run-ts]]
+== Start a run (timestamp, folders and metadata)
+
+[source,bash]
+----
+RUN_TS=$(date +%Y%m%d-%H%M)
+R=generated/runs/${RUN_TS}/shakers/raw
+MR=generated/runs/${RUN_TS}/movers/raw
+mkdir -p $R $MR
+{
+  echo "run_ts: ${RUN_TS}"
+  case "$(uname)" in Darwin) WHERE="local Mac" ;; *) WHERE="cloud sandbox" ;; esac
+  CPU=$(sysctl -n machdep.cpu.brand_string 2>/dev/null || lscpu | sed -n 's/^Model name:[[:space:]]*//p')
+  echo "environment: ${WHERE} (${CPU})"
+  java -version 2>&1
+  mvn -v
+  sw_vers 2>/dev/null || uname -a
+  sysctl -n machdep.cpu.brand_string hw.ncpu hw.memsize 2>/dev/null || lscpu
+  java -XX:+UseCompactObjectHeaders -XX:+PrintFlagsFinal -version 2>/dev/null \
+    | grep -E ' Use(G1|Parallel|Serial|Z|Shenandoah)GC |UseCompactObjectHeaders|DoEscapeAnalysis'
+  git rev-parse HEAD; git status --short
+} > $R/meta.txt
+cp $R/meta.txt $MR/meta.txt
+----
+
+. `RUN_TS` names the run. Shakers and movers share it. If the run spans several terminals, reuse
+  it (first line of `meta.txt`) and set `R` and `MR` again.
+. `R` and `MR` are the raw folders: `generated/runs/<RUN_TS>/shakers/raw/` and
+  `generated/runs/<RUN_TS>/movers/raw/`. Every raw file is a `.txt` file.
+. Output: `meta.txt` in both folders, with the machine, JDK, Maven, GC flags and git commit.
+  The generators show its `environment:` line in every doc. It says `local Mac` on macOS and
+  `cloud sandbox` anywhere else.
+. The reports go to `generated/runs/<RUN_TS>/shakers/reports/` and `generated/runs/<RUN_TS>/movers/reports/`
+  (see <<shakers-gen>> and <<movers-gen>>), and the full run summary to `generated/runs/<RUN_TS>/`
+  (see <<run-summary>>). `mvn clean` does not touch `generated/`.
+
+[[shakers-run]]
+== Run the benchmarks (throughput and allocation)
+
+[source,bash]
+----
+for CONFIG in coh-on coh-off ea-off; do
+  case $CONFIG in
+    coh-on)  FLAGS="-XX:+UseCompactObjectHeaders" ;;
+    coh-off) FLAGS="-XX:-UseCompactObjectHeaders" ;;
+    ea-off)  FLAGS="-XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis" ;;
+  esac
+  for CLASS in AnyMatchUtility CountUtility FindFirstUtility \
+               AnyMatchEagerLazy CountEagerLazy FindFirstEagerLazy \
+               CollectorsAndCollectors2; do
+    java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\.${CLASS}Benchmark\." \
+      -prof gc -jvmArgsAppend "-XX:+UseG1GC -Xms2g -Xmx2g ${FLAGS}" \
+      -rf text -rff $R/${CLASS}-${CONFIG}.txt \
+      -o $R/${CLASS}-${CONFIG}-console.txt
+  done
+done
+----
+
+. Needs <<bench-jar>> and <<run-ts>> first (`R` must be set).
+. Runs each of the seven benchmark classes in three configurations: compact object headers on,
+  off, and escape analysis off. `CollectorsAndCollectors2` has no `test` parameter, so it adds only
+  a few minutes. G1 and a 2 GB heap are pinned so runs compare across machines.
+. `-prof gc` adds allocation per call (`gc.alloc.rate.norm`, bytes per operation) to the timing.
+. Output per class and configuration: `$R/<Class>-<CONFIG>.txt` (the JMH results table) and
+  `$R/<Class>-<CONFIG>-console.txt` (the full JMH console output).
+. Takes several hours. Forks, warmup and measurement come from the benchmark annotations.
+. To run just one class, for example `CountUtility`, set `CLASS`, `CONFIG` and `FLAGS`
+  by hand and run the inner `java -jar ...` command once.
+
+[[histo-run]]
+== Count objects per call (HistoProfiler)
+
+[source,bash]
+----
+for CONFIG in histo-coh-on histo-coh-off histo-ea-off; do
+  case $CONFIG in
+    histo-coh-on)  FLAGS="-XX:+UseCompactObjectHeaders" ;;
+    histo-coh-off) FLAGS="-XX:-UseCompactObjectHeaders" ;;
+    histo-ea-off)  FLAGS="-XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis" ;;
+  esac
+  java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." \
+    -f 1 -wi 5 -w 1s -i 3 -r 100ms \
+    -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${FLAGS}" \
+    -prof prof.HistoProfiler -prof gc \
+    -rf text -rff $R/all-${CONFIG}.txt \
+    -o $R/all-${CONFIG}-console.txt \
+    | grep '^HISTO' > $R/all-${CONFIG}-histo.txt
+done
+----
+
+. Needs <<bench-jar>> and <<run-ts>> first, and about 16 GB of free RAM (12 GB heap).
+. `prof.HistoProfiler` takes a class histogram (`jcmd GC.class_histogram`) before and after each
+  short iteration and divides the difference by the number of calls: objects and bytes per call,
+  per class. ParallelGC with a 10 GB young generation keeps the iterations GC-free; these numbers
+  are for counting, not timing.
+. The profiler prints from the forked VM to the console, so the `grep` captures the `HISTO` lines.
+. Output per configuration: `$R/all-<CONFIG>-histo.txt` (the per-class counts the generators read),
+  `$R/all-<CONFIG>.txt` and `$R/all-<CONFIG>-console.txt`.
+. Takes about 10 to 15 minutes per configuration.
+
+[[shakers-gen]]
+== Write the benchmark results, analysis docs, charts and run summary
+
+[source,bash]
+----
+MMDC=<tools>/node_modules/.bin/mmdc \
+  java src/main/java/tools/analysis/ShakersDocs.java . ${RUN_TS}
+----
+
+. Needs <<shakers-run>> and <<histo-run>> output in `$R`. Nothing is written by hand: every
+  sentence, including each class's Summary, comes from the run's numbers.
+. Output in `generated/runs/<RUN_TS>/shakers/reports/`:
+.. `<RUN_TS>-<Class>Results.adoc`: every JMH table and object count of the run, verbatim.
+.. `<RUN_TS>-<Class>Analysis.adoc`: one analysis doc per class.
+.. `<RUN_TS>-Summary.adoc`: one row per class (JDK garbage per call, EC garbage, JDK time ÷ EC time) and links to every report.
+.. `images/<RUN_TS>-<Class>-<chart>.png` and `mermaid/<RUN_TS>-<Class>-<chart>.mmd`: the charts.
+. Also `generated/runs/<RUN_TS>/shakers/summary.json`: the numbers the JDK ops analysis reads.
+. `CLASSES=AnyMatchUtility,CountUtility` in front of the command limits it to those classes.
+  Without it, every class that has raw files in the run folder is done.
+. `MMDC` is optional (see the set-up section).
+. `SHAKERS_RUN_DIR=<folder>` in front of the command reads the raw files from another folder.
+
+[[jdkops-gen]]
+== Write the JDK Stream ops analysis
+
+[source,bash]
+----
+java src/main/java/tools/analysis/JdkOpsDocs.java . ${RUN_TS}
+----
+
+. Needs the three `all-<CONFIG>-histo.txt` files from <<histo-run>> and `summary.json` from <<shakers-gen>>.
+. Explains which objects one JDK `stream()` call allocates, which part of the Stream API makes
+  each one and what it costs, with every Eclipse Collections version beside it (escape analysis off).
+. Output: `<RUN_TS>-JdkStreamOpsAnalysis.adoc` in `generated/runs/<RUN_TS>/shakers/reports/`, its PNGs in
+  `reports/images/` and its `.mmd` files in `reports/mermaid/`. The run summary links to it.
+. `SHAKERS_RUN_DIR=<folder>` works here too, as in <<shakers-gen>>.
+
+[[movers-run]]
+== Measure collection footprints with JOL (movers)
+
+[source,bash]
+----
+for CFG in coh-off coh-on; do
+  case $CFG in
+    coh-off) COH="-XX:-UseCompactObjectHeaders" ;;
+    coh-on)  COH="-XX:+UseCompactObjectHeaders" ;;
+  esac
+  for T in ListMemoryTest SetMemoryTest MapMemoryTest StreamVsLazyIterableMemoryTest; do
+    mvn -B test -Dtest=$T -Dsurefire.failIfNoSpecifiedTests=false \
+      -DargLine="${COH} -Djdk.attach.allowAttachSelf=true -XX:+EnableDynamicAgentLoading" \
+      > $MR/$T-$CFG.txt 2>&1
+  done
+done
+----
+
+. Needs <<run-ts>> first (`MR` must be set).
+. Runs the four JOL tests in `src/test/java/conf/session/movers`, compact object headers off then on.
+  They measure retained memory (footprint), not speed or allocation.
+. `-Djdk.attach.allowAttachSelf=true -XX:+EnableDynamicAgentLoading` let JOL attach to its own
+  VM; without them JOL fails under surefire.
+. Output: `$MR/<Test>-<CFG>.txt`, the Maven output with the printed sizes. The generator reads
+  the sizes straight from it; nothing needs copying by hand.
+. Set and Map take about 13 minutes per configuration.
+. `SweatingTheSmallStuffTest` is on hold and is not part of the loop.
+
+[[movers-gen]]
+== Write the footprint analysis docs, charts and run summary (movers)
+
+[source,bash]
+----
+MMDC=<tools>/node_modules/.bin/mmdc java src/main/java/tools/analysis/MoversDocs.java . ${RUN_TS}
+----
+
+. Reads `<Test>-coh-{off,on}.txt` and `meta.txt` from `generated/runs/<RUN_TS>/movers/raw/`, or from the
+  folder named in `MOVERS_RESULTS=<folder>` in front of the command.
+. Output in `generated/runs/<RUN_TS>/movers/reports/`: `<RUN_TS>-<Test>Analysis.adoc` (one per
+  test), `<RUN_TS>-Summary.adoc` (the summary of every test), PNGs in `images/` and `.mmd` files in `mermaid/`.
+. `MMDC` is optional (see the set-up section).
+
+[[run-summary]]
+== Write the full run summary (both parts)
+
+[source,bash]
+----
+java src/main/java/tools/analysis/RunSummary.java . ${RUN_TS}
+----
+
+. Needs the part summaries from <<shakers-gen>> and/or <<movers-gen>>.
+. Output: `generated/runs/<RUN_TS>/<RUN_TS>-Summary.adoc`, the shakers and movers summaries in one doc,
+  with every link pointing into the part's `reports/` folder. A part the run does not have is named as missing.
+
+[[slides-maven]]
+== Turn the slides into HTML and PDF with Maven
+
+[source,bash]
+----
+mvn -Pslides generate-resources
+mvn -Pslides process-resources
+open assets/presentation/build/plain/03_Definitions_00_01.html
+----
+
+. Needs only Java 25 and Maven (no Python, Ruby gems or Node.js).
+. `generate-resources` makes the HTML only. It runs `SlideNav.java` (rewrites each slide's Previous /
+  Index / Next links and the deck files) and `SlideImages.java` (draws the title and diagram images),
+  then converts the AsciiDoc with AsciidoctorJ.
+. `process-resources` does all of that and then the PDFs: `SlidesToPdf.java` (in
+  `src/main/java/tools/presentation`) opens each reveal.js deck in headless Chrome through Playwright for
+  Java and prints it, one slide per page.
+. Output in `assets/presentation/build/`:
+.. `plain/<series>_<deck>_<slide>.html`: one page per slide, no JavaScript. Present from here.
+.. `slides/<series>_<deck>.html`: each whole deck as reveal.js (F full screen, S speaker notes),
+   with reveal.js unpacked next to it so it works offline.
+.. `pdf/<series>_<deck>.pdf`: each whole deck, one 16:9 slide per page (`process-resources` only).
+.. The deck files and `slide-template.adoc` are converted to HTML as well; those extra pages can be ignored.
+. The PDFs use the browser named in the `CHROME` environment variable
+  (`CHROME=/path/to/chrome mvn -Pslides process-resources`), else an installed Google Chrome or
+  Chromium (macOS or Linux), else the Chromium pre-installed under `PLAYWRIGHT_BROWSERS_PATH` (the
+  cloud sandbox has one). Without any of these, Playwright downloads its own Chromium once into its cache.
+. `open` (macOS) shows the first slide in the browser; on Linux use `xdg-open`. Follow the Next links from there.
+
+== Add or change a slide
+
+[source,bash]
+----
+cp assets/presentation/slide-template.adoc assets/presentation/03_Definitions_05_09.adoc
+java src/main/java/tools/presentation/SlideNav.java .
+java src/main/java/tools/presentation/SlideImages.java .
+----
+
+. Each slide is its own file, `<series>_<deck>_<slide>.adoc`. Start from `slide-template.adoc`,
+  which also lists how much fits on one slide.
+. `SlideNav.java` rewrites the Previous / Index / Next links at the bottom of every slide (in file-name
+  order) and regenerates the deck files `<series>_<deck>.adoc`. Run it after adding, removing or
+  renaming a slide. The Maven build runs it for you.
+. `SlideImages.java` redraws the title banners (`banner-*.svg`), the `diagram-*.svg` images and the `placeholder-*.svg` screenshot frames in `assets/presentation/images/`.
+  Run it after changing a title or diagram in it (a new title slide needs a row in `SECTIONS`, `INTRO_SECTIONS` or `PROBLEM_SECTIONS`, one array per series). The Maven build runs it for you.
+. Both are plain Java 25 source files with no dependencies, so `java <file>.java` runs them directly.
+. Output: changed `.adoc` files and images in `assets/presentation/`; nothing in `build/`.
+
+== Files that are not commands
+
+. `src/main/java/tools/Pipeline.java` runs the stages (see <<pipeline>>). `src/main/java/tools/analysis/` also holds `ShakersCharts.java` (charts), `JmhParse.java` (JMH and
+  histogram parsing), `Layout.java` (where files go), `Plot.java` (PNG drawing) and `Py.java`
+  (number formatting that matches the earlier Python output). The three generators use them; they
+  are not run on their own.
+. All tools are in `src/main/java/tools/` (packages `tools.analysis` and `tools.presentation`).
+  `mvn compile` compiles them into `target/classes`, except `SlidesToPdf.java` (it needs Playwright,
+  which only the `slides` profile adds). The commands above run them from source, so no build is needed first.

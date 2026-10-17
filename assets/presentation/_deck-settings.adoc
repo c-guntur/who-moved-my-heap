@@ -1,0 +1,15 @@
+// Shared settings for every slide and deck file in this folder. Include it at the top of each file,
+// right after :deck-number: and :description: (see slide-template.adoc).
+:imagesdir: images
+// Code colouring is done at build time (rouge): no JavaScript and nothing loaded from the network.
+:source-highlighter: rouge
+:rouge-style: github
+:docinfo: shared-head
+:nofooter:
+:revealjs_theme: white
+:revealjs_transition: slide
+:revealjs_slideNumber: c/t
+:revealjs_hash: true
+:revealjs_center: false
+:revealjs_width: 1600
+:revealjs_height: 900

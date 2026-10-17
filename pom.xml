@@ -80,6 +80,17 @@
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>3.5.0</version>
+                    <configuration>
+                        <!-- mvn clean removes both build folders: target and target-bench (bench profile) -->
+                        <filesets>
+                            <fileset>
+                                <directory>${project.basedir}/target</directory>
+                            </fileset>
+                            <fileset>
+                                <directory>${project.basedir}/target-bench</directory>
+                            </fileset>
+                        </filesets>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
@@ -91,6 +102,10 @@
                     <configuration>
                         <source>25</source>
                         <target>25</target>
+                        <!-- SlidesToPdf needs Playwright, which is only on the classpath with -Pslides; that profile runs it from source -->
+                        <excludes>
+                            <exclude>tools/presentation/SlidesToPdf.java</exclude>
+                        </excludes>
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.openjdk.jmh</groupId>
@@ -159,4 +174,238 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <profiles>
+        <!--
+          Bench: builds target-bench/microbenchmarks.jar from the shakers benchmarks + HistoProfiler.
+            mvn -Pbench package
+            java -jar target-bench/microbenchmarks.jar
+          The benchmarks live in src/test/java, so this profile adds them as main sources, compiles only these into its own
+          folder (target-bench) and skips tests. The normal build in target is not touched.
+        -->
+        <profile>
+            <id>bench</id>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+            <build>
+                <directory>${project.basedir}/target-bench</directory>
+                <plugins>
+                    <!-- A profile cannot change sourceDirectory, so src/test/java is added as a main source root -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>build-helper-maven-plugin</artifactId>
+                        <version>3.6.0</version>
+                        <executions>
+                            <execution>
+                                <id>bench-sources</id>
+                                <phase>generate-sources</phase>
+                                <goals><goal>add-source</goal></goals>
+                                <configuration>
+                                    <sources>
+                                        <source>${project.basedir}/src/test/java</source>
+                                    </sources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <includes>
+                                <include>conf/session/shakers/*Benchmark.java</include>
+                                <include>prof/HistoProfiler.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <configuration>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.openjdk.jol:jol-core</exclude>
+                                </excludes>
+                            </artifactSet>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!--
+          Slides: converts the AsciiDoc slides in assets/presentation to HTML with AsciidoctorJ and to PDF
+          with Playwright for Java (no Ruby, no Node.js).
+            mvn -Pslides generate-resources     HTML only
+            mvn -Pslides process-resources      HTML and PDFs
+          Output in assets/presentation/build (not compiled or packaged with the code):
+            plain/<series>_<deck>_<slide>.html  one page per slide, no JavaScript, Previous / Index / Next links
+            slides/<series>_<deck>.html         whole decks as reveal.js (reveal.js from its WebJar, works offline)
+            pdf/<series>_<deck>.pdf             whole decks, one slide per page (SlidesToPdf.java prints the reveal.js decks)
+          The PDFs use Google Chrome if installed (or the CHROME environment variable); otherwise Playwright
+          downloads its own Chromium once.
+          Java runs SlideNav.java (links and deck files) and SlideImages.java (title and diagram images) first.
+        -->
+        <profile>
+            <id>slides</id>
+            <properties>
+                <slides.src>${project.basedir}/assets/presentation</slides.src>
+                <slides.tools>${project.basedir}/src/main/java/tools/presentation</slides.tools>
+                <slides.out>${project.basedir}/assets/presentation/build</slides.out>
+                <asciidoctor-maven-plugin.version>3.2.0</asciidoctor-maven-plugin.version>
+                <asciidoctorj-revealjs.version>5.2.0</asciidoctorj-revealjs.version>
+                <revealjs.version>4.1.3</revealjs.version>
+                <playwright.version>1.56.0</playwright.version>
+            </properties>
+            <dependencies>
+                <!-- Drives headless Chrome for the PDFs; only on the classpath with -Pslides -->
+                <dependency>
+                    <groupId>com.microsoft.playwright</groupId>
+                    <artifactId>playwright</artifactId>
+                    <version>${playwright.version}</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <!-- 1. Navigation links, deck files and images -->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>3.5.0</version>
+                        <executions>
+                            <execution>
+                                <id>slide-navigation</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>${java.home}/bin/java</executable>
+                                    <arguments>
+                                        <argument>${slides.tools}/SlideNav.java</argument>
+                                        <argument>${project.basedir}</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>slide-images</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>${java.home}/bin/java</executable>
+                                    <arguments>
+                                        <argument>${slides.tools}/SlideImages.java</argument>
+                                        <argument>${project.basedir}</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <!-- 4. PDFs, after the HTML (generate-resources) is written -->
+                            <execution>
+                                <id>slide-pdfs</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>${java.home}/bin/java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath/>
+                                        <argument>${slides.tools}/SlidesToPdf.java</argument>
+                                        <argument>${slides.out}/slides</argument>
+                                        <argument>${slides.out}/pdf</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- 2. reveal.js from its WebJar into build/slides/reveal.js -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.8.1</version>
+                        <executions>
+                            <execution>
+                                <id>revealjs</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>org.webjars.npm</groupId>
+                                            <artifactId>reveal.js</artifactId>
+                                            <version>${revealjs.version}</version>
+                                            <outputDirectory>${slides.out}/slides/reveal.js</outputDirectory>
+                                            <overWrite>true</overWrite>
+                                            <includes>META-INF/resources/webjars/reveal.js/${revealjs.version}/**</includes>
+                                            <fileMappers>
+                                                <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                                                    <pattern>^META-INF/resources/webjars/reveal.js/${revealjs.version}/</pattern>
+                                                    <replacement>./</replacement>
+                                                </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
+                                            </fileMappers>
+                                        </artifactItem>
+                                    </artifactItems>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- 3. HTML: plain pages (html5) and reveal.js decks -->
+                    <plugin>
+                        <groupId>org.asciidoctor</groupId>
+                        <artifactId>asciidoctor-maven-plugin</artifactId>
+                        <version>${asciidoctor-maven-plugin.version}</version>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.asciidoctor</groupId>
+                                <artifactId>asciidoctorj-revealjs</artifactId>
+                                <version>${asciidoctorj-revealjs.version}</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <sourceDirectory>${slides.src}</sourceDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${slides.src}/images</directory>
+                                    <targetPath>images</targetPath>
+                                </resource>
+                            </resources>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>slides-plain</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>process-asciidoc</goal>
+                                </goals>
+                                <configuration>
+                                    <backend>html5</backend>
+                                    <outputDirectory>${slides.out}/plain</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>slides-revealjs</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>process-asciidoc</goal>
+                                </goals>
+                                <configuration>
+                                    <backend>revealjs</backend>
+                                    <outputDirectory>${slides.out}/slides</outputDirectory>
+                                    <attributes>
+                                        <revealjsdir>reveal.js</revealjsdir>
+                                    </attributes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

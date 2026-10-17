@@ -1,0 +1,75 @@
+<!--
+  Slide format for the HTML preview (asciidoctor html5 backend, IntelliJ AsciiDoc preview).
+  Every "==" section is one 16:9 slide sized to the window: no slide ever needs scrolling,
+  and the page snaps from one slide to the next. All sizes scale with the slide height (--H).
+-->
+<style>
+  :root { --H: min(94vh, 52.875vw); --W: calc(var(--H) * 16 / 9);
+          --navy: #1B2A41; --navy2: #2E4A6B; --orange: #E69F00; --blue: #0072B2;
+          --paper: #F5F7FA; --refs: #EAF2F8; --ink: #1F2933; --line: #C9D2DC; }
+  html { scroll-snap-type: y mandatory; }
+  body { background: #0F1B2B; margin: 0; }
+  #header, #footer, #toc { display: none; }
+  #content { max-width: none; margin: 0; padding: 0; counter-reset: slide; }
+
+  /* one slide = the title image (preamble) or one level-1 section */
+  #preamble, #content > .sect1 { box-sizing: border-box; width: var(--W); height: var(--H); overflow: hidden;
+      margin: calc((100vh - var(--H)) / 2) auto; scroll-snap-align: center; position: relative;
+      border-radius: calc(var(--H) * .012); box-shadow: 0 1vh 3vh rgba(0, 0, 0, .35); }
+  #preamble { background: var(--navy); }
+  #preamble .sectionbody, #preamble .imageblock, #preamble .content { margin: 0; height: 100%; }
+  #preamble img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+  #content > .sect1 { background: var(--paper); color: var(--ink); font-size: calc(var(--H) * .034);
+      padding: calc(var(--H) * .065) calc(var(--W) * .055) calc(var(--H) * .05);
+      border-top: calc(var(--H) * .012) solid var(--orange); display: flex; flex-direction: column; }
+  #content > .sect1::after { counter-increment: slide; content: counter(slide); position: absolute;
+      right: calc(var(--W) * .02); bottom: calc(var(--H) * .03); font-size: .6em; color: #8A96A3; }
+  #content > .sect1 > h2 { font-size: 1.75em; line-height: 1.15; margin: 0 0 .6em; padding-left: .45em;
+      color: var(--navy); font-weight: 600; border-left: .16em solid var(--orange); border-bottom: none; }
+  #content > .sect1 > h2 code { font-size: .9em; }
+  #content > .sect1 > .sectionbody { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+
+  #content > .sect1 p, #content > .sect1 li, #content > .sect1 td { font-size: 1em; line-height: 1.4; }
+  #content > .sect1 .paragraph, #content > .sect1 .ulist { margin-bottom: .6em; }
+  #content > .sect1 .ulist li { margin-bottom: .3em; }
+  #content > .sect1 .ulist li p { margin: 0; }
+  #content > .sect1 .lead p { font-size: 1.15em; color: var(--navy2); }
+  #content > .sect1 :not(pre) > code { font-size: .92em; padding: .05em .25em; }
+  #content > .sect1 .listingblock { margin-bottom: .7em; }
+  #content > .sect1 .listingblock pre { font-size: .72em; line-height: 1.45; padding: .8em 1.1em; background: #fff;
+      border: 1px solid var(--line); border-left: .3em solid var(--blue); border-radius: .3em; }
+  #content > .sect1 .imageblock.diagram { margin: .2em 0 .8em; }
+  #content > .sect1 .imageblock.diagram img { display: block; max-width: 100%; max-height: calc(var(--H) * .42);
+      width: auto; border: 1px solid var(--line); border-radius: .3em; background: #fff; }
+  /* screenshot slides (role "screenshot"): a larger image area than a diagram */
+  #content > .sect1 .imageblock.screenshot { margin: .2em 0 .6em; }
+  #content > .sect1 .imageblock.screenshot img { display: block; max-width: 100%; max-height: calc(var(--H) * .55);
+      width: auto; border: 1px solid var(--line); border-radius: .3em; background: #fff; }
+  #content > .sect1 table.tableblock { font-size: .82em; margin-bottom: .6em; }
+  #content > .sect1 table.tableblock td, #content > .sect1 table.tableblock th { padding: .35em .6em; }
+
+  /* references slide (role "refs") and the navigation bar at its bottom */
+  #content > .sect1.refs { background: var(--refs); border-top-color: var(--blue); }
+  #content > .sect1.refs > h2 { border-left-color: var(--blue); }
+  #content > .sect1 .paragraph.deck-nav { margin: auto 0 0; padding-top: .7em; border-top: 1px solid var(--line);
+      text-align: center; font-weight: 600; font-size: .8em; }
+  .deck-nav a { color: var(--blue); text-decoration: none; padding: .25em .9em; border: 1px solid var(--blue);
+      border-radius: 999px; background: #fff; }
+  .deck-nav a:hover { background: var(--blue); color: #fff; }
+  .notes { display: none; }
+  #content > .sect1:only-child::after { display: none; }
+  .deck-pos { margin-left: 1em; color: #8A96A3; font-weight: 400; }
+  #content > .sect1.title-slide .paragraph.deck-nav { position: absolute; left: 0; right: 0; bottom: calc(var(--H) * .04);
+      margin: 0; border: none; padding: 0; height: auto; }
+  #content > .sect1.title-slide .imageblock { position: absolute; inset: 0; }
+
+  /* title slide: the first "==" section with role title-slide shows only its image */
+  #content > .sect1.title-slide { padding: 0; border-top: none; background: var(--navy); }
+  #content > .sect1.title-slide > h2 { display: none; }
+  #content > .sect1.title-slide .imageblock, #content > .sect1.title-slide .content,
+  #content > .sect1.title-slide .sectionbody { margin: 0; height: 100%; }
+  #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  #content > .sect1.title-slide::after { color: #8FA3B8; }
+
+</style>

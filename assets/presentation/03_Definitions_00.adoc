@@ -1,0 +1,10 @@
+// Deck 00 of 03_Definitions: assembled from its slide files by src/main/java/tools/presentation/SlideNav.java.
+// Edit the slide files, not this file. Used for the reveal.js slides and the PDF.
+:deck-number: 00
+:deck:
+:description: Who moved my heap, definitions 00: Definitions
+include::_deck-settings.adoc[]
+
+include::03_Definitions_00_01.adoc[]
+
+include::03_Definitions_00_02.adoc[]

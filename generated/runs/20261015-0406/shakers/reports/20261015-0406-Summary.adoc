@@ -1,0 +1,31 @@
+= Shakers run 20261015-0406: summary
+:toc:
+
+Environment: Claude cloud sandbox (KVM guest), not the local Mac (openjdk version "25.0.4.1" 2026-08-18). Written from the run's numbers by `ShakersDocs.java`; each class has its own analysis with the tables and charts behind these numbers.
+
+== Garbage and speed per class (compact headers on)
+
+[cols="3,2,1,1,1,1",options="header"]
+|===
+|Class |JDK method |JDK bytes per call |JDK objects per call |EC bytes per call (every EC version) |JDK time ÷ EC time
+|link:20261015-0406-AnyMatchUtilityAnalysis.adoc[AnyMatchUtility] |`jdkAnyMatch` |160 to 176 |6 to 7 |≈0 |4.6 to 12.0
+|link:20261015-0406-CountUtilityAnalysis.adoc[CountUtility] |`jdkCount` |208 to 224 |7 to 8 |≈0 |1.9 to 2.1
+|link:20261015-0406-FindFirstUtilityAnalysis.adoc[FindFirstUtility] |`jdkFindFirst` |200 to 216 |7 to 8 |≈0 |4.1 to 15.9
+|link:20261015-0406-AnyMatchEagerLazyAnalysis.adoc[AnyMatchEagerLazy] |`jdkAnyMatch` |160 to 176 |6 to 7 |≈0 |4.8 to 13.7
+|link:20261015-0406-CountEagerLazyAnalysis.adoc[CountEagerLazy] |`jdkCount` |208 to 224 |7 to 8 |≈0 |2.0 to 2.1
+|link:20261015-0406-FindFirstEagerLazyAnalysis.adoc[FindFirstEagerLazy] |`jdkFindFirst` |192 to 216 |7 to 8 |≈0 |4.2 to 16.9
+|===
+
+== Reports
+
+* link:20261015-0406-AnyMatchUtilityAnalysis.adoc[AnyMatchUtility analysis] and link:20261015-0406-AnyMatchUtilityResults.adoc[results]
+* link:20261015-0406-CountUtilityAnalysis.adoc[CountUtility analysis] and link:20261015-0406-CountUtilityResults.adoc[results]
+* link:20261015-0406-FindFirstUtilityAnalysis.adoc[FindFirstUtility analysis] and link:20261015-0406-FindFirstUtilityResults.adoc[results]
+* link:20261015-0406-AnyMatchEagerLazyAnalysis.adoc[AnyMatchEagerLazy analysis] and link:20261015-0406-AnyMatchEagerLazyResults.adoc[results]
+* link:20261015-0406-CountEagerLazyAnalysis.adoc[CountEagerLazy analysis] and link:20261015-0406-CountEagerLazyResults.adoc[results]
+* link:20261015-0406-FindFirstEagerLazyAnalysis.adoc[FindFirstEagerLazy analysis] and link:20261015-0406-FindFirstEagerLazyResults.adoc[results]
+* link:20261015-0406-JdkStreamOpsAnalysis.adoc[JDK Stream ops analysis] (written by `JdkOpsDocs.java`)
+
+== Caveats
+
+One machine (Claude cloud sandbox (KVM guest), not the local Mac), one JDK build (openjdk version "25.0.4.1" 2026-08-18), G1 with a fixed 2 GB heap. Microbenchmarks, not an application. Mechanisms are read from the class histograms where shown; anything else is labelled inferred.

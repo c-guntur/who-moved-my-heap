@@ -1,0 +1,669 @@
+= FindFirstEagerLazyBenchmark results (run 20261015-0406)
+:toc:
+
+Assembled from the raw JMH output in `generated/runs/20261015-0406/shakers/raw/`. Numbers are copied verbatim.
+
+== Run metadata
+
+....
+run_ts: 20261015-0406
+environment: Claude cloud sandbox (KVM guest), not the local Mac
+openjdk version "25.0.4.1" 2026-08-18
+OpenJDK Runtime Environment (build 25.0.4.1+1-1-24.04.4-Ubuntu)
+OpenJDK 64-Bit Server VM (build 25.0.4.1+1-1-24.04.4-Ubuntu, mixed mode, sharing)
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: /opt/maven
+Java version: 25.0.4.1, vendor: Ubuntu, runtime: /usr/lib/jvm/java-25-openjdk-amd64
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.18.44-fc-v114", arch: "amd64", family: "unix"
+Linux vm 6.18.44-fc-v114 #1 SMP PREEMPT_DYNAMIC @0 x86_64 x86_64 x86_64 GNU/Linux
+CPU(s):                                  4
+Model name:                              Intel(R) Xeon(R) Processor @ 2.10GHz
+Hypervisor vendor:                       KVM
+L3 cache:                                260 MiB (1 instance)
+               total        used        free      shared  buff/cache   available
+Mem:              15           0          13           0           1          15
+     bool DoEscapeAnalysis                         = true                                   {C2 product} {default}
+     bool UseCompactObjectHeaders                  = true                           {product lp64_product} {command line}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseParallelGC                            = false                                     {product} {default}
+     bool UseSerialGC                              = false                                     {product} {default}
+     bool UseShenandoahGC                          = false                                     {product} {default}
+     bool UseZGC                                   = false                                     {product} {default}
+sources: copied from the local Mac 2026-10-15 (not a git checkout); sha256:
+56929d3dad6a2bf23338760be0a6c9a767dbf97d8da1d2d94baad5eda95c248b  pom-bench.xml
+82df362f31213dca649cf12d50dc7044106f6f6320e5d8f729de6bc54bf99abb  src/test/java/conf/session/shakers/AnyMatchEagerLazyBenchmark.java
+6415fce978b63da995e13a939fd8abfb5a0a07899531a8d009e53e54d6c28e59  src/test/java/conf/session/shakers/AnyMatchUtilityBenchmark.java
+1755b09c8ea3c1525c920cf34d09840f02fd920a07d9275ace70cb5e6ba8bdc7  src/test/java/conf/session/shakers/CountEagerLazyBenchmark.java
+f86d606f03a5990df32f7601458a6130115ab55cfa1abf0cb5bfe024097fcd64  src/test/java/conf/session/shakers/CountUtilityBenchmark.java
+de1b37f470fd9462429182ed3fc5013a09f844df2743effc40017006098630d1  src/test/java/conf/session/shakers/FindFirstEagerLazyBenchmark.java
+fc95a4381ce6b6c04f2eef6fedeb1a172128b953f65eb9aa1fdff63cbbca935c  src/test/java/conf/session/shakers/FindFirstUtilityBenchmark.java
+bacce7602f8fb1d6eb2e03e63b27d5e1df1be31c77da86893dddd0fec8b4f324  src/test/java/prof/HistoProfiler.java
+....
+
+== coh-on (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders`)
+
+....
+Benchmark                                                            (test)  Mode  Cnt     Score     Error   Units
+FindFirstEagerLazyBenchmark.ecDetectIfNone                                1  avgt   20     2.236 ±   0.163   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate                  1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm             1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                       1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone                              500  avgt   20   339.206 ±  14.312   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate                500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm           500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                     500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone                             1000  avgt   20   646.999 ±  25.074   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate               1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm          1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                    1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional                              1  avgt   20     2.311 ±   0.142   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate                1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm           1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                     1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional                            500  avgt   20   341.892 ±  16.504   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate              500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm         500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                   500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional                           1000  avgt   20   670.700 ±  31.972   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate             1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm        1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                  1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                            1  avgt   20     2.408 ±   0.158   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate              1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm         1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                   1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                          500  avgt   20   338.173 ±  20.469   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate            500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm       500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                 500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                         1000  avgt   20   674.710 ±  26.274   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate           1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm      1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                          1  avgt   20     2.520 ±   0.273   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count                 1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                        500  avgt   20   340.155 ±  22.787   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count               500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                       1000  avgt   20   671.694 ±  48.482   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count              1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                            1  avgt   20     2.334 ±   0.179   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate              1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm         1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                   1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                          500  avgt   20   364.154 ±  24.650   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate            500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm       500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                 500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                         1000  avgt   20   648.570 ±  25.249   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate           1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm      1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                          1  avgt   20     2.259 ±   0.095   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count                 1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                        500  avgt   20   328.320 ±  12.292   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count               500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                       1000  avgt   20   656.910 ±  50.480   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count              1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst                                  1  avgt   20    37.738 ±   2.034   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                    1  avgt   20  4867.220 ± 302.719  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm               1  avgt   20   192.000 ±   7.127    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                         1  avgt   20   159.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                          1  avgt   20   368.000                ms
+FindFirstEagerLazyBenchmark.jdkFindFirst                                500  avgt   20  1526.983 ± 131.387   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                  500  avgt   20   135.978 ±  10.384  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm             500  avgt   20   216.005 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                       500  avgt   20     4.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                        500  avgt   20    15.000                ms
+FindFirstEagerLazyBenchmark.jdkFindFirst                               1000  avgt   20  4125.898 ± 728.538   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                 1000  avgt   20    52.226 ±  10.560  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm            1000  avgt   20   216.013 ±   0.002    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                      1000  avgt   20     2.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                       1000  avgt   20    12.000                ms
+....
+
+== coh-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:-UseCompactObjectHeaders`)
+
+....
+Benchmark                                                            (test)  Mode  Cnt     Score     Error   Units
+FindFirstEagerLazyBenchmark.ecDetectIfNone                                1  avgt   20     2.410 ±   0.262   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate                  1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm             1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                       1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone                              500  avgt   20   292.277 ±  21.175   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate                500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm           500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                     500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone                             1000  avgt   20   542.563 ±  57.155   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate               1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm          1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                    1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional                              1  avgt   20     2.050 ±   0.176   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate                1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm           1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                     1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional                            500  avgt   20   264.738 ±   7.723   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate              500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm         500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                   500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional                           1000  avgt   20   538.712 ±  45.643   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate             1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm        1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                  1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                            1  avgt   20     2.278 ±   0.241   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate              1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm         1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                   1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                          500  avgt   20   269.255 ±  15.459   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate            500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm       500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                 500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                         1000  avgt   20   509.253 ±  39.465   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate           1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm      1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                          1  avgt   20     2.204 ±   0.237   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count                 1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                        500  avgt   20   265.171 ±  10.688   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count               500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                       1000  avgt   20   508.648 ±  23.083   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count              1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                            1  avgt   20     2.218 ±   0.188   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate              1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm         1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                   1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                          500  avgt   20   271.881 ±  24.735   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate            500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm       500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                 500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                         1000  avgt   20   507.708 ±  46.633   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate           1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm      1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                          1  avgt   20     2.335 ±   0.200   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count                 1  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                        500  avgt   20   275.987 ±  12.740   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count               500  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                       1000  avgt   20   529.981 ±  33.775   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count              1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst                                  1  avgt   20    39.017 ±   1.200   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                    1  avgt   20  5479.909 ± 166.896  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm               1  avgt   20   224.000 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                         1  avgt   20   179.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                          1  avgt   20   438.000                ms
+FindFirstEagerLazyBenchmark.jdkFindFirst                                500  avgt   20  1260.078 ±  94.315   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                  500  avgt   20   182.783 ±  12.972  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm             500  avgt   20   240.004 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                       500  avgt   20     6.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                        500  avgt   20    23.000                ms
+FindFirstEagerLazyBenchmark.jdkFindFirst                               1000  avgt   20  2752.226 ± 449.554   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                 1000  avgt   20    83.148 ±  14.009  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm            1000  avgt   20   232.010 ±   7.127    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                      1000  avgt   20     3.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                       1000  avgt   20    17.000                ms
+....
+
+== ea-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis`)
+
+....
+Benchmark                                                            (test)  Mode  Cnt     Score     Error   Units
+FindFirstEagerLazyBenchmark.ecDetectIfNone                                1  avgt   20     3.705 ±   0.194   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate                  1  avgt   20  4130.941 ± 214.977  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm             1  avgt   20    16.000 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                       1  avgt   20   136.000            counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.time                        1  avgt   20   309.000                ms
+FindFirstEagerLazyBenchmark.ecDetectIfNone                              500  avgt   20   382.689 ±  60.527   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate                500  avgt   20    81.779 ±  10.464  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm           500  avgt   20    32.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                     500  avgt   20     4.000            counts
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.time                      500  avgt   20    18.000                ms
+FindFirstEagerLazyBenchmark.ecDetectIfNone                             1000  avgt   20   768.133 ±  91.995   ns/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate               1000  avgt   20    40.419 ±   4.668  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.alloc.rate.norm          1000  avgt   20    32.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectIfNone:gc.count                    1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional                              1  avgt   20     8.828 ±   0.555   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate                1  avgt   20  3470.994 ± 199.747  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm           1  avgt   20    32.000 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                     1  avgt   20   114.000            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.time                      1  avgt   20   261.000                ms
+FindFirstEagerLazyBenchmark.ecDetectOptional                            500  avgt   20   357.806 ±  17.113   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate              500  avgt   20   128.249 ±   5.888  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm         500  avgt   20    48.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                   500  avgt   20     4.000            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.time                    500  avgt   20    13.000                ms
+FindFirstEagerLazyBenchmark.ecDetectOptional                           1000  avgt   20   797.421 ± 123.942   ns/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate             1000  avgt   20    59.024 ±   8.413  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.alloc.rate.norm        1000  avgt   20    48.003 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.count                  1000  avgt   20     2.000            counts
+FindFirstEagerLazyBenchmark.ecDetectOptional:gc.time                   1000  avgt   20    15.000                ms
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                            1  avgt   20     4.014 ±   0.253   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate              1  avgt   20  3819.085 ± 232.388  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm         1  avgt   20    16.000 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                   1  avgt   20   124.000            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.time                    1  avgt   20   290.000                ms
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                          500  avgt   20   359.643 ±  58.624   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate            500  avgt   20    87.103 ±  11.157  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm       500  avgt   20    32.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                 500  avgt   20     4.000            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.time                  500  avgt   20    18.000                ms
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone                         1000  avgt   20   759.875 ±  75.983   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate           1000  avgt   20    40.642 ±   3.911  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm      1000  avgt   20    32.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.count                1000  avgt   20     1.000            counts
+FindFirstEagerLazyBenchmark.ecDetectWithIfNone:gc.time                 1000  avgt   20     4.000                ms
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                          1  avgt   20     4.079 ±   0.309   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate            1  avgt   20  3765.782 ± 275.390  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm       1  avgt   20    16.000 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count                 1  avgt   20   123.000            counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.time                  1  avgt   20   276.000                ms
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                        500  avgt   20   374.362 ±  64.102   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate          500  avgt   20    83.979 ±  11.777  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm     500  avgt   20    32.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count               500  avgt   20     4.000            counts
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.time                500  avgt   20    18.000                ms
+FindFirstEagerLazyBenchmark.ecDetectWithOptional                       1000  avgt   20   747.664 ±  59.296   ns/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate         1000  avgt   20    41.104 ±   3.039  MB/sec
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.alloc.rate.norm    1000  avgt   20    32.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecDetectWithOptional:gc.count              1000  avgt   20       ≈ 0            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                            1  avgt   20     6.817 ±   0.450   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate              1  avgt   20  4498.131 ± 274.293  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm         1  avgt   20    32.000 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                   1  avgt   20   146.000            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.time                    1  avgt   20   325.000                ms
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                          500  avgt   20   354.505 ±  15.602   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate            500  avgt   20   129.414 ±   5.824  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm       500  avgt   20    48.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                 500  avgt   20     4.000            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.time                  500  avgt   20    17.000                ms
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone                         1000  avgt   20   775.844 ± 117.164   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate           1000  avgt   20    60.570 ±   8.420  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.alloc.rate.norm      1000  avgt   20    48.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.count                1000  avgt   20     2.000            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectIfNone:gc.time                 1000  avgt   20    12.000                ms
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                          1  avgt   20    13.250 ±   0.659   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate            1  avgt   20  3464.046 ± 163.765  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm       1  avgt   20    48.000 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count                 1  avgt   20   113.000            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.time                  1  avgt   20   273.000                ms
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                        500  avgt   20   342.918 ±  19.543   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate          500  avgt   20   178.699 ±  10.675  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm     500  avgt   20    64.001 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count               500  avgt   20     6.000            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.time                500  avgt   20    20.000                ms
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional                       1000  avgt   20   741.511 ± 121.291   ns/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate         1000  avgt   20    84.529 ±  11.018  MB/sec
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.alloc.rate.norm    1000  avgt   20    64.002 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.count              1000  avgt   20     4.000            counts
+FindFirstEagerLazyBenchmark.ecLazyDetectOptional:gc.time               1000  avgt   20    19.000                ms
+FindFirstEagerLazyBenchmark.jdkFindFirst                                  1  avgt   20    39.043 ±   2.162   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                    1  avgt   20  4902.718 ± 277.252  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm               1  avgt   20   200.000 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                         1  avgt   20   160.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                          1  avgt   20   388.000                ms
+FindFirstEagerLazyBenchmark.jdkFindFirst                                500  avgt   20  1559.697 ± 168.794   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                  500  avgt   20   133.895 ±  13.916  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm             500  avgt   20   216.005 ±   0.001    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                       500  avgt   20     4.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                        500  avgt   20    17.000                ms
+FindFirstEagerLazyBenchmark.jdkFindFirst                               1000  avgt   20  3749.679 ± 695.359   ns/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate                 1000  avgt   20    57.130 ±   9.705  MB/sec
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.alloc.rate.norm            1000  avgt   20   216.012 ±   0.002    B/op
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.count                      1000  avgt   20     2.000            counts
+FindFirstEagerLazyBenchmark.jdkFindFirst:gc.time                       1000  avgt   20     9.000                ms
+....
+
+== Object counts: histo-coh-on
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkFindFirst |1 |3/3 |7.000 |200.0
+|jdkFindFirst |500 |3/3 |8.001 |216.0
+|jdkFindFirst |1000 |3/3 |8.002 |216.1
+|ecDetectIfNone |1 |3/3 |0.000 |0.0
+|ecDetectIfNone |500 |3/3 |0.000 |0.0
+|ecDetectIfNone |1000 |3/3 |0.000 |0.0
+|ecDetectOptional |1 |3/3 |0.000 |0.0
+|ecDetectOptional |500 |3/3 |0.000 |0.0
+|ecDetectOptional |1000 |3/3 |0.000 |0.0
+|ecDetectWithIfNone |1 |3/3 |0.000 |0.0
+|ecDetectWithIfNone |500 |3/3 |0.000 |0.0
+|ecDetectWithIfNone |1000 |3/3 |0.000 |0.0
+|ecDetectWithOptional |1 |3/3 |0.000 |0.0
+|ecDetectWithOptional |500 |3/3 |0.000 |0.0
+|ecDetectWithOptional |1000 |3/3 |0.000 |0.0
+|ecLazyDetectIfNone |1 |3/3 |0.000 |0.0
+|ecLazyDetectIfNone |500 |3/3 |0.000 |0.0
+|ecLazyDetectIfNone |1000 |3/3 |0.000 |0.0
+|ecLazyDetectOptional |1 |3/3 |0.000 |0.0
+|ecLazyDetectOptional |500 |3/3 |0.000 |0.0
+|ecLazyDetectOptional |1000 |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+jdkFindFirst test=1
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.Optional
+jdkFindFirst test=500
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  java.util.Optional
+jdkFindFirst test=1000
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.002 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  java.util.Optional
+ecDetectIfNone test=1
+    (nothing at or above 0.5 objects per call)
+ecDetectIfNone test=500
+    (nothing at or above 0.5 objects per call)
+ecDetectIfNone test=1000
+    (nothing at or above 0.5 objects per call)
+ecDetectOptional test=1
+    (nothing at or above 0.5 objects per call)
+ecDetectOptional test=500
+    (nothing at or above 0.5 objects per call)
+ecDetectOptional test=1000
+    (nothing at or above 0.5 objects per call)
+ecDetectWithIfNone test=1
+    (nothing at or above 0.5 objects per call)
+ecDetectWithIfNone test=500
+    (nothing at or above 0.5 objects per call)
+ecDetectWithIfNone test=1000
+    (nothing at or above 0.5 objects per call)
+ecDetectWithOptional test=1
+    (nothing at or above 0.5 objects per call)
+ecDetectWithOptional test=500
+    (nothing at or above 0.5 objects per call)
+ecDetectWithOptional test=1000
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectIfNone test=1
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectIfNone test=500
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectIfNone test=1000
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectOptional test=1
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectOptional test=500
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectOptional test=1000
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-coh-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkFindFirst |1 |3/3 |7.000 |224.0
+|jdkFindFirst |500 |3/3 |8.001 |240.0
+|jdkFindFirst |1000 |3/3 |8.001 |240.1
+|ecDetectIfNone |1 |3/3 |0.000 |0.0
+|ecDetectIfNone |500 |3/3 |0.000 |0.0
+|ecDetectIfNone |1000 |3/3 |0.000 |0.0
+|ecDetectOptional |1 |3/3 |0.000 |0.0
+|ecDetectOptional |500 |3/3 |0.000 |0.0
+|ecDetectOptional |1000 |3/3 |0.000 |0.0
+|ecDetectWithIfNone |1 |3/3 |0.000 |0.0
+|ecDetectWithIfNone |500 |3/3 |0.000 |0.0
+|ecDetectWithIfNone |1000 |3/3 |0.000 |0.0
+|ecDetectWithOptional |1 |3/3 |0.000 |0.0
+|ecDetectWithOptional |500 |3/3 |0.000 |0.0
+|ecDetectWithOptional |1000 |3/3 |0.000 |0.0
+|ecLazyDetectIfNone |1 |3/3 |0.000 |0.0
+|ecLazyDetectIfNone |500 |3/3 |0.000 |0.0
+|ecLazyDetectIfNone |1000 |3/3 |0.000 |0.0
+|ecLazyDetectOptional |1 |3/3 |0.000 |0.0
+|ecLazyDetectOptional |500 |3/3 |0.000 |0.0
+|ecLazyDetectOptional |1000 |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+jdkFindFirst test=1
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.Optional
+jdkFindFirst test=500
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     56.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.Optional
+jdkFindFirst test=1000
+      1.001 obj     56.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.Optional
+ecDetectIfNone test=1
+    (nothing at or above 0.5 objects per call)
+ecDetectIfNone test=500
+    (nothing at or above 0.5 objects per call)
+ecDetectIfNone test=1000
+    (nothing at or above 0.5 objects per call)
+ecDetectOptional test=1
+    (nothing at or above 0.5 objects per call)
+ecDetectOptional test=500
+    (nothing at or above 0.5 objects per call)
+ecDetectOptional test=1000
+    (nothing at or above 0.5 objects per call)
+ecDetectWithIfNone test=1
+    (nothing at or above 0.5 objects per call)
+ecDetectWithIfNone test=500
+    (nothing at or above 0.5 objects per call)
+ecDetectWithIfNone test=1000
+    (nothing at or above 0.5 objects per call)
+ecDetectWithOptional test=1
+    (nothing at or above 0.5 objects per call)
+ecDetectWithOptional test=500
+    (nothing at or above 0.5 objects per call)
+ecDetectWithOptional test=1000
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectIfNone test=1
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectIfNone test=500
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectIfNone test=1000
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectOptional test=1
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectOptional test=500
+    (nothing at or above 0.5 objects per call)
+ecLazyDetectOptional test=1000
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-ea-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkFindFirst |1 |3/3 |7.000 |200.0
+|jdkFindFirst |500 |3/3 |8.002 |216.1
+|jdkFindFirst |1000 |3/3 |8.377 |292.8
+|ecDetectIfNone |1 |3/3 |1.000 |16.0
+|ecDetectIfNone |500 |3/3 |2.000 |32.0
+|ecDetectIfNone |1000 |3/3 |2.000 |32.0
+|ecDetectOptional |1 |3/3 |2.000 |32.0
+|ecDetectOptional |500 |3/3 |3.000 |48.0
+|ecDetectOptional |1000 |3/3 |3.000 |48.0
+|ecDetectWithIfNone |1 |3/3 |1.000 |16.0
+|ecDetectWithIfNone |500 |3/3 |2.000 |32.0
+|ecDetectWithIfNone |1000 |3/3 |2.000 |32.0
+|ecDetectWithOptional |1 |3/3 |1.000 |16.0
+|ecDetectWithOptional |500 |3/3 |2.000 |32.0
+|ecDetectWithOptional |1000 |3/3 |2.000 |32.0
+|ecLazyDetectIfNone |1 |3/3 |2.000 |32.0
+|ecLazyDetectIfNone |500 |3/3 |3.000 |48.0
+|ecLazyDetectIfNone |1000 |3/3 |3.000 |48.0
+|ecLazyDetectOptional |1 |3/3 |3.000 |48.0
+|ecLazyDetectOptional |500 |3/3 |4.000 |64.0
+|ecLazyDetectOptional |1000 |3/3 |4.000 |64.0
+|===
+
+.Per-class breakdown
+....
+jdkFindFirst test=1
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+jdkFindFirst test=500
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.002 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+jdkFindFirst test=1000
+      0.198 obj     72.5 B  [B
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.004 obj     48.2 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.FindOps$FindSink$OfRef
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.lang.Integer
+      0.174 obj      4.2 B  java.lang.String
+ecDetectIfNone test=1
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+ecDetectIfNone test=500
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecDetectIfNone test=1000
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecDetectOptional test=1
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+ecDetectOptional test=500
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  java.lang.Integer
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+ecDetectOptional test=1000
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecDetectWithIfNone test=1
+      1.000 obj     16.0 B  org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2
+ecDetectWithIfNone test=500
+      1.000 obj     16.0 B  org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2
+      1.000 obj     16.0 B  java.lang.Integer
+ecDetectWithIfNone test=1000
+      1.000 obj     16.0 B  org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2
+      1.000 obj     16.0 B  java.lang.Integer
+ecDetectWithOptional test=1
+      1.000 obj     16.0 B  java.util.Optional
+ecDetectWithOptional test=500
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  java.lang.Integer
+ecDetectWithOptional test=1000
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  java.lang.Integer
+ecLazyDetectIfNone test=1
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+ecLazyDetectIfNone test=500
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+      1.000 obj     16.0 B  java.lang.Integer
+ecLazyDetectIfNone test=1000
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecLazyDetectOptional test=1
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+ecLazyDetectOptional test=500
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+      1.000 obj     16.0 B  java.lang.Integer
+ecLazyDetectOptional test=1000
+      1.000 obj     16.0 B  conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.Optional
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+      1.000 obj     16.0 B  java.lang.Integer
+....
+
+== Commands
+
+....
+mvn -Pbench clean compile
+mvn -Pbench package
+# main runs, CONFIG/FLAGS = coh-on: -XX:+UseCompactObjectHeaders | coh-off: -XX:-UseCompactObjectHeaders
+#                          ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\.FindFirstEagerLazyBenchmark\." \
+  -prof gc -jvmArgsAppend "-XX:+UseG1GC -Xms2g -Xmx2g ${FLAGS}" \
+  -rf text -rff generated/runs/20261015-0406/shakers/raw/FindFirstEagerLazy-${CONFIG}.txt -o generated/runs/20261015-0406/shakers/raw/FindFirstEagerLazy-${CONFIG}-console.txt
+# object counts, CONFIG/COH = histo-coh-on: -XX:+UseCompactObjectHeaders | histo-coh-off: -XX:-UseCompactObjectHeaders
+#                            histo-ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." -f 1 -wi 5 -w 1s -i 3 -r 100ms \
+  -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${COH}" -prof prof.HistoProfiler -prof gc \
+  -rf text -rff generated/runs/20261015-0406/shakers/raw/all-${CONFIG}.txt -o generated/runs/20261015-0406/shakers/raw/all-${CONFIG}-console.txt
+# HISTO lines go to the console, not to the -o file; they were saved to generated/runs/20261015-0406/shakers/raw/all-${CONFIG}-histo.txt
+....

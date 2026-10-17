@@ -1,0 +1,54 @@
+////
+Slide template: one file = one slide.
+
+Files
+* Name: <series>_<deck>_<slide>.adoc, e.g. 03_Definitions_01_02.adoc = series 03_Definitions, deck 01, slide 02.
+  Slides run in file-name order. Slide 01 of a deck is its title slide; 00_02 is the index (agenda).
+* Copy this file, rename it, keep the header block below, write the slide, then run
+    java src/main/java/tools/presentation/SlideNav.java .      (or the full build: mvn -Pslides process-resources)
+  SlideNav.java rewrites the Previous / Index / Next links at the end of every slide (after the marker comment)
+  and the deck file <series>_<deck>.adoc, which includes the slides for the reveal.js and PDF builds.
+  Never edit below the marker or the deck files by hand.
+* A new deck also needs a title image: add its number, title and subtitle to SECTIONS (or its series' own array, e.g. PROBLEM_SECTIONS) in
+  src/main/java/tools/presentation/SlideImages.java (the build draws images/banner-<deck>.svg).
+
+What fits on one slide (one heading "==", nothing may need scrolling); pick one main element:
+  - text:    a [.lead] sentence + up to 4 one-line bullets (about 12 words each)
+  - diagram: image::<file>.svg[<alt>,role=diagram] + up to 2 bullets
+  - screenshot: a [.lead] line + image::<file>.png[<alt>,role=screenshot], no bullets
+  - code:    [source,java] with up to 14 lines (Allman braces) + up to 2 bullets
+  - table:   up to 7 rows + header
+  - title:   [%notitle.title-slide,background-image=banner-<deck>.svg,background-size=cover]
+             == <Deck title>
+             image::banner-<deck>.svg[<Deck title>,role=title-slide]
+  - references (last slide of a deck): [.refs,background-color="#EAF2F8"] == References, Oracle links only
+If it does not fit, split it into two slides or shorten the sentences.
+Project numbers and extra detail go in [.notes] (speaker notes; hidden on the plain pages).
+
+Presenting
+* mvn -Pslides process-resources builds build/plain/<slide>.html (one page per slide, no JavaScript,
+  click Next / Previous / Index), build/slides/<deck>.html (reveal.js) and build/pdf/<deck>.pdf
+  (mvn -Pslides generate-resources skips the PDFs).
+* The IntelliJ preview shows the content only; the slide look needs the build.
+////
+// <Deck title>: slide <n>. The deck file <series>_<deck>.adoc includes it.
+ifndef::deck[]
+:deck-number: 00
+:description: One line saying what this deck covers
+include::_deck-settings.adoc[]
+endif::[]
+
+[background-color="#F5F7FA"]
+== What is X?
+
+[.lead]
+X is one plain sentence that defines the term.
+
+* First point, one line.
+* Second point, one line.
+* Third point, one line.
+
+[.notes]
+--
+Project numbers and anything that does not fit on the slide.
+--
