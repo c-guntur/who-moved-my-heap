@@ -18,6 +18,11 @@
         <eclipse-collections.version>13.0.0</eclipse-collections.version>
         <jmh.version>1.37</jmh.version>
         <jol.version>0.17</jol.version>
+
+        <playwright.version>1.56.0</playwright.version>
+        <asciidoctor-maven-plugin.version>3.2.0</asciidoctor-maven-plugin.version>
+        <asciidoctorj-revealjs.version>5.2.0</asciidoctorj-revealjs.version>
+        <revealjs.version>4.1.3</revealjs.version>
     </properties>
 
     <dependencyManagement>
@@ -47,16 +52,30 @@
             <version>${eclipse-collections.version}</version>
         </dependency>
 
+        <!-- Drives headless Chrome for the PDFs; only on the classpath with -Pslides -->
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>${playwright.version}</version>
+        </dependency>
+
+        <!--HTML: plain pages (html5) and reveal.js decks -->
+        <dependency>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctorj-revealjs</artifactId>
+            <version>${asciidoctorj-revealjs.version}</version>
+        </dependency>
+
         <!-- Testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-params</artifactId>
-            <scope>test</scope>
+<!--            <scope>test</scope>-->
         </dependency>
 
         <!-- Benchmarking -->
@@ -200,7 +219,9 @@
                             <execution>
                                 <id>bench-sources</id>
                                 <phase>generate-sources</phase>
-                                <goals><goal>add-source</goal></goals>
+                                <goals>
+                                    <goal>add-source</goal>
+                                </goals>
                                 <configuration>
                                     <sources>
                                         <source>${project.basedir}/src/test/java</source>
@@ -251,19 +272,7 @@
                 <slides.src>${project.basedir}/assets/presentation</slides.src>
                 <slides.tools>${project.basedir}/src/main/java/tools/presentation</slides.tools>
                 <slides.out>${project.basedir}/assets/presentation/build</slides.out>
-                <asciidoctor-maven-plugin.version>3.2.0</asciidoctor-maven-plugin.version>
-                <asciidoctorj-revealjs.version>5.2.0</asciidoctorj-revealjs.version>
-                <revealjs.version>4.1.3</revealjs.version>
-                <playwright.version>1.56.0</playwright.version>
             </properties>
-            <dependencies>
-                <!-- Drives headless Chrome for the PDFs; only on the classpath with -Pslides -->
-                <dependency>
-                    <groupId>com.microsoft.playwright</groupId>
-                    <artifactId>playwright</artifactId>
-                    <version>${playwright.version}</version>
-                </dependency>
-            </dependencies>
             <build>
                 <plugins>
                     <!-- 1. Navigation links, deck files and images -->
@@ -341,10 +350,13 @@
                                             <version>${revealjs.version}</version>
                                             <outputDirectory>${slides.out}/slides/reveal.js</outputDirectory>
                                             <overWrite>true</overWrite>
-                                            <includes>META-INF/resources/webjars/reveal.js/${revealjs.version}/**</includes>
+                                            <includes>META-INF/resources/webjars/reveal.js/${revealjs.version}/**
+                                            </includes>
                                             <fileMappers>
                                                 <org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
-                                                    <pattern>^META-INF/resources/webjars/reveal.js/${revealjs.version}/</pattern>
+                                                    <pattern>
+                                                        ^META-INF/resources/webjars/reveal.js/${revealjs.version}/
+                                                    </pattern>
                                                     <replacement>./</replacement>
                                                 </org.codehaus.plexus.components.io.filemappers.RegExpFileMapper>
                                             </fileMappers>
