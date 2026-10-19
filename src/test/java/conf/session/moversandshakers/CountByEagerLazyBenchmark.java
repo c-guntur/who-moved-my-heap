@@ -38,8 +38,8 @@ public class CountByEagerLazyBenchmark
     @Benchmark
     public Map<Integer, Long> jdkCountBy()
     {
-        return jdkList.stream()
-                .collect(Collectors.groupingBy(each -> each % test, Collectors.counting()));
+        return Map.copyOf(jdkList.stream()
+                .collect(Collectors.groupingBy(each -> each % test, Collectors.counting())));
     }
 
     @Benchmark
@@ -57,6 +57,6 @@ public class CountByEagerLazyBenchmark
     @Benchmark
     public Bag<Integer> ecLazyCountBy()
     {
-        return ecList.asLazy().countBy(each -> each % test);
+        return ecList.asLazy().countBy(each -> each % test).toImmutable();
     }
 }
