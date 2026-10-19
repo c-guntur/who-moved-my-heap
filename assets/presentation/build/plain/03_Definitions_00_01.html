@@ -478,6 +478,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1 .imageblock.diagram { margin: .2em 0 .8em; }
   #content > .sect1 .imageblock.diagram img { display: block; max-width: 100%; max-height: calc(var(--H) * .42);
       width: auto; border: 1px solid var(--line); border-radius: .3em; background: #fff; }
+  /* screenshot slides (role "screenshot"): a larger image area than a diagram */
+  #content > .sect1 .imageblock.screenshot { margin: .2em 0 .6em; }
+  #content > .sect1 .imageblock.screenshot img { display: block; max-width: 100%; max-height: calc(var(--H) * .55);
+      width: auto; border: 1px solid var(--line); border-radius: .3em; background: #fff; }
   #content > .sect1 table.tableblock { font-size: .82em; margin-bottom: .6em; }
   #content > .sect1 table.tableblock td, #content > .sect1 table.tableblock th { padding: .35em .6em; }
 
@@ -504,6 +508,17 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
   #content > .sect1.title-slide::after { color: #8FA3B8; }
 
+  /* cover page (00_Index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
+  #content > .sect1.cover > h2 { font-size: 2.2em; }
+  #content > .sect1.cover table.cover-grid { width: 100%; margin: .2em 0; border: none; background: none; font-size: .9em; }
+  #content > .sect1.cover table.cover-grid td { border: none; background: none; }
+  #content > .sect1.cover .imageblock.cover-art img { max-height: calc(var(--H) * .36); width: auto; }
+  #content > .sect1.cover .imageblock.qr { margin-bottom: .3em; }
+  #content > .sect1.cover .imageblock.qr img { max-height: calc(var(--H) * .28); width: auto; padding: .3em;
+      background: #fff; border: 1px solid var(--line); border-radius: .3em; }
+  #content > .sect1.cover .paragraph.disclaimer { margin: auto 0 .5em; text-align: center; font-size: .6em; color: #8A96A3; }
+  #content > .sect1.cover .paragraph.deck-nav { margin-top: 0; }
+
 </style>
 </head>
 <body class="article">
@@ -519,7 +534,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="paragraph deck-nav">
-<p>‹ Previous &#160;|&#160; <a href="03_Definitions_00_02.html">⌂ Index</a> &#160;|&#160; <a href="03_Definitions_00_02.html">Next ›</a> &#160;&#160; <span class="deck-pos">00 · 1/2</span></p>
+<p><a href="00_Index.html">‹ Previous</a> &#160;|&#160; <a href="03_Definitions_00_02.html">⌂ Index</a> &#160;|&#160; <a href="03_Definitions_00_02.html">Next ›</a> &#160;&#160; <span class="deck-pos">00 · 1/2</span></p>
 </div>
 </div>
 </div>

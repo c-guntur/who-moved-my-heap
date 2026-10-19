@@ -8,5 +8,3 @@ include::_deck-settings.adoc[]
 include::01_Intro_01_01.adoc[]
 
 include::01_Intro_01_02.adoc[]
-
-include::01_Intro_01_03.adoc[]

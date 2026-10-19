@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Draws the title-slide (banner-NN, banner-intro-NN, banner-problem-NN), diagram and placeholder SVGs for the slides (assets/presentation/images).
+ * Draws the title-slide (banner-NN, banner-intro-NN, banner-problem-NN, banner-appendix-NN), diagram and placeholder SVGs for the slides (assets/presentation/images).
  *
  * No dependencies, so it runs straight from source.
  * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideImages.java .
@@ -52,6 +52,10 @@ public class SlideImages
     private static final String[][] PROBLEM_SECTIONS = {
             {"00", "Problem statement", "What JDK collections and streams leave on the heap"}};
 
+    // Title slide of the 07_Appendix series (banner-appendix-NN.svg): deck number, title and subtitle
+    private static final String[][] APPENDIX_SECTIONS = {
+            {"00", "Appendix", "References for this talk"}};
+
     public static void main(String[] args) throws IOException
     {
         Path out = Path.of(args[0], "assets", "presentation", "images");
@@ -71,6 +75,11 @@ public class SlideImages
         {
             files.put("banner-problem-" + section[0] + ".svg",
                     banner("WHO MOVED MY HEAP  ·  02 PROBLEM STATEMENT", section[0], section[1], section[2]));
+        }
+        for (String[] section : APPENDIX_SECTIONS)
+        {
+            files.put("banner-appendix-" + section[0] + ".svg",
+                    banner("WHO MOVED MY HEAP  ·  07 APPENDIX", section[0], section[1], section[2]));
         }
         files.put("diagram-01-anonymous-class.svg", anon());
         files.put("diagram-02-integer-cache.svg", pool());

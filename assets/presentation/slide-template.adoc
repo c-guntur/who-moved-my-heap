@@ -21,9 +21,16 @@ What fits on one slide (one heading "==", nothing may need scrolling); pick one 
   - title:   [%notitle.title-slide,background-image=banner-<deck>.svg,background-size=cover]
              == <Deck title>
              image::banner-<deck>.svg[<Deck title>,role=title-slide]
-  - references (last slide of a deck): [.refs,background-color="#EAF2F8"] == References, Oracle links only
+  - references (last slide of a deck): [.refs,background-color="#EAF2F8"] == References, Oracle links only;
+             01_Intro keeps its references in the appendix instead: 07_Appendix_00_01.adoc, a Section | Reference table
+  - diagram block: [plantuml] / [mermaid] / ... drawn by Kroki at build time (pom.xml, -Dkroki.url=...);
+             a QR code is <qrcode:URL{scale=6}> inside a PlantUML legend (00_Index.adoc uses images/qrcode.png,
+             and that PlantUML QR code from kroki.io only on GitHub)
 If it does not fit, split it into two slides or shorten the sentences.
 Project numbers and extra detail go in [.notes] (speaker notes; hidden on the plain pages).
+
+The cover of the whole talk is 00_Index.adoc (role "cover"), followed by opening pages 00_Index_01.adoc, ...
+(00_Index_01 is the audience question, role "question" with one [.ask] line); they are not part of a series.
 
 Presenting
 * mvn -Pslides process-resources builds build/plain/<slide>.html (one page per slide, no JavaScript,

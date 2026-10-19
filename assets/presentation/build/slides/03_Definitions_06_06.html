@@ -429,10 +429,19 @@ ul.byline li + li {
   .reveal code { font-size: .92em; }
   .reveal .imageblock.diagram img { max-height: 380px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
       background: #fff; }
+  .reveal .imageblock.screenshot img { max-height: 540px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
+      background: #fff; }
   .reveal table { font-size: .8em; }
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  .reveal .slides section.cover h2 { font-size: 2.2em; }
+  .reveal table.cover-grid, .reveal table.cover-grid td { border: none; font-size: .9em; }
+  .reveal .imageblock.cover-art img { max-height: 330px; margin: 0; }
+  .reveal .imageblock.qr img { max-height: 250px; margin: 0; padding: 6px; background: #fff; border: 1px solid #C9D2DC;
+      border-radius: 8px; }
+  .reveal .disclaimer { position: absolute; left: 70px; right: 70px; bottom: 110px; text-align: center; font-size: .55em;
+      color: #8A96A3; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_references" class="refs" data-background-color="#EAF2F8"><h2>References</h2><div class="slide-content"><div class="ulist"><ul><li><p><a href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html">The Java Tutorials: Lambda Expressions</a></p></li><li><p><a href="https://docs.oracle.com/javase/specs/jls/se25/html/jls-15.html#jls-15.27">JLS SE 25, 15.27: Lambda Expressions</a> (15.27.2 effectively final, 15.27.4 evaluation)</p></li><li><p><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/invoke/LambdaMetafactory.html"><code>LambdaMetafactory</code> (Java SE 25 API)</a></p></li><li><p><a href="https://www.oracle.com/technical-resources/articles/java/architect-lambdas-part1.html">Java 8: Lambdas, Part 1</a> (Oracle technical article)</p></li></ul></div>
 <div class="paragraph deck-nav"><p><a href="03_Definitions_06_05.html">‹ Previous</a> &#160;|&#160; <a href="03_Definitions_00_02.html">⌂ Index</a> &#160;|&#160; <a href="03_Definitions_07_01.html">Next ›</a> &#160;&#160; <span class="deck-pos">06 · 6/6</span></p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;

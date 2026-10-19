@@ -429,10 +429,19 @@ ul.byline li + li {
   .reveal code { font-size: .92em; }
   .reveal .imageblock.diagram img { max-height: 380px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
       background: #fff; }
+  .reveal .imageblock.screenshot img { max-height: 540px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
+      background: #fff; }
   .reveal table { font-size: .8em; }
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  .reveal .slides section.cover h2 { font-size: 2.2em; }
+  .reveal table.cover-grid, .reveal table.cover-grid td { border: none; font-size: .9em; }
+  .reveal .imageblock.cover-art img { max-height: 330px; margin: 0; }
+  .reveal .imageblock.qr img { max-height: 250px; margin: 0; padding: 6px; background: #fff; border: 1px solid #C9D2DC;
+      border-radius: 8px; }
+  .reveal .disclaimer { position: absolute; left: 70px; right: 70px; bottom: 110px; text-align: center; font-size: .55em;
+      color: #8A96A3; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_compact_object_headers" class="title-slide" data-background-image="images/banner-04.svg" data-background-size="cover"><div class="slide-content"><div class="imageblock title-slide"><img src="images/banner-04.svg" alt="Compact object headers"></div></div></section>
 <section id="_what_is_a_compact_object_header" data-background-color="#F5F7FA"><h2>What is a compact object header?</h2><div class="slide-content"><div class="paragraph lead"><p>The object header shrinks from 12 bytes to one 8-byte word.</p></div>
 <div class="ulist"><ul><li><p>A header holds the mark word (hash, lock, GC state) and a class pointer.</p></li><li><p>Product feature in JDK 25 (JEP 519); experimental in JDK 24 (JEP 450).</p></li><li><p>Off by default: <code>-XX:+UseCompactObjectHeaders</code>.</p></li></ul></div></div></section>

@@ -302,7 +302,7 @@ mvn -Pslides process-resources
 open assets/presentation/build/plain/03_Definitions_00_01.html
 ----
 
-. Needs only Java 25 and Maven (no Python, Ruby gems or Node.js).
+. Needs only Java 25 and Maven (no Python, Ruby gems or Node.js), plus network access to Kroki for diagrams (below).
 . `generate-resources` makes the HTML only. It runs `SlideNav.java` (rewrites each slide's Previous /
   Index / Next links and the deck files) and `SlideImages.java` (draws the title and diagram images),
   then converts the AsciiDoc with AsciidoctorJ.
@@ -313,13 +313,19 @@ open assets/presentation/build/plain/03_Definitions_00_01.html
 .. `plain/<series>_<deck>_<slide>.html`: one page per slide, no JavaScript. Present from here.
 .. `slides/<series>_<deck>.html`: each whole deck as reveal.js (F full screen, S speaker notes),
    with reveal.js unpacked next to it so it works offline.
-.. `pdf/<series>_<deck>.pdf`: each whole deck, one 16:9 slide per page (`process-resources` only).
+.. `pdf/<series>_<deck>.pdf`: each whole deck, one 16:9 slide per page (`process-resources` only), plus `pdf/00_Index*.pdf` (the opening pages).
 .. The deck files and `slide-template.adoc` are converted to HTML as well; those extra pages can be ignored.
 . The PDFs use the browser named in the `CHROME` environment variable
   (`CHROME=/path/to/chrome mvn -Pslides process-resources`), else an installed Google Chrome or
   Chromium (macOS or Linux), else the Chromium pre-installed under `PLAYWRIGHT_BROWSERS_PATH` (the
   cloud sandbox has one). Without any of these, Playwright downloads its own Chromium once into its cache.
+. Diagram blocks in a slide (`[plantuml]`, `[mermaid]`, ...) are drawn by a Kroki server through `asciidoctorj-diagram`, so the build needs
+  network access to it. The default is `https://kroki.io`; for a local one run
+  `docker run -p 8000:8000 yuzutech/kroki` and add `-Dkroki.url=http://localhost:8000`. When the server
+  cannot be reached the build still succeeds, but the slide shows "Failed to generate image" instead.
 . `open` (macOS) shows the first slide in the browser; on Linux use `xdg-open`. Follow the Next links from there.
+  `plain/00_Index.html` is the cover of the whole talk; Next goes to the audience question
+  (`00_Index_01.html`) and then starts `01_Intro`.
 
 == Add or change a slide
 
@@ -333,10 +339,12 @@ java src/main/java/tools/presentation/SlideImages.java .
 . Each slide is its own file, `<series>_<deck>_<slide>.adoc`. Start from `slide-template.adoc`,
   which also lists how much fits on one slide.
 . `SlideNav.java` rewrites the Previous / Index / Next links at the bottom of every slide (in file-name
-  order) and regenerates the deck files `<series>_<deck>.adoc`. Run it after adding, removing or
+  order) and regenerates the deck files `<series>_<deck>.adoc`. The opening pages (`00_Index.adoc`, then
+  `00_Index_01.adoc`, ...) link to each other and on to the first slide, and each series continues into the
+  next (the last Intro slide goes on to `02_ProblemStatement_00_00`). Run it after adding, removing or
   renaming a slide. The Maven build runs it for you.
 . `SlideImages.java` redraws the title banners (`banner-*.svg`), the `diagram-*.svg` images and the `placeholder-*.svg` screenshot frames in `assets/presentation/images/`.
-  Run it after changing a title or diagram in it (a new title slide needs a row in `SECTIONS`, `INTRO_SECTIONS` or `PROBLEM_SECTIONS`, one array per series). The Maven build runs it for you.
+  Run it after changing a title or diagram in it (a new title slide needs a row in `SECTIONS`, `INTRO_SECTIONS`, `PROBLEM_SECTIONS` or `APPENDIX_SECTIONS`, one array per series). The Maven build runs it for you.
 . Both are plain Java 25 source files with no dependencies, so `java <file>.java` runs them directly.
 . Output: changed `.adoc` files and images in `assets/presentation/`; nothing in `build/`.
 

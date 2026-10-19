@@ -83,6 +83,8 @@ off, then on.
   `mvn -v` prints `Java version: 25...`.
 * No Python, Ruby or Node.js. Optional: Mermaid CLI (`MMDC=<path to mmdc>`) to parse-check the
   generated `.mmd` charts, and Google Chrome or Chromium for the slide PDFs.
+* Network access to a Kroki server for diagram blocks in the slides (default
+  `https://kroki.io`, or a local one with `-Dkroki.url=...`).
 * About 16 GB of free RAM for the object-count runs (12 GB heap).
 
 Libraries (from `pom.xml`): JMH 1.37, JOL 0.17, Eclipse Collections 13.0.0, JUnit 6.

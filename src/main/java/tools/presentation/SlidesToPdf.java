@@ -27,9 +27,9 @@ import org.eclipse.collections.impl.factory.Lists;
  */
 public class SlidesToPdf
 {
-    // Deck files are <series>_<deck>.html (e.g. 03_Definitions_05.html); the per-slide pages also
+    // Deck files are <series>_<deck>.html (e.g. 03_Definitions_05.html), plus the opening pages 00_Index.html, 00_Index_01.html, ...; the per-slide pages also
     // land in build/slides when Maven converts every .adoc file, and are skipped.
-    private static final Pattern DECK = Pattern.compile("\\d+_[A-Za-z]+_\\d\\d\\.html");
+    private static final Pattern DECK = Pattern.compile("\\d+_[A-Za-z]+_\\d\\d\\.html|00_Index(_\\d\\d)?\\.html");
 
     private static final String[] INSTALLED_CHROME = {
             "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",

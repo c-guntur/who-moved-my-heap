@@ -240,6 +240,7 @@ list before reporting (S8, M6).
 | A36 | Claude lists obsolete files for the local Mac user to delete; it never deletes them | G11 |
 | A37 | Slides: one file per slide, no JavaScript, Oracle-only references, HTML and PDFs built with Maven | D |
 | A38 | An interrupted run can be resumed from the finished steps instead of starting over | P7, Q3.9 |
+| A39 | Diagram blocks and the cover QR code are rendered by Kroki; the talk has one cover page | D1.8, D2.8 |
 
 ---
 
@@ -796,13 +797,26 @@ list before reporting (S8, M6).
   of at most 7 rows. Project numbers go in `[.notes]`.
 - **D1.3** No `=` document title. The first slide of a deck is
   `[%notitle.title-slide,background-image=banner-NN.svg]` `== <title>` with the banner image; its
-  heading becomes the tab title. The last slide of a deck is References.
+  heading becomes the tab title. In `02_ProblemStatement` and `03_Definitions` the last slide of a deck
+  is References; the `01_Intro` references live in the appendix (D1.9).
 - **D1.4** References link to Oracle pages only (for example the Java SE documentation on
   docs.oracle.com); no Eclipse Collections or other links.
 - **D1.5** No JavaScript anywhere in the decks. Code colouring is done by rouge at build time.
 - **D1.6** The deck files `<series>_<deck>.adoc` are generated include-assemblers; do not edit them by hand.
 - **D1.7** Every slide has a guarded header (`ifndef::deck[]`) and a navigation block after a marker
   comment; `SlideNav.java` rewrites both (D2.3).
+- **D1.8** `00_Index.adoc` is the cover of the whole talk (title, Duke image, QR code and link to the
+  content, disclaimer), styled by the `cover` role in both docinfo files. It belongs to no series and
+  opens a short run of opening pages `00_Index_NN.adoc`; `00_Index_01.adoc` is the audience question
+  (role `question`, one large `[.ask]` line). `SlideNav.java` chains the opening pages in file-name
+  order and sends the last one's Next to the first slide of `01_Intro`, whose Previous links back to it.
+  The series follow each other: the last slide of a series links Next to the first slide of the next
+  series (e.g. `01_Intro` ends on `02_ProblemStatement_00_00.adoc`), and that slide links Previous back.
+  `SlidesToPdf.java` prints each opening page as `pdf/00_Index*.pdf`.
+- **D1.9** `07_Appendix` collects reference links at the end of the talk: `07_Appendix_00_00.adoc` (title,
+  `banner-appendix-00.svg`) and one references slide per series, several sections on one slide as a
+  table (Section | Reference, at most 7 rows, D1.2). `07_Appendix_00_01.adoc` holds the `01_Intro`
+  references (jmap, jcmd, jps, jstat, JOL); each section name links back to that tool's first slide.
 
 ### D2. Build (stage `slides`)
 
@@ -811,7 +825,8 @@ list before reporting (S8, M6).
   mvn -Pslides generate-resources      # HTML only
   mvn -Pslides process-resources       # HTML and PDFs (what Pipeline.java slides runs)
   ```
-- **D2.2** Needs only Java 25 and Maven (no Python, Ruby gems or Node.js).
+- **D2.2** Needs only Java 25 and Maven (no Python, Ruby gems or Node.js), plus network access to the
+  Kroki server for diagram blocks (D2.8).
 - **D2.3** `generate-resources` runs `SlideNav.java` (rewrites each slide's Previous / Index / Next
   links and the deck files) and `SlideImages.java` (draws `images/banner-NN.svg` and the
   `diagram-*.svg` images), then converts the AsciiDoc with AsciidoctorJ.
@@ -829,12 +844,22 @@ list before reporting (S8, M6).
   build (or `java src/main/java/tools/presentation/SlideNav.java .` and `SlideImages.java .` by
   hand). A new title slide needs a row in `SlideImages.java`: `SECTIONS` for `03_Definitions`
   (`banner-NN.svg`), `INTRO_SECTIONS` for `01_Intro` (`banner-intro-NN.svg`), `PROBLEM_SECTIONS` for
-  `02_ProblemStatement` (`banner-problem-NN.svg`); a new series gets its own array and banner prefix.
+  `02_ProblemStatement` (`banner-problem-NN.svg`), `APPENDIX_SECTIONS` for `07_Appendix`
+  (`banner-appendix-NN.svg`); a new series gets its own array and banner prefix.
 - **D2.6.1** Screenshot slides use `image::<file>.png[<alt>,role=screenshot]` (a larger image area than
   `role=diagram`) with one `[.lead]` line and no bullets. Until a screenshot exists the slide shows a
   `placeholder-*.svg` drawn by `SlideImages.java`; the comment above the image line names the PNG to add.
 - **D2.7** Check: following Next from the first slide reaches every slide, and no slide scrolls at
   the usual window sizes.
+- **D2.8** Diagram blocks (`[plantuml]`, `[mermaid]`, `[graphviz]`, ...) are rendered by Kroki through
+  `asciidoctorj-diagram` in the `slides` profile (`diagram-server-url` = property `kroki.url`, default
+  `https://kroki.io`; `diagram-server-type` = `kroki_io`). Kroki has no QR code type, so a QR code is a
+  `[plantuml]` block with `<qrcode:URL{scale=6}>` in a legend. The cover `00_Index.adoc` shows the
+  committed `images/qrcode.png` in the slide build (no network needed) and, on GitHub (`env-github`), the
+  same PlantUML QR code as an image URL served by kroki.io.
+  `plantuml-preprocess` is `off` so no local PlantUML is needed. A local server:
+  `docker run -p 8000:8000 yuzutech/kroki`, then `mvn -Pslides process-resources -Dkroki.url=http://localhost:8000`.
+  If the server cannot be reached the build still succeeds and the slide shows "Failed to generate image".
 
 ---
 
@@ -857,3 +882,5 @@ list before reporting (S8, M6).
 - **W8** A restarted container kills the `Pipeline.java` process but keeps the files on disk. Check
   that no benchmark process is left running, then continue with `--resume` (P7). A background watcher
   job in the cloud sandbox stops after 2 hours; start it again, the pipeline itself is not affected.
+- **W9** The cloud sandbox cannot reach `kroki.io` (blocked by its network policy). Build the slides
+  there against a local Kroki-compatible server (D2.8), or build them on the local Mac.

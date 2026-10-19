@@ -429,10 +429,19 @@ ul.byline li + li {
   .reveal code { font-size: .92em; }
   .reveal .imageblock.diagram img { max-height: 380px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
       background: #fff; }
+  .reveal .imageblock.screenshot img { max-height: 540px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
+      background: #fff; }
   .reveal table { font-size: .8em; }
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  .reveal .slides section.cover h2 { font-size: 2.2em; }
+  .reveal table.cover-grid, .reveal table.cover-grid td { border: none; font-size: .9em; }
+  .reveal .imageblock.cover-art img { max-height: 330px; margin: 0; }
+  .reveal .imageblock.qr img { max-height: 250px; margin: 0; padding: 6px; background: #fff; border: 1px solid #C9D2DC;
+      border-radius: 8px; }
+  .reveal .disclaimer { position: absolute; left: 70px; right: 70px; bottom: 110px; text-align: center; font-size: .55em;
+      color: #8A96A3; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_where_the_4_bytes_matter" data-background-color="#F5F7FA"><h2>Where the 4 bytes matter</h2><div class="slide-content"><div class="imageblock diagram"><img src="images/diagram-04-object-headers.svg" alt="HashMap$Node 32 B vs 24 B"></div>
 <div class="ulist"><ul><li><p>An object only shrinks if it then fits a smaller 8-byte boundary.</p></li><li><p>Less heap and less GC work for object-heavy data.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>Compact headers trim the JDK stream garbage by 16 to 24 B per call (7 to 11%); the object count stays

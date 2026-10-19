@@ -643,10 +643,19 @@ pre.rouge {
   .reveal code { font-size: .92em; }
   .reveal .imageblock.diagram img { max-height: 380px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
       background: #fff; }
+  .reveal .imageblock.screenshot img { max-height: 540px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
+      background: #fff; }
   .reveal table { font-size: .8em; }
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  .reveal .slides section.cover h2 { font-size: 2.2em; }
+  .reveal table.cover-grid, .reveal table.cover-grid td { border: none; font-size: .9em; }
+  .reveal .imageblock.cover-art img { max-height: 330px; margin: 0; }
+  .reveal .imageblock.qr img { max-height: 250px; margin: 0; padding: 6px; background: #fff; border: 1px solid #C9D2DC;
+      border-radius: 8px; }
+  .reveal .disclaimer { position: absolute; left: 70px; right: 70px; bottom: 110px; text-align: center; font-size: .55em;
+      color: #8A96A3; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_capturing_stateful_lambdas" data-background-color="#F5F7FA"><h2>Capturing (stateful) lambdas</h2><div class="slide-content"><div class="paragraph lead"><p>Uses a local, a parameter or <code>this</code> from the enclosing scope.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="nf">hasMatch</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">,</span> <span class="nc">Integer</span> <span class="n">target</span><span class="o">)</span>
 <span class="o">{</span>

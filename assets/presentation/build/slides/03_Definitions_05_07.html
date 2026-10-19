@@ -429,10 +429,19 @@ ul.byline li + li {
   .reveal code { font-size: .92em; }
   .reveal .imageblock.diagram img { max-height: 380px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
       background: #fff; }
+  .reveal .imageblock.screenshot img { max-height: 540px; margin: 0; border: 1px solid #C9D2DC; border-radius: 8px;
+      background: #fff; }
   .reveal table { font-size: .8em; }
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  .reveal .slides section.cover h2 { font-size: 2.2em; }
+  .reveal table.cover-grid, .reveal table.cover-grid td { border: none; font-size: .9em; }
+  .reveal .imageblock.cover-art img { max-height: 330px; margin: 0; }
+  .reveal .imageblock.qr img { max-height: 250px; margin: 0; padding: 6px; background: #fff; border: 1px solid #C9D2DC;
+      border-radius: 8px; }
+  .reveal .disclaimer { position: absolute; left: 70px; right: 70px; bottom: 110px; text-align: center; font-size: .55em;
+      color: #8A96A3; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_eager_vs_lazy_in_the_jdk" data-background-color="#F5F7FA"><h2>Eager vs lazy in the JDK</h2><div class="slide-content"><table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"></th><th class="tableblock halign-left valign-top">Eager</th><th class="tableblock halign-left valign-top">Lazy</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">When work happens</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">At each call</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">At the terminal operation</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">In-between results</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">A new collection per step</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Short-circuit</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Per step</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Across the whole chain</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">JDK examples</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>anyMatch</code>, <code>count</code>, <code>findFirst</code>, <code>collect</code>, <code>removeIf</code>, <code>forEach</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter</code>, <code>map</code>, <code>sorted</code></p></td></tr></table>
 <aside class="notes"><div class="paragraph"><p>A Stream pipeline uses both: lazy intermediate operations build it, the eager terminal operation runs it.
 A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p></div></aside>
