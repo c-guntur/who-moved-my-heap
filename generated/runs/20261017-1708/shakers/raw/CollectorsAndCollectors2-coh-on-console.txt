@@ -1,0 +1,387 @@
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors
+
+# Run progress: 0.00% complete, ETA 00:02:40
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 72.815 ns/op
+# Warmup Iteration   2: 53.553 ns/op
+# Warmup Iteration   3: 58.433 ns/op
+# Warmup Iteration   4: 56.713 ns/op
+# Warmup Iteration   5: 57.233 ns/op
+# Warmup Iteration   6: 55.839 ns/op
+# Warmup Iteration   7: 61.634 ns/op
+# Warmup Iteration   8: 56.122 ns/op
+# Warmup Iteration   9: 56.229 ns/op
+# Warmup Iteration  10: 54.474 ns/op
+Iteration   1: 56.968 ns/op
+                 gc.alloc.rate:      6426.131 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            35.000 ms
+
+Iteration   2: 54.481 ns/op
+                 gc.alloc.rate:      6719.956 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            26.000 ms
+
+Iteration   3: 54.899 ns/op
+                 gc.alloc.rate:      6669.105 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            25.000 ms
+
+Iteration   4: 56.156 ns/op
+                 gc.alloc.rate:      6518.857 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            22.000 ms
+
+Iteration   5: 53.083 ns/op
+                 gc.alloc.rate:      6897.070 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           12.000 counts
+                 gc.time:            27.000 ms
+
+Iteration   6: 54.261 ns/op
+                 gc.alloc.rate:      6747.211 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            26.000 ms
+
+Iteration   7: 54.571 ns/op
+                 gc.alloc.rate:      6709.096 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            22.000 ms
+
+Iteration   8: 57.941 ns/op
+                 gc.alloc.rate:      6317.750 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            27.000 ms
+
+Iteration   9: 59.460 ns/op
+                 gc.alloc.rate:      6157.257 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            24.000 ms
+
+Iteration  10: 57.080 ns/op
+                 gc.alloc.rate:      6414.089 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            25.000 ms
+
+
+# Run progress: 25.00% complete, ETA 00:02:01
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 78.166 ns/op
+# Warmup Iteration   2: 56.065 ns/op
+# Warmup Iteration   3: 56.154 ns/op
+# Warmup Iteration   4: 57.602 ns/op
+# Warmup Iteration   5: 59.093 ns/op
+# Warmup Iteration   6: 56.614 ns/op
+# Warmup Iteration   7: 56.831 ns/op
+# Warmup Iteration   8: 57.760 ns/op
+# Warmup Iteration   9: 57.326 ns/op
+# Warmup Iteration  10: 60.006 ns/op
+Iteration   1: 58.010 ns/op
+                 gc.alloc.rate:      6310.539 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            25.000 ms
+
+Iteration   2: 58.017 ns/op
+                 gc.alloc.rate:      6310.640 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            25.000 ms
+
+Iteration   3: 62.897 ns/op
+                 gc.alloc.rate:      5820.764 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            23.000 ms
+
+Iteration   4: 60.901 ns/op
+                 gc.alloc.rate:      6008.253 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            23.000 ms
+
+Iteration   5: 59.292 ns/op
+                 gc.alloc.rate:      6174.918 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            25.000 ms
+
+Iteration   6: 57.609 ns/op
+                 gc.alloc.rate:      6355.088 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            27.000 ms
+
+Iteration   7: 57.490 ns/op
+                 gc.alloc.rate:      6368.351 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            22.000 ms
+
+Iteration   8: 57.038 ns/op
+                 gc.alloc.rate:      6419.018 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           11.000 counts
+                 gc.time:            30.000 ms
+
+Iteration   9: 56.148 ns/op
+                 gc.alloc.rate:      6518.062 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            23.000 ms
+
+Iteration  10: 58.154 ns/op
+                 gc.alloc.rate:      6291.012 MB/sec
+                 gc.alloc.rate.norm: 384.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            23.000 ms
+
+
+
+Result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors":
+  57.223 ±(99.9%) 2.052 ns/op [Average]
+  (min, avg, max) = (53.083, 57.223, 62.897), stdev = 2.363
+  CI (99.9%): [55.171, 59.275] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate":
+  6407.658 ±(99.9%) 227.342 MB/sec [Average]
+  (min, avg, max) = (5820.764, 6407.658, 6897.070), stdev = 261.807
+  CI (99.9%): [6180.317, 6635.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate.norm":
+  384.000 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (384.000, 384.000, 384.000), stdev = 0.001
+  CI (99.9%): [384.000, 384.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors:gc.count":
+  209.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (9.000, 10.450, 12.000), stdev = 0.686
+  CI (99.9%): [209.000, 209.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors:gc.time":
+  505.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (22.000, 25.250, 35.000), stdev = 3.093
+  CI (99.9%): [505.000, 505.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors2
+
+# Run progress: 50.00% complete, ETA 00:01:20
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 0.396 ns/op
+# Warmup Iteration   2: 0.496 ns/op
+# Warmup Iteration   3: 0.315 ns/op
+# Warmup Iteration   4: 0.344 ns/op
+# Warmup Iteration   5: 0.321 ns/op
+# Warmup Iteration   6: 0.352 ns/op
+# Warmup Iteration   7: 0.354 ns/op
+# Warmup Iteration   8: 0.369 ns/op
+# Warmup Iteration   9: 0.350 ns/op
+# Warmup Iteration  10: 0.337 ns/op
+Iteration   1: 0.337 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 0.359 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 0.324 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 0.345 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 0.330 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 0.320 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 0.351 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 0.347 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 0.349 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 0.357 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 75.00% complete, ETA 00:00:40
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 0.385 ns/op
+# Warmup Iteration   2: 0.423 ns/op
+# Warmup Iteration   3: 0.354 ns/op
+# Warmup Iteration   4: 0.350 ns/op
+# Warmup Iteration   5: 0.339 ns/op
+# Warmup Iteration   6: 0.361 ns/op
+# Warmup Iteration   7: 0.359 ns/op
+# Warmup Iteration   8: 0.342 ns/op
+# Warmup Iteration   9: 0.343 ns/op
+# Warmup Iteration  10: 0.341 ns/op
+Iteration   1: 0.362 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 0.349 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 0.340 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 0.367 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 0.355 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 0.350 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 0.368 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 0.374 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 0.362 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 0.353 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors2":
+  0.350 ±(99.9%) 0.013 ns/op [Average]
+  (min, avg, max) = (0.320, 0.350, 0.374), stdev = 0.015
+  CI (99.9%): [0.337, 0.362] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate":
+  0.003 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.003, 0.003, 0.003), stdev = 0.001
+  CI (99.9%): [0.003, 0.003] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "conf.session.shakers.CollectorsAndCollectors2Benchmark.collectors2:gc.count":
+  ≈ 0 counts
+
+
+# Run complete. Total time: 00:02:41
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                                         Mode  Cnt     Score     Error   Units
+CollectorsAndCollectors2Benchmark.collectors                      avgt   20    57.223 ±   2.052   ns/op
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate        avgt   20  6407.658 ± 227.342  MB/sec
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate.norm   avgt   20   384.000 ±   0.001    B/op
+CollectorsAndCollectors2Benchmark.collectors:gc.count             avgt   20   209.000            counts
+CollectorsAndCollectors2Benchmark.collectors:gc.time              avgt   20   505.000                ms
+CollectorsAndCollectors2Benchmark.collectors2                     avgt   20     0.350 ±   0.013   ns/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate       avgt   20     0.003 ±   0.001  MB/sec
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate.norm  avgt   20    ≈ 10⁻⁶              B/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.count            avgt   20       ≈ 0            counts
+
+Benchmark result is saved to generated/runs/20261017-1708/shakers/raw/CollectorsAndCollectors2-coh-on.txt

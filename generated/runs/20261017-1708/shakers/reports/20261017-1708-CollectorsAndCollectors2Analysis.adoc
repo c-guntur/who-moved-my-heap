@@ -1,0 +1,138 @@
+= CollectorsAndCollectors2: creating collectors and garbage (run 20261017-1708)
+:toc:
+:toclevels: 2
+
+Input: link:20261017-1708-CollectorsAndCollectors2Results.adoc[20261017-1708-CollectorsAndCollectors2Results.adoc]. Environment: cloud sandbox (Intel(R) Xeon(R) Processor @ 2.10GHz) (openjdk version "25.0.4.1" 2026-08-18). Absolute timings depend on the machine; bytes and object counts do not.
+
+== Summary
+
+* `collectors` (JDK Collectors) allocates 384 B (16 objects) per call.
+* The Eclipse Collections versions allocate per call: `collectors2` ≈0 B.
+* At 10 million calls per second the JDK version allocates 3.84 GB/s and the EC versions nothing: the young-generation space a 10-second spike at that rate needs is 10 times that.
+* Time per call, JDK vs the fastest EC version: 57.2 vs 0.35 ns. The JDK version takes 163.5 times as long as an EC version.
+* With escape analysis off (what each lambda shape costs when the JIT cannot remove it): `collectors` 480 B, `collectors2` ≈0 B per call.
+* Compact object headers, JDK version bytes per call: 392 B without, 384 B with (2% less).
+
+== Head-to-head (compact headers on)
+
+Throughput = 1000 ÷ ns per call. Calls measured = 40 s ÷ ns per call. Objects per call come from the object-count run; bytes per call from `gc.alloc.rate.norm`.
+
+[cols="3,2,1,1,1,1,1,1",options="header"]
+|===
+|Implementation |Kind |Throughput (M calls/s) |Time per call (ns) |Objects per call |Bytes per call |GC runs per 1B calls |GC time per 1B calls (ms)
+8+h|one call (no test parameter)
+|`collectors` |JDK Collectors |17.5 |57.2 ± 2.05 |16.0 |384 |299 |722
+|`collectors2` |EC Collectors2 |2,857 |0.35 ± 0.01 |0 |≈0 |0 |0
+8+a|`collectors2` vs JDK: 163.5x faster, 16.0 fewer objects and 384 fewer bytes per call, 0 vs 299 GC runs per billion calls
+|===
+
+.Speed relative to the JDK Collectors version, compact headers on.
+image::images/20261017-1708-CollectorsAndCollectors2-throughput.png[Speed relative to the JDK Collectors version, compact headers on.]
+Mermaid source: link:mermaid/20261017-1708-CollectorsAndCollectors2-throughput.mmd[20261017-1708-CollectorsAndCollectors2-throughput.mmd]
+
+.Garbage collections per billion calls, compact headers on.
+image::images/20261017-1708-CollectorsAndCollectors2-gc-per-billion.png[Garbage collections per billion calls, compact headers on.]
+Mermaid source: link:mermaid/20261017-1708-CollectorsAndCollectors2-gc-per-billion.mmd[20261017-1708-CollectorsAndCollectors2-gc-per-billion.mmd]
+
+== Garbage: where it comes from
+
+=== Objects per call by class (object-count run, compact headers on)
+
+....
+collectors: 16.00 objects, 384 B per call
+      7.00 x java.util.stream.Collectors$CollectorImpl  (224 B)
+      8.00 x java.util.stream.Collectors$$Lambda  (144 B)
+      1.00 x java.util.function.Function$$Lambda  (16 B)
+collectors2: 0.00 objects, 0 B per call
+....
+
+.Bytes allocated per call (gc.alloc.rate.norm), compact headers on.
+image::images/20261017-1708-CollectorsAndCollectors2-bytes-per-call.png[Bytes allocated per call (gc.alloc.rate.norm), compact headers on.]
+Mermaid source: link:mermaid/20261017-1708-CollectorsAndCollectors2-bytes-per-call.mmd[20261017-1708-CollectorsAndCollectors2-bytes-per-call.mmd]
+
+=== Escape analysis off (upper bound for lambda garbage)
+
+Same benchmarks with `-XX:-DoEscapeAnalysis`. Real applications cannot count on escape analysis (megamorphic call sites, code that is not inlined), so this shows what each lambda shape costs when it does not help. It is an upper bound, not typical production behaviour.
+
+[cols="3,2,1,1,1,1",options="header"]
+|===
+|Implementation |Kind |Bytes per call, EA on |Bytes per call, EA off |Time per call EA on (ns) |Time per call EA off (ns)
+6+h|one call (no test parameter)
+|`collectors` |JDK Collectors |384 |480 |57.2 |70.6
+|`collectors2` |EC Collectors2 |≈0 |≈0 |0.35 |0.34
+|===
+
+.Bytes per call with -XX:-DoEscapeAnalysis: the upper bound for lambda garbage.
+image::images/20261017-1708-CollectorsAndCollectors2-ea-off-bytes.png[Bytes per call with -XX:-DoEscapeAnalysis: the upper bound for lambda garbage.]
+Mermaid source: link:mermaid/20261017-1708-CollectorsAndCollectors2-ea-off-bytes.mmd[20261017-1708-CollectorsAndCollectors2-ea-off-bytes.mmd]
+
+== Spikes and heap headroom (derived, not measured)
+
+Formulas: allocation rate (MB/s) = bytes per call × calls/s ÷ 10^6. Young collections per minute = allocation rate ÷ 512 MB (example young generation) × 60. Allocated during a 10 s spike = bytes per call × calls/s × 10 s: the young-generation space the spike needs, or the collections it causes when that space is not there. Loads are application-wide, across all threads.
+
+[cols="3,1,1,1,1,1",options="header"]
+|===
+|Implementation |Bytes per call |MB/s at 1 M calls/s |MB/s at 10 M calls/s |Young GCs per minute at 10 M calls/s |MB allocated in a 10 s spike at 10 M calls/s
+6+h|one call (no test parameter)
+|`collectors` |384 |384 |3,840 |450 |38,400
+|`collectors2` |≈0 |0 |0 |0 |0
+|===
+
+JMH also reports `gc.alloc.rate` (MB/s), but that number scales with how fast the benchmark runs, so a faster method can show a higher MB/s while allocating the same per call. `gc.alloc.rate.norm` (bytes per call) is the number to size heaps with.
+
+.Young-generation memory a 10 s spike at 1 million calls/s allocates (derived).
+image::images/20261017-1708-CollectorsAndCollectors2-spike-headroom.png[Young-generation memory a 10 s spike at 1 million calls/s allocates (derived).]
+Mermaid source: link:mermaid/20261017-1708-CollectorsAndCollectors2-spike-headroom.mmd[20261017-1708-CollectorsAndCollectors2-spike-headroom.mmd]
+
+== Compact object headers
+
+[cols="3,1,1,1,1,1,1",options="header"]
+|===
+|Implementation |Bytes per call on |Bytes per call off |Saved |Objects per call on |Objects per call off |Time per call on / off (ns)
+7+h|one call (no test parameter)
+|`collectors` |384 |392 |2% |16.0 |16.0 |57.2 / 55.8
+|`collectors2` |≈0 |≈0 |n/a |0 |0 |0.35 / 0.35
+|===
+
+Bytes per call here are `gc.alloc.rate.norm` from the main runs. Where that is a few bytes below the object-count total, the JIT scalar-replaced one pipeline object in some forks; the object-count run (exact per-class counts) is the reference for what each call allocates.
+
+.Bytes per call saved by -XX:+UseCompactObjectHeaders (off minus on).
+image::images/20261017-1708-CollectorsAndCollectors2-coh-bytes.png[Bytes per call saved by -XX:+UseCompactObjectHeaders (off minus on).]
+Mermaid source: link:mermaid/20261017-1708-CollectorsAndCollectors2-coh-bytes.mmd[20261017-1708-CollectorsAndCollectors2-coh-bytes.mmd]
+
+== Supporting analysis
+
+=== Raw GC totals (compact headers on, per 40 s measurement)
+
+Raw totals are shown for completeness only. Do not compare them across implementations: a faster method fits more calls into the same 40 s.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Implementation |test |calls measured |gc.count |gc.time (ms)
+|`collectors` |- |6.99e+08 |209 |505
+|`collectors2` |- |1.14e+11 |0 |0
+|===
+
+== Caveats
+
+One machine (cloud sandbox (Intel(R) Xeon(R) Processor @ 2.10GHz)), one JDK build (openjdk version "25.0.4.1" 2026-08-18), G1 with a fixed 2 GB heap. Microbenchmarks, not an application. Mechanisms are read from the class histograms where shown; anything else is labelled inferred.
+
+== Reproduce
+
+Run folder: `generated/runs/20261017-1708/shakers/raw/`. Results: `generated/runs/20261017-1708/shakers/reports/20261017-1708-CollectorsAndCollectors2Results.adoc`.
+
+....
+mvn -Pbench clean compile
+mvn -Pbench package
+# main runs, CONFIG/FLAGS = coh-on: -XX:+UseCompactObjectHeaders | coh-off: -XX:-UseCompactObjectHeaders
+#                          ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\.CollectorsAndCollectors2Benchmark\." \
+  -prof gc -jvmArgsAppend "-XX:+UseG1GC -Xms2g -Xmx2g ${FLAGS}" \
+  -rf text -rff generated/runs/20261017-1708/shakers/raw/CollectorsAndCollectors2-${CONFIG}.txt -o generated/runs/20261017-1708/shakers/raw/CollectorsAndCollectors2-${CONFIG}-console.txt
+# object counts, CONFIG/COH = histo-coh-on: -XX:+UseCompactObjectHeaders | histo-coh-off: -XX:-UseCompactObjectHeaders
+#                            histo-ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." -f 1 -wi 5 -w 1s -i 3 -r 100ms \
+  -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${COH}" -prof prof.HistoProfiler -prof gc \
+  -rf text -rff generated/runs/20261017-1708/shakers/raw/all-${CONFIG}.txt -o generated/runs/20261017-1708/shakers/raw/all-${CONFIG}-console.txt
+# HISTO lines go to the console, not to the -o file; they were saved to generated/runs/20261017-1708/shakers/raw/all-${CONFIG}-histo.txt
+....

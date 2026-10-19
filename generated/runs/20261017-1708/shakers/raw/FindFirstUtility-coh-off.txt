@@ -1,0 +1,64 @@
+Benchmark                                                          (test)  Mode  Cnt     Score     Error   Units
+FindFirstUtilityBenchmark.ecDetectIfNone                                1  avgt   20     2.372 ±   0.119   ns/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate                  1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate.norm             1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.count                       1  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectIfNone                              500  avgt   20   260.712 ±  15.939   ns/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate                500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate.norm           500  avgt   20     0.001 ±   0.001    B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.count                     500  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectIfNone                             1000  avgt   20   501.025 ±  31.284   ns/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate               1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.alloc.rate.norm          1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstUtilityBenchmark.ecDetectIfNone:gc.count                    1000  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectOptional                              1  avgt   20     2.109 ±   0.059   ns/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate                1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate.norm           1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.count                     1  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectOptional                            500  avgt   20   261.135 ±  12.224   ns/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate              500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate.norm         500  avgt   20     0.001 ±   0.001    B/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.count                   500  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectOptional                           1000  avgt   20   509.448 ±  19.186   ns/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate             1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectOptional:gc.alloc.rate.norm        1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstUtilityBenchmark.ecDetectOptional:gc.count                  1000  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectWithIfNone                            1  avgt   20     2.184 ±   0.104   ns/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate              1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm         1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.count                   1  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectWithIfNone                          500  avgt   20   269.858 ±  10.693   ns/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate            500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm       500  avgt   20     0.001 ±   0.001    B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.count                 500  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectWithIfNone                         1000  avgt   20   513.298 ±  18.094   ns/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate           1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.alloc.rate.norm      1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstUtilityBenchmark.ecDetectWithIfNone:gc.count                1000  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectWithOptional                          1  avgt   20     2.197 ±   0.112   ns/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.count                 1  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectWithOptional                        500  avgt   20   260.536 ±  14.425   ns/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.count               500  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.ecDetectWithOptional                       1000  avgt   20   520.230 ±  34.936   ns/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+FindFirstUtilityBenchmark.ecDetectWithOptional:gc.count              1000  avgt   20       ≈ 0            counts
+FindFirstUtilityBenchmark.jdkFindFirst                                  1  avgt   20    37.448 ±   1.468   ns/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate                    1  avgt   20  5713.779 ± 226.063  MB/sec
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate.norm               1  avgt   20   224.000 ±   0.001    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.count                         1  avgt   20   186.000            counts
+FindFirstUtilityBenchmark.jdkFindFirst:gc.time                          1  avgt   20   447.000                ms
+FindFirstUtilityBenchmark.jdkFindFirst                                500  avgt   20  1314.359 ± 101.717   ns/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate                  500  avgt   20   175.323 ±  12.702  MB/sec
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate.norm             500  avgt   20   240.005 ±   0.001    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.count                       500  avgt   20     5.000            counts
+FindFirstUtilityBenchmark.jdkFindFirst:gc.time                        500  avgt   20    17.000                ms
+FindFirstUtilityBenchmark.jdkFindFirst                               1000  avgt   20  2453.971 ± 270.430   ns/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate                 1000  avgt   20    94.381 ±   8.277  MB/sec
+FindFirstUtilityBenchmark.jdkFindFirst:gc.alloc.rate.norm            1000  avgt   20   240.009 ±   0.001    B/op
+FindFirstUtilityBenchmark.jdkFindFirst:gc.count                      1000  avgt   20     4.000            counts
+FindFirstUtilityBenchmark.jdkFindFirst:gc.time                       1000  avgt   20    17.000                ms

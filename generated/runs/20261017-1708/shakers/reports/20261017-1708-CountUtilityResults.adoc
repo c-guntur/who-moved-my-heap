@@ -1,0 +1,412 @@
+= CountUtilityBenchmark results (run 20261017-1708)
+:toc:
+
+Assembled from the raw JMH output in `generated/runs/20261017-1708/shakers/raw/`. Numbers are copied verbatim.
+
+== Run metadata
+
+....
+run_ts: 20261017-1708
+environment: cloud sandbox (Intel(R) Xeon(R) Processor @ 2.10GHz)
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+openjdk version "25.0.4.1" 2026-08-18
+OpenJDK Runtime Environment (build 25.0.4.1+1-1-24.04.4-Ubuntu)
+OpenJDK 64-Bit Server VM (build 25.0.4.1+1-1-24.04.4-Ubuntu, mixed mode, sharing)
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: /opt/maven
+Java version: 25.0.4.1, vendor: Ubuntu, runtime: /usr/lib/jvm/java-25-openjdk-amd64
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.18.44-fc-v139", arch: "amd64", family: "unix"
+Linux vm 6.18.44-fc-v139 #1 SMP PREEMPT_DYNAMIC @0 x86_64 x86_64 x86_64 GNU/Linux
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           52 bits physical, 57 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  4
+On-line CPU(s) list:                     0-3
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Xeon(R) Processor @ 2.10GHz
+CPU family:                              6
+Model:                                   207
+Thread(s) per core:                      1
+Core(s) per socket:                      4
+Socket(s):                               1
+Stepping:                                2
+BogoMIPS:                                4200.00
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd arat avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid cldemote movdiri movdir64b fsrm md_clear serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 arch_capabilities
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+L1d cache:                               192 KiB (4 instances)
+L1i cache:                               128 KiB (4 instances)
+L2 cache:                                8 MiB (4 instances)
+L3 cache:                                260 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-3
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI Vulnerable
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+     bool DoEscapeAnalysis                         = true                                   {C2 product} {default}
+     bool UseCompactObjectHeaders                  = true                           {product lp64_product} {command line}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseParallelGC                            = false                                     {product} {default}
+     bool UseSerialGC                              = false                                     {product} {default}
+     bool UseShenandoahGC                          = false                                     {product} {default}
+     bool UseZGC                                   = false                                     {product} {default}
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+....
+
+== coh-on (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders`)
+
+....
+Benchmark                                             (test)  Mode  Cnt     Score    Error   Units
+CountUtilityBenchmark.ecCount                              1  avgt   20   653.067 ± 26.696   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate                1  avgt   20     0.003 ±  0.001  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm           1  avgt   20     0.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                     1  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.ecCount                            500  avgt   20   673.887 ± 24.105   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate              500  avgt   20     0.003 ±  0.001  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm         500  avgt   20     0.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                   500  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.ecCount                           1000  avgt   20   654.503 ± 21.527   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate             1000  avgt   20     0.003 ±  0.001  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm        1000  avgt   20     0.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                  1000  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.ecCountWith                          1  avgt   20   662.040 ± 14.849   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate            1  avgt   20     0.003 ±  0.001  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm       1  avgt   20     0.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count                 1  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.ecCountWith                        500  avgt   20   658.553 ± 32.822   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate          500  avgt   20     0.003 ±  0.001  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm     500  avgt   20     0.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count               500  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.ecCountWith                       1000  avgt   20   657.180 ± 23.402   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate         1000  avgt   20     0.003 ±  0.001  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm    1000  avgt   20     0.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count              1000  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.jdkCount                             1  avgt   20  1371.705 ± 41.493   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate               1  avgt   20   144.731 ±  4.295  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm          1  avgt   20   208.004 ±  0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                    1  avgt   20     4.000           counts
+CountUtilityBenchmark.jdkCount:gc.time                     1  avgt   20    15.000               ms
+CountUtilityBenchmark.jdkCount                           500  avgt   20  1404.073 ± 89.369   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate             500  avgt   20   152.880 ±  9.764  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm        500  avgt   20   224.004 ±  0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                  500  avgt   20     4.000           counts
+CountUtilityBenchmark.jdkCount:gc.time                   500  avgt   20    15.000               ms
+CountUtilityBenchmark.jdkCount                          1000  avgt   20  1361.345 ± 73.407   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate            1000  avgt   20   157.486 ±  9.117  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm       1000  avgt   20   224.004 ±  0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                 1000  avgt   20     5.000           counts
+CountUtilityBenchmark.jdkCount:gc.time                  1000  avgt   20    16.000               ms
+....
+
+== coh-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:-UseCompactObjectHeaders`)
+
+....
+Benchmark                                             (test)  Mode  Cnt     Score     Error   Units
+CountUtilityBenchmark.ecCount                              1  avgt   20   519.949 ±  27.955   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate                1  avgt   20     0.003 ±   0.001  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm           1  avgt   20     0.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                     1  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.ecCount                            500  avgt   20   549.571 ±  31.494   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate              500  avgt   20     0.003 ±   0.001  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm         500  avgt   20     0.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                   500  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.ecCount                           1000  avgt   20   522.350 ±  37.831   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate             1000  avgt   20     0.003 ±   0.001  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm        1000  avgt   20     0.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                  1000  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.ecCountWith                          1  avgt   20   519.859 ±  31.534   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm       1  avgt   20     0.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count                 1  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.ecCountWith                        500  avgt   20   536.286 ±  28.838   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm     500  avgt   20     0.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count               500  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.ecCountWith                       1000  avgt   20   537.383 ±  58.081   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count              1000  avgt   20       ≈ 0            counts
+CountUtilityBenchmark.jdkCount                             1  avgt   20  1192.821 ± 122.244   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate               1  avgt   20   181.553 ±  19.780  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm          1  avgt   20   224.004 ±   0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                    1  avgt   20     5.000            counts
+CountUtilityBenchmark.jdkCount:gc.time                     1  avgt   20    16.000                ms
+CountUtilityBenchmark.jdkCount                           500  avgt   20  1222.771 ±  83.257   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate             500  avgt   20   188.145 ±  11.948  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm        500  avgt   20   240.004 ±   0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                  500  avgt   20     7.000            counts
+CountUtilityBenchmark.jdkCount:gc.time                   500  avgt   20    26.000                ms
+CountUtilityBenchmark.jdkCount                          1000  avgt   20  1289.138 ± 136.277   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate            1000  avgt   20   179.686 ±  16.721  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm       1000  avgt   20   240.005 ±   0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                 1000  avgt   20     7.000            counts
+CountUtilityBenchmark.jdkCount:gc.time                  1000  avgt   20    25.000                ms
+....
+
+== ea-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis`)
+
+....
+Benchmark                                             (test)  Mode  Cnt     Score    Error   Units
+CountUtilityBenchmark.ecCount                              1  avgt   20   678.508 ± 21.067   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate                1  avgt   20    22.510 ±  0.676  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm           1  avgt   20    16.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                     1  avgt   20     2.000           counts
+CountUtilityBenchmark.ecCount:gc.time                      1  avgt   20     7.000               ms
+CountUtilityBenchmark.ecCount                            500  avgt   20   758.003 ± 78.522   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate              500  avgt   20    40.778 ±  4.061  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm         500  avgt   20    32.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                   500  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.ecCount                           1000  avgt   20   741.463 ± 73.984   ns/op
+CountUtilityBenchmark.ecCount:gc.alloc.rate             1000  avgt   20    41.650 ±  4.010  MB/sec
+CountUtilityBenchmark.ecCount:gc.alloc.rate.norm        1000  avgt   20    32.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCount:gc.count                  1000  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.ecCountWith                          1  avgt   20   660.285 ± 20.480   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate            1  avgt   20     0.003 ±  0.001  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm       1  avgt   20     0.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count                 1  avgt   20       ≈ 0           counts
+CountUtilityBenchmark.ecCountWith                        500  avgt   20   677.004 ± 40.408   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate          500  avgt   20    22.643 ±  1.459  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm     500  avgt   20    16.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count               500  avgt   20     2.000           counts
+CountUtilityBenchmark.ecCountWith:gc.time                500  avgt   20     8.000               ms
+CountUtilityBenchmark.ecCountWith                       1000  avgt   20   679.148 ± 40.903   ns/op
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate         1000  avgt   20    22.569 ±  1.400  MB/sec
+CountUtilityBenchmark.ecCountWith:gc.alloc.rate.norm    1000  avgt   20    16.002 ±  0.001    B/op
+CountUtilityBenchmark.ecCountWith:gc.count              1000  avgt   20     2.000           counts
+CountUtilityBenchmark.ecCountWith:gc.time               1000  avgt   20     6.000               ms
+CountUtilityBenchmark.jdkCount                             1  avgt   20  1317.826 ± 51.671   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate               1  avgt   20   150.764 ±  5.904  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm          1  avgt   20   208.004 ±  0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                    1  avgt   20     5.000           counts
+CountUtilityBenchmark.jdkCount:gc.time                     1  avgt   20    20.000               ms
+CountUtilityBenchmark.jdkCount                           500  avgt   20  1384.905 ± 82.272   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate             500  avgt   20   154.865 ±  8.840  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm        500  avgt   20   224.004 ±  0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                  500  avgt   20     6.000           counts
+CountUtilityBenchmark.jdkCount:gc.time                   500  avgt   20    19.000               ms
+CountUtilityBenchmark.jdkCount                          1000  avgt   20  1380.881 ± 58.768   ns/op
+CountUtilityBenchmark.jdkCount:gc.alloc.rate            1000  avgt   20   155.009 ±  6.570  MB/sec
+CountUtilityBenchmark.jdkCount:gc.alloc.rate.norm       1000  avgt   20   224.004 ±  0.001    B/op
+CountUtilityBenchmark.jdkCount:gc.count                 1000  avgt   20     6.000           counts
+CountUtilityBenchmark.jdkCount:gc.time                  1000  avgt   20    19.000               ms
+....
+
+== Object counts: histo-coh-on
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkCount |1 |3/3 |7.001 |208.0
+|jdkCount |500 |3/3 |8.001 |224.1
+|jdkCount |1000 |3/3 |8.001 |224.1
+|ecCount |1 |3/3 |0.000 |0.0
+|ecCount |500 |3/3 |0.000 |0.0
+|ecCount |1000 |3/3 |0.000 |0.0
+|ecCountWith |1 |3/3 |0.000 |0.0
+|ecCountWith |500 |3/3 |0.000 |0.0
+|ecCountWith |1000 |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+jdkCount test=1
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+jdkCount test=500
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  java.lang.Integer
+jdkCount test=1000
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecCount test=1
+    (nothing at or above 0.5 objects per call)
+ecCount test=500
+    (nothing at or above 0.5 objects per call)
+ecCount test=1000
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=1
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=500
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=1000
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-coh-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkCount |1 |3/3 |7.001 |224.1
+|jdkCount |500 |3/3 |8.001 |240.1
+|jdkCount |1000 |3/3 |8.001 |240.1
+|ecCount |1 |3/3 |0.000 |0.0
+|ecCount |500 |3/3 |0.000 |0.0
+|ecCount |1000 |3/3 |0.000 |0.0
+|ecCountWith |1 |3/3 |0.000 |0.0
+|ecCountWith |500 |3/3 |0.000 |0.0
+|ecCountWith |1000 |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+jdkCount test=1
+      1.001 obj     56.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+jdkCount test=500
+      1.001 obj     56.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  java.lang.Integer
+jdkCount test=1000
+      1.001 obj     56.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  java.lang.Integer
+ecCount test=1
+    (nothing at or above 0.5 objects per call)
+ecCount test=500
+    (nothing at or above 0.5 objects per call)
+ecCount test=1000
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=1
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=500
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=1000
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-ea-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkCount |1 |3/3 |7.001 |208.1
+|jdkCount |500 |3/3 |8.001 |224.0
+|jdkCount |1000 |3/3 |8.001 |224.1
+|ecCount |1 |3/3 |1.000 |16.0
+|ecCount |500 |3/3 |2.000 |32.0
+|ecCount |1000 |3/3 |2.000 |32.0
+|ecCountWith |1 |3/3 |0.000 |0.0
+|ecCountWith |500 |3/3 |1.000 |16.0
+|ecCountWith |1000 |3/3 |1.000 |16.0
+|===
+
+.Per-class breakdown
+....
+jdkCount test=1
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+jdkCount test=500
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  java.lang.Integer
+jdkCount test=1000
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$2
+      1.001 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.ReduceOps$CountingSink$OfRef
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.ReferencePipeline$2$1
+      1.000 obj     16.0 B  java.util.stream.ReduceOps$5
+      1.000 obj     16.0 B  java.lang.Integer
+ecCount test=1
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+ecCount test=500
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecCount test=1000
+      1.000 obj     16.0 B  conf.session.shakers.CountUtilityBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecCountWith test=1
+    (nothing at or above 0.5 objects per call)
+ecCountWith test=500
+      1.000 obj     16.0 B  java.lang.Integer
+ecCountWith test=1000
+      1.000 obj     16.0 B  java.lang.Integer
+....
+
+== Commands
+
+....
+mvn -Pbench clean compile
+mvn -Pbench package
+# main runs, CONFIG/FLAGS = coh-on: -XX:+UseCompactObjectHeaders | coh-off: -XX:-UseCompactObjectHeaders
+#                          ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\.CountUtilityBenchmark\." \
+  -prof gc -jvmArgsAppend "-XX:+UseG1GC -Xms2g -Xmx2g ${FLAGS}" \
+  -rf text -rff generated/runs/20261017-1708/shakers/raw/CountUtility-${CONFIG}.txt -o generated/runs/20261017-1708/shakers/raw/CountUtility-${CONFIG}-console.txt
+# object counts, CONFIG/COH = histo-coh-on: -XX:+UseCompactObjectHeaders | histo-coh-off: -XX:-UseCompactObjectHeaders
+#                            histo-ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." -f 1 -wi 5 -w 1s -i 3 -r 100ms \
+  -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${COH}" -prof prof.HistoProfiler -prof gc \
+  -rf text -rff generated/runs/20261017-1708/shakers/raw/all-${CONFIG}.txt -o generated/runs/20261017-1708/shakers/raw/all-${CONFIG}-console.txt
+# HISTO lines go to the console, not to the -o file; they were saved to generated/runs/20261017-1708/shakers/raw/all-${CONFIG}-histo.txt
+....

@@ -1,0 +1,52 @@
+Benchmark                                                       (test)  Mode  Cnt     Score     Error   Units
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                              1  avgt   20     1.904 ±   0.094   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate                1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm           1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                     1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                            500  avgt   20   267.164 ±  12.314   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate              500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm         500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                   500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                           1000  avgt   20   533.987 ±  46.855   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate             1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm        1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                  1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                          1  avgt   20     2.082 ±   0.077   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count                 1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                        500  avgt   20   260.997 ±  13.150   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count               500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                       1000  avgt   20   510.969 ±  21.956   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count              1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                          1  avgt   20     2.145 ±   0.112   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count                 1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                        500  avgt   20   272.254 ±  16.293   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count               500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                       1000  avgt   20   515.031 ±  23.470   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count              1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                               1  avgt   20    29.977 ±   1.644   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate                 1  avgt   20  5618.407 ± 302.503  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm            1  avgt   20   176.000 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                      1  avgt   20   183.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                       1  avgt   20   505.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                             500  avgt   20  1339.477 ±  88.284   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate               500  avgt   20   137.385 ±   8.739  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm          500  avgt   20   192.005 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                    500  avgt   20     4.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                     500  avgt   20    14.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                            1000  avgt   20  3013.455 ± 423.116   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate              1000  avgt   20    62.354 ±   9.155  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm         1000  avgt   20   192.011 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                   1000  avgt   20     2.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                    1000  avgt   20    15.000                ms

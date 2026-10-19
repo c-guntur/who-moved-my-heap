@@ -1,0 +1,52 @@
+Benchmark                                               (test)  Mode  Cnt     Score    Error   Units
+CountEagerLazyBenchmark.ecCount                              1  avgt   20   502.887 ± 23.106   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate                1  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm           1  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                     1  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCount                            500  avgt   20   516.428 ± 21.126   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate              500  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm         500  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                   500  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCount                           1000  avgt   20   503.446 ± 14.362   ns/op
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate             1000  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCount:gc.alloc.rate.norm        1000  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCount:gc.count                  1000  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCountWith                          1  avgt   20   525.914 ± 25.879   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate            1  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm       1  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count                 1  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCountWith                        500  avgt   20   589.453 ± 23.371   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate          500  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm     500  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count               500  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecCountWith                       1000  avgt   20   574.919 ± 21.888   ns/op
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate         1000  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecCountWith:gc.alloc.rate.norm    1000  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecCountWith:gc.count              1000  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecLazyCount                          1  avgt   20   513.739 ± 26.520   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate            1  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm       1  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count                 1  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecLazyCount                        500  avgt   20   530.810 ± 33.275   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate          500  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm     500  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count               500  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.ecLazyCount                       1000  avgt   20   501.729 ± 16.935   ns/op
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate         1000  avgt   20     0.003 ±  0.001  MB/sec
+CountEagerLazyBenchmark.ecLazyCount:gc.alloc.rate.norm    1000  avgt   20     0.002 ±  0.001    B/op
+CountEagerLazyBenchmark.ecLazyCount:gc.count              1000  avgt   20       ≈ 0           counts
+CountEagerLazyBenchmark.jdkCount                             1  avgt   20  1165.608 ± 63.406   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate               1  avgt   20   183.909 ± 10.050  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm          1  avgt   20   224.004 ±  0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                    1  avgt   20     6.000           counts
+CountEagerLazyBenchmark.jdkCount:gc.time                     1  avgt   20    23.000               ms
+CountEagerLazyBenchmark.jdkCount                           500  avgt   20  1153.771 ± 59.760   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate             500  avgt   20   198.990 ± 10.323  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm        500  avgt   20   240.004 ±  0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                  500  avgt   20     6.000           counts
+CountEagerLazyBenchmark.jdkCount:gc.time                   500  avgt   20    22.000               ms
+CountEagerLazyBenchmark.jdkCount                          1000  avgt   20  1129.972 ± 62.406   ns/op
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate            1000  avgt   20   203.272 ± 11.438  MB/sec
+CountEagerLazyBenchmark.jdkCount:gc.alloc.rate.norm       1000  avgt   20   240.004 ±  0.001    B/op
+CountEagerLazyBenchmark.jdkCount:gc.count                 1000  avgt   20     6.000           counts
+CountEagerLazyBenchmark.jdkCount:gc.time                  1000  avgt   20    21.000               ms

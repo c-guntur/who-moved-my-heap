@@ -1,0 +1,10 @@
+Benchmark                                                         Mode  Cnt     Score     Error   Units
+CollectorsAndCollectors2Benchmark.collectors                      avgt   20    55.794 ±   2.041   ns/op
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate        avgt   20  6708.769 ± 242.484  MB/sec
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate.norm   avgt   20   392.000 ±   0.001    B/op
+CollectorsAndCollectors2Benchmark.collectors:gc.count             avgt   20   219.000            counts
+CollectorsAndCollectors2Benchmark.collectors:gc.time              avgt   20   521.000                ms
+CollectorsAndCollectors2Benchmark.collectors2                     avgt   20     0.347 ±   0.024   ns/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate       avgt   20     0.003 ±   0.001  MB/sec
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate.norm  avgt   20    ≈ 10⁻⁶              B/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.count            avgt   20       ≈ 0            counts

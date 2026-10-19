@@ -1,0 +1,6286 @@
+{
+ "AnyMatchUtility": {
+  "coh-on|ecAnySatisfy|1": {
+   "ns": 2.445,
+   "ns_err": 0.09,
+   "mcalls": 408.997955010225,
+   "calls": 16359918200.408998,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfy|500": {
+   "ns": 320.681,
+   "ns_err": 18.842,
+   "mcalls": 3.1183637321824493,
+   "calls": 124734549.28729798,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfy|1000": {
+   "ns": 659.034,
+   "ns_err": 29.98,
+   "mcalls": 1.5173723965683106,
+   "calls": 60694895.862732425,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfyWith|1": {
+   "ns": 2.388,
+   "ns_err": 0.157,
+   "mcalls": 418.7604690117253,
+   "calls": 16750418760.469013,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfyWith|500": {
+   "ns": 329.531,
+   "ns_err": 17.377,
+   "mcalls": 3.0346158631509628,
+   "calls": 121384634.52603851,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfyWith|1000": {
+   "ns": 647.797,
+   "ns_err": 30.509,
+   "mcalls": 1.5436934718746766,
+   "calls": 61747738.874987066,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|jdkAnyMatch|1": {
+   "ns": 27.1,
+   "ns_err": 1.378,
+   "mcalls": 36.90036900369004,
+   "calls": 1476014760.1476014,
+   "bytes": 160.0,
+   "gc_count": 184.0,
+   "gc_time": 421.0,
+   "gc_per_b": 124.66000000000001,
+   "gct_per_b": 285.2275
+  },
+  "coh-on|jdkAnyMatch|500": {
+   "ns": 1535.518,
+   "ns_err": 170.949,
+   "mcalls": 0.651246029027338,
+   "calls": 26049841.16109352,
+   "bytes": 176.005,
+   "gc_count": 4.0,
+   "gc_time": 18.0,
+   "gc_per_b": 153.55180000000001,
+   "gct_per_b": 690.9831
+  },
+  "coh-on|jdkAnyMatch|1000": {
+   "ns": 3618.612,
+   "ns_err": 298.151,
+   "mcalls": 0.276349053172874,
+   "calls": 11053962.126914961,
+   "bytes": 176.012,
+   "gc_count": 2.0,
+   "gc_time": 16.0,
+   "gc_per_b": 180.9306,
+   "gct_per_b": 1447.4448
+  },
+  "coh-off|ecAnySatisfy|1": {
+   "ns": 2.108,
+   "ns_err": 0.076,
+   "mcalls": 474.3833017077799,
+   "calls": 18975332068.311195,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfy|500": {
+   "ns": 255.894,
+   "ns_err": 14.495,
+   "mcalls": 3.9078681016358336,
+   "calls": 156314724.06543335,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfy|1000": {
+   "ns": 497.135,
+   "ns_err": 27.042,
+   "mcalls": 2.0115260442334577,
+   "calls": 80461041.76933831,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfyWith|1": {
+   "ns": 2.068,
+   "ns_err": 0.133,
+   "mcalls": 483.55899419729207,
+   "calls": 19342359767.89168,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfyWith|500": {
+   "ns": 281.346,
+   "ns_err": 15.921,
+   "mcalls": 3.554342340036823,
+   "calls": 142173693.6014729,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfyWith|1000": {
+   "ns": 520.31,
+   "ns_err": 22.514,
+   "mcalls": 1.9219311564259771,
+   "calls": 76877246.25703909,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|jdkAnyMatch|1": {
+   "ns": 30.608,
+   "ns_err": 1.838,
+   "mcalls": 32.67119707266074,
+   "calls": 1306847882.9064298,
+   "bytes": 176.0,
+   "gc_count": 180.0,
+   "gc_time": 428.0,
+   "gc_per_b": 137.736,
+   "gct_per_b": 327.50559999999996
+  },
+  "coh-off|jdkAnyMatch|500": {
+   "ns": 1347.672,
+   "ns_err": 132.601,
+   "mcalls": 0.7420203135481037,
+   "calls": 29680812.54192415,
+   "bytes": 192.005,
+   "gc_count": 4.0,
+   "gc_time": 16.0,
+   "gc_per_b": 134.7672,
+   "gct_per_b": 539.0688
+  },
+  "coh-off|jdkAnyMatch|1000": {
+   "ns": 3187.149,
+   "ns_err": 397.616,
+   "mcalls": 0.3137600407135029,
+   "calls": 12550401.628540115,
+   "bytes": 168.011,
+   "gc_count": 1.0,
+   "gc_time": 5.0,
+   "gc_per_b": 79.678725,
+   "gct_per_b": 398.393625
+  },
+  "ea-off|ecAnySatisfy|1": {
+   "ns": 3.4,
+   "ns_err": 0.216,
+   "mcalls": 294.11764705882354,
+   "calls": 11764705882.352942,
+   "bytes": 16.0,
+   "gc_count": 147.0,
+   "gc_time": 341.0,
+   "gc_per_b": 12.495000000000001,
+   "gct_per_b": 28.985
+  },
+  "ea-off|ecAnySatisfy|500": {
+   "ns": 359.272,
+   "ns_err": 40.298,
+   "mcalls": 2.7834064441425994,
+   "calls": 111336257.76570398,
+   "bytes": 32.001,
+   "gc_count": 4.0,
+   "gc_time": 19.0,
+   "gc_per_b": 35.9272,
+   "gct_per_b": 170.6542
+  },
+  "ea-off|ecAnySatisfy|1000": {
+   "ns": 728.108,
+   "ns_err": 54.739,
+   "mcalls": 1.3734226241162026,
+   "calls": 54936904.964648105,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecAnySatisfyWith|1": {
+   "ns": 1.657,
+   "ns_err": 0.077,
+   "mcalls": 603.5003017501508,
+   "calls": 24140012070.006035,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecAnySatisfyWith|500": {
+   "ns": 365.54,
+   "ns_err": 30.304,
+   "mcalls": 2.735678721890901,
+   "calls": 109427148.87563604,
+   "bytes": 16.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecAnySatisfyWith|1000": {
+   "ns": 652.435,
+   "ns_err": 32.497,
+   "mcalls": 1.5327197345329422,
+   "calls": 61308789.38131768,
+   "bytes": 16.002,
+   "gc_count": 2.0,
+   "gc_time": 8.0,
+   "gc_per_b": 32.62175,
+   "gct_per_b": 130.487
+  },
+  "ea-off|jdkAnyMatch|1": {
+   "ns": 27.797,
+   "ns_err": 1.675,
+   "mcalls": 35.97510522718279,
+   "calls": 1439004209.0873115,
+   "bytes": 160.0,
+   "gc_count": 180.0,
+   "gc_time": 467.0,
+   "gc_per_b": 125.0865,
+   "gct_per_b": 324.52997500000004
+  },
+  "ea-off|jdkAnyMatch|500": {
+   "ns": 1561.907,
+   "ns_err": 74.401,
+   "mcalls": 0.640242985017674,
+   "calls": 25609719.400706958,
+   "bytes": 176.005,
+   "gc_count": 3.0,
+   "gc_time": 10.0,
+   "gc_per_b": 117.143025,
+   "gct_per_b": 390.4767499999999
+  },
+  "ea-off|jdkAnyMatch|1000": {
+   "ns": 3425.645,
+   "ns_err": 359.813,
+   "mcalls": 0.29191582898986906,
+   "calls": 11676633.159594763,
+   "bytes": 176.011,
+   "gc_count": 2.0,
+   "gc_time": 9.0,
+   "gc_per_b": 171.28225,
+   "gct_per_b": 770.7701249999999
+  },
+  "histo-coh-on|ecAnySatisfy|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfy|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfy|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfyWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfyWith|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfyWith|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkAnyMatch|1|histo": {
+   "objs": 6.0,
+   "bytes": 160.0,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0,
+     48.0
+    ],
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkAnyMatch|500|histo": {
+   "objs": 7.001666666666667,
+   "bytes": 176.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0016666666666667,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkAnyMatch|1000|histo": {
+   "objs": 7.0023333333333335,
+   "bytes": 176.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0023333333333333,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfy|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfy|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfy|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfyWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfyWith|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfyWith|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkAnyMatch|1|histo": {
+   "objs": 6.000333333333334,
+   "bytes": 176.0,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     24.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0003333333333333,
+     56.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkAnyMatch|500|histo": {
+   "objs": 7.001333333333333,
+   "bytes": 192.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     24.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333334,
+     56.1
+    ],
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkAnyMatch|1000|histo": {
+   "objs": 7.002,
+   "bytes": 192.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     24.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.002,
+     56.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfy|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfy|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfy|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfyWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfyWith|500|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfyWith|1000|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkAnyMatch|1|histo": {
+   "objs": 6.0,
+   "bytes": 160.0,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0,
+     48.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkAnyMatch|500|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 176.1,
+   "classes": {
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkAnyMatch|1000|histo": {
+   "objs": 7.002,
+   "bytes": 176.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.002,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  }
+ },
+ "CountUtility": {
+  "coh-on|ecCount|1": {
+   "ns": 653.067,
+   "ns_err": 26.696,
+   "mcalls": 1.5312364581275735,
+   "calls": 61249458.32510294,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCount|500": {
+   "ns": 673.887,
+   "ns_err": 24.105,
+   "mcalls": 1.4839283143909885,
+   "calls": 59357132.57563954,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCount|1000": {
+   "ns": 654.503,
+   "ns_err": 21.527,
+   "mcalls": 1.5278768775696978,
+   "calls": 61115075.10278791,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCountWith|1": {
+   "ns": 662.04,
+   "ns_err": 14.849,
+   "mcalls": 1.5104827502869917,
+   "calls": 60419310.011479676,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCountWith|500": {
+   "ns": 658.553,
+   "ns_err": 32.822,
+   "mcalls": 1.5184806689818435,
+   "calls": 60739226.75927374,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCountWith|1000": {
+   "ns": 657.18,
+   "ns_err": 23.402,
+   "mcalls": 1.5216531239538635,
+   "calls": 60866124.958154544,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|jdkCount|1": {
+   "ns": 1371.705,
+   "ns_err": 41.493,
+   "mcalls": 0.7290197236286228,
+   "calls": 29160788.945144914,
+   "bytes": 208.004,
+   "gc_count": 4.0,
+   "gc_time": 15.0,
+   "gc_per_b": 137.1705,
+   "gct_per_b": 514.3893749999999
+  },
+  "coh-on|jdkCount|500": {
+   "ns": 1404.073,
+   "ns_err": 89.369,
+   "mcalls": 0.7122136811974875,
+   "calls": 28488547.247899503,
+   "bytes": 224.004,
+   "gc_count": 4.0,
+   "gc_time": 15.0,
+   "gc_per_b": 140.4073,
+   "gct_per_b": 526.527375
+  },
+  "coh-on|jdkCount|1000": {
+   "ns": 1361.345,
+   "ns_err": 73.407,
+   "mcalls": 0.7345676518443157,
+   "calls": 29382706.073772628,
+   "bytes": 224.004,
+   "gc_count": 5.0,
+   "gc_time": 16.0,
+   "gc_per_b": 170.168125,
+   "gct_per_b": 544.538
+  },
+  "coh-off|ecCount|1": {
+   "ns": 519.949,
+   "ns_err": 27.955,
+   "mcalls": 1.9232655510444294,
+   "calls": 76930622.04177718,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCount|500": {
+   "ns": 549.571,
+   "ns_err": 31.494,
+   "mcalls": 1.8196011070453135,
+   "calls": 72784044.28181253,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCount|1000": {
+   "ns": 522.35,
+   "ns_err": 37.831,
+   "mcalls": 1.9144251938355508,
+   "calls": 76577007.75342204,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCountWith|1": {
+   "ns": 519.859,
+   "ns_err": 31.534,
+   "mcalls": 1.9235985142125074,
+   "calls": 76943940.5685003,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCountWith|500": {
+   "ns": 536.286,
+   "ns_err": 28.838,
+   "mcalls": 1.8646766837098117,
+   "calls": 74587067.34839247,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCountWith|1000": {
+   "ns": 537.383,
+   "ns_err": 58.081,
+   "mcalls": 1.8608701801136247,
+   "calls": 74434807.20454499,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|jdkCount|1": {
+   "ns": 1192.821,
+   "ns_err": 122.244,
+   "mcalls": 0.8383487547586772,
+   "calls": 33533950.190347087,
+   "bytes": 224.004,
+   "gc_count": 5.0,
+   "gc_time": 16.0,
+   "gc_per_b": 149.102625,
+   "gct_per_b": 477.12839999999994
+  },
+  "coh-off|jdkCount|500": {
+   "ns": 1222.771,
+   "ns_err": 83.257,
+   "mcalls": 0.8178146194176996,
+   "calls": 32712584.77670799,
+   "bytes": 240.004,
+   "gc_count": 7.0,
+   "gc_time": 26.0,
+   "gc_per_b": 213.98492499999998,
+   "gct_per_b": 794.8011499999999
+  },
+  "coh-off|jdkCount|1000": {
+   "ns": 1289.138,
+   "ns_err": 136.277,
+   "mcalls": 0.775712142532452,
+   "calls": 31028485.70129808,
+   "bytes": 240.005,
+   "gc_count": 7.0,
+   "gc_time": 25.0,
+   "gc_per_b": 225.59914999999998,
+   "gct_per_b": 805.71125
+  },
+  "ea-off|ecCount|1": {
+   "ns": 678.508,
+   "ns_err": 21.067,
+   "mcalls": 1.473821974096105,
+   "calls": 58952878.963844195,
+   "bytes": 16.002,
+   "gc_count": 2.0,
+   "gc_time": 7.0,
+   "gc_per_b": 33.9254,
+   "gct_per_b": 118.73890000000002
+  },
+  "ea-off|ecCount|500": {
+   "ns": 758.003,
+   "ns_err": 78.522,
+   "mcalls": 1.3192559923905314,
+   "calls": 52770239.69562125,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecCount|1000": {
+   "ns": 741.463,
+   "ns_err": 73.984,
+   "mcalls": 1.3486849647251449,
+   "calls": 53947398.58900579,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecCountWith|1": {
+   "ns": 660.285,
+   "ns_err": 20.48,
+   "mcalls": 1.5144975275827863,
+   "calls": 60579901.10331145,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecCountWith|500": {
+   "ns": 677.004,
+   "ns_err": 40.408,
+   "mcalls": 1.4770961471424098,
+   "calls": 59083845.88569639,
+   "bytes": 16.002,
+   "gc_count": 2.0,
+   "gc_time": 8.0,
+   "gc_per_b": 33.8502,
+   "gct_per_b": 135.4008
+  },
+  "ea-off|ecCountWith|1000": {
+   "ns": 679.148,
+   "ns_err": 40.903,
+   "mcalls": 1.4724331073639325,
+   "calls": 58897324.294557296,
+   "bytes": 16.002,
+   "gc_count": 2.0,
+   "gc_time": 6.0,
+   "gc_per_b": 33.9574,
+   "gct_per_b": 101.87219999999999
+  },
+  "ea-off|jdkCount|1": {
+   "ns": 1317.826,
+   "ns_err": 51.671,
+   "mcalls": 0.7588255202128353,
+   "calls": 30353020.808513414,
+   "bytes": 208.004,
+   "gc_count": 5.0,
+   "gc_time": 20.0,
+   "gc_per_b": 164.72825,
+   "gct_per_b": 658.913
+  },
+  "ea-off|jdkCount|500": {
+   "ns": 1384.905,
+   "ns_err": 82.272,
+   "mcalls": 0.7220711889985234,
+   "calls": 28882847.559940934,
+   "bytes": 224.004,
+   "gc_count": 6.0,
+   "gc_time": 19.0,
+   "gc_per_b": 207.73575,
+   "gct_per_b": 657.829875
+  },
+  "ea-off|jdkCount|1000": {
+   "ns": 1380.881,
+   "ns_err": 58.768,
+   "mcalls": 0.7241753634093017,
+   "calls": 28967014.53637207,
+   "bytes": 224.004,
+   "gc_count": 6.0,
+   "gc_time": 19.0,
+   "gc_per_b": 207.13215,
+   "gct_per_b": 655.9184750000001
+  },
+  "histo-coh-on|ecCount|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCount|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCount|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCountWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCountWith|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCountWith|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkCount|1|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 208.03333333333333,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.03333333333333
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkCount|500|histo": {
+   "objs": 8.001,
+   "bytes": 224.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.06666666666666
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkCount|1000|histo": {
+   "objs": 8.001,
+   "bytes": 224.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.06666666666666
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCount|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCount|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCount|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCountWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCountWith|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCountWith|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkCount|1|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 224.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     56.06666666666666
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkCount|500|histo": {
+   "objs": 8.001,
+   "bytes": 240.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     56.1
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkCount|1000|histo": {
+   "objs": 8.001333333333333,
+   "bytes": 240.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333332,
+     56.1
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCount|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCount|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCount|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCountWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCountWith|500|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCountWith|1000|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkCount|1|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 208.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.1
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkCount|500|histo": {
+   "objs": 8.001,
+   "bytes": 224.03333333333333,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.03333333333333
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkCount|1000|histo": {
+   "objs": 8.001,
+   "bytes": 224.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.CountUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.1
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  }
+ },
+ "FindFirstUtility": {
+  "coh-on|ecDetectIfNone|1": {
+   "ns": 2.498,
+   "ns_err": 0.113,
+   "mcalls": 400.3202562049639,
+   "calls": 16012810248.198557,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectIfNone|500": {
+   "ns": 333.867,
+   "ns_err": 12.584,
+   "mcalls": 2.995204677311624,
+   "calls": 119808187.09246495,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectIfNone|1000": {
+   "ns": 663.854,
+   "ns_err": 12.352,
+   "mcalls": 1.5063553130658247,
+   "calls": 60254212.52263299,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectOptional|1": {
+   "ns": 2.467,
+   "ns_err": 0.099,
+   "mcalls": 405.35062829347385,
+   "calls": 16214025131.738955,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectOptional|500": {
+   "ns": 343.658,
+   "ns_err": 13.009,
+   "mcalls": 2.9098696960350114,
+   "calls": 116394787.84140046,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectOptional|1000": {
+   "ns": 657.22,
+   "ns_err": 29.362,
+   "mcalls": 1.5215605124615805,
+   "calls": 60862420.49846322,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithIfNone|1": {
+   "ns": 2.403,
+   "ns_err": 0.117,
+   "mcalls": 416.1464835622139,
+   "calls": 16645859342.488556,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithIfNone|500": {
+   "ns": 336.045,
+   "ns_err": 10.973,
+   "mcalls": 2.9757919326280704,
+   "calls": 119031677.30512282,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithIfNone|1000": {
+   "ns": 661.734,
+   "ns_err": 14.013,
+   "mcalls": 1.5111812299201792,
+   "calls": 60447249.196807176,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithOptional|1": {
+   "ns": 2.357,
+   "ns_err": 0.072,
+   "mcalls": 424.2681374628765,
+   "calls": 16970725498.51506,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithOptional|500": {
+   "ns": 344.482,
+   "ns_err": 16.633,
+   "mcalls": 2.9029092956961464,
+   "calls": 116116371.82784586,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithOptional|1000": {
+   "ns": 667.829,
+   "ns_err": 31.022,
+   "mcalls": 1.4973893017523947,
+   "calls": 59895572.07009579,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|jdkFindFirst|1": {
+   "ns": 35.424,
+   "ns_err": 1.819,
+   "mcalls": 28.22944896115628,
+   "calls": 1129177958.4462512,
+   "bytes": 200.0,
+   "gc_count": 176.0,
+   "gc_time": 408.0,
+   "gc_per_b": 155.8656,
+   "gct_per_b": 361.3248
+  },
+  "coh-on|jdkFindFirst|500": {
+   "ns": 1488.074,
+   "ns_err": 92.942,
+   "mcalls": 0.6720095909208816,
+   "calls": 26880383.636835262,
+   "bytes": 216.005,
+   "gc_count": 4.0,
+   "gc_time": 15.0,
+   "gc_per_b": 148.8074,
+   "gct_per_b": 558.0277500000001
+  },
+  "coh-on|jdkFindFirst|1000": {
+   "ns": 3305.303,
+   "ns_err": 484.181,
+   "mcalls": 0.3025441237913741,
+   "calls": 12101764.951654961,
+   "bytes": 216.011,
+   "gc_count": 2.0,
+   "gc_time": 10.0,
+   "gc_per_b": 165.26515,
+   "gct_per_b": 826.3257500000001
+  },
+  "coh-off|ecDetectIfNone|1": {
+   "ns": 2.372,
+   "ns_err": 0.119,
+   "mcalls": 421.5851602023609,
+   "calls": 16863406408.094437,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectIfNone|500": {
+   "ns": 260.712,
+   "ns_err": 15.939,
+   "mcalls": 3.8356500659731814,
+   "calls": 153426002.63892725,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectIfNone|1000": {
+   "ns": 501.025,
+   "ns_err": 31.284,
+   "mcalls": 1.995908387805,
+   "calls": 79836335.5122,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectOptional|1": {
+   "ns": 2.109,
+   "ns_err": 0.059,
+   "mcalls": 474.158368895211,
+   "calls": 18966334755.80844,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectOptional|500": {
+   "ns": 261.135,
+   "ns_err": 12.224,
+   "mcalls": 3.829436881306604,
+   "calls": 153177475.25226417,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectOptional|1000": {
+   "ns": 509.448,
+   "ns_err": 19.186,
+   "mcalls": 1.9629088739184373,
+   "calls": 78516354.95673749,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithIfNone|1": {
+   "ns": 2.184,
+   "ns_err": 0.104,
+   "mcalls": 457.87545787545787,
+   "calls": 18315018315.018314,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithIfNone|500": {
+   "ns": 269.858,
+   "ns_err": 10.693,
+   "mcalls": 3.7056526024798226,
+   "calls": 148226104.09919292,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithIfNone|1000": {
+   "ns": 513.298,
+   "ns_err": 18.094,
+   "mcalls": 1.9481860439744554,
+   "calls": 77927441.75897822,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithOptional|1": {
+   "ns": 2.197,
+   "ns_err": 0.112,
+   "mcalls": 455.1661356395084,
+   "calls": 18206645425.580338,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithOptional|500": {
+   "ns": 260.536,
+   "ns_err": 14.425,
+   "mcalls": 3.8382411643688394,
+   "calls": 153529646.57475358,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithOptional|1000": {
+   "ns": 520.23,
+   "ns_err": 34.936,
+   "mcalls": 1.9222267074178727,
+   "calls": 76889068.29671492,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|jdkFindFirst|1": {
+   "ns": 37.448,
+   "ns_err": 1.468,
+   "mcalls": 26.703695791497545,
+   "calls": 1068147831.6599017,
+   "bytes": 224.0,
+   "gc_count": 186.0,
+   "gc_time": 447.0,
+   "gc_per_b": 174.1332,
+   "gct_per_b": 418.4814
+  },
+  "coh-off|jdkFindFirst|500": {
+   "ns": 1314.359,
+   "ns_err": 101.717,
+   "mcalls": 0.7608271408344296,
+   "calls": 30433085.633377183,
+   "bytes": 240.005,
+   "gc_count": 5.0,
+   "gc_time": 17.0,
+   "gc_per_b": 164.294875,
+   "gct_per_b": 558.602575
+  },
+  "coh-off|jdkFindFirst|1000": {
+   "ns": 2453.971,
+   "ns_err": 270.43,
+   "mcalls": 0.40750277815019004,
+   "calls": 16300111.126007602,
+   "bytes": 240.009,
+   "gc_count": 4.0,
+   "gc_time": 17.0,
+   "gc_per_b": 245.39709999999997,
+   "gct_per_b": 1042.937675
+  },
+  "ea-off|ecDetectIfNone|1": {
+   "ns": 3.459,
+   "ns_err": 0.143,
+   "mcalls": 289.10089621277825,
+   "calls": 11564035848.51113,
+   "bytes": 16.0,
+   "gc_count": 144.0,
+   "gc_time": 307.0,
+   "gc_per_b": 12.4524,
+   "gct_per_b": 26.547825
+  },
+  "ea-off|ecDetectIfNone|500": {
+   "ns": 358.3,
+   "ns_err": 51.559,
+   "mcalls": 2.790957298353335,
+   "calls": 111638291.93413341,
+   "bytes": 32.001,
+   "gc_count": 4.0,
+   "gc_time": 18.0,
+   "gc_per_b": 35.83,
+   "gct_per_b": 161.235
+  },
+  "ea-off|ecDetectIfNone|1000": {
+   "ns": 731.958,
+   "ns_err": 57.807,
+   "mcalls": 1.3661986070239003,
+   "calls": 54647944.280956015,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecDetectOptional|1": {
+   "ns": 8.556,
+   "ns_err": 0.309,
+   "mcalls": 116.8770453482936,
+   "calls": 4675081813.931745,
+   "bytes": 32.0,
+   "gc_count": 116.0,
+   "gc_time": 270.0,
+   "gc_per_b": 24.812399999999997,
+   "gct_per_b": 57.752999999999986
+  },
+  "ea-off|ecDetectOptional|500": {
+   "ns": 330.498,
+   "ns_err": 12.321,
+   "mcalls": 3.025736918226434,
+   "calls": 121029476.72905737,
+   "bytes": 48.001,
+   "gc_count": 4.0,
+   "gc_time": 13.0,
+   "gc_per_b": 33.0498,
+   "gct_per_b": 107.41185
+  },
+  "ea-off|ecDetectOptional|1000": {
+   "ns": 739.158,
+   "ns_err": 73.271,
+   "mcalls": 1.3528907216048531,
+   "calls": 54115628.864194125,
+   "bytes": 48.002,
+   "gc_count": 2.0,
+   "gc_time": 13.0,
+   "gc_per_b": 36.9579,
+   "gct_per_b": 240.22634999999997
+  },
+  "ea-off|ecDetectWithIfNone|1": {
+   "ns": 1.703,
+   "ns_err": 0.166,
+   "mcalls": 587.1990604815032,
+   "calls": 23487962419.260128,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecDetectWithIfNone|500": {
+   "ns": 356.348,
+   "ns_err": 38.366,
+   "mcalls": 2.8062455801632114,
+   "calls": 112249823.20652844,
+   "bytes": 16.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecDetectWithIfNone|1000": {
+   "ns": 656.198,
+   "ns_err": 24.519,
+   "mcalls": 1.5239302771419603,
+   "calls": 60957211.08567841,
+   "bytes": 16.002,
+   "gc_count": 2.0,
+   "gc_time": 7.0,
+   "gc_per_b": 32.80989999999999,
+   "gct_per_b": 114.83464999999998
+  },
+  "ea-off|ecDetectWithOptional|1": {
+   "ns": 3.602,
+   "ns_err": 0.158,
+   "mcalls": 277.623542476402,
+   "calls": 11104941699.05608,
+   "bytes": 16.0,
+   "gc_count": 139.0,
+   "gc_time": 314.0,
+   "gc_per_b": 12.51695,
+   "gct_per_b": 28.2757
+  },
+  "ea-off|ecDetectWithOptional|500": {
+   "ns": 348.173,
+   "ns_err": 42.342,
+   "mcalls": 2.872135403951484,
+   "calls": 114885416.15805936,
+   "bytes": 32.001,
+   "gc_count": 4.0,
+   "gc_time": 16.0,
+   "gc_per_b": 34.817299999999996,
+   "gct_per_b": 139.26919999999998
+  },
+  "ea-off|ecDetectWithOptional|1000": {
+   "ns": 737.418,
+   "ns_err": 71.106,
+   "mcalls": 1.3560829814297997,
+   "calls": 54243319.257191986,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|jdkFindFirst|1": {
+   "ns": 35.53,
+   "ns_err": 1.302,
+   "mcalls": 28.145229383619476,
+   "calls": 1125809175.344779,
+   "bytes": 200.0,
+   "gc_count": 175.0,
+   "gc_time": 406.0,
+   "gc_per_b": 155.44375000000002,
+   "gct_per_b": 360.6295
+  },
+  "ea-off|jdkFindFirst|500": {
+   "ns": 1419.719,
+   "ns_err": 89.884,
+   "mcalls": 0.7043647369655545,
+   "calls": 28174589.478622176,
+   "bytes": 216.005,
+   "gc_count": 6.0,
+   "gc_time": 24.0,
+   "gc_per_b": 212.95785,
+   "gct_per_b": 851.8314
+  },
+  "ea-off|jdkFindFirst|1000": {
+   "ns": 3110.969,
+   "ns_err": 469.86,
+   "mcalls": 0.3214432544972322,
+   "calls": 12857730.179889288,
+   "bytes": 216.01,
+   "gc_count": 2.0,
+   "gc_time": 15.0,
+   "gc_per_b": 155.54845,
+   "gct_per_b": 1166.6133750000001
+  },
+  "histo-coh-on|ecDetectIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkFindFirst|1|histo": {
+   "objs": 7.000666666666667,
+   "bytes": 200.0,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0006666666666666,
+     48.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkFindFirst|500|histo": {
+   "objs": 8.001333333333333,
+   "bytes": 216.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333332,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkFindFirst|1000|histo": {
+   "objs": 8.002333333333333,
+   "bytes": 216.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0023333333333333,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkFindFirst|1|histo": {
+   "objs": 7.0,
+   "bytes": 224.0,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0,
+     56.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkFindFirst|500|histo": {
+   "objs": 8.001,
+   "bytes": 240.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     56.06666666666666
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkFindFirst|1000|histo": {
+   "objs": 8.002333333333333,
+   "bytes": 240.13333333333333,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0023333333333333,
+     56.13333333333333
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectIfNone|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectIfNone|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectIfNone|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectOptional|1|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectOptional|500|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectOptional|1000|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithIfNone|500|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithIfNone|1000|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithOptional|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithOptional|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithOptional|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkFindFirst|1|histo": {
+   "objs": 7.000333333333334,
+   "bytes": 200.0,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0003333333333333,
+     48.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkFindFirst|500|histo": {
+   "objs": 8.001333333333333,
+   "bytes": 216.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333334,
+     48.06666666666666
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkFindFirst|1000|histo": {
+   "objs": 8.002,
+   "bytes": 216.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstUtilityBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.002,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  }
+ },
+ "AnyMatchEagerLazy": {
+  "coh-on|ecAnySatisfy|1": {
+   "ns": 2.081,
+   "ns_err": 0.06,
+   "mcalls": 480.5382027871216,
+   "calls": 19221528111.484863,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfy|500": {
+   "ns": 336.2,
+   "ns_err": 16.907,
+   "mcalls": 2.97441998810232,
+   "calls": 118976799.52409281,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfy|1000": {
+   "ns": 659.855,
+   "ns_err": 18.411,
+   "mcalls": 1.5154844624955481,
+   "calls": 60619378.49982193,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfyWith|1": {
+   "ns": 2.147,
+   "ns_err": 0.078,
+   "mcalls": 465.7661853749418,
+   "calls": 18630647414.997673,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfyWith|500": {
+   "ns": 333.238,
+   "ns_err": 17.412,
+   "mcalls": 3.000858245458201,
+   "calls": 120034329.81832804,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecAnySatisfyWith|1000": {
+   "ns": 663.825,
+   "ns_err": 19.447,
+   "mcalls": 1.5064211200241027,
+   "calls": 60256844.8009641,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyAnySatisfy|1": {
+   "ns": 2.462,
+   "ns_err": 0.083,
+   "mcalls": 406.17384240454913,
+   "calls": 16246953696.181965,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyAnySatisfy|500": {
+   "ns": 338.4,
+   "ns_err": 12.306,
+   "mcalls": 2.955082742316785,
+   "calls": 118203309.6926714,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyAnySatisfy|1000": {
+   "ns": 666.361,
+   "ns_err": 35.218,
+   "mcalls": 1.5006880654780217,
+   "calls": 60027522.619120866,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|jdkAnyMatch|1": {
+   "ns": 25.407,
+   "ns_err": 3.257,
+   "mcalls": 39.359231707797065,
+   "calls": 1574369268.3118825,
+   "bytes": 140.0,
+   "gc_count": 172.0,
+   "gc_time": 404.0,
+   "gc_per_b": 109.2501,
+   "gct_per_b": 256.6107
+  },
+  "coh-on|jdkAnyMatch|500": {
+   "ns": 1571.979,
+   "ns_err": 145.609,
+   "mcalls": 0.6361408135859321,
+   "calls": 25445632.543437283,
+   "bytes": 176.005,
+   "gc_count": 4.0,
+   "gc_time": 21.0,
+   "gc_per_b": 157.1979,
+   "gct_per_b": 825.288975
+  },
+  "coh-on|jdkAnyMatch|1000": {
+   "ns": 3669.863,
+   "ns_err": 433.074,
+   "mcalls": 0.2724897359928695,
+   "calls": 10899589.43971478,
+   "bytes": 176.012,
+   "gc_count": 2.0,
+   "gc_time": 12.0,
+   "gc_per_b": 183.49315,
+   "gct_per_b": 1100.9588999999999
+  },
+  "coh-off|ecAnySatisfy|1": {
+   "ns": 1.904,
+   "ns_err": 0.094,
+   "mcalls": 525.2100840336135,
+   "calls": 21008403361.34454,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfy|500": {
+   "ns": 267.164,
+   "ns_err": 12.314,
+   "mcalls": 3.7430192690631974,
+   "calls": 149720770.76252788,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfy|1000": {
+   "ns": 533.987,
+   "ns_err": 46.855,
+   "mcalls": 1.8727047662209007,
+   "calls": 74908190.64883603,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfyWith|1": {
+   "ns": 2.082,
+   "ns_err": 0.077,
+   "mcalls": 480.30739673390974,
+   "calls": 19212295869.356388,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfyWith|500": {
+   "ns": 260.997,
+   "ns_err": 13.15,
+   "mcalls": 3.8314616643103174,
+   "calls": 153258466.5724127,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecAnySatisfyWith|1000": {
+   "ns": 510.969,
+   "ns_err": 21.956,
+   "mcalls": 1.9570658885372694,
+   "calls": 78282635.54149078,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyAnySatisfy|1": {
+   "ns": 2.145,
+   "ns_err": 0.112,
+   "mcalls": 466.2004662004662,
+   "calls": 18648018648.018646,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyAnySatisfy|500": {
+   "ns": 272.254,
+   "ns_err": 16.293,
+   "mcalls": 3.673040616483137,
+   "calls": 146921624.65932548,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyAnySatisfy|1000": {
+   "ns": 515.031,
+   "ns_err": 23.47,
+   "mcalls": 1.9416306979579872,
+   "calls": 77665227.9183195,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|jdkAnyMatch|1": {
+   "ns": 29.977,
+   "ns_err": 1.644,
+   "mcalls": 33.35890849651399,
+   "calls": 1334356339.8605597,
+   "bytes": 176.0,
+   "gc_count": 183.0,
+   "gc_time": 505.0,
+   "gc_per_b": 137.144775,
+   "gct_per_b": 378.459625
+  },
+  "coh-off|jdkAnyMatch|500": {
+   "ns": 1339.477,
+   "ns_err": 88.284,
+   "mcalls": 0.7465600379849747,
+   "calls": 29862401.519398987,
+   "bytes": 192.005,
+   "gc_count": 4.0,
+   "gc_time": 14.0,
+   "gc_per_b": 133.9477,
+   "gct_per_b": 468.81695
+  },
+  "coh-off|jdkAnyMatch|1000": {
+   "ns": 3013.455,
+   "ns_err": 423.116,
+   "mcalls": 0.33184500847034387,
+   "calls": 13273800.338813754,
+   "bytes": 192.011,
+   "gc_count": 2.0,
+   "gc_time": 15.0,
+   "gc_per_b": 150.67275,
+   "gct_per_b": 1130.045625
+  },
+  "ea-off|ecAnySatisfy|1": {
+   "ns": 3.495,
+   "ns_err": 0.087,
+   "mcalls": 286.1230329041488,
+   "calls": 11444921316.16595,
+   "bytes": 16.0,
+   "gc_count": 144.0,
+   "gc_time": 315.0,
+   "gc_per_b": 12.582,
+   "gct_per_b": 27.523125
+  },
+  "ea-off|ecAnySatisfy|500": {
+   "ns": 356.852,
+   "ns_err": 43.293,
+   "mcalls": 2.8022821786062573,
+   "calls": 112091287.14425029,
+   "bytes": 32.001,
+   "gc_count": 4.0,
+   "gc_time": 18.0,
+   "gc_per_b": 35.685199999999995,
+   "gct_per_b": 160.58339999999998
+  },
+  "ea-off|ecAnySatisfy|1000": {
+   "ns": 711.34,
+   "ns_err": 48.682,
+   "mcalls": 1.4057975089268142,
+   "calls": 56231900.35707256,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecAnySatisfyWith|1": {
+   "ns": 4.087,
+   "ns_err": 0.12,
+   "mcalls": 244.67824810374358,
+   "calls": 9787129924.149744,
+   "bytes": 16.0,
+   "gc_count": 122.0,
+   "gc_time": 267.0,
+   "gc_per_b": 12.465349999999999,
+   "gct_per_b": 27.280724999999997
+  },
+  "ea-off|ecAnySatisfyWith|500": {
+   "ns": 347.61,
+   "ns_err": 36.964,
+   "mcalls": 2.8767872040505162,
+   "calls": 115071488.16202065,
+   "bytes": 32.001,
+   "gc_count": 4.0,
+   "gc_time": 15.0,
+   "gc_per_b": 34.761,
+   "gct_per_b": 130.35375
+  },
+  "ea-off|ecAnySatisfyWith|1000": {
+   "ns": 696.23,
+   "ns_err": 53.359,
+   "mcalls": 1.4363069675250995,
+   "calls": 57452278.701003976,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecLazyAnySatisfy|1": {
+   "ns": 6.816,
+   "ns_err": 0.334,
+   "mcalls": 146.71361502347418,
+   "calls": 5868544600.938968,
+   "bytes": 32.0,
+   "gc_count": 146.0,
+   "gc_time": 345.0,
+   "gc_per_b": 24.8784,
+   "gct_per_b": 58.788
+  },
+  "ea-off|ecLazyAnySatisfy|500": {
+   "ns": 331.152,
+   "ns_err": 16.205,
+   "mcalls": 3.01976131806542,
+   "calls": 120790452.7226168,
+   "bytes": 48.001,
+   "gc_count": 4.0,
+   "gc_time": 12.0,
+   "gc_per_b": 33.1152,
+   "gct_per_b": 99.3456
+  },
+  "ea-off|ecLazyAnySatisfy|1000": {
+   "ns": 701.154,
+   "ns_err": 62.039,
+   "mcalls": 1.4262202026944153,
+   "calls": 57048808.10777661,
+   "bytes": 48.002,
+   "gc_count": 2.0,
+   "gc_time": 8.0,
+   "gc_per_b": 35.0577,
+   "gct_per_b": 140.2308
+  },
+  "ea-off|jdkAnyMatch|1": {
+   "ns": 28.402,
+   "ns_err": 0.74,
+   "mcalls": 35.20878811351313,
+   "calls": 1408351524.5405252,
+   "bytes": 160.0,
+   "gc_count": 175.0,
+   "gc_time": 404.0,
+   "gc_per_b": 124.25875000000002,
+   "gct_per_b": 286.8602
+  },
+  "ea-off|jdkAnyMatch|500": {
+   "ns": 1480.719,
+   "ns_err": 70.007,
+   "mcalls": 0.6753475845180618,
+   "calls": 27013903.38072247,
+   "bytes": 176.005,
+   "gc_count": 4.0,
+   "gc_time": 16.0,
+   "gc_per_b": 148.0719,
+   "gct_per_b": 592.2876
+  },
+  "ea-off|jdkAnyMatch|1000": {
+   "ns": 3230.989,
+   "ns_err": 341.303,
+   "mcalls": 0.3095027559672905,
+   "calls": 12380110.23869162,
+   "bytes": 176.01,
+   "gc_count": 2.0,
+   "gc_time": 9.0,
+   "gc_per_b": 161.54945,
+   "gct_per_b": 726.9725249999999
+  },
+  "histo-coh-on|ecAnySatisfy|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfy|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfy|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfyWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfyWith|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecAnySatisfyWith|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyAnySatisfy|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyAnySatisfy|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyAnySatisfy|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkAnyMatch|1|histo": {
+   "objs": 6.0,
+   "bytes": 160.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0,
+     48.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkAnyMatch|500|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 176.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkAnyMatch|1000|histo": {
+   "objs": 7.002,
+   "bytes": 176.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.002,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfy|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfy|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfy|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfyWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfyWith|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecAnySatisfyWith|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyAnySatisfy|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyAnySatisfy|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyAnySatisfy|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkAnyMatch|1|histo": {
+   "objs": 6.0,
+   "bytes": 176.0,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     24.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0,
+     56.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkAnyMatch|500|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 192.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     24.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     56.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkAnyMatch|1000|histo": {
+   "objs": 7.0023333333333335,
+   "bytes": 192.13333333333333,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     24.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0023333333333333,
+     56.13333333333333
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfy|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfy|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfy|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfyWith|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfyWith|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecAnySatisfyWith|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyAnySatisfy|1|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyAnySatisfy|500|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyAnySatisfy|1000|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkAnyMatch|1|histo": {
+   "objs": 6.000333333333334,
+   "bytes": 160.0,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0003333333333333,
+     48.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkAnyMatch|500|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 176.03333333333333,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.03333333333333
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkAnyMatch|1000|histo": {
+   "objs": 7.002,
+   "bytes": 176.1,
+   "classes": {
+    "java.util.stream.MatchOps$1MatchSink": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$MatchOp": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.MatchOps$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.002,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  }
+ },
+ "CountEagerLazy": {
+  "coh-on|ecCount|1": {
+   "ns": 665.185,
+   "ns_err": 25.523,
+   "mcalls": 1.5033411757631336,
+   "calls": 60133647.03052535,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCount|500": {
+   "ns": 681.453,
+   "ns_err": 32.513,
+   "mcalls": 1.4674526342975964,
+   "calls": 58698105.37190386,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCount|1000": {
+   "ns": 669.14,
+   "ns_err": 38.581,
+   "mcalls": 1.4944555698359088,
+   "calls": 59778222.793436356,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCountWith|1": {
+   "ns": 666.734,
+   "ns_err": 22.299,
+   "mcalls": 1.4998485152999546,
+   "calls": 59993940.611998186,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCountWith|500": {
+   "ns": 686.453,
+   "ns_err": 45.647,
+   "mcalls": 1.4567639736442262,
+   "calls": 58270558.94576905,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecCountWith|1000": {
+   "ns": 648.848,
+   "ns_err": 48.402,
+   "mcalls": 1.541193006682613,
+   "calls": 61647720.26730452,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyCount|1": {
+   "ns": 694.363,
+   "ns_err": 50.448,
+   "mcalls": 1.4401689030089448,
+   "calls": 57606756.12035779,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyCount|500": {
+   "ns": 706.624,
+   "ns_err": 36.131,
+   "mcalls": 1.4151797844398153,
+   "calls": 56607191.37759261,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyCount|1000": {
+   "ns": 664.849,
+   "ns_err": 35.508,
+   "mcalls": 1.5041009311888864,
+   "calls": 60164037.24755546,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|jdkCount|1": {
+   "ns": 1388.613,
+   "ns_err": 70.388,
+   "mcalls": 0.7201430492152961,
+   "calls": 28805721.968611844,
+   "bytes": 208.004,
+   "gc_count": 4.0,
+   "gc_time": 16.0,
+   "gc_per_b": 138.86130000000003,
+   "gct_per_b": 555.4452000000001
+  },
+  "coh-on|jdkCount|500": {
+   "ns": 1423.721,
+   "ns_err": 96.564,
+   "mcalls": 0.7023848071356678,
+   "calls": 28095392.28542671,
+   "bytes": 224.005,
+   "gc_count": 5.0,
+   "gc_time": 19.0,
+   "gc_per_b": 177.965125,
+   "gct_per_b": 676.267475
+  },
+  "coh-on|jdkCount|1000": {
+   "ns": 1340.98,
+   "ns_err": 74.404,
+   "mcalls": 0.7457232770063684,
+   "calls": 29828931.080254737,
+   "bytes": 224.004,
+   "gc_count": 6.0,
+   "gc_time": 21.0,
+   "gc_per_b": 201.14700000000002,
+   "gct_per_b": 704.0145
+  },
+  "coh-off|ecCount|1": {
+   "ns": 502.887,
+   "ns_err": 23.106,
+   "mcalls": 1.9885182953625764,
+   "calls": 79540731.81450306,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCount|500": {
+   "ns": 516.428,
+   "ns_err": 21.126,
+   "mcalls": 1.9363783528391179,
+   "calls": 77455134.11356471,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCount|1000": {
+   "ns": 503.446,
+   "ns_err": 14.362,
+   "mcalls": 1.9863103490741807,
+   "calls": 79452413.96296723,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCountWith|1": {
+   "ns": 525.914,
+   "ns_err": 25.879,
+   "mcalls": 1.9014515681271082,
+   "calls": 76058062.72508433,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCountWith|500": {
+   "ns": 589.453,
+   "ns_err": 23.371,
+   "mcalls": 1.6964880999842227,
+   "calls": 67859523.9993689,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecCountWith|1000": {
+   "ns": 574.919,
+   "ns_err": 21.888,
+   "mcalls": 1.7393754598473872,
+   "calls": 69575018.39389549,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyCount|1": {
+   "ns": 513.739,
+   "ns_err": 26.52,
+   "mcalls": 1.9465136966436263,
+   "calls": 77860547.86574505,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyCount|500": {
+   "ns": 530.81,
+   "ns_err": 33.275,
+   "mcalls": 1.8839132646332966,
+   "calls": 75356530.58533186,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyCount|1000": {
+   "ns": 501.729,
+   "ns_err": 16.935,
+   "mcalls": 1.993107833113095,
+   "calls": 79724313.32452379,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|jdkCount|1": {
+   "ns": 1165.608,
+   "ns_err": 63.406,
+   "mcalls": 0.8579213594965032,
+   "calls": 34316854.379860125,
+   "bytes": 224.004,
+   "gc_count": 6.0,
+   "gc_time": 23.0,
+   "gc_per_b": 174.84120000000001,
+   "gct_per_b": 670.2245999999999
+  },
+  "coh-off|jdkCount|500": {
+   "ns": 1153.771,
+   "ns_err": 59.76,
+   "mcalls": 0.8667231192324993,
+   "calls": 34668924.76929998,
+   "bytes": 240.004,
+   "gc_count": 6.0,
+   "gc_time": 22.0,
+   "gc_per_b": 173.06565,
+   "gct_per_b": 634.5740499999999
+  },
+  "coh-off|jdkCount|1000": {
+   "ns": 1129.972,
+   "ns_err": 62.406,
+   "mcalls": 0.8849776808628886,
+   "calls": 35399107.23451555,
+   "bytes": 240.004,
+   "gc_count": 6.0,
+   "gc_time": 21.0,
+   "gc_per_b": 169.49579999999997,
+   "gct_per_b": 593.2352999999999
+  },
+  "ea-off|ecCount|1": {
+   "ns": 655.907,
+   "ns_err": 37.718,
+   "mcalls": 1.524606384746618,
+   "calls": 60984255.38986472,
+   "bytes": 16.002,
+   "gc_count": 2.0,
+   "gc_time": 7.0,
+   "gc_per_b": 32.79535,
+   "gct_per_b": 114.783725
+  },
+  "ea-off|ecCount|500": {
+   "ns": 703.637,
+   "ns_err": 42.277,
+   "mcalls": 1.4211873451794037,
+   "calls": 56847493.80717615,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecCount|1000": {
+   "ns": 691.207,
+   "ns_err": 55.468,
+   "mcalls": 1.4467446076211612,
+   "calls": 57869784.30484645,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecCountWith|1": {
+   "ns": 653.638,
+   "ns_err": 16.786,
+   "mcalls": 1.5298988124925417,
+   "calls": 61195952.499701664,
+   "bytes": 16.002,
+   "gc_count": 2.0,
+   "gc_time": 7.0,
+   "gc_per_b": 32.6819,
+   "gct_per_b": 114.38665
+  },
+  "ea-off|ecCountWith|500": {
+   "ns": 709.174,
+   "ns_err": 52.381,
+   "mcalls": 1.4100911764954722,
+   "calls": 56403647.059818886,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecCountWith|1000": {
+   "ns": 693.582,
+   "ns_err": 71.499,
+   "mcalls": 1.441790588567754,
+   "calls": 57671623.54271016,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecLazyCount|1": {
+   "ns": 739.216,
+   "ns_err": 93.986,
+   "mcalls": 1.352784571762516,
+   "calls": 54111382.87050064,
+   "bytes": 48.002,
+   "gc_count": 2.0,
+   "gc_time": 13.0,
+   "gc_per_b": 36.9608,
+   "gct_per_b": 240.2452
+  },
+  "ea-off|ecLazyCount|500": {
+   "ns": 737.526,
+   "ns_err": 73.347,
+   "mcalls": 1.355884402719362,
+   "calls": 54235376.108774476,
+   "bytes": 64.002,
+   "gc_count": 4.0,
+   "gc_time": 20.0,
+   "gc_per_b": 73.75259999999999,
+   "gct_per_b": 368.763
+  },
+  "ea-off|ecLazyCount|1000": {
+   "ns": 701.798,
+   "ns_err": 102.724,
+   "mcalls": 1.424911441753895,
+   "calls": 56996457.6701558,
+   "bytes": 64.002,
+   "gc_count": 4.0,
+   "gc_time": 18.0,
+   "gc_per_b": 70.1798,
+   "gct_per_b": 315.8091
+  },
+  "ea-off|jdkCount|1": {
+   "ns": 1378.669,
+   "ns_err": 91.965,
+   "mcalls": 0.7253372636941862,
+   "calls": 29013490.547767445,
+   "bytes": 208.004,
+   "gc_count": 4.0,
+   "gc_time": 14.0,
+   "gc_per_b": 137.86690000000002,
+   "gct_per_b": 482.53415
+  },
+  "ea-off|jdkCount|500": {
+   "ns": 1404.691,
+   "ns_err": 132.823,
+   "mcalls": 0.711900339647652,
+   "calls": 28476013.58590608,
+   "bytes": 224.004,
+   "gc_count": 6.0,
+   "gc_time": 21.0,
+   "gc_per_b": 210.70365,
+   "gct_per_b": 737.462775
+  },
+  "ea-off|jdkCount|1000": {
+   "ns": 1330.04,
+   "ns_err": 70.706,
+   "mcalls": 0.7518570870049022,
+   "calls": 30074283.480196085,
+   "bytes": 224.004,
+   "gc_count": 6.0,
+   "gc_time": 21.0,
+   "gc_per_b": 199.506,
+   "gct_per_b": 698.271
+  },
+  "histo-coh-on|ecCount|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCount|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCount|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCountWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCountWith|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecCountWith|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyCount|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyCount|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyCount|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkCount|1|histo": {
+   "objs": 7.001333333333333,
+   "bytes": 208.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333334,
+     48.1
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkCount|500|histo": {
+   "objs": 8.001333333333333,
+   "bytes": 224.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333334,
+     48.06666666666666
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkCount|1000|histo": {
+   "objs": 8.001,
+   "bytes": 224.03333333333333,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.03333333333333
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCount|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCount|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCount|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCountWith|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCountWith|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecCountWith|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyCount|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyCount|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyCount|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkCount|1|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 224.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     56.1
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkCount|500|histo": {
+   "objs": 8.001333333333333,
+   "bytes": 240.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333334,
+     56.06666666666666
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkCount|1000|histo": {
+   "objs": 8.001,
+   "bytes": 240.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     56.06666666666666
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCount|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCount|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCount|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCountWith|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCountWith|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecCountWith|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyCount|1|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.procedure.CountProcedure": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyCount|500|histo": {
+   "objs": 4.0,
+   "bytes": 64.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.procedure.CountProcedure": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyCount|1000|histo": {
+   "objs": 4.0,
+   "bytes": 64.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.procedure.CountProcedure": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkCount|1|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 208.03333333333333,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.03333333333333
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkCount|500|histo": {
+   "objs": 8.001333333333333,
+   "bytes": 224.06666666666666,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333334,
+     48.06666666666666
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkCount|1000|histo": {
+   "objs": 8.001666666666667,
+   "bytes": 224.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.CountEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReduceOps$5": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0016666666666667,
+     48.1
+    ],
+    "java.util.stream.ReduceOps$CountingSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  }
+ },
+ "FindFirstEagerLazy": {
+  "coh-on|ecDetectIfNone|1": {
+   "ns": 2.326,
+   "ns_err": 0.157,
+   "mcalls": 429.9226139294927,
+   "calls": 17196904557.179707,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectIfNone|500": {
+   "ns": 337.706,
+   "ns_err": 13.945,
+   "mcalls": 2.9611555613462595,
+   "calls": 118446222.45385039,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectIfNone|1000": {
+   "ns": 671.214,
+   "ns_err": 36.153,
+   "mcalls": 1.4898378162553223,
+   "calls": 59593512.65021289,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectOptional|1": {
+   "ns": 2.299,
+   "ns_err": 0.086,
+   "mcalls": 434.97172683775557,
+   "calls": 17398869073.510223,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectOptional|500": {
+   "ns": 328.304,
+   "ns_err": 22.512,
+   "mcalls": 3.0459574053316443,
+   "calls": 121838296.21326576,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectOptional|1000": {
+   "ns": 668.418,
+   "ns_err": 26.212,
+   "mcalls": 1.4960698245708524,
+   "calls": 59842792.98283409,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithIfNone|1": {
+   "ns": 2.374,
+   "ns_err": 0.245,
+   "mcalls": 421.22999157540016,
+   "calls": 16849199663.016006,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithIfNone|500": {
+   "ns": 336.556,
+   "ns_err": 14.169,
+   "mcalls": 2.971273725620699,
+   "calls": 118850949.02482797,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithIfNone|1000": {
+   "ns": 673.86,
+   "ns_err": 34.5,
+   "mcalls": 1.4839877719407593,
+   "calls": 59359510.87763037,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithOptional|1": {
+   "ns": 2.341,
+   "ns_err": 0.111,
+   "mcalls": 427.1678769756514,
+   "calls": 17086715079.026056,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithOptional|500": {
+   "ns": 341.519,
+   "ns_err": 11.507,
+   "mcalls": 2.928094776571728,
+   "calls": 117123791.06286912,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecDetectWithOptional|1000": {
+   "ns": 659.622,
+   "ns_err": 20.98,
+   "mcalls": 1.516019781026103,
+   "calls": 60640791.24104412,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyDetectIfNone|1": {
+   "ns": 2.369,
+   "ns_err": 0.113,
+   "mcalls": 422.1190375685943,
+   "calls": 16884761502.743773,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyDetectIfNone|500": {
+   "ns": 338.219,
+   "ns_err": 11.112,
+   "mcalls": 2.956664173213214,
+   "calls": 118266566.92852856,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyDetectIfNone|1000": {
+   "ns": 664.944,
+   "ns_err": 18.193,
+   "mcalls": 1.503886041531317,
+   "calls": 60155441.66125268,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyDetectOptional|1": {
+   "ns": 2.29,
+   "ns_err": 0.093,
+   "mcalls": 436.68122270742356,
+   "calls": 17467248908.296944,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyDetectOptional|500": {
+   "ns": 333.24,
+   "ns_err": 12.98,
+   "mcalls": 3.0008402352658745,
+   "calls": 120033609.41063498,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|ecLazyDetectOptional|1000": {
+   "ns": 673.792,
+   "ns_err": 34.372,
+   "mcalls": 1.484137537993921,
+   "calls": 59365501.51975684,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-on|jdkFindFirst|1": {
+   "ns": 35.551,
+   "ns_err": 1.14,
+   "mcalls": 28.1286039773846,
+   "calls": 1125144159.0953841,
+   "bytes": 200.0,
+   "gc_count": 176.0,
+   "gc_time": 416.0,
+   "gc_per_b": 156.4244,
+   "gct_per_b": 369.7304
+  },
+  "coh-on|jdkFindFirst|500": {
+   "ns": 1537.122,
+   "ns_err": 118.406,
+   "mcalls": 0.6505664482064534,
+   "calls": 26022657.928258132,
+   "bytes": 216.005,
+   "gc_count": 4.0,
+   "gc_time": 17.0,
+   "gc_per_b": 153.7122,
+   "gct_per_b": 653.2768500000001
+  },
+  "coh-on|jdkFindFirst|1000": {
+   "ns": 3542.325,
+   "ns_err": 643.653,
+   "mcalls": 0.2823004665015209,
+   "calls": 11292018.660060836,
+   "bytes": 216.011,
+   "gc_count": 2.0,
+   "gc_time": 11.0,
+   "gc_per_b": 177.11624999999998,
+   "gct_per_b": 974.139375
+  },
+  "coh-off|ecDetectIfNone|1": {
+   "ns": 1.908,
+   "ns_err": 0.122,
+   "mcalls": 524.1090146750524,
+   "calls": 20964360587.002098,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectIfNone|500": {
+   "ns": 256.77,
+   "ns_err": 13.895,
+   "mcalls": 3.894535966039647,
+   "calls": 155781438.64158586,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectIfNone|1000": {
+   "ns": 512.471,
+   "ns_err": 10.829,
+   "mcalls": 1.9513299289130506,
+   "calls": 78053197.15652202,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectOptional|1": {
+   "ns": 1.994,
+   "ns_err": 0.141,
+   "mcalls": 501.5045135406219,
+   "calls": 20060180541.624874,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectOptional|500": {
+   "ns": 254.374,
+   "ns_err": 12.164,
+   "mcalls": 3.9312193856290345,
+   "calls": 157248775.4251614,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectOptional|1000": {
+   "ns": 501.149,
+   "ns_err": 24.401,
+   "mcalls": 1.9954145373930707,
+   "calls": 79816581.49572283,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithIfNone|1": {
+   "ns": 2.062,
+   "ns_err": 0.112,
+   "mcalls": 484.9660523763337,
+   "calls": 19398642095.05335,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithIfNone|500": {
+   "ns": 262.753,
+   "ns_err": 11.328,
+   "mcalls": 3.8058556895639635,
+   "calls": 152234227.58255854,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithIfNone|1000": {
+   "ns": 499.113,
+   "ns_err": 37.843,
+   "mcalls": 2.003554305337669,
+   "calls": 80142172.21350676,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithOptional|1": {
+   "ns": 2.199,
+   "ns_err": 0.167,
+   "mcalls": 454.7521600727604,
+   "calls": 18190086402.910416,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithOptional|500": {
+   "ns": 256.539,
+   "ns_err": 14.211,
+   "mcalls": 3.8980427927137784,
+   "calls": 155921711.70855114,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecDetectWithOptional|1000": {
+   "ns": 515.555,
+   "ns_err": 17.756,
+   "mcalls": 1.9396572625617055,
+   "calls": 77586290.50246823,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyDetectIfNone|1": {
+   "ns": 2.198,
+   "ns_err": 0.105,
+   "mcalls": 454.9590536851683,
+   "calls": 18198362147.406734,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyDetectIfNone|500": {
+   "ns": 262.646,
+   "ns_err": 8.209,
+   "mcalls": 3.807406166475027,
+   "calls": 152296246.65900108,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyDetectIfNone|1000": {
+   "ns": 500.558,
+   "ns_err": 19.423,
+   "mcalls": 1.9977704881352412,
+   "calls": 79910819.52540964,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyDetectOptional|1": {
+   "ns": 2.091,
+   "ns_err": 0.121,
+   "mcalls": 478.2400765184122,
+   "calls": 19129603060.73649,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyDetectOptional|500": {
+   "ns": 261.232,
+   "ns_err": 13.097,
+   "mcalls": 3.8280149445703433,
+   "calls": 153120597.78281373,
+   "bytes": 0.001,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|ecLazyDetectOptional|1000": {
+   "ns": 510.6,
+   "ns_err": 25.739,
+   "mcalls": 1.9584802193497846,
+   "calls": 78339208.77399138,
+   "bytes": 0.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|jdkFindFirst|1": {
+   "ns": 37.959,
+   "ns_err": 1.104,
+   "mcalls": 26.34421349350615,
+   "calls": 1053768539.7402459,
+   "bytes": 224.0,
+   "gc_count": 183.0,
+   "gc_time": 428.0,
+   "gc_per_b": 173.662425,
+   "gct_per_b": 406.16130000000004
+  },
+  "coh-off|jdkFindFirst|500": {
+   "ns": 1197.911,
+   "ns_err": 81.327,
+   "mcalls": 0.8347865575990202,
+   "calls": 33391462.30396081,
+   "bytes": 240.004,
+   "gc_count": 7.0,
+   "gc_time": 22.0,
+   "gc_per_b": 209.634425,
+   "gct_per_b": 658.8510500000001
+  },
+  "coh-off|jdkFindFirst|1000": {
+   "ns": 2577.581,
+   "ns_err": 293.865,
+   "mcalls": 0.38796064992719914,
+   "calls": 15518425.997087967,
+   "bytes": 240.009,
+   "gc_count": 4.0,
+   "gc_time": 17.0,
+   "gc_per_b": 257.7581,
+   "gct_per_b": 1095.471925
+  },
+  "ea-off|ecDetectIfNone|1": {
+   "ns": 3.687,
+   "ns_err": 0.198,
+   "mcalls": 271.22321670735016,
+   "calls": 10848928668.294006,
+   "bytes": 16.0,
+   "gc_count": 135.0,
+   "gc_time": 306.0,
+   "gc_per_b": 12.443625,
+   "gct_per_b": 28.20555
+  },
+  "ea-off|ecDetectIfNone|500": {
+   "ns": 356.419,
+   "ns_err": 39.269,
+   "mcalls": 2.8056865655310186,
+   "calls": 112227462.62124074,
+   "bytes": 32.001,
+   "gc_count": 4.0,
+   "gc_time": 22.0,
+   "gc_per_b": 35.6419,
+   "gct_per_b": 196.03044999999997
+  },
+  "ea-off|ecDetectIfNone|1000": {
+   "ns": 700.059,
+   "ns_err": 51.157,
+   "mcalls": 1.428451030555996,
+   "calls": 57138041.222239845,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecDetectOptional|1": {
+   "ns": 8.603,
+   "ns_err": 0.216,
+   "mcalls": 116.23852144600721,
+   "calls": 4649540857.840288,
+   "bytes": 32.0,
+   "gc_count": 116.0,
+   "gc_time": 270.0,
+   "gc_per_b": 24.948700000000002,
+   "gct_per_b": 58.07025
+  },
+  "ea-off|ecDetectOptional|500": {
+   "ns": 341.485,
+   "ns_err": 16.513,
+   "mcalls": 2.9283863127223744,
+   "calls": 117135452.50889497,
+   "bytes": 48.001,
+   "gc_count": 4.0,
+   "gc_time": 13.0,
+   "gc_per_b": 34.148500000000006,
+   "gct_per_b": 110.98262500000001
+  },
+  "ea-off|ecDetectOptional|1000": {
+   "ns": 689.396,
+   "ns_err": 82.415,
+   "mcalls": 1.4505451148541624,
+   "calls": 58021804.594166495,
+   "bytes": 48.002,
+   "gc_count": 2.0,
+   "gc_time": 9.0,
+   "gc_per_b": 34.46979999999999,
+   "gct_per_b": 155.11409999999998
+  },
+  "ea-off|ecDetectWithIfNone|1": {
+   "ns": 4.009,
+   "ns_err": 0.168,
+   "mcalls": 249.43876278373656,
+   "calls": 9977550511.349463,
+   "bytes": 16.0,
+   "gc_count": 124.0,
+   "gc_time": 289.0,
+   "gc_per_b": 12.427900000000001,
+   "gct_per_b": 28.965025000000004
+  },
+  "ea-off|ecDetectWithIfNone|500": {
+   "ns": 342.826,
+   "ns_err": 31.171,
+   "mcalls": 2.9169316212889336,
+   "calls": 116677264.85155734,
+   "bytes": 32.001,
+   "gc_count": 4.0,
+   "gc_time": 15.0,
+   "gc_per_b": 34.2826,
+   "gct_per_b": 128.55975
+  },
+  "ea-off|ecDetectWithIfNone|1000": {
+   "ns": 670.204,
+   "ns_err": 42.962,
+   "mcalls": 1.4920830075618767,
+   "calls": 59683320.30247507,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecDetectWithOptional|1": {
+   "ns": 3.719,
+   "ns_err": 0.155,
+   "mcalls": 268.88948642108096,
+   "calls": 10755579456.843237,
+   "bytes": 16.0,
+   "gc_count": 134.0,
+   "gc_time": 297.0,
+   "gc_per_b": 12.45865,
+   "gct_per_b": 27.613575
+  },
+  "ea-off|ecDetectWithOptional|500": {
+   "ns": 345.69,
+   "ns_err": 33.467,
+   "mcalls": 2.8927651942491828,
+   "calls": 115710607.76996732,
+   "bytes": 32.001,
+   "gc_count": 4.0,
+   "gc_time": 16.0,
+   "gc_per_b": 34.568999999999996,
+   "gct_per_b": 138.27599999999998
+  },
+  "ea-off|ecDetectWithOptional|1000": {
+   "ns": 665.807,
+   "ns_err": 51.185,
+   "mcalls": 1.5019367474358185,
+   "calls": 60077469.89743274,
+   "bytes": 32.002,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|ecLazyDetectIfNone|1": {
+   "ns": 6.596,
+   "ns_err": 0.266,
+   "mcalls": 151.60703456640388,
+   "calls": 6064281382.656156,
+   "bytes": 32.0,
+   "gc_count": 150.0,
+   "gc_time": 337.0,
+   "gc_per_b": 24.735,
+   "gct_per_b": 55.5713
+  },
+  "ea-off|ecLazyDetectIfNone|500": {
+   "ns": 330.877,
+   "ns_err": 19.192,
+   "mcalls": 3.0222711158527185,
+   "calls": 120890844.63410874,
+   "bytes": 48.001,
+   "gc_count": 4.0,
+   "gc_time": 15.0,
+   "gc_per_b": 33.087700000000005,
+   "gct_per_b": 124.07887500000001
+  },
+  "ea-off|ecLazyDetectIfNone|1000": {
+   "ns": 653.955,
+   "ns_err": 34.06,
+   "mcalls": 1.5291572050064606,
+   "calls": 61166288.20025843,
+   "bytes": 48.002,
+   "gc_count": 2.0,
+   "gc_time": 8.0,
+   "gc_per_b": 32.69775,
+   "gct_per_b": 130.791
+  },
+  "ea-off|ecLazyDetectOptional|1": {
+   "ns": 12.474,
+   "ns_err": 0.35,
+   "mcalls": 80.1667468334135,
+   "calls": 3206669873.3365397,
+   "bytes": 48.0,
+   "gc_count": 120.0,
+   "gc_time": 260.0,
+   "gc_per_b": 37.422000000000004,
+   "gct_per_b": 81.081
+  },
+  "ea-off|ecLazyDetectOptional|500": {
+   "ns": 335.368,
+   "ns_err": 12.342,
+   "mcalls": 2.9817990983039526,
+   "calls": 119271963.93215811,
+   "bytes": 64.001,
+   "gc_count": 6.0,
+   "gc_time": 22.0,
+   "gc_per_b": 50.3052,
+   "gct_per_b": 184.45239999999998
+  },
+  "ea-off|ecLazyDetectOptional|1000": {
+   "ns": 663.261,
+   "ns_err": 32.75,
+   "mcalls": 1.5077020961582244,
+   "calls": 60308083.846328974,
+   "bytes": 64.002,
+   "gc_count": 4.0,
+   "gc_time": 16.0,
+   "gc_per_b": 66.3261,
+   "gct_per_b": 265.3044
+  },
+  "ea-off|jdkFindFirst|1": {
+   "ns": 35.455,
+   "ns_err": 1.019,
+   "mcalls": 28.20476660555634,
+   "calls": 1128190664.2222536,
+   "bytes": 200.0,
+   "gc_count": 177.0,
+   "gc_time": 386.0,
+   "gc_per_b": 156.888375,
+   "gct_per_b": 342.14074999999997
+  },
+  "ea-off|jdkFindFirst|500": {
+   "ns": 1394.93,
+   "ns_err": 61.286,
+   "mcalls": 0.7168818507021857,
+   "calls": 28675274.02808743,
+   "bytes": 216.004,
+   "gc_count": 6.0,
+   "gc_time": 19.0,
+   "gc_per_b": 209.2395,
+   "gct_per_b": 662.59175
+  },
+  "ea-off|jdkFindFirst|1000": {
+   "ns": 2710.921,
+   "ns_err": 182.032,
+   "mcalls": 0.3688783258530957,
+   "calls": 14755133.034123829,
+   "bytes": 216.009,
+   "gc_count": 2.0,
+   "gc_time": 11.0,
+   "gc_per_b": 135.54604999999998,
+   "gct_per_b": 745.5032749999999
+  },
+  "histo-coh-on|ecDetectIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecDetectWithOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyDetectIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyDetectIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyDetectIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyDetectOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyDetectOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|ecLazyDetectOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkFindFirst|1|histo": {
+   "objs": 7.0,
+   "bytes": 200.0,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0,
+     48.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkFindFirst|500|histo": {
+   "objs": 7.0009999999999994,
+   "bytes": 200.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     48.1
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|jdkFindFirst|1000|histo": {
+   "objs": 8.002,
+   "bytes": 216.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.002,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecDetectWithOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyDetectIfNone|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyDetectIfNone|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyDetectIfNone|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyDetectOptional|1|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyDetectOptional|500|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|ecLazyDetectOptional|1000|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkFindFirst|1|histo": {
+   "objs": 7.000333333333334,
+   "bytes": 224.0,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0003333333333333,
+     56.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkFindFirst|500|histo": {
+   "objs": 8.001,
+   "bytes": 240.03333333333333,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.001,
+     56.03333333333333
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|jdkFindFirst|1000|histo": {
+   "objs": 8.002333333333333,
+   "bytes": 240.13333333333333,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     24.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0023333333333333,
+     56.13333333333333
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectIfNone|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectIfNone|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectIfNone|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectOptional|1|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectOptional|500|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectOptional|1000|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithIfNone|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithIfNone|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithIfNone|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithOptional|1|histo": {
+   "objs": 1.0,
+   "bytes": 16.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithOptional|500|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecDetectWithOptional|1000|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyDetectIfNone|1|histo": {
+   "objs": 2.0,
+   "bytes": 32.0,
+   "classes": {
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyDetectIfNone|500|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyDetectIfNone|1000|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyDetectOptional|1|histo": {
+   "objs": 3.0,
+   "bytes": 48.0,
+   "classes": {
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyDetectOptional|500|histo": {
+   "objs": 4.0,
+   "bytes": 64.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|ecLazyDetectOptional|1000|histo": {
+   "objs": 4.0,
+   "bytes": 64.0,
+   "classes": {
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "org.eclipse.collections.impl.lazy.LazyIterableAdapter": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkFindFirst|1|histo": {
+   "objs": 7.000333333333334,
+   "bytes": 200.0,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0003333333333333,
+     48.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkFindFirst|500|histo": {
+   "objs": 8.001333333333333,
+   "bytes": 216.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.0013333333333334,
+     48.1
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|jdkFindFirst|1000|histo": {
+   "objs": 8.002,
+   "bytes": 216.1,
+   "classes": {
+    "java.util.stream.ReferencePipeline$2": [
+     1.0,
+     56.0
+    ],
+    "conf.session.shakers.FindFirstEagerLazyBenchmark$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.AbstractList$RandomAccessSpliterator": [
+     1.0,
+     32.0
+    ],
+    "java.util.Optional": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.FindOps$FindSink$OfRef": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$2$1": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.ReferencePipeline$Head": [
+     1.002,
+     48.1
+    ],
+    "java.lang.Integer": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  }
+ },
+ "CollectorsAndCollectors2": {
+  "coh-on|collectors|None": {
+   "ns": 57.223,
+   "ns_err": 2.052,
+   "mcalls": 17.47549062439928,
+   "calls": 699019624.9759712,
+   "bytes": 384.0,
+   "gc_count": 209.0,
+   "gc_time": 505.0,
+   "gc_per_b": 298.990175,
+   "gct_per_b": 722.440375
+  },
+  "coh-on|collectors2|None": {
+   "ns": 0.35,
+   "ns_err": 0.013,
+   "mcalls": 2857.1428571428573,
+   "calls": 114285714285.7143,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "coh-off|collectors|None": {
+   "ns": 55.794,
+   "ns_err": 2.041,
+   "mcalls": 17.923074165680898,
+   "calls": 716922966.6272359,
+   "bytes": 392.0,
+   "gc_count": 219.0,
+   "gc_time": 521.0,
+   "gc_per_b": 305.47215,
+   "gct_per_b": 726.71685
+  },
+  "coh-off|collectors2|None": {
+   "ns": 0.347,
+   "ns_err": 0.024,
+   "mcalls": 2881.844380403458,
+   "calls": 115273775216.13834,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "ea-off|collectors|None": {
+   "ns": 70.643,
+   "ns_err": 2.867,
+   "mcalls": 14.155684214996532,
+   "calls": 566227368.5998613,
+   "bytes": 480.0,
+   "gc_count": 213.0,
+   "gc_time": 462.0,
+   "gc_per_b": 376.17397500000004,
+   "gct_per_b": 815.92665
+  },
+  "ea-off|collectors2|None": {
+   "ns": 0.343,
+   "ns_err": 0.037,
+   "mcalls": 2915.4518950437314,
+   "calls": 116618075801.74927,
+   "bytes": 0,
+   "gc_count": 0,
+   "gc_time": 0,
+   "gc_per_b": 0.0,
+   "gct_per_b": 0.0
+  },
+  "histo-coh-on|collectors|None|histo": {
+   "objs": 16.0,
+   "bytes": 384.0,
+   "classes": {
+    "java.util.stream.Collectors$$Lambda": [
+     8.0,
+     144.0
+    ],
+    "java.util.stream.Collectors$CollectorImpl": [
+     7.0,
+     224.0
+    ],
+    "java.util.function.Function$$Lambda": [
+     1.0,
+     16.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-on|collectors2|None|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-coh-off|collectors|None|histo": {
+   "objs": 16.0,
+   "bytes": 392.0,
+   "classes": {
+    "java.util.stream.Collectors$$Lambda": [
+     8.0,
+     144.0
+    ],
+    "java.util.stream.Collectors$CollectorImpl": [
+     7.0,
+     224.0
+    ],
+    "java.util.function.Function$$Lambda": [
+     1.0,
+     24.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-coh-off|collectors2|None|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  },
+  "histo-ea-off|collectors|None|histo": {
+   "objs": 19.0,
+   "bytes": 480.0,
+   "classes": {
+    "java.util.stream.Collectors$$Lambda": [
+     8.0,
+     144.0
+    ],
+    "java.util.function.Function$$Lambda": [
+     1.0,
+     16.0
+    ],
+    "java.util.stream.Collectors$CollectorImpl": [
+     10.0,
+     320.0
+    ]
+   },
+   "clean": "3/3"
+  },
+  "histo-ea-off|collectors2|None|histo": {
+   "objs": 0,
+   "bytes": 0,
+   "classes": {},
+   "clean": "3/3"
+  }
+ }
+}

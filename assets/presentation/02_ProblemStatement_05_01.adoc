@@ -19,7 +19,8 @@ JDK collections and streams cost heap twice: in what they hold and in what they 
 [.notes]
 --
 Against 4 to 17 MB for the EC primitive collections and 0 B per call for the EC loops. Throughput follows:
-a JDK stream call took 4.1 to 16.9 times as long for anyMatch and findFirst, and about 2 times for count, but the
+a JDK stream call took 4.3 to 15.5 times as long for anyMatch and findFirst, and about 2 times for count (run 20261017-1708;
+run 20261015-0406 gave 4.1 to 16.9), but the
 argument here is heap: footprint and headroom for spikes.
 --
 

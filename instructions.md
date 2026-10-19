@@ -22,7 +22,7 @@ Every item has an ID so a change can be pinpointed: `Q` = quick start, `G` = gro
 
 - **Q1** Everything runs from the project root with JDK 25 and Maven (P0). One launcher runs any stage:
   ```
-  java src/main/java/tools/Pipeline.java <stage> [RUN_TS] [shakers|movers] [--dry-run]
+  java src/main/java/tools/Pipeline.java <stage> [RUN_TS] [shakers|movers] [--dry-run] [--resume]
   ```
 - **Q2** The stages:
 
@@ -45,6 +45,7 @@ Every item has an ID so a change can be pinpointed: `Q` = quick start, `G` = gro
   | Q3.6 | `java src/main/java/tools/Pipeline.java reports` | the same for the newest run folder |
   | Q3.7 | `java src/main/java/tools/Pipeline.java slides` | slide HTML and PDFs only |
   | Q3.8 | `java src/main/java/tools/Pipeline.java all --dry-run` | prints every command without running anything |
+  | Q3.9 | `java src/main/java/tools/Pipeline.java all 20261017-1708 --resume` | continues an interrupted run: finished steps are skipped (P7) |
 
 - **Q4** Every stage also lists its commands for running by hand (S3, S5.4, S6.3.5, M2.4, M4.1, D2).
   `Pipeline.java` runs exactly those commands.
@@ -175,6 +176,22 @@ Every item has an ID so a change can be pinpointed: `Q` = quick start, `G` = gro
   stage before a long run.
 - **P6** Check before reporting a stage as done: every `link:` and `image::` target in the new reports
   resolves (W3), and every PNG has been looked at (S5.1.11, M4.7).
+- **P7** Resuming an interrupted run (`--resume`, with the `RUN_TS` of that run). A killed process,
+  a restarted container or a closed laptop stops `Pipeline.java` partway, and `run` alone starts over
+  (it redoes every step even with a `RUN_TS`). `--resume` runs the same steps in the same order but skips
+  the ones that finished:
+  - **P7.1** The benchmark jar: skipped when `target-bench/microbenchmarks.jar` exists.
+  - **P7.2** A JMH step (each class and configuration of S3.4, and each object-count run of S3.5): finished
+    when its `-console.txt` has JMH's closing line `Benchmark result is saved to`. The result `.txt`
+    file is not a test, because JMH creates it when the step starts.
+  - **P7.3** A movers test: finished when its Maven output has `BUILD SUCCESS` or `BUILD FAILURE`.
+  - **P7.4** Any other step, including one cut short, runs again from its start and overwrites its files.
+    The log names each step as `skip (finished)` or `re-run (unfinished)`.
+  - **P7.5** `meta.txt` is kept (P1.2). `reports` and `slides` do not depend on earlier steps and run as
+    usual in `all --resume`.
+  - **P7.6** Check first with `--dry-run --resume`: it prints only the steps that would run.
+  - **P7.7** Without `--resume` nothing changes: `run` with a `RUN_TS` still adds a part to an existing
+    run (Q3.4). `--resume` without a `RUN_TS` is an error.
 
 ---
 
@@ -222,6 +239,7 @@ list before reporting (S8, M6).
 | A35 | A full run summary of both parts at `generated/runs/${RUN_TS}/` | L2.7, P2.4 |
 | A36 | Claude lists obsolete files for the local Mac user to delete; it never deletes them | G11 |
 | A37 | Slides: one file per slide, no JavaScript, Oracle-only references, HTML and PDFs built with Maven | D |
+| A38 | An interrupted run can be resumed from the finished steps instead of starting over | P7, Q3.9 |
 
 ---
 
@@ -836,3 +854,6 @@ list before reporting (S8, M6).
 - **W6** JOL fails under surefire without the two attach flags (M2.2).
 - **W7** Files open in IntelliJ can be written back with old content after a copy; ask for a reload
   from disk (G10).
+- **W8** A restarted container kills the `Pipeline.java` process but keeps the files on disk. Check
+  that no benchmark process is left running, then continue with `--resume` (P7). A background watcher
+  job in the cloud sandbox stops after 2 hours; start it again, the pipeline itself is not affected.

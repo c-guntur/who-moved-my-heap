@@ -1,0 +1,477 @@
+= AnyMatchEagerLazyBenchmark results (run 20261017-1708)
+:toc:
+
+Assembled from the raw JMH output in `generated/runs/20261017-1708/shakers/raw/`. Numbers are copied verbatim.
+
+== Run metadata
+
+....
+run_ts: 20261017-1708
+environment: cloud sandbox (Intel(R) Xeon(R) Processor @ 2.10GHz)
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+openjdk version "25.0.4.1" 2026-08-18
+OpenJDK Runtime Environment (build 25.0.4.1+1-1-24.04.4-Ubuntu)
+OpenJDK 64-Bit Server VM (build 25.0.4.1+1-1-24.04.4-Ubuntu, mixed mode, sharing)
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: /opt/maven
+Java version: 25.0.4.1, vendor: Ubuntu, runtime: /usr/lib/jvm/java-25-openjdk-amd64
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.18.44-fc-v139", arch: "amd64", family: "unix"
+Linux vm 6.18.44-fc-v139 #1 SMP PREEMPT_DYNAMIC @0 x86_64 x86_64 x86_64 GNU/Linux
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           52 bits physical, 57 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  4
+On-line CPU(s) list:                     0-3
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Xeon(R) Processor @ 2.10GHz
+CPU family:                              6
+Model:                                   207
+Thread(s) per core:                      1
+Core(s) per socket:                      4
+Socket(s):                               1
+Stepping:                                2
+BogoMIPS:                                4200.00
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd arat avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid cldemote movdiri movdir64b fsrm md_clear serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 arch_capabilities
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+L1d cache:                               192 KiB (4 instances)
+L1i cache:                               128 KiB (4 instances)
+L2 cache:                                8 MiB (4 instances)
+L3 cache:                                260 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-3
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI Vulnerable
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+     bool DoEscapeAnalysis                         = true                                   {C2 product} {default}
+     bool UseCompactObjectHeaders                  = true                           {product lp64_product} {command line}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseParallelGC                            = false                                     {product} {default}
+     bool UseSerialGC                              = false                                     {product} {default}
+     bool UseShenandoahGC                          = false                                     {product} {default}
+     bool UseZGC                                   = false                                     {product} {default}
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+....
+
+== coh-on (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders`)
+
+....
+Benchmark                                                       (test)  Mode  Cnt     Score     Error   Units
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                              1  avgt   20     2.081 ±   0.060   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate                1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm           1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                     1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                            500  avgt   20   336.200 ±  16.907   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate              500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm         500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                   500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                           1000  avgt   20   659.855 ±  18.411   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate             1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm        1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                  1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                          1  avgt   20     2.147 ±   0.078   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count                 1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                        500  avgt   20   333.238 ±  17.412   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count               500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                       1000  avgt   20   663.825 ±  19.447   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count              1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                          1  avgt   20     2.462 ±   0.083   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count                 1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                        500  avgt   20   338.400 ±  12.306   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count               500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                       1000  avgt   20   666.361 ±  35.218   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count              1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                               1  avgt   20    25.407 ±   3.257   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate                 1  avgt   20  5259.993 ± 233.751  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm            1  avgt   20   140.000 ±  17.818    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                      1  avgt   20   172.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                       1  avgt   20   404.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                             500  avgt   20  1571.979 ± 145.609   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate               500  avgt   20   107.786 ±   9.015  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm          500  avgt   20   176.005 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                    500  avgt   20     4.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                     500  avgt   20    21.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                            1000  avgt   20  3669.863 ± 433.074   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate              1000  avgt   20    46.684 ±   6.493  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm         1000  avgt   20   176.012 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                   1000  avgt   20     2.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                    1000  avgt   20    12.000                ms
+....
+
+== coh-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:-UseCompactObjectHeaders`)
+
+....
+Benchmark                                                       (test)  Mode  Cnt     Score     Error   Units
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                              1  avgt   20     1.904 ±   0.094   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate                1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm           1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                     1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                            500  avgt   20   267.164 ±  12.314   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate              500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm         500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                   500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                           1000  avgt   20   533.987 ±  46.855   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate             1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm        1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                  1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                          1  avgt   20     2.082 ±   0.077   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count                 1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                        500  avgt   20   260.997 ±  13.150   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count               500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                       1000  avgt   20   510.969 ±  21.956   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count              1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                          1  avgt   20     2.145 ±   0.112   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count                 1  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                        500  avgt   20   272.254 ±  16.293   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate          500  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm     500  avgt   20     0.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count               500  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                       1000  avgt   20   515.031 ±  23.470   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate         1000  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm    1000  avgt   20     0.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count              1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                               1  avgt   20    29.977 ±   1.644   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate                 1  avgt   20  5618.407 ± 302.503  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm            1  avgt   20   176.000 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                      1  avgt   20   183.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                       1  avgt   20   505.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                             500  avgt   20  1339.477 ±  88.284   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate               500  avgt   20   137.385 ±   8.739  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm          500  avgt   20   192.005 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                    500  avgt   20     4.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                     500  avgt   20    14.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                            1000  avgt   20  3013.455 ± 423.116   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate              1000  avgt   20    62.354 ±   9.155  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm         1000  avgt   20   192.011 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                   1000  avgt   20     2.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                    1000  avgt   20    15.000                ms
+....
+
+== ea-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis`)
+
+....
+Benchmark                                                       (test)  Mode  Cnt     Score     Error   Units
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                              1  avgt   20     3.495 ±   0.087   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate                1  avgt   20  4368.623 ± 111.869  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm           1  avgt   20    16.000 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                     1  avgt   20   144.000            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.time                      1  avgt   20   315.000                ms
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                            500  avgt   20   356.852 ±  43.293   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate              500  avgt   20    86.772 ±   8.429  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm         500  avgt   20    32.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                   500  avgt   20     4.000            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.time                    500  avgt   20    18.000                ms
+AnyMatchEagerLazyBenchmark.ecAnySatisfy                           1000  avgt   20   711.340 ±  48.682   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate             1000  avgt   20    43.128 ±   2.764  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.alloc.rate.norm        1000  avgt   20    32.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfy:gc.count                  1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                          1  avgt   20     4.087 ±   0.120   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate            1  avgt   20  3735.940 ± 110.713  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm       1  avgt   20    16.000 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count                 1  avgt   20   122.000            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.time                  1  avgt   20   267.000                ms
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                        500  avgt   20   347.610 ±  36.964   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate          500  avgt   20    88.744 ±   7.274  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm     500  avgt   20    32.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count               500  avgt   20     4.000            counts
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.time                500  avgt   20    15.000                ms
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith                       1000  avgt   20   696.230 ±  53.359   ns/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate         1000  avgt   20    44.118 ±   3.090  MB/sec
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm    1000  avgt   20    32.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecAnySatisfyWith:gc.count              1000  avgt   20       ≈ 0            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                          1  avgt   20     6.816 ±   0.334   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate            1  avgt   20  4488.350 ± 207.885  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm       1  avgt   20    32.000 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count                 1  avgt   20   146.000            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.time                  1  avgt   20   345.000                ms
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                        500  avgt   20   331.152 ±  16.205   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate          500  avgt   20   138.658 ±   7.531  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm     500  avgt   20    48.001 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count               500  avgt   20     4.000            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.time                500  avgt   20    12.000                ms
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy                       1000  avgt   20   701.154 ±  62.039   ns/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate         1000  avgt   20    65.842 ±   5.154  MB/sec
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.alloc.rate.norm    1000  avgt   20    48.002 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.count              1000  avgt   20     2.000            counts
+AnyMatchEagerLazyBenchmark.ecLazyAnySatisfy:gc.time               1000  avgt   20     8.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                               1  avgt   20    28.402 ±   0.740   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate                 1  avgt   20  5374.951 ± 140.467  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm            1  avgt   20   160.000 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                      1  avgt   20   175.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                       1  avgt   20   404.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                             500  avgt   20  1480.719 ±  70.007   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate               500  avgt   20   113.647 ±   5.472  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm          500  avgt   20   176.005 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                    500  avgt   20     4.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                     500  avgt   20    16.000                ms
+AnyMatchEagerLazyBenchmark.jdkAnyMatch                            1000  avgt   20  3230.989 ± 341.303   ns/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate              1000  avgt   20    52.653 ±   5.439  MB/sec
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.alloc.rate.norm         1000  avgt   20   176.010 ±   0.001    B/op
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.count                   1000  avgt   20     2.000            counts
+AnyMatchEagerLazyBenchmark.jdkAnyMatch:gc.time                    1000  avgt   20     9.000                ms
+....
+
+== Object counts: histo-coh-on
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkAnyMatch |1 |3/3 |6.000 |160.0
+|jdkAnyMatch |500 |3/3 |7.001 |176.1
+|jdkAnyMatch |1000 |3/3 |7.002 |176.1
+|ecAnySatisfy |1 |3/3 |0.000 |0.0
+|ecAnySatisfy |500 |3/3 |0.000 |0.0
+|ecAnySatisfy |1000 |3/3 |0.000 |0.0
+|ecAnySatisfyWith |1 |3/3 |0.000 |0.0
+|ecAnySatisfyWith |500 |3/3 |0.000 |0.0
+|ecAnySatisfyWith |1000 |3/3 |0.000 |0.0
+|ecLazyAnySatisfy |1 |3/3 |0.000 |0.0
+|ecLazyAnySatisfy |500 |3/3 |0.000 |0.0
+|ecLazyAnySatisfy |1000 |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+jdkAnyMatch test=1
+      1.000 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.util.stream.MatchOps$$Lambda
+jdkAnyMatch test=500
+      1.001 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     16.0 B  java.util.stream.MatchOps$$Lambda
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+jdkAnyMatch test=1000
+      1.002 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     16.0 B  java.util.stream.MatchOps$$Lambda
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecAnySatisfy test=1
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfy test=500
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfy test=1000
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfyWith test=1
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfyWith test=500
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfyWith test=1000
+    (nothing at or above 0.5 objects per call)
+ecLazyAnySatisfy test=1
+    (nothing at or above 0.5 objects per call)
+ecLazyAnySatisfy test=500
+    (nothing at or above 0.5 objects per call)
+ecLazyAnySatisfy test=1000
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-coh-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkAnyMatch |1 |3/3 |6.000 |176.0
+|jdkAnyMatch |500 |3/3 |7.001 |192.1
+|jdkAnyMatch |1000 |3/3 |7.002 |192.1
+|ecAnySatisfy |1 |3/3 |0.000 |0.0
+|ecAnySatisfy |500 |3/3 |0.000 |0.0
+|ecAnySatisfy |1000 |3/3 |0.000 |0.0
+|ecAnySatisfyWith |1 |3/3 |0.000 |0.0
+|ecAnySatisfyWith |500 |3/3 |0.000 |0.0
+|ecAnySatisfyWith |1000 |3/3 |0.000 |0.0
+|ecLazyAnySatisfy |1 |3/3 |0.000 |0.0
+|ecLazyAnySatisfy |500 |3/3 |0.000 |0.0
+|ecLazyAnySatisfy |1000 |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+jdkAnyMatch test=1
+      1.000 obj     56.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     24.0 B  java.util.stream.MatchOps$$Lambda
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+jdkAnyMatch test=500
+      1.001 obj     56.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     24.0 B  java.util.stream.MatchOps$$Lambda
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+jdkAnyMatch test=1000
+      1.002 obj     56.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     24.0 B  java.util.stream.MatchOps$$Lambda
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecAnySatisfy test=1
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfy test=500
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfy test=1000
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfyWith test=1
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfyWith test=500
+    (nothing at or above 0.5 objects per call)
+ecAnySatisfyWith test=1000
+    (nothing at or above 0.5 objects per call)
+ecLazyAnySatisfy test=1
+    (nothing at or above 0.5 objects per call)
+ecLazyAnySatisfy test=500
+    (nothing at or above 0.5 objects per call)
+ecLazyAnySatisfy test=1000
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-ea-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|jdkAnyMatch |1 |3/3 |6.000 |160.0
+|jdkAnyMatch |500 |3/3 |7.001 |176.0
+|jdkAnyMatch |1000 |3/3 |7.002 |176.1
+|ecAnySatisfy |1 |3/3 |1.000 |16.0
+|ecAnySatisfy |500 |3/3 |2.000 |32.0
+|ecAnySatisfy |1000 |3/3 |2.000 |32.0
+|ecAnySatisfyWith |1 |3/3 |1.000 |16.0
+|ecAnySatisfyWith |500 |3/3 |2.000 |32.0
+|ecAnySatisfyWith |1000 |3/3 |2.000 |32.0
+|ecLazyAnySatisfy |1 |3/3 |2.000 |32.0
+|ecLazyAnySatisfy |500 |3/3 |3.000 |48.0
+|ecLazyAnySatisfy |1000 |3/3 |3.000 |48.0
+|===
+
+.Per-class breakdown
+....
+jdkAnyMatch test=1
+      1.000 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     16.0 B  java.util.stream.MatchOps$$Lambda
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+jdkAnyMatch test=500
+      1.001 obj     48.0 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     16.0 B  java.util.stream.MatchOps$$Lambda
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+jdkAnyMatch test=1000
+      1.002 obj     48.1 B  java.util.stream.ReferencePipeline$Head
+      1.000 obj     32.0 B  java.util.AbstractList$RandomAccessSpliterator
+      1.000 obj     24.0 B  java.util.stream.MatchOps$1MatchSink
+      1.000 obj     24.0 B  java.util.stream.MatchOps$MatchOp
+      1.000 obj     16.0 B  java.util.stream.MatchOps$$Lambda
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecAnySatisfy test=1
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+ecAnySatisfy test=500
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecAnySatisfy test=1000
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  java.lang.Integer
+ecAnySatisfyWith test=1
+      1.000 obj     16.0 B  org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2
+ecAnySatisfyWith test=500
+      1.000 obj     16.0 B  org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2
+      1.000 obj     16.0 B  java.lang.Integer
+ecAnySatisfyWith test=1000
+      1.000 obj     16.0 B  org.eclipse.collections.impl.block.factory.Predicates$BindPredicate2
+      1.000 obj     16.0 B  java.lang.Integer
+ecLazyAnySatisfy test=1
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+ecLazyAnySatisfy test=500
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+      1.000 obj     16.0 B  java.lang.Integer
+ecLazyAnySatisfy test=1000
+      1.000 obj     16.0 B  conf.session.shakers.AnyMatchEagerLazyBenchmark$$Lambda
+      1.000 obj     16.0 B  org.eclipse.collections.impl.lazy.LazyIterableAdapter
+      1.000 obj     16.0 B  java.lang.Integer
+....
+
+== Commands
+
+....
+mvn -Pbench clean compile
+mvn -Pbench package
+# main runs, CONFIG/FLAGS = coh-on: -XX:+UseCompactObjectHeaders | coh-off: -XX:-UseCompactObjectHeaders
+#                          ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\.AnyMatchEagerLazyBenchmark\." \
+  -prof gc -jvmArgsAppend "-XX:+UseG1GC -Xms2g -Xmx2g ${FLAGS}" \
+  -rf text -rff generated/runs/20261017-1708/shakers/raw/AnyMatchEagerLazy-${CONFIG}.txt -o generated/runs/20261017-1708/shakers/raw/AnyMatchEagerLazy-${CONFIG}-console.txt
+# object counts, CONFIG/COH = histo-coh-on: -XX:+UseCompactObjectHeaders | histo-coh-off: -XX:-UseCompactObjectHeaders
+#                            histo-ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." -f 1 -wi 5 -w 1s -i 3 -r 100ms \
+  -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${COH}" -prof prof.HistoProfiler -prof gc \
+  -rf text -rff generated/runs/20261017-1708/shakers/raw/all-${CONFIG}.txt -o generated/runs/20261017-1708/shakers/raw/all-${CONFIG}-console.txt
+# HISTO lines go to the console, not to the -o file; they were saved to generated/runs/20261017-1708/shakers/raw/all-${CONFIG}-histo.txt
+....

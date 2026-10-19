@@ -28,6 +28,8 @@ import java.util.stream.Stream;
  *   slides   build the slide HTML and PDFs (mvn -Pslides process-resources); RUN_TS and part are ignored
  *   all      run, then reports, then slides
  * Without a part, a stage does shakers and movers. --dry-run prints the commands without running them.
+ * --resume (needs a RUN_TS) continues an interrupted run: the jar, the benchmark and object-count steps and the
+ * movers tests that already finished are skipped, the rest run again (instructions.md P7).
  * Environment variables passed through: CLASSES (shakers classes to run and report), MMDC (Mermaid check),
  * CHROME (browser for the slide PDFs).
  */
@@ -43,7 +45,11 @@ public class Pipeline
     private static final String EA_OFF = "-XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis";
     private static final String JAR = "target-bench/microbenchmarks.jar";
 
+    // JMH writes this line to the -o console file when a benchmark run completes
+    private static final String JMH_DONE = "Benchmark result is saved to";
+
     private static boolean dryRun;
+    private static boolean resume;
     private static final String JAVA = Path.of(System.getProperty("java.home"), "bin", "java").toString();
 
     public static void main(String[] args) throws Exception
@@ -56,6 +62,10 @@ public class Pipeline
             if (a.equals("--dry-run"))
             {
                 dryRun = true;
+            }
+            else if (a.equals("--resume"))
+            {
+                resume = true;
             }
             else if (PARTS.contains(a))
             {
@@ -77,6 +87,10 @@ public class Pipeline
         if (stage == null)
         {
             usage("no stage given");
+        }
+        if (resume && runTs == null)
+        {
+            usage("--resume needs the RUN_TS of the run to continue");
         }
         if (stage.equals("run") || stage.equals("all"))
         {
@@ -103,7 +117,7 @@ public class Pipeline
     private static void usage(String problem)
     {
         System.err.println(problem);
-        System.err.println("usage: java src/main/java/tools/Pipeline.java <run|reports|slides|all> [RUN_TS] [shakers|movers] [--dry-run]");
+        System.err.println("usage: java src/main/java/tools/Pipeline.java <run|reports|slides|all> [RUN_TS] [shakers|movers] [--dry-run] [--resume]");
         System.exit(2);
     }
 
@@ -121,12 +135,23 @@ public class Pipeline
         if (parts.contains("shakers"))
         {
             Path r = raw(runTs, "shakers");
-            exec(List.of("mvn", "-B", "-Pbench", "clean", "package"), null);
+            if (resume && Files.exists(Path.of(JAR)))
+            {
+                System.out.println("# skip (jar exists): mvn -B -Pbench clean package");
+            }
+            else
+            {
+                exec(List.of("mvn", "-B", "-Pbench", "clean", "package"), null);
+            }
             List<String> classes = classes();
             for (String[] cfg : new String[][] {{"coh-on", COH_ON}, {"coh-off", COH_OFF}, {"ea-off", EA_OFF}})
             {
                 for (String cls : classes)
                 {
+                    if (skipFinished(r.resolve(cls + "-" + cfg[0] + "-console.txt")))
+                    {
+                        continue;
+                    }
                     exec(List.of(JAVA, "-jar", JAR, "conf\\.session\\.shakers\\." + cls + "Benchmark\\.",
                             "-prof", "gc", "-jvmArgsAppend", "-XX:+UseG1GC -Xms2g -Xmx2g " + cfg[1],
                             "-rf", "text", "-rff", r.resolve(cls + "-" + cfg[0] + ".txt").toString(),
@@ -135,6 +160,10 @@ public class Pipeline
             }
             for (String[] cfg : new String[][] {{"histo-coh-on", COH_ON}, {"histo-coh-off", COH_OFF}, {"histo-ea-off", EA_OFF}})
             {
+                if (skipFinished(r.resolve("all-" + cfg[0] + "-console.txt")))
+                {
+                    continue;
+                }
                 // HistoProfiler prints its HISTO lines from the forked VM to the console, not to the -o file
                 exec(List.of(JAVA, "-jar", JAR, "conf\\.session\\.shakers\\.",
                         "-f", "1", "-wi", "5", "-w", "1s", "-i", "3", "-r", "100ms",
@@ -152,13 +181,36 @@ public class Pipeline
             {
                 for (String test : MOVERS)
                 {
+                    Path out = mr.resolve(test + "-" + cfg[0] + ".txt");
+                    if (resume && Files.exists(out) && Files.readString(out, StandardCharsets.UTF_8).contains("BUILD "))
+                    {
+                        System.out.println("# skip (finished): " + out);
+                        continue;
+                    }
                     // JOL attaches to its own VM; without these two flags it fails under surefire
                     execTo(List.of("mvn", "-B", "test", "-Dtest=" + test, "-Dsurefire.failIfNoSpecifiedTests=false",
                             "-DargLine=" + cfg[1] + " -Djdk.attach.allowAttachSelf=true -XX:+EnableDynamicAgentLoading"),
-                            mr.resolve(test + "-" + cfg[0] + ".txt"));
+                            out);
                 }
             }
         }
+    }
+
+    // With --resume, a JMH step counts as finished when its console file has JMH's closing line; the result file
+    // is not a test because JMH creates it when the step starts. An interrupted step is run again from the start.
+    private static boolean skipFinished(Path console) throws IOException
+    {
+        if (!resume || !Files.exists(console))
+        {
+            return false;
+        }
+        if (!Files.readString(console, StandardCharsets.UTF_8).contains(JMH_DONE))
+        {
+            System.out.println("# re-run (unfinished): " + console);
+            return false;
+        }
+        System.out.println("# skip (finished): " + console);
+        return true;
     }
 
     private static Path raw(String runTs, String part) throws IOException

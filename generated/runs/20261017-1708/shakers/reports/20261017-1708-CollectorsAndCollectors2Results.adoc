@@ -1,0 +1,200 @@
+= CollectorsAndCollectors2Benchmark results (run 20261017-1708)
+:toc:
+
+Assembled from the raw JMH output in `generated/runs/20261017-1708/shakers/raw/`. Numbers are copied verbatim.
+
+== Run metadata
+
+....
+run_ts: 20261017-1708
+environment: cloud sandbox (Intel(R) Xeon(R) Processor @ 2.10GHz)
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+openjdk version "25.0.4.1" 2026-08-18
+OpenJDK Runtime Environment (build 25.0.4.1+1-1-24.04.4-Ubuntu)
+OpenJDK 64-Bit Server VM (build 25.0.4.1+1-1-24.04.4-Ubuntu, mixed mode, sharing)
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+Apache Maven 3.9.11 (3e54c93a704957b63ee3494413a2b544fd3d825b)
+Maven home: /opt/maven
+Java version: 25.0.4.1, vendor: Ubuntu, runtime: /usr/lib/jvm/java-25-openjdk-amd64
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.18.44-fc-v139", arch: "amd64", family: "unix"
+Linux vm 6.18.44-fc-v139 #1 SMP PREEMPT_DYNAMIC @0 x86_64 x86_64 x86_64 GNU/Linux
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           52 bits physical, 57 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  4
+On-line CPU(s) list:                     0-3
+Vendor ID:                               GenuineIntel
+Model name:                              Intel(R) Xeon(R) Processor @ 2.10GHz
+CPU family:                              6
+Model:                                   207
+Thread(s) per core:                      1
+Core(s) per socket:                      4
+Socket(s):                               1
+Stepping:                                2
+BogoMIPS:                                4200.00
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp ibrs_enhanced fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves avx_vnni avx512_bf16 wbnoinvd arat avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid cldemote movdiri movdir64b fsrm md_clear serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 arch_capabilities
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+L1d cache:                               192 KiB (4 instances)
+L1i cache:                               128 KiB (4 instances)
+L2 cache:                                8 MiB (4 instances)
+L3 cache:                                260 MiB (1 instance)
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-3
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Ghostwrite:                Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Old microcode:             Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Not affected
+Vulnerability Spec rstack overflow:      Not affected
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Enhanced / Automatic IBRS; IBPB conditional; PBRSB-eIBRS SW sequence; BHI Vulnerable
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+     bool DoEscapeAnalysis                         = true                                   {C2 product} {default}
+     bool UseCompactObjectHeaders                  = true                           {product lp64_product} {command line}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseParallelGC                            = false                                     {product} {default}
+     bool UseSerialGC                              = false                                     {product} {default}
+     bool UseShenandoahGC                          = false                                     {product} {default}
+     bool UseZGC                                   = false                                     {product} {default}
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+....
+
+== coh-on (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders`)
+
+....
+Benchmark                                                         Mode  Cnt     Score     Error   Units
+CollectorsAndCollectors2Benchmark.collectors                      avgt   20    57.223 ±   2.052   ns/op
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate        avgt   20  6407.658 ± 227.342  MB/sec
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate.norm   avgt   20   384.000 ±   0.001    B/op
+CollectorsAndCollectors2Benchmark.collectors:gc.count             avgt   20   209.000            counts
+CollectorsAndCollectors2Benchmark.collectors:gc.time              avgt   20   505.000                ms
+CollectorsAndCollectors2Benchmark.collectors2                     avgt   20     0.350 ±   0.013   ns/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate       avgt   20     0.003 ±   0.001  MB/sec
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate.norm  avgt   20    ≈ 10⁻⁶              B/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.count            avgt   20       ≈ 0            counts
+....
+
+== coh-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:-UseCompactObjectHeaders`)
+
+....
+Benchmark                                                         Mode  Cnt     Score     Error   Units
+CollectorsAndCollectors2Benchmark.collectors                      avgt   20    55.794 ±   2.041   ns/op
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate        avgt   20  6708.769 ± 242.484  MB/sec
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate.norm   avgt   20   392.000 ±   0.001    B/op
+CollectorsAndCollectors2Benchmark.collectors:gc.count             avgt   20   219.000            counts
+CollectorsAndCollectors2Benchmark.collectors:gc.time              avgt   20   521.000                ms
+CollectorsAndCollectors2Benchmark.collectors2                     avgt   20     0.347 ±   0.024   ns/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate       avgt   20     0.003 ±   0.001  MB/sec
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate.norm  avgt   20    ≈ 10⁻⁶              B/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.count            avgt   20       ≈ 0            counts
+....
+
+== ea-off (`-XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis`)
+
+....
+Benchmark                                                         Mode  Cnt     Score     Error   Units
+CollectorsAndCollectors2Benchmark.collectors                      avgt   20    70.643 ±   2.867   ns/op
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate        avgt   20  6490.508 ± 256.327  MB/sec
+CollectorsAndCollectors2Benchmark.collectors:gc.alloc.rate.norm   avgt   20   480.000 ±   0.001    B/op
+CollectorsAndCollectors2Benchmark.collectors:gc.count             avgt   20   213.000            counts
+CollectorsAndCollectors2Benchmark.collectors:gc.time              avgt   20   462.000                ms
+CollectorsAndCollectors2Benchmark.collectors2                     avgt   20     0.343 ±   0.037   ns/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate       avgt   20     0.003 ±   0.001  MB/sec
+CollectorsAndCollectors2Benchmark.collectors2:gc.alloc.rate.norm  avgt   20    ≈ 10⁻⁶              B/op
+CollectorsAndCollectors2Benchmark.collectors2:gc.count            avgt   20       ≈ 0            counts
+....
+
+== Object counts: histo-coh-on
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|collectors |- |3/3 |16.000 |384.0
+|collectors2 |- |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+collectors
+      7.000 obj    224.0 B  java.util.stream.Collectors$CollectorImpl
+      8.000 obj    144.0 B  java.util.stream.Collectors$$Lambda
+      1.000 obj     16.0 B  java.util.function.Function$$Lambda
+collectors2
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-coh-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|collectors |- |3/3 |16.000 |392.0
+|collectors2 |- |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+collectors
+      7.000 obj    224.0 B  java.util.stream.Collectors$CollectorImpl
+      8.000 obj    144.0 B  java.util.stream.Collectors$$Lambda
+      1.000 obj     24.0 B  java.util.function.Function$$Lambda
+collectors2
+    (nothing at or above 0.5 objects per call)
+....
+
+== Object counts: histo-ea-off
+
+Per-class lines averaged over clean iterations (no GC during the iteration). Totals are the sum of the per-class lines (classes with at least 0.5 objects per call); the profiler's own `total` line is not used because it includes its own allocations.
+
+[cols="3,1,1,1,1",options="header"]
+|===
+|Benchmark |test |clean iterations |objects per call |bytes per call
+|collectors |- |3/3 |19.000 |480.0
+|collectors2 |- |3/3 |0.000 |0.0
+|===
+
+.Per-class breakdown
+....
+collectors
+     10.000 obj    320.0 B  java.util.stream.Collectors$CollectorImpl
+      8.000 obj    144.0 B  java.util.stream.Collectors$$Lambda
+      1.000 obj     16.0 B  java.util.function.Function$$Lambda
+collectors2
+    (nothing at or above 0.5 objects per call)
+....
+
+== Commands
+
+....
+mvn -Pbench clean compile
+mvn -Pbench package
+# main runs, CONFIG/FLAGS = coh-on: -XX:+UseCompactObjectHeaders | coh-off: -XX:-UseCompactObjectHeaders
+#                          ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\.CollectorsAndCollectors2Benchmark\." \
+  -prof gc -jvmArgsAppend "-XX:+UseG1GC -Xms2g -Xmx2g ${FLAGS}" \
+  -rf text -rff generated/runs/20261017-1708/shakers/raw/CollectorsAndCollectors2-${CONFIG}.txt -o generated/runs/20261017-1708/shakers/raw/CollectorsAndCollectors2-${CONFIG}-console.txt
+# object counts, CONFIG/COH = histo-coh-on: -XX:+UseCompactObjectHeaders | histo-coh-off: -XX:-UseCompactObjectHeaders
+#                            histo-ea-off: -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+java -jar target-bench/microbenchmarks.jar "conf\.session\.shakers\." -f 1 -wi 5 -w 1s -i 3 -r 100ms \
+  -jvmArgs "-XX:+UseParallelGC -Xms12g -Xmx12g -Xmn10g ${COH}" -prof prof.HistoProfiler -prof gc \
+  -rf text -rff generated/runs/20261017-1708/shakers/raw/all-${CONFIG}.txt -o generated/runs/20261017-1708/shakers/raw/all-${CONFIG}-console.txt
+# HISTO lines go to the console, not to the -o file; they were saved to generated/runs/20261017-1708/shakers/raw/all-${CONFIG}-histo.txt
+....

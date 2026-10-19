@@ -1,0 +1,43 @@
+Benchmark                                                     (test)  Mode  Cnt     Score     Error   Units
+AnyMatchUtilityBenchmark.ecAnySatisfy                              1  avgt   20     3.400 ±   0.216   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate                1  avgt   20  4509.542 ± 289.784  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm           1  avgt   20    16.000 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                     1  avgt   20   147.000            counts
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.time                      1  avgt   20   341.000                ms
+AnyMatchUtilityBenchmark.ecAnySatisfy                            500  avgt   20   359.272 ±  40.298   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate              500  avgt   20    86.072 ±   8.188  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm         500  avgt   20    32.001 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                   500  avgt   20     4.000            counts
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.time                    500  avgt   20    19.000                ms
+AnyMatchUtilityBenchmark.ecAnySatisfy                           1000  avgt   20   728.108 ±  54.739   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate             1000  avgt   20    42.205 ±   3.220  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm        1000  avgt   20    32.002 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                  1000  avgt   20       ≈ 0            counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                          1  avgt   20     1.657 ±   0.077   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count                 1  avgt   20       ≈ 0            counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                        500  avgt   20   365.540 ±  30.304   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate          500  avgt   20    42.080 ±   3.322  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm     500  avgt   20    16.001 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count               500  avgt   20       ≈ 0            counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                       1000  avgt   20   652.435 ±  32.497   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate         1000  avgt   20    23.461 ±   1.225  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm    1000  avgt   20    16.002 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count              1000  avgt   20     2.000            counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.time               1000  avgt   20     8.000                ms
+AnyMatchUtilityBenchmark.jdkAnyMatch                               1  avgt   20    27.797 ±   1.675   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate                 1  avgt   20  5511.520 ± 316.727  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm            1  avgt   20   160.000 ±   0.001    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                      1  avgt   20   180.000            counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time                       1  avgt   20   467.000                ms
+AnyMatchUtilityBenchmark.jdkAnyMatch                             500  avgt   20  1561.907 ±  74.401   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate               500  avgt   20   107.720 ±   4.811  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm          500  avgt   20   176.005 ±   0.001    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                    500  avgt   20     3.000            counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time                     500  avgt   20    10.000                ms
+AnyMatchUtilityBenchmark.jdkAnyMatch                            1000  avgt   20  3425.645 ± 359.813   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate              1000  avgt   20    49.671 ±   5.208  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm         1000  avgt   20   176.011 ±   0.001    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                   1000  avgt   20     2.000            counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time                    1000  avgt   20     9.000                ms

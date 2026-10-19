@@ -1,0 +1,33 @@
+= Shakers run 20261017-1708: summary
+:toc:
+
+Environment: cloud sandbox (Intel(R) Xeon(R) Processor @ 2.10GHz) (openjdk version "25.0.4.1" 2026-08-18). Written from the run's numbers by `ShakersDocs.java`; each class has its own analysis with the tables and charts behind these numbers.
+
+== Garbage and speed per class (compact headers on)
+
+[cols="3,2,1,1,1,1",options="header"]
+|===
+|Class |JDK method |JDK bytes per call |JDK objects per call |EC bytes per call (every EC version) |JDK time ÷ EC time
+|link:20261017-1708-AnyMatchUtilityAnalysis.adoc[AnyMatchUtility] |`jdkAnyMatch` |160 to 176 |6 to 7 |≈0 |4.7 to 11.3
+|link:20261017-1708-CountUtilityAnalysis.adoc[CountUtility] |`jdkCount` |208 to 224 |7 to 8 |≈0 |2.1
+|link:20261017-1708-FindFirstUtilityAnalysis.adoc[FindFirstUtility] |`jdkFindFirst` |200 to 216 |7 to 8 |≈0 |4.3 to 15.0
+|link:20261017-1708-AnyMatchEagerLazyAnalysis.adoc[AnyMatchEagerLazy] |`jdkAnyMatch` |140 to 176 |6 to 7 |≈0 |4.6 to 12.2
+|link:20261017-1708-CountEagerLazyAnalysis.adoc[CountEagerLazy] |`jdkCount` |208 to 224 |7 to 8 |≈0 |2.0 to 2.1
+|link:20261017-1708-FindFirstEagerLazyAnalysis.adoc[FindFirstEagerLazy] |`jdkFindFirst` |200 to 216 |7 to 8 |≈0 |4.5 to 15.5
+|link:20261017-1708-CollectorsAndCollectors2Analysis.adoc[CollectorsAndCollectors2] |`collectors` |384 |16 |≈0 |163.5
+|===
+
+== Reports
+
+* link:20261017-1708-AnyMatchUtilityAnalysis.adoc[AnyMatchUtility analysis] and link:20261017-1708-AnyMatchUtilityResults.adoc[results]
+* link:20261017-1708-CountUtilityAnalysis.adoc[CountUtility analysis] and link:20261017-1708-CountUtilityResults.adoc[results]
+* link:20261017-1708-FindFirstUtilityAnalysis.adoc[FindFirstUtility analysis] and link:20261017-1708-FindFirstUtilityResults.adoc[results]
+* link:20261017-1708-AnyMatchEagerLazyAnalysis.adoc[AnyMatchEagerLazy analysis] and link:20261017-1708-AnyMatchEagerLazyResults.adoc[results]
+* link:20261017-1708-CountEagerLazyAnalysis.adoc[CountEagerLazy analysis] and link:20261017-1708-CountEagerLazyResults.adoc[results]
+* link:20261017-1708-FindFirstEagerLazyAnalysis.adoc[FindFirstEagerLazy analysis] and link:20261017-1708-FindFirstEagerLazyResults.adoc[results]
+* link:20261017-1708-CollectorsAndCollectors2Analysis.adoc[CollectorsAndCollectors2 analysis] and link:20261017-1708-CollectorsAndCollectors2Results.adoc[results]
+* link:20261017-1708-JdkStreamOpsAnalysis.adoc[JDK Stream ops analysis] (written by `JdkOpsDocs.java`)
+
+== Caveats
+
+One machine (cloud sandbox (Intel(R) Xeon(R) Processor @ 2.10GHz)), one JDK build (openjdk version "25.0.4.1" 2026-08-18), G1 with a fixed 2 GB heap. Microbenchmarks, not an application. Mechanisms are read from the class histograms where shown; anything else is labelled inferred.

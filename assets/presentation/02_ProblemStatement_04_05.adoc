@@ -6,24 +6,25 @@ include::_deck-settings.adoc[]
 endif::[]
 
 [background-color="#F5F7FA"]
-== From bytes per call to GC runs and spikes
+== From bytes per call to spikes
 
 [.lead]
-GC runs are measured (G1, 2 GB heap); rates and spikes are derived.
+Bytes per call are measured; rates and spikes are derived.
 
-[cols="3,2,3,3,3",options="header",frame=none,grid=rows]
+[cols="3,2,3,3",options="header",frame=none,grid=rows]
 |===
-| Element 500 | B per call | GC runs per 1 B calls | MB/s at 10 M calls/s | 10 s spike
-| JDK `anyMatch` | 176 | 77 | 1,760 | 17.6 GB
-| JDK `findFirst` | 216 | 141 | 2,160 | 21.6 GB
-| JDK `count` | 224 | 199 | 2,240 | 22.4 GB
-| EC, every version | 0 | 0 | 0 | 0
+| Element 500 | B per call | MB/s at 10 M calls/s | 10 s spike
+| JDK `anyMatch` | 176 | 1,760 | 17.6 GB
+| JDK `findFirst` | 216 | 2,160 | 21.6 GB
+| JDK `count` | 224 | 2,240 | 22.4 GB
+| EC, every version | 0 | 0 | 0
 |===
 
 [.notes]
 --
 Rate = bytes per call × calls per second; spike = rate × 10 s, the young-generation space the spike needs or the
-collections it causes. GC runs per billion calls are coarse: at element 500 a 40 s measurement saw only a few GCs.
+collections it causes. GC runs per billion calls are not shown: at element 500 a 40 s measurement saw only 2 to 6 collections
+(G1, 2 GB heap), too few to rank the three. Run 20261015-0406 gave 77, 141 and 199, run 20261017-1708 gave 154, 149 and 140.
 `gc.alloc.rate` (MB/s) in JMH scales with how fast the benchmark runs; size heaps with bytes per call.
 --
 

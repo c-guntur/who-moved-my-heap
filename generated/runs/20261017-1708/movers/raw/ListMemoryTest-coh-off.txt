@@ -1,0 +1,147 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=36819 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/opt/maven/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< conf.session:who-moved-my-heap >-------------------
+[INFO] Building Who Moved My Heap 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ who-moved-my-heap ---
+[INFO] skip non existing resourceDirectory /home/claude/work/who-moved-my-heap/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ who-moved-my-heap ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 13 source files with javac [debug release 25] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ who-moved-my-heap ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ who-moved-my-heap ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 13 source files with javac [debug release 25] to target/test-classes
+[INFO] /home/claude/work/who-moved-my-heap/src/test/java/conf/session/movers/SweatingTheSmallStuffTest.java: /home/claude/work/who-moved-my-heap/src/test/java/conf/session/movers/SweatingTheSmallStuffTest.java uses unchecked or unsafe operations.
+[INFO] /home/claude/work/who-moved-my-heap/src/test/java/conf/session/movers/SweatingTheSmallStuffTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- surefire:3.6.0:test (default-test) @ who-moved-my-heap ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.6.0/surefire-junit-platform-3.6.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.6.0/surefire-junit-platform-3.6.0.pom (4.6 kB at 5.7 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.6.0/surefire-providers-3.6.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.6.0/surefire-providers-3.6.0.pom (1.8 kB at 31 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.6.0/common-java5-3.6.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.6.0/common-java5-3.6.0.pom (2.4 kB at 56 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.14.4/junit-platform-engine-1.14.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.14.4/junit-platform-engine-1.14.4.pom (3.2 kB at 69 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.14.4/junit-platform-commons-1.14.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.14.4/junit-platform-commons-1.14.4.pom (2.9 kB at 70 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.14.4/junit-platform-launcher-1.14.4.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.14.4/junit-platform-launcher-1.14.4.pom (3.0 kB at 66 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.6.0/surefire-junit-platform-3.6.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.6.0/surefire-junit-platform-3.6.0.jar (57 kB at 1.3 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.6.0/common-java5-3.6.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.14.4/junit-platform-engine-1.14.4.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.14.4/junit-platform-commons-1.14.4.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.14.4/junit-platform-launcher-1.14.4.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.14.4/junit-platform-engine-1.14.4.jar (272 kB at 4.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.6.0/common-java5-3.6.0.jar (16 kB at 188 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.14.4/junit-platform-commons-1.14.4.jar (164 kB at 1.6 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.14.4/junit-platform-launcher-1.14.4.jar (223 kB at 2.1 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/6.1.3/junit-jupiter-engine-6.1.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/6.1.3/junit-jupiter-engine-6.1.3.pom (3.5 kB at 118 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/6.1.3/junit-platform-engine-6.1.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/6.1.3/junit-platform-engine-6.1.3.pom (3.5 kB at 118 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/6.1.3/junit-jupiter-engine-6.1.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/jupiter/junit-jupiter-engine/6.1.3/junit-jupiter-engine-6.1.3.jar (353 kB at 7.8 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/6.1.3/junit-platform-engine-6.1.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/6.1.3/junit-platform-engine-6.1.3.jar (325 kB at 8.1 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/6.1.3/junit-platform-launcher-6.1.3.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/6.1.3/junit-platform-launcher-6.1.3.pom (3.4 kB at 91 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/6.1.3/junit-platform-launcher-6.1.3.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/6.1.3/junit-platform-launcher-6.1.3.jar (253 kB at 6.3 MB/s)
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=36819 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+[INFO] Running conf.session.movers.ListMemoryTest
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by org.openjdk.jol.vm.HotspotUnsafe (file:/root/.m2/repository/org/openjdk/jol/jol-core/0.17/jol-core-0.17.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jol.vm.HotspotUnsafe
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+# WARNING: Unable to attach Serviceability Agent. You can try again with escalated privileges. Two options: a) use -Djol.tryWithSudo=true to try with sudo; b) echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+ArrayList size: 100000 Memory (bytes): 2026880
+ArrayList size: 200000 Memory (bytes): 4160432
+ArrayList size: 300000 Memory (bytes): 6240624
+ArrayList size: 400000 Memory (bytes): 8560912
+ArrayList size: 500000 Memory (bytes): 10160912
+ArrayList size: 600000 Memory (bytes): 12841344
+ArrayList size: 700000 Memory (bytes): 14441344
+ArrayList size: 800000 Memory (bytes): 16041344
+ArrayList size: 900000 Memory (bytes): 19261992
+ArrayList size: 1000000 Memory (bytes): 20861992
+PresizedIntArrayList size: 100000 Memory (bytes): 400040
+PresizedIntArrayList size: 200000 Memory (bytes): 800040
+PresizedIntArrayList size: 300000 Memory (bytes): 1200040
+PresizedIntArrayList size: 400000 Memory (bytes): 1600040
+PresizedIntArrayList size: 500000 Memory (bytes): 2000040
+PresizedIntArrayList size: 600000 Memory (bytes): 2400040
+PresizedIntArrayList size: 700000 Memory (bytes): 2800040
+PresizedIntArrayList size: 800000 Memory (bytes): 3200040
+PresizedIntArrayList size: 900000 Memory (bytes): 3600040
+PresizedIntArrayList size: 1000000 Memory (bytes): 4000040
+Presized ArrayList size: 100000 Memory (bytes): 2000040
+Presized ArrayList size: 200000 Memory (bytes): 4000040
+Presized ArrayList size: 300000 Memory (bytes): 6000040
+Presized ArrayList size: 400000 Memory (bytes): 8000040
+Presized ArrayList size: 500000 Memory (bytes): 10000040
+Presized ArrayList size: 600000 Memory (bytes): 12000040
+Presized ArrayList size: 700000 Memory (bytes): 14000040
+Presized ArrayList size: 800000 Memory (bytes): 16000040
+Presized ArrayList size: 900000 Memory (bytes): 18000040
+Presized ArrayList size: 1000000 Memory (bytes): 20000040
+FastList size: 100000 Memory (bytes): 2129584
+FastList size: 200000 Memory (bytes): 4391512
+FastList size: 300000 Memory (bytes): 6587256
+FastList size: 400000 Memory (bytes): 8187256
+FastList size: 500000 Memory (bytes): 10680864
+FastList size: 600000 Memory (bytes): 12280864
+FastList size: 700000 Memory (bytes): 15221272
+FastList size: 800000 Memory (bytes): 16821272
+FastList size: 900000 Memory (bytes): 18421272
+FastList size: 1000000 Memory (bytes): 20021272
+IntArrayList size: 100000 Memory (bytes): 529584
+IntArrayList size: 200000 Memory (bytes): 1191512
+IntArrayList size: 300000 Memory (bytes): 1787256
+IntArrayList size: 400000 Memory (bytes): 1787256
+IntArrayList size: 500000 Memory (bytes): 2680864
+IntArrayList size: 600000 Memory (bytes): 2680864
+IntArrayList size: 700000 Memory (bytes): 4021272
+IntArrayList size: 800000 Memory (bytes): 4021272
+IntArrayList size: 900000 Memory (bytes): 4021272
+IntArrayList size: 1000000 Memory (bytes): 4021272
+Presized FastList size: 100000 Memory (bytes): 2000040
+Presized FastList size: 200000 Memory (bytes): 4000040
+Presized FastList size: 300000 Memory (bytes): 6000040
+Presized FastList size: 400000 Memory (bytes): 8000040
+Presized FastList size: 500000 Memory (bytes): 10000040
+Presized FastList size: 600000 Memory (bytes): 12000040
+Presized FastList size: 700000 Memory (bytes): 14000040
+Presized FastList size: 800000 Memory (bytes): 16000040
+Presized FastList size: 900000 Memory (bytes): 18000040
+Presized FastList size: 1000000 Memory (bytes): 20000040
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.835 s -- in conf.session.movers.ListMemoryTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.366 s
+[INFO] Finished at: 2026-10-17T23:09:53Z
+[INFO] ------------------------------------------------------------------------

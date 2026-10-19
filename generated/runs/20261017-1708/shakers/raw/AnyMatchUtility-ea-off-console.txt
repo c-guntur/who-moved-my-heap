@@ -1,0 +1,1671 @@
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy
+# Parameters: (test = 1)
+
+# Run progress: 0.00% complete, ETA 00:12:00
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 17.501 ns/op
+# Warmup Iteration   2: 11.294 ns/op
+# Warmup Iteration   3: 3.322 ns/op
+# Warmup Iteration   4: 3.777 ns/op
+# Warmup Iteration   5: 3.581 ns/op
+# Warmup Iteration   6: 3.617 ns/op
+# Warmup Iteration   7: 4.233 ns/op
+# Warmup Iteration   8: 3.521 ns/op
+# Warmup Iteration   9: 3.978 ns/op
+# Warmup Iteration  10: 3.240 ns/op
+Iteration   1: 3.550 ns/op
+                 gc.alloc.rate:      4297.560 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   2: 3.333 ns/op
+                 gc.alloc.rate:      4577.045 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            17.000 ms
+
+Iteration   3: 3.377 ns/op
+                 gc.alloc.rate:      4515.628 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   4: 3.577 ns/op
+                 gc.alloc.rate:      4264.231 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            15.000 ms
+
+Iteration   5: 3.446 ns/op
+                 gc.alloc.rate:      4426.879 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            15.000 ms
+
+Iteration   6: 3.893 ns/op
+                 gc.alloc.rate:      3918.760 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            17.000 ms
+
+Iteration   7: 3.769 ns/op
+                 gc.alloc.rate:      4046.390 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           6.000 counts
+                 gc.time:            12.000 ms
+
+Iteration   8: 3.589 ns/op
+                 gc.alloc.rate:      4250.528 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   9: 3.515 ns/op
+                 gc.alloc.rate:      4340.145 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            15.000 ms
+
+Iteration  10: 3.224 ns/op
+                 gc.alloc.rate:      4730.915 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            18.000 ms
+
+
+# Run progress: 5.56% complete, ETA 00:11:28
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 6.629 ns/op
+# Warmup Iteration   2: 5.411 ns/op
+# Warmup Iteration   3: 3.809 ns/op
+# Warmup Iteration   4: 3.922 ns/op
+# Warmup Iteration   5: 3.216 ns/op
+# Warmup Iteration   6: 3.342 ns/op
+# Warmup Iteration   7: 3.154 ns/op
+# Warmup Iteration   8: 3.349 ns/op
+# Warmup Iteration   9: 3.898 ns/op
+# Warmup Iteration  10: 3.316 ns/op
+Iteration   1: 3.639 ns/op
+                 gc.alloc.rate:      4192.096 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            13.000 ms
+
+Iteration   2: 3.171 ns/op
+                 gc.alloc.rate:      4811.152 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            46.000 ms
+
+Iteration   3: 3.159 ns/op
+                 gc.alloc.rate:      4829.207 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            15.000 ms
+
+Iteration   4: 3.361 ns/op
+                 gc.alloc.rate:      4538.389 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   5: 3.238 ns/op
+                 gc.alloc.rate:      4710.757 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            14.000 ms
+
+Iteration   6: 2.875 ns/op
+                 gc.alloc.rate:      5305.889 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            19.000 ms
+
+Iteration   7: 3.145 ns/op
+                 gc.alloc.rate:      4851.053 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   8: 3.150 ns/op
+                 gc.alloc.rate:      4843.219 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            15.000 ms
+
+Iteration   9: 3.363 ns/op
+                 gc.alloc.rate:      4536.409 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            15.000 ms
+
+Iteration  10: 3.628 ns/op
+                 gc.alloc.rate:      4204.592 MB/sec
+                 gc.alloc.rate.norm: 16.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            15.000 ms
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy":
+  3.400 ±(99.9%) 0.216 ns/op [Average]
+  (min, avg, max) = (2.875, 3.400, 3.893), stdev = 0.248
+  CI (99.9%): [3.184, 3.616] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate":
+  4509.542 ±(99.9%) 289.784 MB/sec [Average]
+  (min, avg, max) = (3918.760, 4509.542, 5305.889), stdev = 333.716
+  CI (99.9%): [4219.758, 4799.327] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm":
+  16.000 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (16.000, 16.000, 16.000), stdev = 0.001
+  CI (99.9%): [16.000, 16.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count":
+  147.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (6.000, 7.350, 9.000), stdev = 0.671
+  CI (99.9%): [147.000, 147.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.time":
+  341.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (12.000, 17.050, 46.000), stdev = 6.992
+  CI (99.9%): [341.000, 341.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy
+# Parameters: (test = 500)
+
+# Run progress: 11.11% complete, ETA 00:10:47
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 356.138 ns/op
+# Warmup Iteration   2: 325.089 ns/op
+# Warmup Iteration   3: 362.891 ns/op
+# Warmup Iteration   4: 358.575 ns/op
+# Warmup Iteration   5: 338.526 ns/op
+# Warmup Iteration   6: 367.413 ns/op
+# Warmup Iteration   7: 366.982 ns/op
+# Warmup Iteration   8: 349.049 ns/op
+# Warmup Iteration   9: 462.320 ns/op
+# Warmup Iteration  10: 449.178 ns/op
+Iteration   1: 473.727 ns/op
+                 gc.alloc.rate:      64.405 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 422.688 ns/op
+                 gc.alloc.rate:      72.175 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   3: 313.270 ns/op
+                 gc.alloc.rate:      97.386 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 345.158 ns/op
+                 gc.alloc.rate:      88.391 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 312.537 ns/op
+                 gc.alloc.rate:      97.623 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 341.121 ns/op
+                 gc.alloc.rate:      89.445 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 330.584 ns/op
+                 gc.alloc.rate:      92.297 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 346.590 ns/op
+                 gc.alloc.rate:      88.024 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 345.466 ns/op
+                 gc.alloc.rate:      88.314 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            5.000 ms
+
+Iteration  10: 340.490 ns/op
+                 gc.alloc.rate:      89.604 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 16.67% complete, ETA 00:10:07
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 352.895 ns/op
+# Warmup Iteration   2: 346.685 ns/op
+# Warmup Iteration   3: 345.315 ns/op
+# Warmup Iteration   4: 353.021 ns/op
+# Warmup Iteration   5: 340.593 ns/op
+# Warmup Iteration   6: 337.183 ns/op
+# Warmup Iteration   7: 340.733 ns/op
+# Warmup Iteration   8: 314.313 ns/op
+# Warmup Iteration   9: 433.627 ns/op
+# Warmup Iteration  10: 469.096 ns/op
+Iteration   1: 468.250 ns/op
+                 gc.alloc.rate:      65.155 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 411.776 ns/op
+                 gc.alloc.rate:      74.092 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            6.000 ms
+
+Iteration   3: 344.743 ns/op
+                 gc.alloc.rate:      88.502 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 340.640 ns/op
+                 gc.alloc.rate:      89.566 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 335.064 ns/op
+                 gc.alloc.rate:      91.054 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 340.470 ns/op
+                 gc.alloc.rate:      89.614 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 343.876 ns/op
+                 gc.alloc.rate:      88.720 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 355.112 ns/op
+                 gc.alloc.rate:      85.917 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 342.340 ns/op
+                 gc.alloc.rate:      89.122 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            3.000 ms
+
+Iteration  10: 331.532 ns/op
+                 gc.alloc.rate:      92.026 MB/sec
+                 gc.alloc.rate.norm: 32.001 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy":
+  359.272 ±(99.9%) 40.298 ns/op [Average]
+  (min, avg, max) = (312.537, 359.272, 473.727), stdev = 46.407
+  CI (99.9%): [318.974, 399.570] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate":
+  86.072 ±(99.9%) 8.188 MB/sec [Average]
+  (min, avg, max) = (64.405, 86.072, 97.623), stdev = 9.429
+  CI (99.9%): [77.884, 94.259] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm":
+  32.001 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (32.001, 32.001, 32.002), stdev = 0.001
+  CI (99.9%): [32.001, 32.001] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count":
+  4.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (≈ 0, 0.200, 1.000), stdev = 0.410
+  CI (99.9%): [4.000, 4.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.time":
+  19.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (≈ 0, 0.950, 6.000), stdev = 2.012
+  CI (99.9%): [19.000, 19.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy
+# Parameters: (test = 1000)
+
+# Run progress: 22.22% complete, ETA 00:09:26
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 708.014 ns/op
+# Warmup Iteration   2: 687.246 ns/op
+# Warmup Iteration   3: 683.096 ns/op
+# Warmup Iteration   4: 663.862 ns/op
+# Warmup Iteration   5: 616.150 ns/op
+# Warmup Iteration   6: 657.756 ns/op
+# Warmup Iteration   7: 678.890 ns/op
+# Warmup Iteration   8: 676.485 ns/op
+# Warmup Iteration   9: 637.309 ns/op
+# Warmup Iteration  10: 666.546 ns/op
+Iteration   1: 687.311 ns/op
+                 gc.alloc.rate:      44.394 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 672.927 ns/op
+                 gc.alloc.rate:      45.342 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 681.521 ns/op
+                 gc.alloc.rate:      44.765 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 696.088 ns/op
+                 gc.alloc.rate:      43.762 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 670.849 ns/op
+                 gc.alloc.rate:      45.483 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 757.856 ns/op
+                 gc.alloc.rate:      40.261 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 801.710 ns/op
+                 gc.alloc.rate:      38.059 MB/sec
+                 gc.alloc.rate.norm: 32.003 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 736.205 ns/op
+                 gc.alloc.rate:      41.444 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 813.334 ns/op
+                 gc.alloc.rate:      37.516 MB/sec
+                 gc.alloc.rate.norm: 32.003 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 795.831 ns/op
+                 gc.alloc.rate:      38.340 MB/sec
+                 gc.alloc.rate.norm: 32.003 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 27.78% complete, ETA 00:08:46
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 690.625 ns/op
+# Warmup Iteration   2: 642.832 ns/op
+# Warmup Iteration   3: 663.290 ns/op
+# Warmup Iteration   4: 605.901 ns/op
+# Warmup Iteration   5: 683.432 ns/op
+# Warmup Iteration   6: 682.732 ns/op
+# Warmup Iteration   7: 675.962 ns/op
+# Warmup Iteration   8: 631.635 ns/op
+# Warmup Iteration   9: 650.240 ns/op
+# Warmup Iteration  10: 553.384 ns/op
+Iteration   1: 676.339 ns/op
+                 gc.alloc.rate:      45.109 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 631.677 ns/op
+                 gc.alloc.rate:      48.302 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 620.499 ns/op
+                 gc.alloc.rate:      49.173 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 673.365 ns/op
+                 gc.alloc.rate:      45.313 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 702.904 ns/op
+                 gc.alloc.rate:      43.409 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 781.802 ns/op
+                 gc.alloc.rate:      39.026 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 802.493 ns/op
+                 gc.alloc.rate:      38.020 MB/sec
+                 gc.alloc.rate.norm: 32.003 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 777.356 ns/op
+                 gc.alloc.rate:      39.250 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 782.543 ns/op
+                 gc.alloc.rate:      38.977 MB/sec
+                 gc.alloc.rate.norm: 32.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 799.543 ns/op
+                 gc.alloc.rate:      38.160 MB/sec
+                 gc.alloc.rate.norm: 32.003 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy":
+  728.108 ±(99.9%) 54.739 ns/op [Average]
+  (min, avg, max) = (620.499, 728.108, 813.334), stdev = 63.037
+  CI (99.9%): [673.369, 782.846] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate":
+  42.205 ±(99.9%) 3.220 MB/sec [Average]
+  (min, avg, max) = (37.516, 42.205, 49.173), stdev = 3.708
+  CI (99.9%): [38.986, 45.425] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm":
+  32.002 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (32.002, 32.002, 32.003), stdev = 0.001
+  CI (99.9%): [32.002, 32.002] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith
+# Parameters: (test = 1)
+
+# Run progress: 33.33% complete, ETA 00:08:05
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 2.293 ns/op
+# Warmup Iteration   2: 2.332 ns/op
+# Warmup Iteration   3: 1.664 ns/op
+# Warmup Iteration   4: 1.782 ns/op
+# Warmup Iteration   5: 1.639 ns/op
+# Warmup Iteration   6: 1.653 ns/op
+# Warmup Iteration   7: 1.641 ns/op
+# Warmup Iteration   8: 1.548 ns/op
+# Warmup Iteration   9: 1.535 ns/op
+# Warmup Iteration  10: 1.663 ns/op
+Iteration   1: 1.692 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 1.648 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 1.741 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 1.643 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 1.853 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 1.784 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 1.655 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 1.696 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 1.590 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 1.580 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 38.89% complete, ETA 00:07:25
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 2.232 ns/op
+# Warmup Iteration   2: 1.958 ns/op
+# Warmup Iteration   3: 1.752 ns/op
+# Warmup Iteration   4: 1.772 ns/op
+# Warmup Iteration   5: 1.787 ns/op
+# Warmup Iteration   6: 1.641 ns/op
+# Warmup Iteration   7: 1.782 ns/op
+# Warmup Iteration   8: 1.740 ns/op
+# Warmup Iteration   9: 1.710 ns/op
+# Warmup Iteration  10: 1.959 ns/op
+Iteration   1: 1.702 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 1.499 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 1.564 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 1.575 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 1.656 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 1.569 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 1.580 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 1.748 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 1.752 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 1.612 ns/op
+                 gc.alloc.rate:      0.003 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith":
+  1.657 ±(99.9%) 0.077 ns/op [Average]
+  (min, avg, max) = (1.499, 1.657, 1.853), stdev = 0.089
+  CI (99.9%): [1.580, 1.734] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate":
+  0.003 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.003, 0.003, 0.003), stdev = 0.001
+  CI (99.9%): [0.003, 0.003] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm":
+  ≈ 10⁻⁵ B/op
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith
+# Parameters: (test = 500)
+
+# Run progress: 44.44% complete, ETA 00:06:44
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 361.906 ns/op
+# Warmup Iteration   2: 303.361 ns/op
+# Warmup Iteration   3: 342.047 ns/op
+# Warmup Iteration   4: 354.110 ns/op
+# Warmup Iteration   5: 320.594 ns/op
+# Warmup Iteration   6: 333.630 ns/op
+# Warmup Iteration   7: 368.168 ns/op
+# Warmup Iteration   8: 371.226 ns/op
+# Warmup Iteration   9: 339.628 ns/op
+# Warmup Iteration  10: 317.175 ns/op
+Iteration   1: 330.983 ns/op
+                 gc.alloc.rate:      46.093 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 322.642 ns/op
+                 gc.alloc.rate:      47.285 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 352.061 ns/op
+                 gc.alloc.rate:      43.327 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 348.459 ns/op
+                 gc.alloc.rate:      43.780 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 364.774 ns/op
+                 gc.alloc.rate:      41.824 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 347.032 ns/op
+                 gc.alloc.rate:      43.960 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 341.471 ns/op
+                 gc.alloc.rate:      44.675 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 398.437 ns/op
+                 gc.alloc.rate:      38.287 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 368.795 ns/op
+                 gc.alloc.rate:      41.364 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 441.392 ns/op
+                 gc.alloc.rate:      34.564 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 50.00% complete, ETA 00:06:03
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 353.773 ns/op
+# Warmup Iteration   2: 342.170 ns/op
+# Warmup Iteration   3: 341.781 ns/op
+# Warmup Iteration   4: 339.528 ns/op
+# Warmup Iteration   5: 325.196 ns/op
+# Warmup Iteration   6: 334.323 ns/op
+# Warmup Iteration   7: 365.919 ns/op
+# Warmup Iteration   8: 338.055 ns/op
+# Warmup Iteration   9: 323.040 ns/op
+# Warmup Iteration  10: 329.635 ns/op
+Iteration   1: 330.976 ns/op
+                 gc.alloc.rate:      46.089 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 346.227 ns/op
+                 gc.alloc.rate:      44.063 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 315.000 ns/op
+                 gc.alloc.rate:      48.423 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 360.535 ns/op
+                 gc.alloc.rate:      42.316 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 361.738 ns/op
+                 gc.alloc.rate:      42.176 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 356.049 ns/op
+                 gc.alloc.rate:      42.846 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 431.139 ns/op
+                 gc.alloc.rate:      35.386 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 405.822 ns/op
+                 gc.alloc.rate:      37.593 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 386.295 ns/op
+                 gc.alloc.rate:      39.492 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 400.968 ns/op
+                 gc.alloc.rate:      38.050 MB/sec
+                 gc.alloc.rate.norm: 16.001 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith":
+  365.540 ±(99.9%) 30.304 ns/op [Average]
+  (min, avg, max) = (315.000, 365.540, 441.392), stdev = 34.898
+  CI (99.9%): [335.235, 395.844] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate":
+  42.080 ±(99.9%) 3.322 MB/sec [Average]
+  (min, avg, max) = (34.564, 42.080, 48.423), stdev = 3.826
+  CI (99.9%): [38.757, 45.402] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm":
+  16.001 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (16.001, 16.001, 16.001), stdev = 0.001
+  CI (99.9%): [16.001, 16.001] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith
+# Parameters: (test = 1000)
+
+# Run progress: 55.56% complete, ETA 00:05:23
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 707.312 ns/op
+# Warmup Iteration   2: 705.064 ns/op
+# Warmup Iteration   3: 668.329 ns/op
+# Warmup Iteration   4: 621.442 ns/op
+# Warmup Iteration   5: 603.983 ns/op
+# Warmup Iteration   6: 698.550 ns/op
+# Warmup Iteration   7: 685.345 ns/op
+# Warmup Iteration   8: 664.508 ns/op
+# Warmup Iteration   9: 682.613 ns/op
+# Warmup Iteration  10: 644.481 ns/op
+Iteration   1: 645.201 ns/op
+                 gc.alloc.rate:      23.647 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 631.166 ns/op
+                 gc.alloc.rate:      24.173 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 613.747 ns/op
+                 gc.alloc.rate:      24.859 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 692.040 ns/op
+                 gc.alloc.rate:      22.044 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 624.772 ns/op
+                 gc.alloc.rate:      24.420 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   6: 695.820 ns/op
+                 gc.alloc.rate:      21.926 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 659.508 ns/op
+                 gc.alloc.rate:      23.134 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 671.599 ns/op
+                 gc.alloc.rate:      22.716 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 612.125 ns/op
+                 gc.alloc.rate:      24.925 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 655.008 ns/op
+                 gc.alloc.rate:      23.292 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 61.11% complete, ETA 00:04:43
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 660.187 ns/op
+# Warmup Iteration   2: 685.515 ns/op
+# Warmup Iteration   3: 628.194 ns/op
+# Warmup Iteration   4: 717.784 ns/op
+# Warmup Iteration   5: 750.090 ns/op
+# Warmup Iteration   6: 671.453 ns/op
+# Warmup Iteration   7: 699.276 ns/op
+# Warmup Iteration   8: 667.617 ns/op
+# Warmup Iteration   9: 654.106 ns/op
+# Warmup Iteration  10: 682.975 ns/op
+Iteration   1: 652.870 ns/op
+                 gc.alloc.rate:      23.369 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 555.817 ns/op
+                 gc.alloc.rate:      27.451 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 612.616 ns/op
+                 gc.alloc.rate:      24.905 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 667.146 ns/op
+                 gc.alloc.rate:      22.868 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 645.121 ns/op
+                 gc.alloc.rate:      23.649 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   6: 702.566 ns/op
+                 gc.alloc.rate:      21.717 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 698.170 ns/op
+                 gc.alloc.rate:      21.852 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 647.849 ns/op
+                 gc.alloc.rate:      23.549 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 701.304 ns/op
+                 gc.alloc.rate:      21.753 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 664.254 ns/op
+                 gc.alloc.rate:      22.961 MB/sec
+                 gc.alloc.rate.norm: 16.002 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith":
+  652.435 ±(99.9%) 32.497 ns/op [Average]
+  (min, avg, max) = (555.817, 652.435, 702.566), stdev = 37.424
+  CI (99.9%): [619.937, 684.932] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate":
+  23.461 ±(99.9%) 1.225 MB/sec [Average]
+  (min, avg, max) = (21.717, 23.461, 27.451), stdev = 1.411
+  CI (99.9%): [22.236, 24.686] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm":
+  16.002 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (16.002, 16.002, 16.002), stdev = 0.001
+  CI (99.9%): [16.002, 16.002] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count":
+  2.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (≈ 0, 0.100, 1.000), stdev = 0.308
+  CI (99.9%): [2.000, 2.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.time":
+  8.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (≈ 0, 0.400, 4.000), stdev = 1.231
+  CI (99.9%): [8.000, 8.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch
+# Parameters: (test = 1)
+
+# Run progress: 66.67% complete, ETA 00:04:02
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 171.160 ns/op
+# Warmup Iteration   2: 41.888 ns/op
+# Warmup Iteration   3: 25.925 ns/op
+# Warmup Iteration   4: 26.075 ns/op
+# Warmup Iteration   5: 26.391 ns/op
+# Warmup Iteration   6: 28.087 ns/op
+# Warmup Iteration   7: 33.986 ns/op
+# Warmup Iteration   8: 26.530 ns/op
+# Warmup Iteration   9: 27.809 ns/op
+# Warmup Iteration  10: 27.834 ns/op
+Iteration   1: 28.170 ns/op
+                 gc.alloc.rate:      5415.399 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            20.000 ms
+
+Iteration   2: 26.177 ns/op
+                 gc.alloc.rate:      5827.144 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            21.000 ms
+
+Iteration   3: 29.444 ns/op
+                 gc.alloc.rate:      5181.086 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            18.000 ms
+
+Iteration   4: 29.223 ns/op
+                 gc.alloc.rate:      5219.751 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            25.000 ms
+
+Iteration   5: 26.884 ns/op
+                 gc.alloc.rate:      5674.564 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            21.000 ms
+
+Iteration   6: 28.986 ns/op
+                 gc.alloc.rate:      5262.956 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            79.000 ms
+
+Iteration   7: 28.793 ns/op
+                 gc.alloc.rate:      5297.773 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           8.000 counts
+                 gc.time:            19.000 ms
+
+Iteration   8: 26.417 ns/op
+                 gc.alloc.rate:      5774.832 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            21.000 ms
+
+Iteration   9: 27.598 ns/op
+                 gc.alloc.rate:      5527.205 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            20.000 ms
+
+Iteration  10: 27.212 ns/op
+                 gc.alloc.rate:      5603.066 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            18.000 ms
+
+
+# Run progress: 72.22% complete, ETA 00:03:22
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 32.981 ns/op
+# Warmup Iteration   2: 28.739 ns/op
+# Warmup Iteration   3: 27.075 ns/op
+# Warmup Iteration   4: 28.567 ns/op
+# Warmup Iteration   5: 26.088 ns/op
+# Warmup Iteration   6: 29.499 ns/op
+# Warmup Iteration   7: 27.097 ns/op
+# Warmup Iteration   8: 32.896 ns/op
+# Warmup Iteration   9: 28.335 ns/op
+# Warmup Iteration  10: 28.029 ns/op
+Iteration   1: 33.365 ns/op
+                 gc.alloc.rate:      4572.012 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           7.000 counts
+                 gc.time:            16.000 ms
+
+Iteration   2: 28.298 ns/op
+                 gc.alloc.rate:      5390.700 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            22.000 ms
+
+Iteration   3: 24.667 ns/op
+                 gc.alloc.rate:      6183.687 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            21.000 ms
+
+Iteration   4: 25.842 ns/op
+                 gc.alloc.rate:      5902.798 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            22.000 ms
+
+Iteration   5: 27.984 ns/op
+                 gc.alloc.rate:      5451.330 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            19.000 ms
+
+Iteration   6: 29.855 ns/op
+                 gc.alloc.rate:      5109.626 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            21.000 ms
+
+Iteration   7: 27.022 ns/op
+                 gc.alloc.rate:      5644.664 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            21.000 ms
+
+Iteration   8: 25.358 ns/op
+                 gc.alloc.rate:      6015.450 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           10.000 counts
+                 gc.time:            23.000 ms
+
+Iteration   9: 26.461 ns/op
+                 gc.alloc.rate:      5763.937 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            20.000 ms
+
+Iteration  10: 28.183 ns/op
+                 gc.alloc.rate:      5412.422 MB/sec
+                 gc.alloc.rate.norm: 160.000 B/op
+                 gc.count:           9.000 counts
+                 gc.time:            20.000 ms
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch":
+  27.797 ±(99.9%) 1.675 ns/op [Average]
+  (min, avg, max) = (24.667, 27.797, 33.365), stdev = 1.929
+  CI (99.9%): [26.122, 29.472] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate":
+  5511.520 ±(99.9%) 316.727 MB/sec [Average]
+  (min, avg, max) = (4572.012, 5511.520, 6183.687), stdev = 364.743
+  CI (99.9%): [5194.793, 5828.247] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm":
+  160.000 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (160.000, 160.000, 160.000), stdev = 0.001
+  CI (99.9%): [160.000, 160.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count":
+  180.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (7.000, 9.000, 10.000), stdev = 0.725
+  CI (99.9%): [180.000, 180.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time":
+  467.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (16.000, 23.350, 79.000), stdev = 13.240
+  CI (99.9%): [467.000, 467.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch
+# Parameters: (test = 500)
+
+# Run progress: 77.78% complete, ETA 00:02:41
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 832.158 ns/op
+# Warmup Iteration   2: 1336.431 ns/op
+# Warmup Iteration   3: 1678.184 ns/op
+# Warmup Iteration   4: 1482.597 ns/op
+# Warmup Iteration   5: 1593.458 ns/op
+# Warmup Iteration   6: 1758.434 ns/op
+# Warmup Iteration   7: 1964.708 ns/op
+# Warmup Iteration   8: 2364.573 ns/op
+# Warmup Iteration   9: 2517.727 ns/op
+# Warmup Iteration  10: 1814.121 ns/op
+Iteration   1: 1757.861 ns/op
+                 gc.alloc.rate:      95.453 MB/sec
+                 gc.alloc.rate.norm: 176.006 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 1578.741 ns/op
+                 gc.alloc.rate:      106.287 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 1508.070 ns/op
+                 gc.alloc.rate:      111.267 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 1488.642 ns/op
+                 gc.alloc.rate:      112.707 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 1565.296 ns/op
+                 gc.alloc.rate:      107.205 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 1653.132 ns/op
+                 gc.alloc.rate:      101.497 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   7: 1571.781 ns/op
+                 gc.alloc.rate:      106.763 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 1781.701 ns/op
+                 gc.alloc.rate:      94.182 MB/sec
+                 gc.alloc.rate.norm: 176.006 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 1585.006 ns/op
+                 gc.alloc.rate:      105.862 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 1464.235 ns/op
+                 gc.alloc.rate:      114.610 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 83.33% complete, ETA 00:02:01
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 864.961 ns/op
+# Warmup Iteration   2: 1516.398 ns/op
+# Warmup Iteration   3: 1571.957 ns/op
+# Warmup Iteration   4: 1392.794 ns/op
+# Warmup Iteration   5: 1524.928 ns/op
+# Warmup Iteration   6: 1699.638 ns/op
+# Warmup Iteration   7: 2261.556 ns/op
+# Warmup Iteration   8: 2362.634 ns/op
+# Warmup Iteration   9: 2032.993 ns/op
+# Warmup Iteration  10: 1381.383 ns/op
+Iteration   1: 1540.611 ns/op
+                 gc.alloc.rate:      108.927 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 1505.499 ns/op
+                 gc.alloc.rate:      111.457 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 1557.806 ns/op
+                 gc.alloc.rate:      107.720 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 1501.155 ns/op
+                 gc.alloc.rate:      111.774 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 1485.822 ns/op
+                 gc.alloc.rate:      112.938 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            3.000 ms
+
+Iteration   6: 1537.576 ns/op
+                 gc.alloc.rate:      109.131 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 1586.767 ns/op
+                 gc.alloc.rate:      105.742 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 1497.009 ns/op
+                 gc.alloc.rate:      112.086 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 1589.529 ns/op
+                 gc.alloc.rate:      105.558 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 1481.890 ns/op
+                 gc.alloc.rate:      113.241 MB/sec
+                 gc.alloc.rate.norm: 176.005 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            3.000 ms
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch":
+  1561.907 ±(99.9%) 74.401 ns/op [Average]
+  (min, avg, max) = (1464.235, 1561.907, 1781.701), stdev = 85.680
+  CI (99.9%): [1487.506, 1636.307] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate":
+  107.720 ±(99.9%) 4.811 MB/sec [Average]
+  (min, avg, max) = (94.182, 107.720, 114.610), stdev = 5.541
+  CI (99.9%): [102.909, 112.532] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm":
+  176.005 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (176.005, 176.005, 176.006), stdev = 0.001
+  CI (99.9%): [176.005, 176.005] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count":
+  3.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (≈ 0, 0.150, 1.000), stdev = 0.366
+  CI (99.9%): [3.000, 3.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time":
+  10.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (≈ 0, 0.500, 4.000), stdev = 1.235
+  CI (99.9%): [10.000, 10.000] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4.1, OpenJDK 64-Bit Server VM, 25.0.4.1+1-1-24.04.4-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes= -XX:+UseG1GC -Xms2g -Xmx2g -XX:+UseCompactObjectHeaders -XX:-DoEscapeAnalysis
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 10 iterations, 2 s each
+# Measurement: 10 iterations, 2 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch
+# Parameters: (test = 1000)
+
+# Run progress: 88.89% complete, ETA 00:01:20
+# Fork: 1 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 1843.644 ns/op
+# Warmup Iteration   2: 3444.390 ns/op
+# Warmup Iteration   3: 2918.649 ns/op
+# Warmup Iteration   4: 2919.497 ns/op
+# Warmup Iteration   5: 3089.344 ns/op
+# Warmup Iteration   6: 2885.870 ns/op
+# Warmup Iteration   7: 3037.498 ns/op
+# Warmup Iteration   8: 2916.214 ns/op
+# Warmup Iteration   9: 2647.492 ns/op
+# Warmup Iteration  10: 3199.732 ns/op
+Iteration   1: 3267.224 ns/op
+                 gc.alloc.rate:      51.363 MB/sec
+                 gc.alloc.rate.norm: 176.010 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 3202.335 ns/op
+                 gc.alloc.rate:      52.402 MB/sec
+                 gc.alloc.rate.norm: 176.010 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 3412.405 ns/op
+                 gc.alloc.rate:      49.176 MB/sec
+                 gc.alloc.rate.norm: 176.011 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 3896.141 ns/op
+                 gc.alloc.rate:      43.067 MB/sec
+                 gc.alloc.rate.norm: 176.012 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 4017.998 ns/op
+                 gc.alloc.rate:      41.759 MB/sec
+                 gc.alloc.rate.norm: 176.013 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 3887.120 ns/op
+                 gc.alloc.rate:      43.168 MB/sec
+                 gc.alloc.rate.norm: 176.012 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 3779.972 ns/op
+                 gc.alloc.rate:      44.395 MB/sec
+                 gc.alloc.rate.norm: 176.012 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   8: 3044.562 ns/op
+                 gc.alloc.rate:      55.116 MB/sec
+                 gc.alloc.rate.norm: 176.010 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            5.000 ms
+
+Iteration   9: 3020.967 ns/op
+                 gc.alloc.rate:      55.547 MB/sec
+                 gc.alloc.rate.norm: 176.010 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 3274.559 ns/op
+                 gc.alloc.rate:      51.244 MB/sec
+                 gc.alloc.rate.norm: 176.010 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 94.44% complete, ETA 00:00:40
+# Fork: 2 of 2
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=38267 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/claude/work/who-moved-my-heap/target-bench/microbenchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 1562.028 ns/op
+# Warmup Iteration   2: 3130.558 ns/op
+# Warmup Iteration   3: 3179.709 ns/op
+# Warmup Iteration   4: 2722.429 ns/op
+# Warmup Iteration   5: 3082.320 ns/op
+# Warmup Iteration   6: 3367.224 ns/op
+# Warmup Iteration   7: 2998.038 ns/op
+# Warmup Iteration   8: 3746.539 ns/op
+# Warmup Iteration   9: 3097.845 ns/op
+# Warmup Iteration  10: 3611.758 ns/op
+Iteration   1: 3108.265 ns/op
+                 gc.alloc.rate:      53.989 MB/sec
+                 gc.alloc.rate.norm: 176.010 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 2987.883 ns/op
+                 gc.alloc.rate:      56.162 MB/sec
+                 gc.alloc.rate.norm: 176.009 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 3664.319 ns/op
+                 gc.alloc.rate:      45.795 MB/sec
+                 gc.alloc.rate.norm: 176.012 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 3837.294 ns/op
+                 gc.alloc.rate:      43.732 MB/sec
+                 gc.alloc.rate.norm: 176.012 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 4113.539 ns/op
+                 gc.alloc.rate:      40.797 MB/sec
+                 gc.alloc.rate.norm: 176.013 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   6: 3768.636 ns/op
+                 gc.alloc.rate:      44.527 MB/sec
+                 gc.alloc.rate.norm: 176.012 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   7: 3487.945 ns/op
+                 gc.alloc.rate:      48.110 MB/sec
+                 gc.alloc.rate.norm: 176.011 B/op
+                 gc.count:           1.000 counts
+                 gc.time:            4.000 ms
+
+Iteration   8: 2751.647 ns/op
+                 gc.alloc.rate:      60.982 MB/sec
+                 gc.alloc.rate.norm: 176.009 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   9: 2940.770 ns/op
+                 gc.alloc.rate:      57.059 MB/sec
+                 gc.alloc.rate.norm: 176.009 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration  10: 3049.328 ns/op
+                 gc.alloc.rate:      55.032 MB/sec
+                 gc.alloc.rate.norm: 176.010 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch":
+  3425.645 ±(99.9%) 359.813 ns/op [Average]
+  (min, avg, max) = (2751.647, 3425.645, 4113.539), stdev = 414.361
+  CI (99.9%): [3065.832, 3785.458] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate":
+  49.671 ±(99.9%) 5.208 MB/sec [Average]
+  (min, avg, max) = (40.797, 49.671, 60.982), stdev = 5.998
+  CI (99.9%): [44.463, 54.879] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm":
+  176.011 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (176.009, 176.011, 176.013), stdev = 0.001
+  CI (99.9%): [176.010, 176.012] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count":
+  2.000 ±(99.9%) 0.001 counts [Sum]
+  (min, avg, max) = (≈ 0, 0.100, 1.000), stdev = 0.308
+  CI (99.9%): [2.000, 2.000] (assumes normal distribution)
+
+Secondary result "conf.session.shakers.AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time":
+  9.000 ±(99.9%) 0.001 ms [Sum]
+  (min, avg, max) = (≈ 0, 0.450, 5.000), stdev = 1.395
+  CI (99.9%): [9.000, 9.000] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:12:07
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                                     (test)  Mode  Cnt     Score     Error   Units
+AnyMatchUtilityBenchmark.ecAnySatisfy                              1  avgt   20     3.400 ±   0.216   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate                1  avgt   20  4509.542 ± 289.784  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm           1  avgt   20    16.000 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                     1  avgt   20   147.000            counts
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.time                      1  avgt   20   341.000                ms
+AnyMatchUtilityBenchmark.ecAnySatisfy                            500  avgt   20   359.272 ±  40.298   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate              500  avgt   20    86.072 ±   8.188  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm         500  avgt   20    32.001 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                   500  avgt   20     4.000            counts
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.time                    500  avgt   20    19.000                ms
+AnyMatchUtilityBenchmark.ecAnySatisfy                           1000  avgt   20   728.108 ±  54.739   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate             1000  avgt   20    42.205 ±   3.220  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.alloc.rate.norm        1000  avgt   20    32.002 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfy:gc.count                  1000  avgt   20       ≈ 0            counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                          1  avgt   20     1.657 ±   0.077   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate            1  avgt   20     0.003 ±   0.001  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm       1  avgt   20    ≈ 10⁻⁵              B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count                 1  avgt   20       ≈ 0            counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                        500  avgt   20   365.540 ±  30.304   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate          500  avgt   20    42.080 ±   3.322  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm     500  avgt   20    16.001 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count               500  avgt   20       ≈ 0            counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith                       1000  avgt   20   652.435 ±  32.497   ns/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate         1000  avgt   20    23.461 ±   1.225  MB/sec
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.alloc.rate.norm    1000  avgt   20    16.002 ±   0.001    B/op
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.count              1000  avgt   20     2.000            counts
+AnyMatchUtilityBenchmark.ecAnySatisfyWith:gc.time               1000  avgt   20     8.000                ms
+AnyMatchUtilityBenchmark.jdkAnyMatch                               1  avgt   20    27.797 ±   1.675   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate                 1  avgt   20  5511.520 ± 316.727  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm            1  avgt   20   160.000 ±   0.001    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                      1  avgt   20   180.000            counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time                       1  avgt   20   467.000                ms
+AnyMatchUtilityBenchmark.jdkAnyMatch                             500  avgt   20  1561.907 ±  74.401   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate               500  avgt   20   107.720 ±   4.811  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm          500  avgt   20   176.005 ±   0.001    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                    500  avgt   20     3.000            counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time                     500  avgt   20    10.000                ms
+AnyMatchUtilityBenchmark.jdkAnyMatch                            1000  avgt   20  3425.645 ± 359.813   ns/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate              1000  avgt   20    49.671 ±   5.208  MB/sec
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.alloc.rate.norm         1000  avgt   20   176.011 ±   0.001    B/op
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.count                   1000  avgt   20     2.000            counts
+AnyMatchUtilityBenchmark.jdkAnyMatch:gc.time                    1000  avgt   20     9.000                ms
+
+Benchmark result is saved to generated/runs/20261017-1708/shakers/raw/AnyMatchUtility-ea-off.txt

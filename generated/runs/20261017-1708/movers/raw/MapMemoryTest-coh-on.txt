@@ -1,0 +1,119 @@
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=36819 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/opt/maven/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< conf.session:who-moved-my-heap >-------------------
+[INFO] Building Who Moved My Heap 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ who-moved-my-heap ---
+[INFO] skip non existing resourceDirectory /home/claude/work/who-moved-my-heap/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ who-moved-my-heap ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ who-moved-my-heap ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ who-moved-my-heap ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.6.0:test (default-test) @ who-moved-my-heap ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+Picked up JAVA_TOOL_OPTIONS: -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStoreType=JKS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=36819 -Dhttp.nonProxyHosts=localhost|127.0.0.1|::1|127.*|0.*|::|169.254.*|api.anthropic.com|api-staging.anthropic.com|api-pr-preview.anthropic.com|mcp-proxy.anthropic.com|mcp-proxy-staging.anthropic.com|registry.npmjs.org|jsr.io|npm.jsr.io|pypi.org|files.pythonhosted.org|index.crates.io|proxy.golang.org|host.docker.internal|10.*|172.16.*|172.17.*|172.18.*|172.19.*|172.20.*|172.21.*|172.22.*|172.23.*|172.24.*|172.25.*|172.26.*|172.27.*|172.28.*|172.29.*|172.30.*|172.31.*|192.168.*|100.64.0.0/10|*.svc.cluster.local|*.svc.cluster.local -Djdk.http.auth.tunneling.disabledSchemes= -Djdk.http.auth.proxying.disabledSchemes=
+[INFO] Running conf.session.movers.MapMemoryTest
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by org.openjdk.jol.vm.HotspotUnsafe (file:/root/.m2/repository/org/openjdk/jol/jol-core/0.17/jol-core-0.17.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jol.vm.HotspotUnsafe
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release
+# WARNING: Unable to attach Serviceability Agent. You can try again with escalated privileges. Two options: a) use -Djol.tryWithSudo=true to try with sudo; b) echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+IntObjectHashMap size: 100000 Memory (bytes): 3697240
+IntObjectHashMap size: 200000 Memory (bytes): 7394392
+IntObjectHashMap size: 300000 Memory (bytes): 13188696
+IntObjectHashMap size: 400000 Memory (bytes): 14788696
+IntObjectHashMap size: 500000 Memory (bytes): 16388696
+IntObjectHashMap size: 600000 Memory (bytes): 26377304
+IntObjectHashMap size: 700000 Memory (bytes): 27977304
+IntObjectHashMap size: 800000 Memory (bytes): 29577304
+IntObjectHashMap size: 900000 Memory (bytes): 31177304
+IntObjectHashMap size: 1000000 Memory (bytes): 32777304
+HashMap size: 100000 Memory (bytes): 5048632
+HashMap size: 200000 Memory (bytes): 10097208
+HashMap size: 300000 Memory (bytes): 14097208
+HashMap size: 400000 Memory (bytes): 20194360
+HashMap size: 500000 Memory (bytes): 24194360
+HashMap size: 600000 Memory (bytes): 28194360
+HashMap size: 700000 Memory (bytes): 32194360
+HashMap size: 800000 Memory (bytes): 40388664
+HashMap size: 900000 Memory (bytes): 44388664
+HashMap size: 1000000 Memory (bytes): 48388664
+Only HashMap size: 100000 Memory (bytes): 3448632
+Only HashMap size: 200000 Memory (bytes): 6897208
+Only HashMap size: 300000 Memory (bytes): 9297208
+Only HashMap size: 400000 Memory (bytes): 13794360
+Only HashMap size: 500000 Memory (bytes): 16194360
+Only HashMap size: 600000 Memory (bytes): 18594360
+Only HashMap size: 700000 Memory (bytes): 20994360
+Only HashMap size: 800000 Memory (bytes): 27588664
+Only HashMap size: 900000 Memory (bytes): 29988664
+Only HashMap size: 1000000 Memory (bytes): 32388664
+ObjectIntHashMap size: 100000 Memory (bytes): 3697208
+ObjectIntHashMap size: 200000 Memory (bytes): 7394360
+ObjectIntHashMap size: 300000 Memory (bytes): 13188664
+ObjectIntHashMap size: 400000 Memory (bytes): 14788664
+ObjectIntHashMap size: 500000 Memory (bytes): 16388664
+ObjectIntHashMap size: 600000 Memory (bytes): 26377272
+ObjectIntHashMap size: 700000 Memory (bytes): 27977272
+ObjectIntHashMap size: 800000 Memory (bytes): 29577272
+ObjectIntHashMap size: 900000 Memory (bytes): 31177272
+ObjectIntHashMap size: 1000000 Memory (bytes): 32777272
+UnifiedMap size: 100000 Memory (bytes): 3697192
+UnifiedMap size: 200000 Memory (bytes): 7394344
+UnifiedMap size: 300000 Memory (bytes): 8994344
+UnifiedMap size: 400000 Memory (bytes): 14788648
+UnifiedMap size: 500000 Memory (bytes): 16388648
+UnifiedMap size: 600000 Memory (bytes): 17988648
+UnifiedMap size: 700000 Memory (bytes): 19588648
+UnifiedMap size: 800000 Memory (bytes): 29577256
+UnifiedMap size: 900000 Memory (bytes): 31177256
+UnifiedMap size: 1000000 Memory (bytes): 32777256
+IntIntHashMap size: 100000 Memory (bytes): 2097224
+IntIntHashMap size: 200000 Memory (bytes): 4194376
+IntIntHashMap size: 300000 Memory (bytes): 8388680
+IntIntHashMap size: 400000 Memory (bytes): 8388680
+IntIntHashMap size: 500000 Memory (bytes): 8388680
+IntIntHashMap size: 600000 Memory (bytes): 16777288
+IntIntHashMap size: 700000 Memory (bytes): 16777288
+IntIntHashMap size: 800000 Memory (bytes): 16777288
+IntIntHashMap size: 900000 Memory (bytes): 16777288
+IntIntHashMap size: 1000000 Memory (bytes): 16777288
+Only UnifiedMap size: 100000 Memory (bytes): 2097192
+Only UnifiedMap size: 200000 Memory (bytes): 4194344
+Only UnifiedMap size: 300000 Memory (bytes): 4194344
+Only UnifiedMap size: 400000 Memory (bytes): 8388648
+Only UnifiedMap size: 500000 Memory (bytes): 8388648
+Only UnifiedMap size: 600000 Memory (bytes): 8388648
+Only UnifiedMap size: 700000 Memory (bytes): 8388648
+Only UnifiedMap size: 800000 Memory (bytes): 16777256
+Only UnifiedMap size: 900000 Memory (bytes): 16777256
+Only UnifiedMap size: 1000000 Memory (bytes): 16777256
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 466.4 s -- in conf.session.movers.MapMemoryTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  07:48 min
+[INFO] Finished at: 2026-10-17T23:41:20Z
+[INFO] ------------------------------------------------------------------------
