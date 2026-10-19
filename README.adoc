@@ -1,3 +1,172 @@
-JMH - -XX:+UseCompactObjectHeaders -prof gc
+= Who Moved My Heap
+:toc: macro
+:toclevels: 2
+:source-highlighter: rouge
 
-JMAP - jmap -histo <pid> | grep "Lambda\|ReferencePipeline\|CollectorImpl\|HashMap\|HashSet\|ArrayList\|Integer\|Long\|Double\|Float\|Pair\|String\|\[B" | head -n 27
+Where does the heap go when Java code calls `stream()`, builds a collection or passes a lambda?
+This project is a means to measure the heap, turns the measurement into reports and charts.
+
+toc::[]
+
+== The idea
+
+*Fat-free lambdas make less garbage.* A fat-free lambda (or method reference) captures nothing, so
+the JVM can reuse one instance forever. A capturing ("fat") lambda closes over a value, and may
+create a new object, plus a boxed value, on every call.
+
+The point is memory, not only speed. Code that allocates less per call needs less heap headroom to
+absorb a traffic spike, collects less often, and does not have to be over-provisioned "just in
+case". So every result here looks at footprint, garbage per call and spike headroom next to
+throughput.
+
+Two effects are kept apart throughout:
+
+* *Pipeline garbage*: the objects a JDK `stream()` builds on every call (spliterator, pipeline
+  stages, sink, `Optional`). Eclipse Collections' eager methods iterate directly and build none.
+  Intermediate stream operations are lazy; terminal operations (`anyMatch`, `count`, `findFirst`)
+  are eager.
+* *Lambda garbage*: the captured lambda and any boxed `Integer` outside the -128..127 cache.
+
+JDK 25's compact object headers (`-XX:+UseCompactObjectHeaders`) shrink every object header, so
+every measurement is taken with the flag off and on to show what it saves.
+
+== The two parts
+
+=== Shakers: garbage per call (JMH)
+
+JMH benchmarks in `src/test/java/conf/session/shakers/` compare the JDK Stream API with
+https://github.com/eclipse-collections/eclipse-collections[Eclipse Collections] (EC) for
+throughput, bytes allocated per call (`-prof gc`) and objects per call (`prof.HistoProfiler`, a
+class histogram before and after each iteration).
+
+[cols="1,3"]
+|===
+|Benchmark class |Compares
+
+|`AnyMatchUtility`, `AnyMatchEagerLazy`
+|`stream().anyMatch` vs EC `anySatisfy` / `anySatisfyWith`, on a JDK `List` and on an EC `ImmutableList` (plus `asLazy()`)
+
+|`CountUtility`, `CountEagerLazy`
+|`stream().filter().count()` vs EC `count` / `countWith`
+
+|`FindFirstUtility`, `FindFirstEagerLazy`
+|`stream().filter().findFirst()` vs EC `detectOptional`, `detectWithOptional`, `detectIfNone`, `detectWithIfNone`
+
+|`CollectorsAndCollectors2`
+|creating seven JDK `Collectors` vs their EC `Collectors2` counterparts
+|===
+
+Each class runs with compact headers on, off, and with escape analysis off. The escape-analysis-off
+run shows what the lambda shape costs where the JIT cannot remove it; read it as an upper bound.
+
+=== Movers: footprint (JOL)
+
+JUnit tests in `src/test/java/conf/session/movers/` print retained sizes with
+https://openjdk.org/projects/code-tools/jol/[JOL]: what a filled collection or an unevaluated
+pipeline holds in memory. Footprint only, no JMH, no speed. Each test runs with compact headers
+off, then on.
+
+[cols="1,3"]
+|===
+|Test |Compares
+
+|`ListMemoryTest` |`ArrayList` vs `FastList` vs `IntArrayList`, grown and presized, 100k to 1M elements
+|`SetMemoryTest` |`HashSet` vs `UnifiedSet` vs `IntHashSet`, plus structure only
+|`MapMemoryTest` |`HashMap` vs `UnifiedMap` vs the EC primitive maps, plus structure only
+|`StreamVsLazyIterableMemoryTest` |unevaluated `Stream` vs `LazyIterable` pipelines
+|===
+
+== Requirements
+
+* JDK 25 on `PATH`, with `java` and `jcmd` from the same JDK.
+* Maven 3.9 or later, *running on JDK 25*: set `JAVA_HOME` to the JDK 25 home and check that
+  `mvn -v` prints `Java version: 25...`.
+* No Python, Ruby or Node.js. Optional: Mermaid CLI (`MMDC=<path to mmdc>`) to parse-check the
+  generated `.mmd` charts, and Google Chrome or Chromium for the slide PDFs.
+* About 16 GB of free RAM for the object-count runs (12 GB heap).
+
+Libraries (from `pom.xml`): JMH 1.37, JOL 0.17, Eclipse Collections 13.0.0, JUnit 6.
+
+== Quick start
+
+One command runs any stage, from the project root:
+
+[source,bash]
+----
+java src/main/java/tools/Pipeline.java <stage> [RUN_TS] [shakers|movers] [--dry-run] [--resume]
+----
+
+[cols="1,3"]
+|===
+|Stage |Does
+
+|`run` |builds the benchmark jar and runs the shakers benchmarks, the object counts and the movers JOL tests, writing raw output for a new run
+|`reports` |writes the reports, charts and summaries from raw output already on disk (newest run when no `RUN_TS` is given)
+|`slides` |builds the slide HTML and PDFs (`mvn -Pslides process-resources`)
+|`all` |`run`, then `reports`, then `slides`
+|===
+
+[source,bash]
+----
+java src/main/java/tools/Pipeline.java all                            # everything, new run
+java src/main/java/tools/Pipeline.java run shakers                    # only the JMH benchmarks
+java src/main/java/tools/Pipeline.java run 20261015-0406 movers       # add movers to an existing run
+java src/main/java/tools/Pipeline.java reports 20261017-1708          # reports from raw files on disk
+java src/main/java/tools/Pipeline.java slides                         # slides only
+java src/main/java/tools/Pipeline.java all --dry-run                  # print every command, run nothing
+java src/main/java/tools/Pipeline.java all 20261017-1708 --resume     # continue an interrupted run
+----
+
+* Without `shakers` or `movers`, a stage does both parts.
+* A full `run` takes several hours, mostly the shakers benchmarks. Use a quiet machine on mains power.
+* `--resume` needs the `RUN_TS` of the interrupted run. It skips the jar when it exists, every JMH
+  step whose console output has finished, and every movers test whose Maven output ends in a
+  build result, and runs the rest. Check first with `--dry-run --resume`.
+
+== Where the output goes
+
+Every run is named by one timestamp, `RUN_TS` (`yyyyMMdd-HHmm`), shared by both parts:
+
+----
+generated/runs/<RUN_TS>/
+├── <RUN_TS>-Summary.adoc            full run summary, both parts
+├── shakers/
+│   ├── raw/                         JMH tables, console logs, object counts, meta.txt
+│   ├── summary.json
+│   └── reports/                     results and analysis docs, part summary
+│       ├── images/                  PNG charts
+│       └── mermaid/                 Mermaid sources of the same charts
+└── movers/
+    ├── raw/                         Maven output of each JOL test, meta.txt
+    └── reports/                     analysis docs, part summary, images/, mermaid/
+----
+
+Every sentence and number in the reports is generated from the raw files; nothing is written by
+hand. `mvn clean` does not touch `generated/`.
+
+== Project layout
+
+[cols="2,3"]
+|===
+|Path |Contents
+
+|`src/test/java/conf/session/shakers/` |JMH benchmarks
+|`src/test/java/conf/session/movers/` |JOL footprint tests
+|`src/main/java/prof/HistoProfiler.java` |JMH profiler that counts objects per call
+|`src/main/java/tools/Pipeline.java` |the one launcher for every stage
+|`src/main/java/tools/analysis/` |report, chart and summary generators (source files)
+|`generated/runs/` |one folder per run
+|===
+
+The tools run straight from source (`java <file>.java`); no build is needed first.
+
+== More
+
+* link:instructions.md[`instructions.md`]: the full, authoritative instructions (every stage,
+  file layout, ground rules, chart and report rules) for AI.
+* link:HowTo.adoc[`HowTo.adoc`]: every command, one task per section, including building the
+  benchmark jar, running one unit test.
+
+== License
+
+MIT, see link:LICENSE[`LICENSE`].
