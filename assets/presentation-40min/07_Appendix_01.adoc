@@ -10,3 +10,9 @@ include::07_Appendix_01_01.adoc[]
 include::07_Appendix_01_02.adoc[]
 
 include::07_Appendix_01_03.adoc[]
+
+include::07_Appendix_01_04.adoc[]
+
+include::07_Appendix_01_05.adoc[]
+
+include::07_Appendix_01_06.adoc[]

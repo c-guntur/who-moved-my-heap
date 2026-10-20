@@ -2,7 +2,7 @@
 // Edit the slide files, not this file. Used for the reveal.js slides and the PDF.
 :deck-number: 01
 :deck:
-:description: Who moved my heap in 40 minutes, intro 01: jps, jmap and jcmd
+:description: Who moved my heap in 40 minutes, intro 01: a few tools and a library
 include::_deck-settings.adoc[]
 
 include::01_Intro_01_01.adoc[]
@@ -16,3 +16,7 @@ include::01_Intro_01_04.adoc[]
 include::01_Intro_01_05.adoc[]
 
 include::01_Intro_01_06.adoc[]
+
+include::01_Intro_01_07.adoc[]
+
+include::01_Intro_01_08.adoc[]

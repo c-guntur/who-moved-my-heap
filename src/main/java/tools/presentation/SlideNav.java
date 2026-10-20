@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Keeps the slide files in assets/presentation linked and assembled.
+ * Keeps the slide files of one slide folder (default assets/presentation) linked and assembled.
  *
  * Slide files are named <series>_<deck>_<slide>.adoc, e.g. 03_Definitions_01_02.adoc (deck 01, slide 02).
  * For every series this program:
@@ -19,17 +19,20 @@ import java.util.regex.Pattern;
  *     Previous / Index / Next across all decks of the series, in file-name order (no slide numbers: slides get rearranged by hand);
  *   * rewrites the deck file <series>_<deck>.adoc, which includes the deck's slides in order
  *     (used for the reveal.js and PDF builds; the :deck: attribute hides the per-slide header and links).
- * The index is <series>_00_02.adoc (the agenda), or the first slide when there is no 00_02.
+ * The index is <series>_00_02.adoc (the agenda), or the first slide when there is no 00_02. When one of the opening
+ * pages has the attribute line :talk-index: (an index of the whole talk, e.g. 00_Index_03.adoc), every Index link
+ * points to that page instead, the opening pages' links included.
  * The series follow each other in file-name order: the last slide of a series links Next to the first slide of the
- * next series (the last series links Next to its own index), and the first slide links Previous to the last slide
+ * next series (the last slide of the last series has no Next link), and the first slide links Previous to the last slide
  * of the series before it.
  * The opening pages (the cover 00_Index.adoc, then 00_Index_01.adoc, 00_Index_02.adoc, ...; not part of a series)
  * get a navigation block too: they link to each other in order, the last one's Next goes to the first slide of the
  * first series, and the first slide of the first series links back to the last opening page.
  *
  * No dependencies, so it runs straight from source.
- * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideNav.java .
- * The slides profile in pom.xml runs it before converting the slides.
+ * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideNav.java . [slide folder]
+ * The slide folder is relative to the project root (or absolute); without it, assets/presentation.
+ * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/presentation).
  * Run it after adding, removing or renumbering slide files.
  */
 public class SlideNav
@@ -44,10 +47,11 @@ public class SlideNav
     private static final String COVER = "00_Index.adoc";
     private static final Pattern OPENING = Pattern.compile("^00_Index(_\\d\\d)?\\.adoc$");
     private static final Pattern DESCRIPTION = Pattern.compile("^:description: (.*)$", Pattern.MULTILINE);
+    private static final Pattern TALK_INDEX = Pattern.compile("^:talk-index:\\s*$", Pattern.MULTILINE);
 
     public static void main(String[] args) throws IOException
     {
-        Path folder = Path.of(args[0], "assets", "presentation");
+        Path folder = slidesFolder(args);
         List<String> names = new ArrayList<>();
         List<String> opening = new ArrayList<>();
         try (var files = Files.list(folder))
@@ -68,6 +72,15 @@ public class SlideNav
         names.sort(null);
         opening.sort(null);
         boolean hasCover = opening.contains(COVER);
+        String talkIndex = null;
+        for (String name : opening)
+        {
+            String text = Files.readString(folder.resolve(name), StandardCharsets.UTF_8);
+            if (talkIndex == null && TALK_INDEX.matcher(text).find())
+            {
+                talkIndex = name;
+            }
+        }
 
         List<String> allSeries = new ArrayList<>(distinct(names, "series"));
         for (int s = 0; s < allSeries.size(); s++)
@@ -78,7 +91,8 @@ public class SlideNav
                     : hasCover ? opening.getLast() : null;
             String after = s + 1 < allSeries.size() ? matching(names, "series", allSeries.get(s + 1)).getFirst() : null;
             LinkedHashSet<String> decks = distinct(ordered, "deck");
-            String index = ordered.contains(series + "_00_02.adoc") ? series + "_00_02.adoc" : ordered.getFirst();
+            String index = talkIndex != null ? talkIndex
+                    : ordered.contains(series + "_00_02.adoc") ? series + "_00_02.adoc" : ordered.getFirst();
 
             for (int i = 0; i < ordered.size(); i++)
             {
@@ -110,10 +124,19 @@ public class SlideNav
                 Path path = folder.resolve(opening.get(i));
                 String body = stripTrailingNewlines(beforeMarker(Files.readString(path, StandardCharsets.UTF_8))) + "\n\n";
                 String next = i + 1 < opening.size() ? opening.get(i + 1) : names.getFirst();
-                writeIfChanged(path, body + navBlock(i > 0 ? opening.get(i - 1) : null, COVER, next));
+                writeIfChanged(path, body + navBlock(i > 0 ? opening.get(i - 1) : null,
+                        talkIndex != null ? talkIndex : COVER, next));
             }
-            System.out.println("opening: " + opening + ", next " + names.getFirst());
+            System.out.println("opening: " + opening + ", next " + names.getFirst()
+                    + (talkIndex != null ? ", talk index " + talkIndex : ""));
         }
+    }
+
+    // The slide folder: the second argument (relative to the project root, or absolute), default assets/presentation
+    static Path slidesFolder(String[] args)
+    {
+        Path root = Path.of(args.length > 0 ? args[0] : ".");
+        return args.length > 1 ? root.resolve(args[1]) : root.resolve(Path.of("assets", "presentation"));
     }
 
     // The values of one name part (series or deck), in file-name order, without repeats
@@ -178,11 +201,12 @@ public class SlideNav
     private static String navBlock(String previous, String index, String next)
     {
         String previousLink = previous != null ? "xref:" + previous + "[‹ Previous]" : "‹ Previous";
-        String nextLink = next != null ? "xref:" + next + "[Next ›]" : "xref:" + index + "[Next: index ›]";
+        // The last slide of the talk has no Next link
+        String nextLink = next != null ? " {nbsp}|{nbsp} xref:" + next + "[Next ›]" : "";
         return NAV_MARKER + "\n"
                 + "ifndef::deck[]\n"
                 + "[.deck-nav]\n"
-                + previousLink + " {nbsp}|{nbsp} xref:" + index + "[⌂ Index] {nbsp}|{nbsp} " + nextLink + "\n"
+                + previousLink + " {nbsp}|{nbsp} xref:" + index + "[⌂ Index]" + nextLink + "\n"
                 + "endif::[]\n";
     }
 

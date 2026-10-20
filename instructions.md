@@ -7,7 +7,7 @@ and build the slides, all at once or one stage at a time from outputs already on
 - **Shakers**: the JMH benchmarks in `src/test/java/conf/session/shakers/`, comparing the JDK Stream
   API with Eclipse Collections (EC) for throughput, garbage per call and object counts.
 - **Movers**: the JOL footprint tests in `src/test/java/conf/session/movers/` (no JMH).
-- **Slides**: the decks in `assets/presentation/`.
+- **Slides**: the decks in `assets/presentation/`, and the 40-minute cut in `assets/presentation-40min/` (D3).
 
 `HowTo.adoc` is the short command guide for other users of the project. Where it and this file
 differ, this file wins; change both together.
@@ -46,6 +46,7 @@ Every item has an ID so a change can be pinpointed: `Q` = quick start, `G` = gro
   | Q3.7 | `java src/main/java/tools/Pipeline.java slides` | slide HTML and PDFs only |
   | Q3.8 | `java src/main/java/tools/Pipeline.java all --dry-run` | prints every command without running anything |
   | Q3.9 | `java src/main/java/tools/Pipeline.java all 20261017-1708 --resume` | continues an interrupted run: finished steps are skipped (P7) |
+  | Q3.10 | `java src/main/java/tools/Pipeline.java slides --slides-dir=assets/presentation-40min` | slide HTML and PDFs of another slide folder (D3) |
 
 - **Q4** Every stage also lists its commands for running by hand (S3, S5.4, S6.3.5, M2.4, M4.1, D2).
   `Pipeline.java` runs exactly those commands.
@@ -171,6 +172,7 @@ Every item has an ID so a change can be pinpointed: `Q` = quick start, `G` = gro
     java src/main/java/tools/analysis/RunSummary.java . ${RUN_TS}
     ```
 - **P3** Stage `slides`: `mvn -B -Pslides process-resources` (D2). It does not depend on a run.
+  `--slides-dir=<folder>` adds `-Dslides.dir=<folder>` and builds that slide folder instead (D3).
 - **P4** Stage `all`: `run`, then `reports` for the same `RUN_TS`, then `slides`.
 - **P5** `--dry-run` prints every command a stage would run and writes nothing. Use it to check a
   stage before a long run.
@@ -812,6 +814,10 @@ list before reporting (S8, M6).
   order and sends the last one's Next to the first slide of `01_Intro`, whose Previous links back to it.
   The series follow each other: the last slide of a series links Next to the first slide of the next
   series (e.g. `01_Intro` ends on `02_ProblemStatement_00_00.adoc`), and that slide links Previous back.
+  The last slide of the last series (the end of the talk) has no Next link.
+  An opening page with the attribute line `:talk-index:` is the index of the whole talk: every Index
+  link (opening pages included) points to it instead of the series agenda or the cover
+  (`assets/presentation-40min/00_Index_03.adoc`, one link per section).
   `SlidesToPdf.java` prints each opening page as `pdf/00_Index*.pdf`.
 - **D1.9** `07_Appendix` collects reference links at the end of the talk: `07_Appendix_00_00.adoc` (title,
   `banner-appendix-00.svg`) and one references slide per series, several sections on one slide as a
@@ -824,6 +830,7 @@ list before reporting (S8, M6).
   ```
   mvn -Pslides generate-resources      # HTML only
   mvn -Pslides process-resources       # HTML and PDFs (what Pipeline.java slides runs)
+  mvn -Pslides process-resources -Dslides.dir=assets/presentation-40min   # another slide folder (D3)
   ```
 - **D2.2** Needs only Java 25 and Maven (no Python, Ruby gems or Node.js), plus network access to the
   Kroki server for diagram blocks (D2.8).
@@ -835,14 +842,14 @@ list before reporting (S8, M6).
   installed Google Chrome or Chromium (macOS or Linux), else the Chromium under
   `PLAYWRIGHT_BROWSERS_PATH` (the cloud sandbox has one); without any, Playwright downloads its own
   Chromium once.
-- **D2.5** Output in `assets/presentation/build/`:
+- **D2.5** Output in `<slide folder>/build/`, by default `assets/presentation/build/`:
   - **D2.5.1** `plain/<series>_<deck>_<slide>.html`: one page per slide, no JavaScript. Present from here.
   - **D2.5.2** `slides/<series>_<deck>.html`: each whole deck as reveal.js, with reveal.js unpacked
     next to it so it works offline.
   - **D2.5.3** `pdf/<series>_<deck>.pdf`: each whole deck, one 16:9 slide per page.
 - **D2.6** After adding, removing or renaming a slide, or changing a title or diagram, run the
-  build (or `java src/main/java/tools/presentation/SlideNav.java .` and `SlideImages.java .` by
-  hand). A new title slide needs a row in `SlideImages.java`: `SECTIONS` for `03_Definitions`
+  build (or `java src/main/java/tools/presentation/SlideNav.java . [slide folder]` and
+  `SlideImages.java . [slide folder]` by hand). A new title slide needs a row in `SlideImages.java`: `SECTIONS` for `03_Definitions`
   (`banner-NN.svg`), `INTRO_SECTIONS` for `01_Intro` (`banner-intro-NN.svg`), `PROBLEM_SECTIONS` for
   `02_ProblemStatement` (`banner-problem-NN.svg`), `APPENDIX_SECTIONS` for `07_Appendix`
   (`banner-appendix-NN.svg`); a new series gets its own array and banner prefix.
@@ -860,6 +867,22 @@ list before reporting (S8, M6).
   `plantuml-preprocess` is `off` so no local PlantUML is needed. A local server:
   `docker run -p 8000:8000 yuzutech/kroki`, then `mvn -Pslides process-resources -Dkroki.url=http://localhost:8000`.
   If the server cannot be reached the build still succeeds and the slide shows "Failed to generate image".
+
+### D3. Other slide folders
+
+- **D3.1** The slide build works on any folder with the D1 file naming: property `slides.dir` in the
+  `slides` profile (relative to the project root, default `assets/presentation`), or
+  `Pipeline.java slides --slides-dir=<folder>`. `SlideNav.java` and `SlideImages.java` take the folder as
+  their second argument; the output goes to `<folder>/build/{plain,slides,pdf}` (D2.5).
+- **D3.2** A folder needs its own `_deck-settings.adoc`, `docinfo.html`, `docinfo-revealjs.html` and
+  `images/`. `SlideImages.java` writes the diagram and placeholder SVGs into every folder's `images/`.
+- **D3.3** Banners: with a `_banners.txt` in the folder, `SlideImages.java` draws the banners listed there
+  instead of the built-in ones (D2.6). One line per banner,
+  `file | kicker | number | title | subtitle | accent | track`; the track is `label=#colour` pills separated
+  by commas, `*` before the label marks the current section; lines starting with `#` are comments.
+- **D3.4** `assets/presentation-40min/` is the 40-minute cut of the talk (sections Intro, Problem,
+  Definitions, Solutions, AI skills, Wrap-up, Appendix; timing in each slide's notes). It is built
+  with `-Dslides.dir=assets/presentation-40min` and has no Kroki diagram blocks, so it builds offline.
 
 ---
 

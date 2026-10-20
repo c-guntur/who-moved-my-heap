@@ -19,13 +19,15 @@ import java.util.stream.Stream;
  * Runs the stages of instructions.md (section P), all of them or one at a time.
  *
  * Usage (Java 25, from the project root):
- *   java src/main/java/tools/Pipeline.java <stage> [RUN_TS] [shakers|movers] [--dry-run]
+ *   java src/main/java/tools/Pipeline.java <stage> [RUN_TS] [shakers|movers] [--dry-run] [--resume] [--slides-dir=<folder>]
  * Stages:
  *   run      build the benchmark jar and run the benchmarks into generated/runs/<RUN_TS>/<part>/raw/
  *            (a new RUN_TS unless one is given; a given one reuses its meta.txt)
  *   reports  write the reports, charts, Mermaid files and summaries from the raw files of RUN_TS
  *            (default: the newest run folder)
- *   slides   build the slide HTML and PDFs (mvn -Pslides process-resources); RUN_TS and part are ignored
+ *   slides   build the slide HTML and PDFs (mvn -Pslides process-resources); RUN_TS and part are ignored.
+ *            --slides-dir=<folder> builds another slide folder (relative to the project root, default
+ *            assets/presentation), e.g. --slides-dir=assets/presentation-40min
  *   all      run, then reports, then slides
  * Without a part, a stage does shakers and movers. --dry-run prints the commands without running them.
  * --resume (needs a RUN_TS) continues an interrupted run: the jar, the benchmark and object-count steps and the
@@ -56,6 +58,7 @@ public class Pipeline
     {
         String stage = null;
         String runTs = null;
+        String slidesDir = null;
         List<String> parts = PARTS;
         for (String a : args)
         {
@@ -66,6 +69,10 @@ public class Pipeline
             else if (a.equals("--resume"))
             {
                 resume = true;
+            }
+            else if (a.startsWith("--slides-dir="))
+            {
+                slidesDir = a.substring("--slides-dir=".length());
             }
             else if (PARTS.contains(a))
             {
@@ -110,14 +117,19 @@ public class Pipeline
         }
         if (stage.equals("slides") || stage.equals("all"))
         {
-            exec(List.of("mvn", "-B", "-Pslides", "process-resources"), null);
+            List<String> mvn = new ArrayList<>(List.of("mvn", "-B", "-Pslides", "process-resources"));
+            if (slidesDir != null)
+            {
+                mvn.add("-Dslides.dir=" + slidesDir);
+            }
+            exec(mvn, null);
         }
     }
 
     private static void usage(String problem)
     {
         System.err.println(problem);
-        System.err.println("usage: java src/main/java/tools/Pipeline.java <run|reports|slides|all> [RUN_TS] [shakers|movers] [--dry-run] [--resume]");
+        System.err.println("usage: java src/main/java/tools/Pipeline.java <run|reports|slides|all> [RUN_TS] [shakers|movers] [--dry-run] [--resume] [--slides-dir=<folder>]");
         System.exit(2);
     }
 

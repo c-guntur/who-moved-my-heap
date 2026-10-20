@@ -255,11 +255,13 @@
             </build>
         </profile>
         <!--
-          Slides: converts the AsciiDoc slides in assets/presentation to HTML with AsciidoctorJ and to PDF
+          Slides: converts the AsciiDoc slides in assets/presentation (or -Dslides.dir) to HTML with AsciidoctorJ and to PDF
           with Playwright for Java (no Ruby, no Node.js).
             mvn -Pslides generate-resources     HTML only
             mvn -Pslides process-resources      HTML and PDFs
-          Output in assets/presentation/build (not compiled or packaged with the code):
+          Any other slide folder (same file naming) with -Dslides.dir, relative to the project root, e.g.
+            mvn -Pslides process-resources -Dslides.dir=assets/presentation-40min
+          Output in <slide folder>/build, default assets/presentation/build (not compiled or packaged with the code):
             plain/<series>_<deck>_<slide>.html  one page per slide, no JavaScript, Previous / Index / Next links
             slides/<series>_<deck>.html         whole decks as reveal.js (reveal.js from its WebJar, works offline)
             pdf/<series>_<deck>.pdf             whole decks, one slide per page (SlidesToPdf.java prints the reveal.js decks)
@@ -273,9 +275,11 @@
         <profile>
             <id>slides</id>
             <properties>
-                <slides.src>${project.basedir}/assets/presentation</slides.src>
+                <!-- The slide folder, relative to the project root: -Dslides.dir=assets/presentation-40min builds another one -->
+                <slides.dir>assets/presentation</slides.dir>
+                <slides.src>${project.basedir}/${slides.dir}</slides.src>
                 <slides.tools>${project.basedir}/src/main/java/tools/presentation</slides.tools>
-                <slides.out>${project.basedir}/assets/presentation/build</slides.out>
+                <slides.out>${slides.src}/build</slides.out>
                 <kroki.url>https://kroki.io</kroki.url>
             </properties>
             <build>
@@ -297,6 +301,7 @@
                                     <arguments>
                                         <argument>${slides.tools}/SlideNav.java</argument>
                                         <argument>${project.basedir}</argument>
+                                        <argument>${slides.src}</argument>
                                     </arguments>
                                 </configuration>
                             </execution>
@@ -311,6 +316,7 @@
                                     <arguments>
                                         <argument>${slides.tools}/SlideImages.java</argument>
                                         <argument>${project.basedir}</argument>
+                                        <argument>${slides.src}</argument>
                                     </arguments>
                                 </configuration>
                             </execution>

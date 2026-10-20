@@ -84,6 +84,19 @@
   /* audience question (role "question", e.g. 00_Index_01.adoc): one large centred question */
   #content > .sect1.question .paragraph.ask { margin: auto 0; text-align: center; }
   #content > .sect1.question .paragraph.ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: var(--navy); }
+  /* question beside a picture: [.ask-row] open block holding the [.ask] paragraph and an image with role ask-art */
+  #content > .sect1.question .openblock.ask-row { margin: auto 0; }
+  #content > .sect1.question .ask-row > .content { display: flex; align-items: center; gap: 1.2em; }
+  #content > .sect1.question .ask-row .paragraph.ask { flex: 1; margin: 0; }
+  #content > .sect1.question .ask-row .imageblock.ask-art { flex: 0 0 48%; margin: 0; }
+  /* small footnote under the content ([.footnote-line] paragraph), markers are ^n^ superscripts */
+  #content > .sect1 .paragraph.footnote-line { margin-top: 1.2em; border-top: 1px solid #D5DCE3; padding-top: .4em; }
+  #content > .sect1 .paragraph.footnote-line p { font-size: .62em; line-height: 1.45; color: #5B6B7C; }
+  /* index of the talk (role talk-index, 00_Index_03.adoc): one row per section, the section name links to its first slide */
+  #content > .sect1.talk-index table.index-grid { font-size: 1em; width: 100%; background: none; }
+  #content > .sect1.talk-index table.index-grid td:first-child { color: #8A96A3; font-weight: 600; }
+  #content > .sect1.talk-index table.index-grid td:nth-child(2) a { font-weight: 600; color: var(--blue); text-decoration: none; }
+  #content > .sect1.question .ask-row .imageblock.ask-art img { width: 100%; height: auto; max-height: calc(var(--H) * .62); }
 
 </style>
 <!--

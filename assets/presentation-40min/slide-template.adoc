@@ -51,9 +51,9 @@ Presenting
 * Demo slides add role "demo" and background-color="#1B2A41": dark slide, DEMO badge before the title.
 * Timing: the [.notes] of every timed slide start with "⏱ mm:ss, stay about N s", and its second comment line
   repeats the start time. The appendix slide 07_Appendix_00_03 has the section-by-section plan.
-* Banners are images/banner-40-NN.svg (hand-made for now; SlideImages.java does not draw them yet).
-* Build: SlideNav.java, SlideImages.java and the slides profile still point at assets/presentation. Until they take a
-  folder, build this deck from a copy of the project where this folder is assets/presentation.
+* Banners are images/banner-40-NN.svg, drawn by SlideImages.java from _banners.txt (edit that file, not the SVGs).
+* Build from the project root: mvn -Pslides process-resources -Dslides.dir=assets/presentation-40min
+  (HTML only: generate-resources). Output in assets/presentation-40min/build/{plain,slides,pdf}.
 ////
 // <Deck title>: slide <n>. The deck file <series>_<deck>.adoc includes it.
 ifndef::deck[]

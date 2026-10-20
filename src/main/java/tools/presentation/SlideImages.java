@@ -5,15 +5,24 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
- * Draws the title-slide (banner-NN, banner-intro-NN, banner-problem-NN, banner-appendix-NN), diagram and placeholder SVGs for the slides (assets/presentation/images).
+ * Draws the title-slide (banner-NN, banner-intro-NN, banner-problem-NN, banner-appendix-NN), diagram and placeholder SVGs
+ * for the slides of one slide folder (default assets/presentation), into its images folder.
+ *
+ * When the slide folder has a _banners.txt, its lines replace the built-in banner list (see listedBanners):
+ *   file | kicker | number | title | subtitle [| accent [| track]]
+ * The track is the row of section pills at the bottom, label=colour separated by commas; * before a label marks the
+ * current section. Lines starting with # are comments. Example: assets/presentation-40min/_banners.txt.
  *
  * No dependencies, so it runs straight from source.
- * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideImages.java .
- * The slides profile in pom.xml runs it before converting the slides.
+ * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideImages.java . [slide folder]
+ * The slide folder is relative to the project root (or absolute); without it, assets/presentation.
+ * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/presentation).
  *
  * Colours: a navy slide palette plus the Okabe-Ito colours the charts use
  * (orange = JDK, sky blue = EC capturing, dark blue = fat-free, reddish purple = lazy).
@@ -58,9 +67,42 @@ public class SlideImages
 
     public static void main(String[] args) throws IOException
     {
-        Path out = Path.of(args[0], "assets", "presentation", "images");
+        Path folder = SlideNav.slidesFolder(args);
+        Path out = folder.resolve("images");
         Files.createDirectories(out);
         Map<String, String> files = new LinkedHashMap<>();
+        Path listed = folder.resolve("_banners.txt");
+        if (Files.exists(listed))
+        {
+            listedBanners(Files.readAllLines(listed, StandardCharsets.UTF_8), files);
+        }
+        else
+        {
+            builtInBanners(files);
+        }
+        files.put("diagram-01-anonymous-class.svg", anon());
+        files.put("diagram-02-integer-cache.svg", pool());
+        files.put("diagram-03-compressed-oops.svg", oops());
+        files.put("diagram-04-object-headers.svg", headers());
+        files.put("diagram-05-pipeline.svg", pipeline());
+        files.put("diagram-05-eager-lazy.svg", eagerLazy());
+        files.put("diagram-06-lambdas.svg", lambdas());
+        files.put("diagram-07-escape-analysis.svg", escape());
+        files.put("diagram-problem-01-baseline-volatile.svg", baselineVolatile());
+        files.put("placeholder-problem-02-jmap-intellij.svg",
+                placeholder("jmap -histo <pid of IntelliJ IDEA>", "screenshot-problem-02-jmap-intellij.png"));
+        files.put("placeholder-problem-02-jmap-sonarqube.svg",
+                placeholder("jmap -histo <pid of the SonarQube for IDE process>", "screenshot-problem-02-jmap-sonarqube.png"));
+        for (Map.Entry<String, String> file : files.entrySet())
+        {
+            Files.writeString(out.resolve(file.getKey()), file.getValue(), StandardCharsets.UTF_8);
+        }
+        System.out.println(files.size() + " SVGs in " + out);
+    }
+
+    // The banners of assets/presentation (used when the slide folder has no _banners.txt)
+    private static void builtInBanners(Map<String, String> files)
+    {
         for (String[] section : SECTIONS)
         {
             files.put("banner-" + section[0] + ".svg",
@@ -81,24 +123,38 @@ public class SlideImages
             files.put("banner-appendix-" + section[0] + ".svg",
                     banner("WHO MOVED MY HEAP  ·  07 APPENDIX", section[0], section[1], section[2]));
         }
-        files.put("diagram-01-anonymous-class.svg", anon());
-        files.put("diagram-02-integer-cache.svg", pool());
-        files.put("diagram-03-compressed-oops.svg", oops());
-        files.put("diagram-04-object-headers.svg", headers());
-        files.put("diagram-05-pipeline.svg", pipeline());
-        files.put("diagram-05-eager-lazy.svg", eagerLazy());
-        files.put("diagram-06-lambdas.svg", lambdas());
-        files.put("diagram-07-escape-analysis.svg", escape());
-        files.put("diagram-problem-01-baseline-volatile.svg", baselineVolatile());
-        files.put("placeholder-problem-02-jmap-intellij.svg",
-                placeholder("jmap -histo <pid of IntelliJ IDEA>", "screenshot-problem-02-jmap-intellij.png"));
-        files.put("placeholder-problem-02-jmap-sonarqube.svg",
-                placeholder("jmap -histo <pid of the SonarQube for IDE process>", "screenshot-problem-02-jmap-sonarqube.png"));
-        for (Map.Entry<String, String> file : files.entrySet())
+    }
+
+    // The banners listed in a slide folder's _banners.txt: file | kicker | number | title | subtitle [| accent [| track]]
+    private static void listedBanners(List<String> lines, Map<String, String> files)
+    {
+        for (String line : lines)
         {
-            Files.writeString(out.resolve(file.getKey()), file.getValue(), StandardCharsets.UTF_8);
+            if (line.isBlank() || line.strip().startsWith("#"))
+            {
+                continue;
+            }
+            String[] fields = line.split("\\|", -1);
+            if (fields.length < 5)
+            {
+                throw new IllegalArgumentException("_banners.txt needs at least 5 fields: " + line);
+            }
+            for (int i = 0; i < fields.length; i++)
+            {
+                fields[i] = fields[i].strip();
+            }
+            String accent = fields.length > 5 && !fields[5].isEmpty() ? fields[5] : ORANGE;
+            List<String[]> track = new ArrayList<>();
+            if (fields.length > 6 && !fields[6].isEmpty())
+            {
+                for (String pill : fields[6].split(","))
+                {
+                    String[] parts = pill.strip().split("=", 2);
+                    track.add(new String[] {parts[0].strip(), parts.length > 1 ? parts[1].strip() : accent});
+                }
+            }
+            files.put(fields[0], banner(fields[1], fields[2], fields[3], fields[4], accent, track));
         }
-        System.out.println(files.size() + " SVGs in " + out);
     }
 
     // Numbers print the way the earlier Python version printed them: whole numbers as "40",
@@ -210,6 +266,37 @@ public class SlideImages
                 + text(120, 560, subtitle, 44, "#D8E1EA")
                 + text(1460, 820, number, 150, "white", "bold", "end", false);
         return svg(1600, 900, body, null);
+    }
+
+    // Banner with a section accent colour and a track of section pills ({label, colour}; a * before the label marks
+    // the current section, drawn filled)
+    private static String banner(String kicker, String number, String title, String subtitle, String accent,
+            List<String[]> track)
+    {
+        StringBuilder body = new StringBuilder("<rect width='1600' height='900' fill='url(#band)'/>"
+                + "<rect x='0' y='0' width='24' height='900' fill='" + accent + "'/>"
+                + "<circle cx='1380' cy='640' r='420' fill='" + accent + "' opacity='0.10'/>"
+                + "<circle cx='1500' cy='180' r='230' fill='" + ORANGE + "' opacity='0.08'/>"
+                + text(120, 280, kicker, 30, accent, "bold")
+                + "<rect x='120' y='310' width='160' height='6' fill='" + accent + "'/>"
+                + text(120, 450, title, 104, "white", "bold")
+                + text(120, 540, subtitle, 44, "#D8E1EA"));
+        int x = 120;
+        for (String[] pill : track)
+        {
+            boolean current = pill[0].startsWith("*");
+            String label = current ? pill[0].substring(1) : pill[0];
+            int width = 26 + label.length() * 15;
+            body.append("<rect x='").append(x).append("' y='700' width='").append(width)
+                    .append("' height='44' rx='22' fill='").append(current ? pill[1] : "none")
+                    .append("' stroke='").append(pill[1]).append("' stroke-width='2'/>")
+                    .append(text(x + width / 2.0, 730, label, 24, current ? NAVY : "#D8E1EA",
+                            current ? "bold" : "normal", "middle", false));
+            x += width + 16;
+        }
+        body.append("<g opacity='0.9'>").append(text(1460, 840, number, 150, "white", "bold", "end", false))
+                .append("</g>");
+        return svg(1600, 900, body.toString(), null);
     }
 
     private static String anon()
