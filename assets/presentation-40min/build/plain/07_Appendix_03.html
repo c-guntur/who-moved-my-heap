@@ -674,8 +674,10 @@ pre.rouge {
   #content > .sect1 { background: var(--paper); color: var(--ink); font-size: calc(var(--H) * .034);
       padding: calc(var(--H) * .065) calc(var(--W) * .055) calc(var(--H) * .05);
       border-top: calc(var(--H) * .012) solid var(--orange); display: flex; flex-direction: column; }
-  #content > .sect1::after { counter-increment: slide; content: counter(slide); position: absolute;
-      right: calc(var(--W) * .02); bottom: calc(var(--H) * .03); font-size: .6em; color: #8A96A3; }
+  /* slide number across the whole talk: a [.slide-no] paragraph that SlideNav.java writes on every slide */
+  #content > .sect1 .paragraph.slide-no { position: absolute; right: calc(var(--W) * .02); bottom: calc(var(--H) * .03);
+      margin: 0; font-size: .6em; color: #8A96A3; z-index: 2; }
+  #content > .sect1 .paragraph.slide-no p { margin: 0; line-height: 1; }
   #content > .sect1 > h2 { font-size: 1.75em; line-height: 1.15; margin: 0 0 .6em; padding-left: .45em;
       color: var(--navy); font-weight: 600; border-left: .16em solid var(--orange); border-bottom: none; }
   #content > .sect1 > h2 code { font-size: .9em; }
@@ -709,7 +711,6 @@ pre.rouge {
       border-radius: 999px; background: #fff; }
   .deck-nav a:hover { background: var(--blue); color: #fff; }
   .notes { display: none; }
-  #content > .sect1:only-child::after { display: none; }
   #content > .sect1.title-slide .paragraph.deck-nav { position: absolute; left: 0; right: 0; bottom: calc(var(--H) * .04);
       margin: 0; border: none; padding: 0; height: auto; }
   #content > .sect1.title-slide .imageblock { position: absolute; inset: 0; }
@@ -720,7 +721,7 @@ pre.rouge {
   #content > .sect1.title-slide .imageblock, #content > .sect1.title-slide .content,
   #content > .sect1.title-slide .sectionbody { margin: 0; height: 100%; }
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  #content > .sect1.title-slide::after { color: #8FA3B8; }
+  #content > .sect1.title-slide .paragraph.slide-no { color: #8FA3B8; }
 
   /* cover page (00_Index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
   #content > .sect1.cover > h2 { font-size: 2.2em; }
@@ -777,7 +778,7 @@ pre.rouge {
   #content > .sect1.demo .lead p { color: #B8C7D6; }
   #content > .sect1.demo .listingblock pre { border-left-color: var(--accent); }
   #content > .sect1.demo .paragraph.track { color: #6F8399; }
-  #content > .sect1.demo::after { color: #6F8399; }
+  #content > .sect1.demo .paragraph.slide-no { color: #6F8399; }
 
   /* the mind map as the map of the talk */
   #content > .sect1.mindmap .imageblock.mindmap { margin: 0 auto; text-align: center; }
@@ -809,6 +810,9 @@ pre.rouge {
 <p>Named inner and local classes use <code>$</code> names too.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>72</p>
 </div>
 </div>
 </div>
@@ -850,6 +854,9 @@ pre.rouge {
 </div>
 </div>
 </div>
+<div class="paragraph slide-no">
+<p>73</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix">
@@ -884,6 +891,9 @@ pre.rouge {
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>74</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix">
@@ -908,6 +918,9 @@ pre.rouge {
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>75</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix">
@@ -931,6 +944,9 @@ pre.rouge {
 <p>Off by default: <code>-XX:+UseCompactObjectHeaders</code>.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>76</p>
 </div>
 </div>
 </div>
@@ -959,6 +975,9 @@ pre.rouge {
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>77</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix">
@@ -985,6 +1004,9 @@ pre.rouge {
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>78</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix">
@@ -1008,6 +1030,9 @@ pre.rouge {
 <p>The terminal operation creates a <code>TerminalOp</code>, chains <code>Sink</code> objects and pushes elements through them.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>79</p>
 </div>
 </div>
 </div>
@@ -1061,6 +1086,9 @@ A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p>
 </div>
 </div>
 </div>
+<div class="paragraph slide-no">
+<p>80</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix">
@@ -1084,6 +1112,9 @@ A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p>
 <p>Whether it allocates depends on what it captures.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>81</p>
 </div>
 </div>
 </div>
@@ -1114,6 +1145,9 @@ A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>82</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix">
@@ -1143,6 +1177,9 @@ A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p>
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>83</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix">
@@ -1166,6 +1203,9 @@ A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p>
 <p>On by default; <code>-XX:-DoEscapeAnalysis</code> turns it off.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>84</p>
 </div>
 </div>
 </div>
@@ -1199,6 +1239,9 @@ A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p>
 <p>The escape-analysis-off runs are an upper bound: they show which objects a design creates.</p>
 </div>
 </div>
+</div>
+<div class="paragraph slide-no">
+<p>85</p>
 </div>
 </div>
 </div>

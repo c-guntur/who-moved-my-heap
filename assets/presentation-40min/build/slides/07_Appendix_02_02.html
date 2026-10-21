@@ -651,6 +651,10 @@ pre.rouge {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -686,6 +690,7 @@ pre.rouge {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_taking_the_histograms" class="sec-appendix" data-background-color="#F5F7FA"><h2>Taking the histograms</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>Two everyday JVMs on a developer laptop, and what they hold.</p></div>
@@ -695,6 +700,7 @@ jmap <span class="nt">-histo</span> &lt;pid&gt; | <span class="nb">head</span> <
 <div class="ulist"><ul><li><p>Without <code>:live</code> the histogram also counts garbage not yet collected.</p></li><li><p>Look for <code>Integer</code>, <code>HashMap$Node</code>, <code>Object[]</code> and <code>$$Lambda</code> near the top.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>IntelliJ IDEA shows in <code>jps -l</code> as <code>com.intellij.idea.Main</code>. Run <code>jmap</code> as the same OS user as the process.
 <code>jmap -histo:live</code> forces a full GC first and shows the baseline only; plain <code>-histo</code> shows baseline plus whatever garbage is still there.</p></div></aside>
+<div class="paragraph slide-no"><p>66</p></div>
 <div class="paragraph deck-nav"><p><a href="07_Appendix_02_01.html">‹ Previous</a> &#160;|&#160; <a href="00_Index_03.html">⌂ Index</a> &#160;|&#160; <a href="07_Appendix_02_03.html">Next ›</a></p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
@@ -723,7 +729,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

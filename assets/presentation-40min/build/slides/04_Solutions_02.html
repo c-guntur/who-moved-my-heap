@@ -651,6 +651,10 @@ pre.rouge {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -686,13 +690,15 @@ pre.rouge {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_object_pooling_pool_resources_not_small_objects" class="sec-solutions" data-background-color="#F5F7FA"><h2>Object pooling: pool resources, not small objects</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>A pool pays off for costly objects; for small ones, allocate fewer instead.</p></div>
 <div class="ulist"><ul><li><p>Pool threads, connections and direct buffers.</p></li><li><p>The JDK already pools <code>Integer</code> -128 to 127 through <code>Integer.valueOf</code>.</p></li><li><p>For small objects: presize collections, use primitives, avoid boxing.</p></li><li><p>A pooled object lives long, gets promoted, and needs locking.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 31:10, stay about 40 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
 <div class="paragraph"><p>Presizing: <code>ArrayList</code> grown to 1,000,000 elements is 4.3% bigger than presized, up to 7% at other sizes, and it dropped
-every array it outgrew (movers run 20261015-1503; the dropped arrays are inferred from the growth policy).</p></div></aside></div></section>
+every array it outgrew (movers run 20261015-1503; the dropped arrays are inferred from the growth policy).</p></div></aside>
+<div class="paragraph slide-no"><p>45</p></div></div></section>
 <section id="_enabling_compact_object_headers" class="sec-solutions" data-background-color="#F5F7FA"><h2>Enabling compact object headers</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="shell">java <span class="nt">-XX</span>:+UseCompactObjectHeaders <span class="nt">-jar</span> app.jar
 jcmd &lt;pid&gt; VM.flags <span class="nt">-all</span> | <span class="nb">grep </span>UseCompactObjectHeaders     <span class="c"># check that it is on</span></code></pre></div></div>
@@ -700,7 +706,8 @@ jcmd &lt;pid&gt; VM.flags <span class="nt">-all</span> | <span class="nb">grep <
 <div class="ulist"><ul><li><p>One flag, no code change: it shrinks nodes, not boxes.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 31:50, stay about 45 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
 <div class="paragraph"><p>JOL retained sizes, movers run 20261015-1503. A <code>HashMap$Node</code> goes from 32 B to 24 B, the whole 8 MB saved.
-An <code>Integer</code> stays 16 B either way. Stream garbage drops 16 to 24 B per call (7 to 11%); the object count stays.</p></div></aside></div></section>
+An <code>Integer</code> stays 16 B either way. Stream garbage drops 16 to 24 B per call (7 to 11%); the object count stays.</p></div></aside>
+<div class="paragraph slide-no"><p>46</p></div></div></section>
 <section id="_non_capturing_lambdas" class="sec-solutions" data-background-color="#F5F7FA"><h2>Non-capturing lambdas</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="c1">// capturing: a new lambda on every call, holding the value</span>
 <span class="nc">Iterate</span><span class="o">.</span><span class="na">anySatisfy</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">test</span><span class="o">)::</span><span class="n">equals</span><span class="o">);</span>
@@ -711,13 +718,15 @@ An <code>Integer</code> stays 16 B either way. Stream garbage drops 16 to 24 B p
 <aside class="notes"><div class="paragraph"><p>⏱ 32:35, stay about 45 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
 <div class="paragraph"><p>With escape analysis on, both EC calls are 0 B. The JDK stream has no <code>*With</code> form: even a non-capturing predicate
 leaves its 176 B pipeline behind. In EC 13.0.0, <code>ImmutableList.anySatisfyWith</code>, <code>countWith</code> and <code>detectWithIfNone</code>
-go through <code>Predicates.bind</code>, so they are not fat-free.</p></div></aside></div></section>
+go through <code>Predicates.bind</code>, so they are not fat-free.</p></div></aside>
+<div class="paragraph slide-no"><p>47</p></div></div></section>
 <section id="_eclipse_collections_primitives_and_no_pipeline" class="sec-solutions" data-background-color="#F5F7FA"><h2>Eclipse Collections: primitives and no pipeline</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <table class="tableblock frame-none grid-rows" style="width:100%"><colgroup><col style="width:38.4615%"><col style="width:30.7692%"><col style="width:30.7693%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"></th><th class="tableblock halign-left valign-top">JDK</th><th class="tableblock halign-left valign-top">Eclipse Collections</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">1 M <code>int</code>s in a list</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">20.0 MB <code>ArrayList&lt;Integer&gt;</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4.0 MB <code>IntArrayList</code></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">1 M <code>int</code>s in a set</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">48.4 MB <code>HashSet&lt;Integer&gt;</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">8.4 MB <code>IntHashSet</code></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>anyMatch</code>, match at 500</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">176 B per call</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">0 B <code>anySatisfy</code></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter().count()</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">224 B per call</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">0 B <code>count</code></p></td></tr></table>
 <div class="ulist"><ul><li><p>Primitive collections drop the boxes; eager methods loop without a pipeline.</p></li><li><p><code>*With</code> methods keep the lambda fat-free.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 33:20, stay about 40 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
 <div class="paragraph"><p>Footprints: movers run 20261015-1503, compact headers on. Bytes per call: shakers run 20261015-0406, escape analysis on.
-Speed follows: a JDK stream call took 4.3 to 15.5 times as long for anyMatch and findFirst (run 20261017-1708).</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+Speed follows: a JDK stream call took 4.3 to 15.5 times as long for anyMatch and findFirst (run 20261017-1708).</p></div></aside>
+<div class="paragraph slide-no"><p>48</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -745,7 +754,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

@@ -651,6 +651,10 @@ pre.rouge {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -686,13 +690,15 @@ pre.rouge {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_two_heaps_in_one" class="sec-appendix" data-background-color="#F5F7FA"><h2>Two heaps in one</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>A heap has a baseline that stays and a volatile part that churns.</p></div>
 <div class="ulist"><ul><li><p>Baseline: the live objects your collections hold between calls.</p></li><li><p>Volatile: short-lived garbage that each call allocates and drops.</p></li><li><p>The baseline sets the floor; the volatile part sets how often GC runs.</p></li><li><p>Both have to fit under <code>-Xmx</code> at the busiest moment.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>The movers measure the baseline: JOL retained size of a filled collection.
 The shakers measure the volatile part: bytes per call (<code>gc.alloc.rate.norm</code>), GC runs per billion calls,
-and exact object counts per call from class histograms.</p></div></aside></div></section>
+and exact object counts per call from class histograms.</p></div></aside>
+<div class="paragraph slide-no"><p>65</p></div></div></section>
 <section id="_taking_the_histograms" class="sec-appendix" data-background-color="#F5F7FA"><h2>Taking the histograms</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>Two everyday JVMs on a developer laptop, and what they hold.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="shell">jps <span class="nt">-l</span>                          <span class="c"># find the pids</span>
@@ -700,33 +706,38 @@ jmap <span class="nt">-histo</span> &lt;pid&gt; | <span class="nb">head</span> <
 jmap <span class="nt">-histo</span> &lt;pid&gt; | <span class="nb">head</span> <span class="nt">-15</span>    <span class="c"># SonarQube for IDE</span></code></pre></div></div>
 <div class="ulist"><ul><li><p>Without <code>:live</code> the histogram also counts garbage not yet collected.</p></li><li><p>Look for <code>Integer</code>, <code>HashMap$Node</code>, <code>Object[]</code> and <code>$$Lambda</code> near the top.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>IntelliJ IDEA shows in <code>jps -l</code> as <code>com.intellij.idea.Main</code>. Run <code>jmap</code> as the same OS user as the process.
-<code>jmap -histo:live</code> forces a full GC first and shows the baseline only; plain <code>-histo</code> shows baseline plus whatever garbage is still there.</p></div></aside></div></section>
+<code>jmap -histo:live</code> forces a full GC first and shows the baseline only; plain <code>-histo</code> shows baseline plus whatever garbage is still there.</p></div></aside>
+<div class="paragraph slide-no"><p>66</p></div></div></section>
 <section id="_growing_a_collection_leaves_slack_and_garbage" class="sec-appendix" data-background-color="#F5F7FA"><h2>Growing a collection leaves slack and garbage</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>A list grown from empty is bigger than a presized one, and it dropped arrays on the way.</p></div>
 <div class="ulist"><ul><li><p><code>ArrayList</code> grows by 1.5x: up to 7% unused capacity in this run.</p></li><li><p>Every array it outgrew became garbage; JOL only sees the final list.</p></li><li><p><code>HashMap</code> tables double: 46 to 50.5 B per entry, depending on n.</p></li><li><p>Presize when the size is known: <code>new ArrayList&lt;&gt;(n)</code>, <code>HashMap.newHashMap(n)</code>.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p><code>ArrayList</code>, 1,000,000 elements: 20,861,992 B grown against 20,000,040 B presized (4.3%); 7.0% at 400k, 600k and 900k.
 EC <code>FastList</code> reached 9.8% and <code>IntArrayList</code> 48.9%: they grow in bigger steps.
 The dropped arrays are inferred from the growth policy; JOL does not measure them.
-<code>HashMap.newHashMap(n)</code> (Java 19 and later) was not measured in this run.</p></div></aside></div></section>
+<code>HashMap.newHashMap(n)</code> (Java 19 and later) was not measured in this run.</p></div></aside>
+<div class="paragraph slide-no"><p>67</p></div></div></section>
 <section id="_compact_headers_shrink_nodes_not_boxes" class="sec-appendix" data-background-color="#F5F7FA"><h2>Compact headers shrink nodes, not boxes</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p><code>-XX:+UseCompactObjectHeaders</code> saves 4 B per header, but objects round up to 8 B.</p></div>
 <table class="tableblock frame-none grid-rows" style="width:100%"><colgroup><col style="width:45.4545%"><col style="width:18.1818%"><col style="width:18.1818%"><col style="width:18.1819%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Retained size</th><th class="tableblock halign-left valign-top">Headers off</th><th class="tableblock halign-left valign-top">Headers on</th><th class="tableblock halign-left valign-top">Saved</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>HashMap&lt;Integer, Integer&gt;</code>, 1 M entries</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">56.4 MB</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">48.4 MB</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">14%</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>HashSet&lt;Integer&gt;</code>, 1 M elements</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">56.4 MB</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">48.4 MB</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">14%</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>ArrayList&lt;Integer&gt;</code>, 1 M, presized</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">20.0 MB</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">20.0 MB</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">0%</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>Stream.filter().map().mapToLong()</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">304 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">272 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">11%</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">one <code>Integer</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">16 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">16 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">0%</p></td></tr></table>
 <aside class="notes"><div class="paragraph"><p>An <code>Integer</code> is 12 B header + 4 B <code>int</code> = 16 B without compact headers, and 8 B + 4 B padded to 16 B with them.
-A <code>HashMap$Node</code> goes from 32 B to 24 B, which is the whole 8 MB saved on the maps and sets.</p></div></aside></div></section>
+A <code>HashMap$Node</code> goes from 32 B to 24 B, which is the whole 8 MB saved on the maps and sets.</p></div></aside>
+<div class="paragraph slide-no"><p>68</p></div></div></section>
 <section id="_garbage_you_cannot_read_from_the_code" class="sec-appendix" data-background-color="#F5F7FA"><h2>Garbage you cannot read from the code</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>The same line of code leaves different garbage under different conditions.</p></div>
 <div class="ulist"><ul><li><p><code>Integer.valueOf(1)</code> is cached; <code>Integer.valueOf(500)</code> costs 16 B per call.</p></li><li><p>Escape analysis removes every EC object, and none of the stream&#8217;s.</p></li><li><p>Compact headers save 16 to 24 B per call; the objects stay.</p></li><li><p><code>anyMatch(p)</code> is 40 B cheaper than <code>filter(p).findFirst()</code>.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>Escape analysis: JDK bytes per call are identical with <code>-XX:-DoEscapeAnalysis</code>. Why it gives up on the pipeline
 (linked objects passed through interface calls) is inferred, not confirmed with JIT logs.
 Library details matter too: in EC 13.0.0, <code>ImmutableList.anySatisfyWith</code>, <code>countWith</code> and <code>detectWithIfNone</code>
-go through <code>Predicates.bind</code> and allocate a wrapper per call when escape analysis is off.</p></div></aside></div></section>
+go through <code>Predicates.bind</code> and allocate a wrapper per call when escape analysis is off.</p></div></aside>
+<div class="paragraph slide-no"><p>69</p></div></div></section>
 <section id="_escape_analysis_is_not_a_promise" class="sec-appendix" data-background-color="#F5F7FA"><h2>Escape analysis is not a promise</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>With <code>-XX:-DoEscapeAnalysis</code> each lambda shape shows what it creates.</p></div>
 <table class="tableblock frame-none grid-rows" style="width:100%"><colgroup><col style="width:60%"><col style="width:20%"><col style="width:20%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"><code>anyMatch</code>, match at element 500</th><th class="tableblock halign-left valign-top">EA on</th><th class="tableblock halign-left valign-top">EA off</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">JDK <code>list.stream().anyMatch(&#8230;&#8203;)</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">176 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">176 B</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">EC lazy <code>asLazy().anySatisfy(&#8230;&#8203;)</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">0 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">48 B</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">EC capturing <code>Iterate.anySatisfy(&#8230;&#8203;)</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">0 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">32 B</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">EC fat-free <code>Iterate.anySatisfyWith(&#8230;&#8203;)</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">0 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">16 B</p></td></tr></table>
 <div class="ulist"><ul><li><p>The JIT removes allocations only in code it inlines.</p></li><li><p>Turning it off is an upper bound, not a typical JVM.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>The 16 B left in the fat-free row is the <code>Integer</code> the caller passes in; at element 1 it is 0 B.
 Capturing adds the lambda (16 B); lazy adds a <code>LazyIterableAdapter</code> (16 B). Escape analysis gives up on cold code,
-large methods and megamorphic call sites, which real applications have plenty of.</p></div></aside></div></section>
+large methods and megamorphic call sites, which real applications have plenty of.</p></div></aside>
+<div class="paragraph slide-no"><p>70</p></div></div></section>
 <section id="_fat_free_lambdas_leave_less_behind" class="sec-appendix" data-background-color="#F5F7FA"><h2>Fat-free lambdas leave less behind</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="c1">// capturing: a new lambda on every call, holding the value</span>
 <span class="nc">Iterate</span><span class="o">.</span><span class="na">anySatisfy</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">test</span><span class="o">)::</span><span class="n">equals</span><span class="o">);</span>
@@ -738,7 +749,8 @@ large methods and megamorphic call sites, which real applications have plenty of
 <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">anyMatch</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">test</span><span class="o">)::</span><span class="n">equals</span><span class="o">);</span></code></pre></div></div>
 <div class="ulist"><ul><li><p>Escape analysis off: 32 B capturing, 16 B fat-free, 176 B stream.</p></li><li><p>Less garbage per call keeps the headroom free for the next spike.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>The 16 B of the fat-free call is the <code>Integer</code> box of <code>test</code>, not the lambda. With escape analysis on, both EC calls are 0 B.
-The stream has no <code>*With</code> form, so even a non-capturing predicate would still leave its pipeline behind.</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+The stream has no <code>*With</code> form, so even a non-capturing predicate would still leave its pipeline behind.</p></div></aside>
+<div class="paragraph slide-no"><p>71</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -766,7 +778,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

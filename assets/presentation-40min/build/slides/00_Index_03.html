@@ -437,6 +437,10 @@ ul.byline li + li {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -472,10 +476,12 @@ ul.byline li + li {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_index" class="talk-index" data-background-color="#F5F7FA"><h2>Index</h2><div class="slide-content"><table class="tableblock frame-none grid-rows index-grid" style="width:100%"><colgroup><col style="width:7.6923%"><col style="width:30.7692%"><col style="width:53.8461%"><col style="width:7.6924%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"></th><th class="tableblock halign-left valign-top">Section</th><th class="tableblock halign-left valign-top">What it covers</th><th class="tableblock halign-left valign-top">Min</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">01</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="01_Intro_00_01.html">Intro</a></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">A few JDK tools and a library for looking at the heap</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">02</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="02_ProblemStatement_00_01.html">Problem statement</a></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">What JDK collections and streams leave on the heap</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">03</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="03_Definitions_00_01.html">Definitions</a></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">The vocabulary behind who moved my heap</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">04</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="04_Solutions_00_01.html">Solutions</a></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Tools, runtime options and code that move less heap</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">05</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="05_AISkills_00_01.html">AI skills</a></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Let an assistant read the heap with you</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">06</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="06_WrapUp_00_01.html">Wrap-up</a></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Is your basement flooded?</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">07</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="07_Appendix_00_01.html">Appendix</a></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Everything that did not fit in 40 minutes</p></td><td class="tableblock halign-left valign-top"></td></tr></table>
 <aside class="notes"><div class="paragraph"><p>Not presented: skip it with Next. Every slide&#8217;s Index link comes here, so use it to jump to a section
 (for example straight to the appendix during questions).</p></div></aside>
+<div class="paragraph slide-no"><p>4</p></div>
 <div class="paragraph deck-nav"><p><a href="00_Index_02.html">‹ Previous</a> &#160;|&#160; <a href="#">⌂ Index</a> &#160;|&#160; <a href="01_Intro_00_01.html">Next ›</a></p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
@@ -504,7 +510,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

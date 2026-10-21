@@ -651,6 +651,10 @@ pre.rouge {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -686,6 +690,7 @@ pre.rouge {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_ai_reads_a_class_histogram" class="sec-ai" data-background-color="#F5F7FA"><h2>AI reads a class histogram</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · Solutions · <span class="on">AI skills</span> · Wrap-up</p></div>
 <div class="paragraph lead"><p>Paste two histograms and ask what moved, not what a histogram is.</p></div>
@@ -693,13 +698,15 @@ pre.rouge {
 Which classes grew most, in instances and in bytes?
 Which are boxes, map nodes, arrays or lambdas, and what code likely made them?</code></pre></div></div>
 <div class="ulist"><ul><li><p>A histogram holds class names and counts; a heap dump holds your data, keep it local.</p></li><li><p>Ask for the arithmetic, then check two rows yourself.</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>⏱ 34:05, stay about 50 s. AI skills: 34:00 to 38:00 (4 min).</p></div></aside></div></section>
+<aside class="notes"><div class="paragraph"><p>⏱ 34:05, stay about 50 s. AI skills: 34:00 to 38:00 (4 min).</p></div></aside>
+<div class="paragraph slide-no"><p>50</p></div></div></section>
 <section id="_ai_reads_jol_and_jmh_results" class="sec-ai" data-background-color="#F5F7FA"><h2>AI reads JOL and JMH results</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · Solutions · <span class="on">AI skills</span> · Wrap-up</p></div>
 <div class="paragraph lead"><p>Raw JMH and JOL output is long; an assistant turns it into a comparison.</p></div>
 <div class="ulist"><ul><li><p>Give it the raw files (<code>-rf text</code>, JOL printouts), not a summary.</p></li><li><p>Ask for bytes per call by variant: headers off and on, escape analysis off.</p></li><li><p>Ask which numbers are measured and which are derived.</p></li><li><p>Every number on these slides traces back to a raw file under <code>generated/runs</code>.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 34:55, stay about 45 s. AI skills: 34:00 to 38:00 (4 min).</p></div>
 <div class="paragraph"><p>This project keeps its run and report rules in <code>instructions.md</code>, so an assistant can repeat a whole run:
-<code>java src/main/java/tools/Pipeline.java all</code>.</p></div></aside></div></section>
+<code>java src/main/java/tools/Pipeline.java all</code>.</p></div></aside>
+<div class="paragraph slide-no"><p>51</p></div></div></section>
 <section id="_a_skill_to_repeat_the_check" class="sec-ai" data-background-color="#F5F7FA"><h2>A skill to repeat the check</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · Solutions · <span class="on">AI skills</span> · Wrap-up</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="markdown"><span class="nn">---</span>
 <span class="na">name</span><span class="pi">:</span> <span class="s">heap-check</span>
@@ -711,14 +718,16 @@ Which are boxes, map nodes, arrays or lambdas, and what code likely made them?</
 <span class="p">4.</span> Flag boxes, <span class="sb">`HashMap$Node`</span>, <span class="sb">`Object[]`</span> and <span class="sb">`$$Lambda`</span> classes.
 <span class="p">5.</span> Compare with the last baseline in <span class="sb">`heap-baseline.txt`</span>.</code></pre></div></div>
 <div class="ulist"><ul><li><p>Run it every release, not only when the basement floods.</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>⏱ 35:40, stay about 50 s. AI skills: 34:00 to 38:00 (4 min).</p></div></aside></div></section>
+<aside class="notes"><div class="paragraph"><p>⏱ 35:40, stay about 50 s. AI skills: 34:00 to 38:00 (4 min).</p></div></aside>
+<div class="paragraph slide-no"><p>52</p></div></div></section>
 <section id="_demo_who_moved_my_heap" class="sec-ai demo" data-background-color="#1B2A41"><h2>Demo: who moved my heap?</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · Solutions · <span class="on">AI skills</span> · Wrap-up</p></div>
 <div class="paragraph lead"><p>The histogram from the first demo, pasted into an AI assistant.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="text">This is `jcmd &lt;pid&gt; GC.class_histogram` of a running JVM.
 Who moved my heap? Name the top 5 classes by bytes, say which are
 boxes, nodes, arrays or lambdas, and what I could change.</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 36:30, stay about 90 s. AI skills: 34:00 to 38:00 (4 min).</p></div>
-<div class="paragraph"><p>Fallback: a screenshot of an earlier answer. Check one of its numbers against the histogram live: that is the point.</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+<div class="paragraph"><p>Fallback: a screenshot of an earlier answer. Check one of its numbers against the histogram live: that is the point.</p></div></aside>
+<div class="paragraph slide-no"><p>53</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -746,7 +755,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

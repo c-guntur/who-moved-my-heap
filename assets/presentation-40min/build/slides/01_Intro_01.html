@@ -651,6 +651,10 @@ pre.rouge {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -686,12 +690,14 @@ pre.rouge {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_why_look_at_the_heap" class="sec-intro" data-background-color="#F5F7FA"><h2>Why look at the heap?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Intro</span> · Problem · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>A few JDK tools and one library show what is on the heap of a running JVM.</p></div>
 <div class="ulist"><ul><li><p>Garbage is invisible in the code, but obvious in a class histogram.</p></li><li><p>Fewer and smaller objects mean fewer GCs and more headroom for a spike.</p></li><li><p><code>jps</code> finds the JVM; <code>jmap</code> and <code>jcmd</code> look inside it; <code>jstat</code> watches its GCs.</p></li><li><p>JOL, a library, measures single objects; garbage per call (JMH) comes with the solutions.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 02:05, stay about 30 s. Intro: 02:00 to 07:00 (5 min).</p></div>
-<div class="paragraph"><p>The <code>jcmd</code> command table, more <code>jstat</code> and more JOL output are in the appendix (Intro extras).</p></div></aside></div></section>
+<div class="paragraph"><p>The <code>jcmd</code> command table, more <code>jstat</code> and more JOL output are in the appendix (Intro extras).</p></div></aside>
+<div class="paragraph slide-no"><p>6</p></div></div></section>
 <section id="_jps_which_jvm_is_that" class="sec-intro" data-background-color="#F5F7FA"><h2><code>jps</code>: which JVM is that?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Intro</span> · Problem · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p><code>jps</code> lists the running Java processes of the current user, so you can find the pid the other tools need.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="text">$ jps -l
@@ -701,7 +707,8 @@ pre.rouge {
 <div class="ulist"><ul><li><p>Each line is a pid and a main class or JAR; <code>-l</code> prints the full name.</p></li><li><p><code>-v</code> adds the JVM flags, which shows whether compact object headers are on.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 02:35, stay about 25 s. Intro: 02:00 to 07:00 (5 min).</p></div>
 <div class="paragraph"><p>Run <code>jps -v</code> or <code>jcmd</code> and look for <code>-XX:+UseCompactObjectHeaders</code>. A forked benchmark JVM or surefire
-test JVM appears here while it runs, so you can attach <code>jmap</code>, <code>jcmd</code> or <code>jstat</code> to it.</p></div></aside></div></section>
+test JVM appears here while it runs, so you can attach <code>jmap</code>, <code>jcmd</code> or <code>jstat</code> to it.</p></div></aside>
+<div class="paragraph slide-no"><p>7</p></div></div></section>
 <section id="_jmap_what_is_on_the_heap" class="sec-intro" data-background-color="#F5F7FA"><h2><code>jmap</code>: what is on the heap?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Intro</span> · Problem · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p><code>jmap</code> attaches to a running JVM and prints its objects, class by class.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="shell">jmap <span class="nt">-histo</span>:live &lt;pid&gt;                       <span class="c"># reachable objects only (runs a full GC first)</span>
@@ -709,7 +716,8 @@ jmap <span class="nt">-histo</span> &lt;pid&gt;                            <span
 jmap <span class="nt">-dump</span>:live,format<span class="o">=</span>b,file<span class="o">=</span>heap.hprof &lt;pid&gt;   <span class="c"># full heap dump for an analyzer</span></code></pre></div></div>
 <div class="ulist"><ul><li><p>A histogram is cheap and small; a dump holds every object and field value.</p></li><li><p><code>:live</code> hides garbage, which is exactly what allocation tuning needs to see.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 03:00, stay about 35 s. Intro: 02:00 to 07:00 (5 min).</p></div>
-<div class="paragraph"><p>HistoProfiler (shakers) wants the garbage, so it never uses <code>:live</code>; see the jcmd slides.</p></div></aside></div></section>
+<div class="paragraph"><p>HistoProfiler (shakers) wants the garbage, so it never uses <code>:live</code>; see the jcmd slides.</p></div></aside>
+<div class="paragraph slide-no"><p>8</p></div></div></section>
 <section id="_reading_a_class_histogram" class="sec-intro" data-background-color="#F5F7FA"><h2>Reading a class histogram</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Intro</span> · Problem · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="text"> num     #instances         #bytes  class name (module)
 -------------------------------------------------------
@@ -719,7 +727,8 @@ jmap <span class="nt">-dump</span>:live,format<span class="o">=</span>b,file<spa
 <div class="ulist"><ul><li><p><code>#bytes</code> divided by <code>#instances</code> is the average object size: 24 B for <code>String</code>.</p></li><li><p>Two histograms around a workload, subtracted, give the garbage it created.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 03:35, stay about 35 s. Intro: 02:00 to 07:00 (5 min).</p></div>
 <div class="paragraph"><p><code>[B</code> is <code>byte[]</code>. Output of <code>jmap -histo:live</code> on an idle JDK 25 JVM running with
-<code>-XX:+UseCompactObjectHeaders</code>.</p></div></aside></div></section>
+<code>-XX:+UseCompactObjectHeaders</code>.</p></div></aside>
+<div class="paragraph slide-no"><p>9</p></div></div></section>
 <section id="_jcmd_one_tool_many_commands" class="sec-intro" data-background-color="#F5F7FA"><h2><code>jcmd</code>: one tool, many commands</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Intro</span> · Problem · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p><code>jcmd</code> sends a diagnostic command to a running JVM; it covers most of what <code>jmap</code> and <code>jinfo</code> did.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="shell">jcmd                              <span class="c"># list the running JVMs and their pids</span>
@@ -730,7 +739,8 @@ jcmd &lt;pid&gt; VM.flags               <span class="c"># flags in effect, e.g. 
 <div class="ulist"><ul><li><p><code>-all</code> counts garbage as well, so one call before and one after shows the allocation.</p></li><li><p><code>VM.flags</code> proves whether compact object headers were really on.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 04:10, stay about 35 s. Intro: 02:00 to 07:00 (5 min).</p></div>
 <div class="paragraph"><p>Run <code>jcmd</code> from the same JDK as the target JVM. HistoProfiler writes the jcmd output to a temp file
-because reading it through a pipe can deadlock on JDK 25.</p></div></aside></div></section>
+because reading it through a pipe can deadlock on JDK 25.</p></div></aside>
+<div class="paragraph slide-no"><p>10</p></div></div></section>
 <section id="_jstat_is_the_jvm_busy_collecting" class="sec-intro" data-background-color="#F5F7FA"><h2><code>jstat</code>: is the JVM busy collecting?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Intro</span> · Problem · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p><code>jstat</code> samples the GC counters of a running JVM at an interval, without stopping it.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="text">$ jstat -gcutil &lt;pid&gt; 1s 5               # five samples, one per second
@@ -744,7 +754,8 @@ because reading it through a pipe can deadlock on JDK 25.</p></div></aside></div
 <aside class="notes"><div class="paragraph"><p>⏱ 04:45, stay about 30 s. Intro: 02:00 to 07:00 (5 min).</p></div>
 <div class="paragraph"><p>Output from a small program that builds and drops a 1,000-element <code>ArrayList&lt;Integer&gt;</code> in a loop, on JDK 25
 with G1 and <code>-Xmx256m</code>; the old generation hardly moves. Less garbage per call means <code>YGC</code> grows more slowly:
-the benchmark result, watched live. <code>jstat -gc</code>, <code>-gccause</code> and the option table are in the appendix.</p></div></aside></div></section>
+the benchmark result, watched live. <code>jstat -gc</code>, <code>-gccause</code> and the option table are in the appendix.</p></div></aside>
+<div class="paragraph slide-no"><p>11</p></div></div></section>
 <section id="_jol_how_big_is_one_object" class="sec-intro" data-background-color="#F5F7FA"><h2>JOL: how big is one object?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Intro</span> · Problem · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>Java Object Layout (JOL) is a small OpenJDK library that shows the header, fields, padding and size of real objects.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">ClassLayout</span><span class="o">.</span><span class="na">parseInstance</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mi">500</span><span class="o">)).</span><span class="na">toPrintable</span><span class="o">());</span></code></pre></div></div>
@@ -757,7 +768,8 @@ Instance size: 16 bytes</code></pre></div></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 05:15, stay about 35 s. Intro: 02:00 to 07:00 (5 min).</p></div>
 <div class="paragraph"><p>Real output of jol-core 0.17 on JDK 25 with <code>-XX:-UseCompactObjectHeaders</code>: a 12 B header and a 4 B <code>int</code>.
 JOL comes back in the solutions (demo 2, headers off and on). The appendix has the same <code>Integer</code> with
-compact headers on, the footprint of a small list, and how to add JOL to a project.</p></div></aside></div></section>
+compact headers on, the footprint of a small list, and how to add JOL to a project.</p></div></aside>
+<div class="paragraph slide-no"><p>12</p></div></div></section>
 <section id="_demo_down_to_the_basement" class="sec-intro demo" data-background-color="#1B2A41"><h2>Demo: down to the basement</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Intro</span> · Problem · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>Find a running JVM and look at what it holds.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="shell">jps <span class="nt">-l</span>                                          <span class="c"># which JVM is that?</span>
@@ -768,7 +780,8 @@ jstat <span class="nt">-gcutil</span> &lt;pid&gt; 1s 3                        <s
 <aside class="notes"><div class="paragraph"><p>⏱ 05:50, stay about 70 s. Intro: 02:00 to 07:00 (5 min).</p></div>
 <div class="paragraph"><p>Use any running app, IntelliJ IDEA works. Fallback if the demo fails: the histogram and <code>jstat</code> output on the
 previous slides, and the IntelliJ and SonarQube screenshots that come next.
-Keep the histogram output: demo 3 pastes it into an AI assistant.</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+Keep the histogram output: demo 3 pastes it into an AI assistant.</p></div></aside>
+<div class="paragraph slide-no"><p>13</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -796,7 +809,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

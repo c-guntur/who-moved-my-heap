@@ -819,6 +819,11 @@ list before reporting (S8, M6).
   link (opening pages included) points to it instead of the series agenda or the cover
   (`assets/presentation-40min/00_Index_03.adoc`, one link per section).
   `SlidesToPdf.java` prints each opening page as `pdf/00_Index*.pdf`.
+  Every slide carries one running number for the whole talk (cover = 1, then the opening pages, then the
+  series in file-name order): `SlideNav.java` writes it as a `[.slide-no]` paragraph at the top of the
+  generated block, so it shows in the plain HTML, the reveal.js slides and the PDF, and it is recomputed on
+  every build (renaming or moving slides renumbers them). reveal.js's own per-deck number is off
+  (`:revealjs_slideNumber: false` in `_deck-settings.adoc`).
 - **D1.9** `07_Appendix` collects reference links at the end of the talk: `07_Appendix_00_00.adoc` (title,
   `banner-appendix-00.svg`) and one references slide per series, several sections on one slide as a
   table (Section | Reference, at most 7 rows, D1.2). `07_Appendix_00_01.adoc` holds the `01_Intro`

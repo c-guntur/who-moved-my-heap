@@ -437,6 +437,10 @@ ul.byline li + li {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -472,6 +476,7 @@ ul.byline li + li {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_the_problem_in_one_slide" class="sec-problem" data-background-color="#F5F7FA"><h2>The problem in one slide</h2><div class="slide-content"><div class="paragraph track"><p>Intro · <span class="on">Problem</span> · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>JDK collections and streams spend heap on objects the code never mentions.</p></div>
@@ -480,20 +485,23 @@ ul.byline li + li {
 <div class="paragraph"><p>Every number in this series comes from two runs on JDK 25.0.4.1 in the cloud sandbox:
 movers <code>20261015-1503</code> (JOL footprints, compact object headers off and on) and
 shakers <code>20261015-0406</code> (JMH bytes per call, GC counts and class-histogram object counts).
-The point is footprint and headroom for spikes, not only throughput.</p></div></aside></div></section>
+The point is footprint and headroom for spikes, not only throughput.</p></div></aside>
+<div class="paragraph slide-no"><p>15</p></div></div></section>
 <section id="_baseline_churn_and_a_spike" class="sec-problem" data-background-color="#F5F7FA"><h2>Baseline, churn and a spike</h2><div class="slide-content"><div class="paragraph track"><p>Intro · <span class="on">Problem</span> · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="imageblock diagram"><img src="images/diagram-problem-01-baseline-volatile.svg" alt="Heap used over time: a baseline" width="a sawtooth of garbage and a spike"></div>
 <div class="ulist"><ul><li><p>Headroom is what is left above the baseline for garbage.</p></li><li><p>A spike multiplies the garbage rate; the baseline stays where it was.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 07:45, stay about 45 s. Problem statement: 07:00 to 15:00 (8 min).</p></div>
 <div class="paragraph"><p>An illustration, not a measurement: the shape a GC log shows when a steady live set carries
-young-generation churn. A bigger baseline or more garbage per call both eat the same headroom.</p></div></aside></div></section>
+young-generation churn. A bigger baseline or more garbage per call both eat the same headroom.</p></div></aside>
+<div class="paragraph slide-no"><p>16</p></div></div></section>
 <section id="_why_the_volatile_part_is_the_risk" class="sec-problem" data-background-color="#F5F7FA"><h2>Why the volatile part is the risk</h2><div class="slide-content"><div class="paragraph track"><p>Intro · <span class="on">Problem</span> · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>Stream garbage grows with calls per second, not with the number of elements.</p></div>
-<div class="ulist"><ul><li><p>One JDK <code>anyMatch</code> call leaves 176 B, wherever the match is.</p></li><li><p>At 10 M calls/s that is 1.76 GB/s of young-generation garbage.</p></li><li><p>A 10 s spike at that rate allocates about 17.6 GB.</p></li><li><p>The same question as an Eclipse Collections loop allocates 0 B.</p></li></ul></div>
+<div class="ulist"><ul><li><p>One JDK <code>anyMatch</code> call leaves 176 B, wherever the match is.</p></li><li><p>At 10 M calls/s that is 1.76 GB/s of young-generation garbage.</p></li><li><p>A 10 s spike at that rate allocates about 17.6 GB.</p></li><li><p>The same operation using Eclipse Collections allocates 0 B.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 08:30, stay about 40 s. Problem statement: 07:00 to 15:00 (8 min).</p></div>
 <div class="paragraph"><p>176 B per call is measured (shakers run 20261015-0406, <code>jdkAnyMatch</code>, match at element 500, compact headers on).
 The rates are derived, not measured at that load: bytes per call × calls per second, and × 10 s for the spike.
-With a 512 MB young generation, 1.76 GB/s is about 206 young collections a minute (derived).</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+With a 512 MB young generation, 1.76 GB/s is about 206 young collections a minute (derived).</p></div></aside>
+<div class="paragraph slide-no"><p>17</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -521,7 +529,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

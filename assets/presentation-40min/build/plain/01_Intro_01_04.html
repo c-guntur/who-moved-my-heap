@@ -674,8 +674,10 @@ pre.rouge {
   #content > .sect1 { background: var(--paper); color: var(--ink); font-size: calc(var(--H) * .034);
       padding: calc(var(--H) * .065) calc(var(--W) * .055) calc(var(--H) * .05);
       border-top: calc(var(--H) * .012) solid var(--orange); display: flex; flex-direction: column; }
-  #content > .sect1::after { counter-increment: slide; content: counter(slide); position: absolute;
-      right: calc(var(--W) * .02); bottom: calc(var(--H) * .03); font-size: .6em; color: #8A96A3; }
+  /* slide number across the whole talk: a [.slide-no] paragraph that SlideNav.java writes on every slide */
+  #content > .sect1 .paragraph.slide-no { position: absolute; right: calc(var(--W) * .02); bottom: calc(var(--H) * .03);
+      margin: 0; font-size: .6em; color: #8A96A3; z-index: 2; }
+  #content > .sect1 .paragraph.slide-no p { margin: 0; line-height: 1; }
   #content > .sect1 > h2 { font-size: 1.75em; line-height: 1.15; margin: 0 0 .6em; padding-left: .45em;
       color: var(--navy); font-weight: 600; border-left: .16em solid var(--orange); border-bottom: none; }
   #content > .sect1 > h2 code { font-size: .9em; }
@@ -709,7 +711,6 @@ pre.rouge {
       border-radius: 999px; background: #fff; }
   .deck-nav a:hover { background: var(--blue); color: #fff; }
   .notes { display: none; }
-  #content > .sect1:only-child::after { display: none; }
   #content > .sect1.title-slide .paragraph.deck-nav { position: absolute; left: 0; right: 0; bottom: calc(var(--H) * .04);
       margin: 0; border: none; padding: 0; height: auto; }
   #content > .sect1.title-slide .imageblock { position: absolute; inset: 0; }
@@ -720,7 +721,7 @@ pre.rouge {
   #content > .sect1.title-slide .imageblock, #content > .sect1.title-slide .content,
   #content > .sect1.title-slide .sectionbody { margin: 0; height: 100%; }
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  #content > .sect1.title-slide::after { color: #8FA3B8; }
+  #content > .sect1.title-slide .paragraph.slide-no { color: #8FA3B8; }
 
   /* cover page (00_Index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
   #content > .sect1.cover > h2 { font-size: 2.2em; }
@@ -777,7 +778,7 @@ pre.rouge {
   #content > .sect1.demo .lead p { color: #B8C7D6; }
   #content > .sect1.demo .listingblock pre { border-left-color: var(--accent); }
   #content > .sect1.demo .paragraph.track { color: #6F8399; }
-  #content > .sect1.demo::after { color: #6F8399; }
+  #content > .sect1.demo .paragraph.slide-no { color: #6F8399; }
 
   /* the mind map as the map of the talk */
   #content > .sect1.mindmap .imageblock.mindmap { margin: 0 auto; text-align: center; }
@@ -823,6 +824,9 @@ pre.rouge {
 <code>-XX:+UseCompactObjectHeaders</code>.</p>
 </div>
 </div>
+</div>
+<div class="paragraph slide-no">
+<p>9</p>
 </div>
 <div class="paragraph deck-nav">
 <p><a href="01_Intro_01_03.html">‹ Previous</a> &#160;|&#160; <a href="00_Index_03.html">⌂ Index</a> &#160;|&#160; <a href="01_Intro_01_05.html">Next ›</a></p>

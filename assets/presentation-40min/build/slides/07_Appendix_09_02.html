@@ -437,6 +437,10 @@ ul.byline li + li {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -472,9 +476,11 @@ ul.byline li + li {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_references_jol" class="sec-appendix refs" data-background-color="#EAF2F8"><h2>References: JOL</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <table class="tableblock frame-none grid-rows" style="width:100%"><colgroup><col style="width:25%"><col style="width:75%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Topic</th><th class="tableblock halign-left valign-top">Reference</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">JOL</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openjdk.org/projects/code-tools/jol/">OpenJDK Code Tools: Java Object Layout (JOL)</a></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Source, CLI</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openjdk/jol">openjdk/jol: jol-core, jol-cli and jol-samples</a></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Samples</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/openjdk/jol/tree/master/jol-samples">jol-samples: headers, alignment, arrays and more</a></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Library</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://repo1.maven.org/maven2/org/openjdk/jol/jol-core/">Maven Central: <code>org.openjdk.jol:jol-core</code></a></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Headers</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openjdk.org/jeps/450">JEP 450: Compact Object Headers (Experimental), JDK 24</a></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Headers</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openjdk.org/jeps/519">JEP 519: Compact Object Headers, JDK 25</a></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Headers</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://openjdk.org/projects/lilliput/">OpenJDK Project Lilliput</a></p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Flag</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html">The <code>java</code> command (Java SE 25)</a>: <code>-XX:+UseCompactObjectHeaders</code></p></td></tr></table>
+<div class="paragraph slide-no"><p>87</p></div>
 <div class="paragraph deck-nav"><p><a href="07_Appendix_09_01.html">‹ Previous</a> &#160;|&#160; <a href="00_Index_03.html">⌂ Index</a> &#160;|&#160; <a href="07_Appendix_09_03.html">Next ›</a></p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
@@ -503,7 +509,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

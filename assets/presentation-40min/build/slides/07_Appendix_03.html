@@ -651,6 +651,10 @@ pre.rouge {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -686,10 +690,12 @@ pre.rouge {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_what_is_a_dollar_class" class="sec-appendix" data-background-color="#F5F7FA"><h2>What is a "dollar" class?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>An anonymous class is declared and created in one expression, without a name.</p></div>
-<div class="ulist"><ul><li><p><code>javac</code> still names it: <code>Outer$1</code>, <code>Outer$2</code>, &#8230;&#8203;</p></li><li><p>Each one gets its own <code>Outer$1.class</code> file.</p></li><li><p>Named inner and local classes use <code>$</code> names too.</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p><code>javac</code> still names it: <code>Outer$1</code>, <code>Outer$2</code>, &#8230;&#8203;</p></li><li><p>Each one gets its own <code>Outer$1.class</code> file.</p></li><li><p>Named inner and local classes use <code>$</code> names too.</p></li></ul></div>
+<div class="paragraph slide-no"><p>72</p></div></div></section>
 <section id="_dollar_classes_in_code" class="sec-appendix" data-background-color="#F5F7FA"><h2>"Dollar" classes in code</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Shaker</span>
 <span class="o">{</span>
@@ -706,59 +712,72 @@ pre.rouge {
     <span class="o">}</span>
 <span class="o">}</span></code></pre></div></div>
 <div class="ulist"><ul><li><p>Compare with lambdas (06): a non-capturing lambda is created only once.</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>The "dollar" is the binary name from JLS 13.1.</p></div></aside></div></section>
+<aside class="notes"><div class="paragraph"><p>The "dollar" is the binary name from JLS 13.1.</p></div></aside>
+<div class="paragraph slide-no"><p>73</p></div></div></section>
 <section id="_what_is_object_pooling" class="sec-appendix" data-background-color="#F5F7FA"><h2>What is object pooling?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>A pool keeps objects and hands them out again instead of allocating new ones.</p></div>
-<div class="ulist"><ul><li><p>Callers return an object to the pool when they are done.</p></li><li><p><strong>Worth it</strong> for costly or limited resources: threads, connections, direct buffers.</p></li><li><p><strong>Rarely worth it</strong> for small, short-lived objects:</p><div class="ulist"><ul><li><p>young-generation allocation is cheap;</p></li><li><p>pooled objects live long and need locking.</p></li></ul></div></li></ul></div></div></section>
+<div class="ulist"><ul><li><p>Callers return an object to the pool when they are done.</p></li><li><p><strong>Worth it</strong> for costly or limited resources: threads, connections, direct buffers.</p></li><li><p><strong>Rarely worth it</strong> for small, short-lived objects:</p><div class="ulist"><ul><li><p>young-generation allocation is cheap;</p></li><li><p>pooled objects live long and need locking.</p></li></ul></div></li></ul></div>
+<div class="paragraph slide-no"><p>74</p></div></div></section>
 <section id="_what_is_a_compressed_oop" class="sec-appendix" data-background-color="#F5F7FA"><h2>What is a compressed OOP?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>A 4-byte offset that HotSpot stores instead of an 8-byte reference.</p></div>
-<div class="ulist"><ul><li><p>OOP = ordinary object pointer: a reference to a Java object.</p></li><li><p>The offset is scaled by the 8-byte object alignment.</p></li><li><p>On by default for heaps under 32 GB (<code>-XX:+UseCompressedOops</code>).</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p>OOP = ordinary object pointer: a reference to a Java object.</p></li><li><p>The offset is scaled by the 8-byte object alignment.</p></li><li><p>On by default for heaps under 32 GB (<code>-XX:+UseCompressedOops</code>).</p></li></ul></div>
+<div class="paragraph slide-no"><p>75</p></div></div></section>
 <section id="_what_is_a_compact_object_header" class="sec-appendix" data-background-color="#F5F7FA"><h2>What is a compact object header?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>The object header shrinks from 12 bytes to one 8-byte word.</p></div>
-<div class="ulist"><ul><li><p>A header holds the mark word (hash, lock, GC state) and a class pointer.</p></li><li><p>Product feature in JDK 25 (JEP 519); experimental in JDK 24 (JEP 450).</p></li><li><p>Off by default: <code>-XX:+UseCompactObjectHeaders</code>.</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p>A header holds the mark word (hash, lock, GC state) and a class pointer.</p></li><li><p>Product feature in JDK 25 (JEP 519); experimental in JDK 24 (JEP 450).</p></li><li><p>Off by default: <code>-XX:+UseCompactObjectHeaders</code>.</p></li></ul></div>
+<div class="paragraph slide-no"><p>76</p></div></div></section>
 <section id="_what_is_a_stream" class="sec-appendix" data-background-color="#F5F7FA"><h2>What is a stream?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>A sequence of elements processed by a pipeline: a source, intermediate operations, one terminal operation.</p></div>
-<div class="ulist"><ul><li><p>Intermediate operations (<code>filter</code>, <code>map</code>) are <strong>lazy</strong>: they only record work.</p></li><li><p>The terminal operation (<code>anyMatch</code>, <code>count</code>, <code>findFirst</code>) is <strong>eager</strong>: it runs the pipeline.</p></li><li><p>Short-circuiting terminals stop at the first match.</p></li><li><p>A stream can be used only once.</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p>Intermediate operations (<code>filter</code>, <code>map</code>) are <strong>lazy</strong>: they only record work.</p></li><li><p>The terminal operation (<code>anyMatch</code>, <code>count</code>, <code>findFirst</code>) is <strong>eager</strong>: it runs the pipeline.</p></li><li><p>Short-circuiting terminals stop at the first match.</p></li><li><p>A stream can be used only once.</p></li></ul></div>
+<div class="paragraph slide-no"><p>77</p></div></div></section>
 <section id="_a_pipeline_in_code" class="sec-appendix" data-background-color="#F5F7FA"><h2>A pipeline in code</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="n">found</span> <span class="o">=</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>                     <span class="c1">// source</span>
                     <span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">each</span> <span class="o">-&gt;</span> <span class="n">each</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="o">)</span>   <span class="c1">// intermediate (lazy)</span>
                     <span class="o">.</span><span class="na">findFirst</span><span class="o">()</span>                  <span class="c1">// terminal (eager)</span>
                     <span class="o">.</span><span class="na">isPresent</span><span class="o">();</span></code></pre></div></div>
-<div class="ulist"><ul><li><p>Every call builds a new pipeline of objects.</p></li><li><p>Nothing runs until <code>findFirst()</code>.</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p>Every call builds a new pipeline of objects.</p></li><li><p>Nothing runs until <code>findFirst()</code>.</p></li></ul></div>
+<div class="paragraph slide-no"><p>78</p></div></div></section>
 <section id="_inside_referencepipeline" class="sec-appendix" data-background-color="#F5F7FA"><h2>Inside: <code>ReferencePipeline</code></h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>The internal class behind <code>Stream&lt;T&gt;</code>. Primitive versions: <code>IntPipeline</code>, <code>LongPipeline</code>, <code>DoublePipeline</code>.</p></div>
-<div class="ulist"><ul><li><p><code>stream()</code> creates a <code>Head</code> stage and a <code>Spliterator</code>.</p></li><li><p>Each intermediate operation links one new stage (<code>StatelessOp</code> or <code>StatefulOp</code>).</p></li><li><p>The terminal operation creates a <code>TerminalOp</code>, chains <code>Sink</code> objects and pushes elements through them.</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p><code>stream()</code> creates a <code>Head</code> stage and a <code>Spliterator</code>.</p></li><li><p>Each intermediate operation links one new stage (<code>StatelessOp</code> or <code>StatefulOp</code>).</p></li><li><p>The terminal operation creates a <code>TerminalOp</code>, chains <code>Sink</code> objects and pushes elements through them.</p></li></ul></div>
+<div class="paragraph slide-no"><p>79</p></div></div></section>
 <section id="_eager_vs_lazy_in_the_jdk" class="sec-appendix" data-background-color="#F5F7FA"><h2>Eager vs lazy in the JDK</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:20%"><col style="width:40%"><col style="width:40%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"></th><th class="tableblock halign-left valign-top">Eager</th><th class="tableblock halign-left valign-top">Lazy</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">When work happens</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">At each call</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">At the terminal operation</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">In-between results</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">A new collection per step</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">None</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Short-circuit</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Per step</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Across the whole chain</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">JDK examples</p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>anyMatch</code>, <code>count</code>, <code>findFirst</code>, <code>collect</code>, <code>removeIf</code>, <code>forEach</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter</code>, <code>map</code>, <code>sorted</code></p></td></tr></table>
 <aside class="notes"><div class="paragraph"><p>A Stream pipeline uses both: lazy intermediate operations build it, the eager terminal operation runs it.
-A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p></div></aside></div></section>
+A 3-step stream pipeline graph is 272 B before the terminal operation runs.</p></div></aside>
+<div class="paragraph slide-no"><p>80</p></div></div></section>
 <section id="_what_is_a_lambda" class="sec-appendix" data-background-color="#F5F7FA"><h2>What is a lambda?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>An anonymous function that implements a functional interface such as <code>Predicate</code>.</p></div>
-<div class="ulist"><ul><li><p>No <code>$</code> class file: <code>javac</code> emits an <code>invokedynamic</code> call.</p></li><li><p>The runtime (<code>LambdaMetafactory</code>) builds the class on first use.</p></li><li><p>Whether it allocates depends on what it captures.</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p>No <code>$</code> class file: <code>javac</code> emits an <code>invokedynamic</code> call.</p></li><li><p>The runtime (<code>LambdaMetafactory</code>) builds the class on first use.</p></li><li><p>Whether it allocates depends on what it captures.</p></li></ul></div>
+<div class="paragraph slide-no"><p>81</p></div></div></section>
 <section id="_capturing_stateful_lambdas" class="sec-appendix" data-background-color="#F5F7FA"><h2>Capturing (stateful) lambdas</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>Uses a local, a parameter or <code>this</code> from the enclosing scope.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="nf">hasMatch</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">,</span> <span class="nc">Integer</span> <span class="n">target</span><span class="o">)</span>
 <span class="o">{</span>
     <span class="k">return</span> <span class="n">list</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">anyMatch</span><span class="o">(</span><span class="n">each</span> <span class="o">-&gt;</span> <span class="n">each</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">target</span><span class="o">));</span>  <span class="c1">// new object per call</span>
 <span class="o">}</span></code></pre></div></div>
-<div class="ulist"><ul><li><p>Each evaluation creates a new object that holds the captured values.</p></li><li><p>Captured locals must be effectively final.</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p>Each evaluation creates a new object that holds the captured values.</p></li><li><p>Captured locals must be effectively final.</p></li></ul></div>
+<div class="paragraph slide-no"><p>82</p></div></div></section>
 <section id="_fat_free_non_capturing_lambdas" class="sec-appendix" data-background-color="#F5F7FA"><h2>Fat-free (non-capturing) lambdas</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>Uses only its own parameters, constants and static members.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="nf">hasMatch</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">,</span> <span class="nc">Integer</span> <span class="n">target</span><span class="o">)</span>
 <span class="o">{</span>
     <span class="k">return</span> <span class="nc">Iterate</span><span class="o">.</span><span class="na">anySatisfyWith</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="nl">Object:</span><span class="o">:</span><span class="n">equals</span><span class="o">,</span> <span class="n">target</span><span class="o">);</span>  <span class="c1">// one shared instance</span>
 <span class="o">}</span></code></pre></div></div>
-<div class="ulist"><ul><li><p>One instance is created and then reused on every call.</p></li><li><p>Extra values travel as arguments (the <code>*With</code> methods).</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p>One instance is created and then reused on every call.</p></li><li><p>Extra values travel as arguments (the <code>*With</code> methods).</p></li></ul></div>
+<div class="paragraph slide-no"><p>83</p></div></div></section>
 <section id="_what_is_escape_analysis" class="sec-appendix" data-background-color="#F5F7FA"><h2>What is escape analysis?</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="paragraph lead"><p>A C2 JIT check: after inlining, can anyone outside the method see the new object?</p></div>
-<div class="ulist"><ul><li><p><strong>No</strong>: the allocation is removed; its fields become locals (scalar replacement).</p></li><li><p><strong>Yes</strong>: it is allocated on the heap as usual.</p></li><li><p>On by default; <code>-XX:-DoEscapeAnalysis</code> turns it off.</p></li></ul></div></div></section>
+<div class="ulist"><ul><li><p><strong>No</strong>: the allocation is removed; its fields become locals (scalar replacement).</p></li><li><p><strong>Yes</strong>: it is allocated on the heap as usual.</p></li><li><p>On by default; <code>-XX:-DoEscapeAnalysis</code> turns it off.</p></li></ul></div>
+<div class="paragraph slide-no"><p>84</p></div></div></section>
 <section id="_escape_analysis_in_code" class="sec-appendix" data-background-color="#F5F7FA"><h2>Escape analysis in code</h2><div class="slide-content"><div class="paragraph track"><p><span class="on">Appendix</span></p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="kt">boolean</span> <span class="nf">hasMatch</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">list</span><span class="o">,</span> <span class="nc">Integer</span> <span class="n">target</span><span class="o">)</span>
 <span class="o">{</span>
     <span class="k">return</span> <span class="nc">Iterate</span><span class="o">.</span><span class="na">anySatisfy</span><span class="o">(</span><span class="n">list</span><span class="o">,</span> <span class="n">each</span> <span class="o">-&gt;</span> <span class="n">each</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">target</span><span class="o">));</span>
 <span class="o">}</span></code></pre></div></div>
 <div class="ulist"><ul><li><p>After inlining, the lambda and the loop stay local: 0 B allocated.</p></li><li><p>The JDK stream escapes into its own stages: 160 to 224 B per call either way.</p></li></ul></div>
-<aside class="notes"><div class="paragraph"><p>The escape-analysis-off runs are an upper bound: they show which objects a design creates.</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+<aside class="notes"><div class="paragraph"><p>The escape-analysis-off runs are an upper bound: they show which objects a design creates.</p></div></aside>
+<div class="paragraph slide-no"><p>85</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -786,7 +805,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

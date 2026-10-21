@@ -459,8 +459,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1 { background: var(--paper); color: var(--ink); font-size: calc(var(--H) * .034);
       padding: calc(var(--H) * .065) calc(var(--W) * .055) calc(var(--H) * .05);
       border-top: calc(var(--H) * .012) solid var(--orange); display: flex; flex-direction: column; }
-  #content > .sect1::after { counter-increment: slide; content: counter(slide); position: absolute;
-      right: calc(var(--W) * .02); bottom: calc(var(--H) * .03); font-size: .6em; color: #8A96A3; }
+  /* slide number across the whole talk: a [.slide-no] paragraph that SlideNav.java writes on every slide */
+  #content > .sect1 .paragraph.slide-no { position: absolute; right: calc(var(--W) * .02); bottom: calc(var(--H) * .03);
+      margin: 0; font-size: .6em; color: #8A96A3; z-index: 2; }
+  #content > .sect1 .paragraph.slide-no p { margin: 0; line-height: 1; }
   #content > .sect1 > h2 { font-size: 1.75em; line-height: 1.15; margin: 0 0 .6em; padding-left: .45em;
       color: var(--navy); font-weight: 600; border-left: .16em solid var(--orange); border-bottom: none; }
   #content > .sect1 > h2 code { font-size: .9em; }
@@ -494,7 +496,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
       border-radius: 999px; background: #fff; }
   .deck-nav a:hover { background: var(--blue); color: #fff; }
   .notes { display: none; }
-  #content > .sect1:only-child::after { display: none; }
   #content > .sect1.title-slide .paragraph.deck-nav { position: absolute; left: 0; right: 0; bottom: calc(var(--H) * .04);
       margin: 0; border: none; padding: 0; height: auto; }
   #content > .sect1.title-slide .imageblock { position: absolute; inset: 0; }
@@ -505,7 +506,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1.title-slide .imageblock, #content > .sect1.title-slide .content,
   #content > .sect1.title-slide .sectionbody { margin: 0; height: 100%; }
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  #content > .sect1.title-slide::after { color: #8FA3B8; }
+  #content > .sect1.title-slide .paragraph.slide-no { color: #8FA3B8; }
 
   /* cover page (00_Index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
   #content > .sect1.cover > h2 { font-size: 2.2em; }
@@ -562,7 +563,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1.demo .lead p { color: #B8C7D6; }
   #content > .sect1.demo .listingblock pre { border-left-color: var(--accent); }
   #content > .sect1.demo .paragraph.track { color: #6F8399; }
-  #content > .sect1.demo::after { color: #6F8399; }
+  #content > .sect1.demo .paragraph.slide-no { color: #6F8399; }
 
   /* the mind map as the map of the talk */
   #content > .sect1.mindmap .imageblock.mindmap { margin: 0 auto; text-align: center; }
@@ -617,6 +618,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
+<div class="paragraph slide-no">
+<p>86</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -671,6 +675,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </tbody>
 </table>
+<div class="paragraph slide-no">
+<p>87</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -692,6 +699,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>88</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -712,6 +722,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://docs.oracle.com/en/java/javase/25/troubleshoot/diagnostic-tools.html">Troubleshooting Guide: Diagnostic Tools (Java SE 25)</a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>89</p>
 </div>
 </div>
 </div>
@@ -740,6 +753,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>90</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -767,6 +783,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>91</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -790,6 +809,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://openjdk.org/projects/code-tools/jol/">Java Object Layout (JOL), OpenJDK Code Tools</a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>92</p>
 </div>
 </div>
 </div>
@@ -815,6 +837,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>93</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -839,6 +864,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>94</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -856,6 +884,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html">The <code>java</code> command (Java SE 25): <code>-XX:+UseCompressedOops</code></a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>95</p>
 </div>
 </div>
 </div>
@@ -877,6 +908,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html">The <code>java</code> command (Java SE 25)</a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>96</p>
 </div>
 </div>
 </div>
@@ -902,6 +936,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>97</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -926,6 +963,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
+<div class="paragraph slide-no">
+<p>98</p>
+</div>
 </div>
 </div>
 <div class="sect1 sec-appendix refs">
@@ -946,6 +986,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://docs.oracle.com/en/java/javase/25/docs/specs/man/java.html">The <code>java</code> command (Java SE 25): <code>-XX:+DoEscapeAnalysis</code></a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>99</p>
 </div>
 </div>
 </div>
@@ -976,6 +1019,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p><a href="https://eclipse.dev/collections/">Eclipse Collections</a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph slide-no">
+<p>100</p>
 </div>
 </div>
 </div>

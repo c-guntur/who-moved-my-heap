@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * Slide files are named <series>_<deck>_<slide>.adoc, e.g. 03_Definitions_01_02.adoc (deck 01, slide 02).
  * For every series this program:
  *   * rewrites the navigation block at the end of each slide file (everything after NAV_MARKER):
- *     Previous / Index / Next across all decks of the series, in file-name order (no slide numbers: slides get rearranged by hand);
+ *     Previous / Index / Next across all decks of the series, in file-name order, plus the slide number;
  *   * rewrites the deck file <series>_<deck>.adoc, which includes the deck's slides in order
  *     (used for the reveal.js and PDF builds; the :deck: attribute hides the per-slide header and links).
  * The index is <series>_00_02.adoc (the agenda), or the first slide when there is no 00_02. When one of the opening
@@ -25,6 +25,10 @@ import java.util.regex.Pattern;
  * The series follow each other in file-name order: the last slide of a series links Next to the first slide of the
  * next series (the last slide of the last series has no Next link), and the first slide links Previous to the last slide
  * of the series before it.
+ * Slide numbers run through the whole talk: the opening pages first (cover = 1), then every slide in file-name order.
+ * The number is a [.slide-no] paragraph outside ifndef::deck, so the plain HTML, the reveal.js slides and the PDF
+ * all show it (docinfo.html and docinfo-revealjs.html place it). It is recomputed on every run, so slides can still
+ * be rearranged or renamed by hand.
  * The opening pages (the cover 00_Index.adoc, then 00_Index_01.adoc, 00_Index_02.adoc, ...; not part of a series)
  * get a navigation block too: they link to each other in order, the last one's Next goes to the first slide of the
  * first series, and the first slide of the first series links back to the last opening page.
@@ -82,6 +86,10 @@ public class SlideNav
             }
         }
 
+        // Slide numbers across the talk: the opening pages (only when there is a cover), then the slides in order
+        List<String> talkOrder = new ArrayList<>(hasCover ? opening : List.of());
+        talkOrder.addAll(names);
+
         List<String> allSeries = new ArrayList<>(distinct(names, "series"));
         for (int s = 0; s < allSeries.size(); s++)
         {
@@ -102,7 +110,7 @@ public class SlideNav
                 String body = stripTrailingNewlines(beforeMarker(text)) + "\n\n";
                 String previous = i > 0 ? ordered.get(i - 1) : before;
                 String nav = navBlock(previous, index,
-                        i + 1 < ordered.size() ? ordered.get(i + 1) : after);
+                        i + 1 < ordered.size() ? ordered.get(i + 1) : after, talkOrder.indexOf(name) + 1);
                 writeIfChanged(path, body + nav);
             }
 
@@ -114,7 +122,8 @@ public class SlideNav
                 String content = deckFile(series, deck, slides, description.find() ? description.group(1) : "");
                 writeIfChanged(folder.resolve(series + "_" + deck + ".adoc"), content);
             }
-            System.out.println(series + ": " + decks.size() + " decks, " + ordered.size() + " slides, index " + index);
+            System.out.println(series + ": " + decks.size() + " decks, " + ordered.size() + " slides, index " + index
+                    + ", numbers " + (talkOrder.indexOf(ordered.getFirst()) + 1) + " to " + (talkOrder.indexOf(ordered.getLast()) + 1));
         }
 
         if (hasCover && !names.isEmpty())
@@ -125,7 +134,7 @@ public class SlideNav
                 String body = stripTrailingNewlines(beforeMarker(Files.readString(path, StandardCharsets.UTF_8))) + "\n\n";
                 String next = i + 1 < opening.size() ? opening.get(i + 1) : names.getFirst();
                 writeIfChanged(path, body + navBlock(i > 0 ? opening.get(i - 1) : null,
-                        talkIndex != null ? talkIndex : COVER, next));
+                        talkIndex != null ? talkIndex : COVER, next, i + 1));
             }
             System.out.println("opening: " + opening + ", next " + names.getFirst()
                     + (talkIndex != null ? ", talk index " + talkIndex : ""));
@@ -198,12 +207,14 @@ public class SlideNav
         return text.substring(0, end);
     }
 
-    private static String navBlock(String previous, String index, String next)
+    private static String navBlock(String previous, String index, String next, int number)
     {
         String previousLink = previous != null ? "xref:" + previous + "[‹ Previous]" : "‹ Previous";
         // The last slide of the talk has no Next link
         String nextLink = next != null ? " {nbsp}|{nbsp} xref:" + next + "[Next ›]" : "";
         return NAV_MARKER + "\n"
+                + "[.slide-no]\n"
+                + number + "\n\n"
                 + "ifndef::deck[]\n"
                 + "[.deck-nav]\n"
                 + previousLink + " {nbsp}|{nbsp} xref:" + index + "[⌂ Index]" + nextLink + "\n"

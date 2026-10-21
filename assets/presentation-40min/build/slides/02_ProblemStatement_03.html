@@ -437,6 +437,10 @@ ul.byline li + li {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -472,6 +476,7 @@ ul.byline li + li {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_boxing_is_the_cost" class="sec-problem" data-background-color="#F5F7FA"><h2>Boxing is the cost</h2><div class="slide-content"><div class="paragraph track"><p>Intro · <span class="on">Problem</span> · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>An <code>Integer</code> takes 16 B to hold a 4 B <code>int</code>, plus a 4 B reference to it.</p></div>
@@ -479,20 +484,23 @@ ul.byline li + li {
 <aside class="notes"><div class="paragraph"><p>⏱ 10:15, stay about 45 s. Problem statement: 07:00 to 15:00 (8 min).</p></div>
 <div class="paragraph"><p>JOL retained sizes, movers run 20261015-1503. Per element is the total divided by n (derived).
 In the maps key and value are the same <code>Integer</code>, so each map holds one box per entry.
-Values up to 127 come from the <code>Integer</code> cache: under 0.13% of the boxes here.</p></div></aside></div></section>
+Values up to 127 come from the <code>Integer</code> cache: under 0.13% of the boxes here.</p></div></aside>
+<div class="paragraph slide-no"><p>20</p></div></div></section>
 <section id="_every_hashmap_entry_is_one_more_object" class="sec-problem" data-background-color="#F5F7FA"><h2>Every <code>HashMap</code> entry is one more object</h2><div class="slide-content"><div class="paragraph track"><p>Intro · <span class="on">Problem</span> · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p><code>HashMap</code> and <code>HashSet</code> wrap each entry in a <code>HashMap$Node</code>.</p></div>
 <div class="ulist"><ul><li><p>A node is 24 B with compact headers, 32 B without.</p></li><li><p><code>HashSet</code> is a <code>HashMap</code> inside: 32.4 MB before counting the <code>Integer</code>s.</p></li><li><p>EC <code>UnifiedSet</code> keeps the elements in its table: 8.4 MB, 4x less.</p></li><li><p>Node plus box: about 48 B of heap per element to hold one <code>int</code>.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 11:00, stay about 40 s. Problem statement: 07:00 to 15:00 (8 min).</p></div>
 <div class="paragraph"><p>1,000,000 elements, compact headers on, "structure only" rows (the <code>Integer</code>s subtracted).
 <code>HashSet</code> 32.4 MB ≈ 1,000,000 nodes × 24 B + 2^21 table slots × 4 B (derived).
-<code>HashMap</code> structure 32.4 MB against <code>UnifiedMap</code> 16.8 MB, which stores key and value side by side in one array.</p></div></aside></div></section>
+<code>HashMap</code> structure 32.4 MB against <code>UnifiedMap</code> 16.8 MB, which stores key and value side by side in one array.</p></div></aside>
+<div class="paragraph slide-no"><p>21</p></div></div></section>
 <section id="_a_stream_is_an_object_graph_before_it_runs" class="sec-problem" data-background-color="#F5F7FA"><h2>A stream is an object graph before it runs</h2><div class="slide-content"><div class="paragraph track"><p>Intro · <span class="on">Problem</span> · Definitions · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>An unevaluated pipeline already holds objects, and every operation adds a stage.</p></div>
 <table class="tableblock frame-none grid-rows" style="width:100%"><colgroup><col style="width:55.5555%"><col style="width:22.2222%"><col style="width:22.2223%"></colgroup><thead><tr><th class="tableblock halign-left valign-top">Pipeline on an empty list, compact headers on</th><th class="tableblock halign-left valign-top">JDK <code>Stream</code></th><th class="tableblock halign-left valign-top">EC <code>LazyIterable</code></th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">start: <code>stream()</code> / <code>asLazy()</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">80 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">16 B</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">+ <code>filter</code> / <code>select</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">144 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">24 B</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">+ <code>map</code> / <code>collect</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">144 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">24 B</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">+ <code>distinct</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">128 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">16 B</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock">3 steps: filter, map, mapToLong</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">272 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">96 B</p></td></tr></table>
 <aside class="notes"><div class="paragraph"><p>⏱ 11:40, stay about 35 s. Problem statement: 07:00 to 15:00 (8 min).</p></div>
 <div class="paragraph"><p>JOL sizes of the pipeline minus the list, movers run 20261015-1503. Each JDK operation adds a stage of 48 to 72 B.
-These are sizes, not allocations per call: the next section measures what each call really allocates.</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+These are sizes, not allocations per call: the next section measures what each call really allocates.</p></div></aside>
+<div class="paragraph slide-no"><p>22</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -520,7 +528,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

@@ -351,7 +351,7 @@ java src/main/java/tools/presentation/SlideImages.java . assets/presentation-40m
   order) and regenerates the deck files `<series>_<deck>.adoc`. The opening pages (`00_Index.adoc`, then
   `00_Index_01.adoc`, ...) link to each other and on to the first slide, and each series continues into the
   next (the last Intro slide goes on to `02_ProblemStatement_00_00`); the last slide of the talk has no Next link. When an opening page has the attribute line `:talk-index:`
-  (an index of the whole talk, like `assets/presentation-40min/00_Index_03.adoc`), every Index link points to it. Run it after adding, removing or
+  (an index of the whole talk, like `assets/presentation-40min/00_Index_03.adoc`), every Index link points to it. It also numbers every slide once across the whole talk (a `[.slide-no]` paragraph shown in the plain HTML, the reveal.js slides and the PDF; reveal.js's own per-deck number is off). Run it after adding, removing or
   renaming a slide. The Maven build runs it for you.
 . `SlideImages.java` redraws the title banners (`banner-*.svg`), the `diagram-*.svg` images and the `placeholder-*.svg` screenshot frames in `assets/presentation/images/`.
   Run it after changing a title or diagram in it (a new title slide needs a row in `SECTIONS`, `INTRO_SECTIONS`, `PROBLEM_SECTIONS` or `APPENDIX_SECTIONS`, one array per series). The Maven build runs it for you.

@@ -651,6 +651,10 @@ pre.rouge {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -686,6 +690,7 @@ pre.rouge {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_measure_first_before_and_after" class="sec-solutions" data-background-color="#F5F7FA"><h2>Measure first: before and after</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>Two class histograms around a workload show what it allocated.</p></div>
@@ -696,7 +701,8 @@ jcmd &lt;pid&gt; GC.class_histogram <span class="nt">-all</span> <span class="o"
 <div class="ulist"><ul><li><p><code>-all</code> also counts unreachable objects, so garbage shows up, and no full GC runs first.</p></li><li><p>Subtract per class: that is how <code>prof.HistoProfiler</code> counts objects per call.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 24:50, stay about 50 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
 <div class="paragraph"><p><code>prof.HistoProfiler</code> (src/main/java/prof) is a JMH profiler that takes a histogram before and after each iteration.
-It writes the jcmd output to a temp file because reading it through a pipe can deadlock on JDK 25.</p></div></aside></div></section>
+It writes the jcmd output to a temp file because reading it through a pipe can deadlock on JDK 25.</p></div></aside>
+<div class="paragraph slide-no"><p>39</p></div></div></section>
 <section id="_jol_the_layout_of_one_object" class="sec-solutions" data-background-color="#F5F7FA"><h2>JOL: the layout of one object</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>Java Object Layout (JOL) reports how the JVM lays an object out: header, fields, padding and size.</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">org.openjdk.jol.info.ClassLayout</span><span class="o">;</span>
@@ -708,12 +714,14 @@ It writes the jcmd output to a temp file because reading it through a pipe can d
 <div class="ulist"><ul><li><p><code>ClassLayout</code> shows one object; <code>GraphLayout</code> adds up everything reachable from it.</p></li><li><p>JOL is an OpenJDK project, added as a library; it is not part of the JDK.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 25:40, stay about 40 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
 <div class="paragraph"><p>The movers tests need <code>-XX:+EnableDynamicAgentLoading -Djdk.attach.allowAttachSelf=true</code> so that JOL
-can attach to its own VM. They run twice: compact object headers off, then on.</p></div></aside></div></section>
+can attach to its own VM. They run twice: compact object headers off, then on.</p></div></aside>
+<div class="paragraph slide-no"><p>40</p></div></div></section>
 <section id="_jol_with_compact_object_headers" class="sec-solutions" data-background-color="#F5F7FA"><h2>JOL with compact object headers</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <table class="tableblock frame-none grid-rows" style="width:100%"><colgroup><col style="width:29.4117%"><col style="width:17.647%"><col style="width:35.2941%"><col style="width:17.6472%"></colgroup><thead><tr><th class="tableblock halign-left valign-top"><code>HashMap$Node</code></th><th class="tableblock halign-left valign-top">Header</th><th class="tableblock halign-left valign-top">Fields</th><th class="tableblock halign-left valign-top">Size</th></tr><tbody><tr><td class="tableblock halign-left valign-top"><p class="tableblock">Default</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">12 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">hash, key, value, next: 16 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">32 B (4 B padding)</p></td></tr><tr><td class="tableblock halign-left valign-top"><p class="tableblock"><code>-XX:+UseCompactObjectHeaders</code></p></td><td class="tableblock halign-left valign-top"><p class="tableblock">8 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">the same 16 B</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">24 B</p></td></tr></table>
 <div class="ulist"><ul><li><p>Run the same JOL code with the flag off and on, and compare the sizes.</p></li><li><p>The 4 B saved only counts when the total drops below the next 8 B boundary.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 26:20, stay about 40 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
-<div class="paragraph"><p>Footprints in the movers reports are JOL sizes taken this way.</p></div></aside></div></section>
+<div class="paragraph"><p>Footprints in the movers reports are JOL sizes taken this way.</p></div></aside>
+<div class="paragraph slide-no"><p>41</p></div></div></section>
 <section id="_demo_one_map_entry_headers_off_and_on" class="sec-solutions demo" data-background-color="#1B2A41"><h2>Demo: one map entry, headers off and on</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">node</span> <span class="o">=</span> <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"java.util.HashMap$Node"</span><span class="o">);</span>
 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">ClassLayout</span><span class="o">.</span><span class="na">parseClass</span><span class="o">(</span><span class="n">node</span><span class="o">).</span><span class="na">toPrintable</span><span class="o">());</span></code></pre></div></div>
@@ -724,7 +732,8 @@ java <span class="nt">-cp</span> jol-core-0.17.jar <span class="nt">-XX</span>:+
 <div class="paragraph"><p>The full file is demo/NodeLayout.java in this folder; it runs as a single source file on JDK 25 in about 2 s.
 Tested in the cloud sandbox on JDK 25.0.4.1: 32 bytes off, 24 bytes on.
 JOL prints attach and Unsafe warnings first; add <code>2&gt;/dev/null | grep -v WARNING</code> to hide them.
-Fallback: the previous slide has the same two sizes.</p></div></aside></div></section>
+Fallback: the previous slide has the same two sizes.</p></div></aside>
+<div class="paragraph slide-no"><p>42</p></div></div></section>
 <section id="_jmh_bytes_per_call_not_only_speed" class="sec-solutions" data-background-color="#F5F7FA"><h2>JMH: bytes per call, not only speed</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <div class="listingblock"><div class="content"><pre class="rouge highlight"><code data-lang="java"><span class="nd">@Benchmark</span>
 <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">jdkAnyMatch</span><span class="o">()</span>
@@ -740,13 +749,15 @@ Fallback: the previous slide has the same two sizes.</p></div></aside></div></se
 <div class="ulist"><ul><li><p><code>-prof gc</code> reports <code>gc.alloc.rate.norm</code>: bytes allocated per call.</p></li><li><p><code>-prof prof.HistoProfiler</code> counts the objects per call.</p></li></ul></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 29:30, stay about 50 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
 <div class="paragraph"><p>From <code>AnyMatchUtilityBenchmark</code> (src/test/java/conf/session/shakers). Every class runs three times:
-compact headers on, off, and with escape analysis off. A full run takes hours: never run it live.</p></div></aside></div></section>
+compact headers on, off, and with escape analysis off. A full run takes hours: never run it live.</p></div></aside>
+<div class="paragraph slide-no"><p>43</p></div></div></section>
 <section id="_what_one_anymatch_call_leaves_behind" class="sec-solutions" data-background-color="#F5F7FA"><h2>What one <code>anyMatch</code> call leaves behind</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>Escape analysis off: every object each version creates, counted.</p></div>
 <div class="imageblock screenshot"><img src="images/20261015-0406-JdkStreamOps-vs-ec-anyMatch.png" alt="anyMatch bytes per call by origin: JDK stream 176 B" width="EC versions 16 to 48 B"></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 30:20, stay about 50 s. Solutions: 24:00 to 34:00 (10 min).</p></div>
 <div class="paragraph"><p>Shakers run 20261015-0406, match at element 500. On a normal JVM (escape analysis on) every EC version is 0 B
-and the JDK stream stays at 176 B.</p></div></aside></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
+and the JDK stream stays at 176 B.</p></div></aside>
+<div class="paragraph slide-no"><p>44</p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
   if (!(slide.classList.contains('canvas') || slide.classList.contains('background'))) return;
@@ -774,7 +785,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

@@ -437,6 +437,10 @@ ul.byline li + li {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -472,11 +476,13 @@ ul.byline li + li {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_seven_terms" class="sec-defs" data-background-color="#F5F7FA"><h2>Seven terms</h2><div class="slide-content"><div class="paragraph track"><p>Intro · Problem · <span class="on">Definitions</span> · Solutions · AI skills · Wrap-up</p></div>
 <div class="paragraph lead"><p>The words the solutions need, one slide each.</p></div>
 <table class="tableblock frame-none grid-rows" style="width:100%"><colgroup><col style="width:7.1428%"><col style="width:35.7142%"><col style="width:57.143%"></colgroup><thead><tr><th class="tableblock halign-center valign-top">#</th><th class="tableblock halign-left valign-top">Term</th><th class="tableblock halign-left valign-top">In one line</th></tr><tbody><tr><td class="tableblock halign-center valign-top"><p class="tableblock">01</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">"Dollar" classes</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Anonymous classes and their <code>Outer$1</code> names</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">02</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Object pooling</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Reusing objects; the <code>Integer</code> cache</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">03</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Compressed OOPs</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">4-byte references on a 64-bit JVM</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">04</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Compact object headers</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">One 8-byte header word (JDK 25)</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">05</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Stream API</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Lazy intermediate, eager terminal operations</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">06</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Lambdas</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Capturing vs fat-free</p></td></tr><tr><td class="tableblock halign-center valign-top"><p class="tableblock">07</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">Escape analysis</p></td><td class="tableblock halign-left valign-top"><p class="tableblock">When the JIT removes an allocation</p></td></tr></table>
 <aside class="notes"><div class="paragraph"><p>⏱ 15:05, stay about 30 s. Definitions: 15:00 to 24:00 (9 min).</p></div></aside>
+<div class="paragraph slide-no"><p>28</p></div>
 <div class="paragraph deck-nav"><p><a href="03_Definitions_00_01.html">‹ Previous</a> &#160;|&#160; <a href="00_Index_03.html">⌂ Index</a> &#160;|&#160; <a href="03_Definitions_01_01.html">Next ›</a></p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
@@ -505,7 +511,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the

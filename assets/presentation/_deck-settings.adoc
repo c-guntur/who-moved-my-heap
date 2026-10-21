@@ -8,7 +8,8 @@
 :nofooter:
 :revealjs_theme: white
 :revealjs_transition: slide
-:revealjs_slideNumber: c/t
+// Slide numbers come from SlideNav.java ([.slide-no], one count across the whole talk), not from reveal.js
+:revealjs_slideNumber: false
 :revealjs_hash: true
 :revealjs_center: false
 :revealjs_width: 1600

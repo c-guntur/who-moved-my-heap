@@ -437,6 +437,10 @@ ul.byline li + li {
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
+  .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
+  .reveal .slide-no p { margin: 0; }
+  .reveal .slides section.title .slide-no { color: #8FA3B8; }
   .reveal .slides section.cover h2 { font-size: 2.2em; }
   .reveal .ask { margin-top: 300px; text-align: center; }
   .reveal .ask p { font-size: 2.1em; line-height: 1.25; font-weight: 600; color: #1B2A41; }
@@ -472,6 +476,7 @@ ul.byline li + li {
   .reveal .slides section.demo .lead p { color: #B8C7D6; }
   .reveal .slides section.demo pre, .reveal .slides section.demo pre code { color: #1F2933; }
   .reveal .slides section.demo .track { color: #6F8399; }
+  .reveal .slides section.demo .slide-no { color: #6F8399; }
   .reveal .imageblock.mindmap img { max-height: 640px; margin: 0 auto; display: block; }
 </style></head><body><div class="reveal"><div class="slides"><section id="_who_moved_my_heap" class="cover" data-background-color="#F5F7FA"><h2>Who Moved My Heap?</h2><div class="slide-content"><div class="paragraph lead"><p>Explore the Java heap for unpleasant surprises, and fix them with the right patterns, tools and runtime options.</p></div>
 <table class="tableblock frame-none grid-none cover-grid" style="width:100%"><colgroup><col style="width:50%"><col style="width:50%"></colgroup><tbody><tr><td class="tableblock halign-center valign-middle"><div><div class="imageblock qr"><img src="images/qrcode.png" alt="QR code: link to the content"></div>
@@ -480,6 +485,7 @@ ul.byline li + li {
 <div class="paragraph disclaimer"><p>Opinions are personal and do not represent the views or opinions of the speakers' employer.</p></div>
 <aside class="notes"><div class="paragraph"><p>⏱ 00:00, stay about 20 s. Opening: 00:00 to 02:00 (2 min).</p></div>
 <div class="paragraph"><p>The QR code opens the project on GitHub: the slides, the benchmarks and the reports.</p></div></aside>
+<div class="paragraph slide-no"><p>1</p></div>
 <div class="paragraph deck-nav"><p>‹ Previous &#160;|&#160; <a href="00_Index_03.html">⌂ Index</a> &#160;|&#160; <a href="00_Index_01.html">Next ›</a></p></div></div></section></div></div><script src="reveal.js/dist/reveal.js"></script><script>Array.prototype.slice.call(document.querySelectorAll('.slides section')).forEach(function(slide) {
   if (slide.getAttribute('data-background-color')) return;
   // user needs to explicitly say he wants CSS color to override otherwise we might break custom css or theme (#226)
@@ -508,7 +514,7 @@ Reveal.initialize({
   // Display a presentation progress bar
   progress: true,
   // Display the page number of the current slide
-  slideNumber: 'c/t',
+  slideNumber: false,
   // Control which views the slide number displays on
   showSlideNumber: 'all',
   // Add the current slide number to the URL hash so that reloading the
