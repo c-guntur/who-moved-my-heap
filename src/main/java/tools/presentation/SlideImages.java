@@ -459,18 +459,19 @@ public class SlideImages
 
     private static String escape()
     {
-        String b = text(40, 50, "After inlining, C2 asks: can anyone outside this method see the new object?", 24, INK, "bold")
-                + plain(40, 120, 300, 70, "new Object()", 22, INK, true)
-                + arrow(340, 155, 440, 115) + arrow(340, 155, 440, 245)
-                + box(450, 80, 300, 70, BLUE, "does not escape", 22)
-                + arrow(750, 115, 830, 115)
-                + box(840, 80, 520, 70, "white", "scalar replaced: fields in registers, 0 B", 22, BLUE, BLUE)
-                + box(450, 210, 300, 70, ORANGE, "escapes", 22, INK)
-                + arrow(750, 245, 830, 245)
-                + box(840, 210, 520, 70, "white", "allocated on the heap, collected by GC", 22, INK, ORANGE)
-                + text(40, 330, "Escapes = stored in a field, returned, or passed to code that was not inlined.  "
+        // compact layout (rows 80 apart, 50 high): the slide also carries a footnote and must keep its nav bar on screen
+        String b = text(40, 42, "After inlining, C2 asks: can anyone outside this method see the new object?", 24, INK, "bold")
+                + plain(40, 105, 300, 50, "new Object()", 22, INK, true)
+                + arrow(340, 130, 440, 90) + arrow(340, 130, 440, 170)
+                + box(450, 65, 300, 50, BLUE, "does not escape", 22)
+                + arrow(750, 90, 830, 90)
+                + box(840, 65, 520, 50, "white", "scalar replaced: fields in registers, 0 B", 22, BLUE, BLUE)
+                + box(450, 145, 300, 50, ORANGE, "escapes", 22, INK)
+                + arrow(750, 170, 830, 170)
+                + box(840, 145, 520, 50, "white", "allocated on the heap, collected by GC", 22, INK, ORANGE)
+                + text(40, 238, "Escapes = stored in a field, returned, or passed to code that was not inlined.  "
                         + "Turn it off: -XX:-DoEscapeAnalysis", 20, MUTED);
-        return svg(1400, 360, b, PAPER);
+        return svg(1400, 258, b, PAPER);
     }
 
     // Heap over time (an illustration, not data): a baseline the collections hold, a sawtooth of
