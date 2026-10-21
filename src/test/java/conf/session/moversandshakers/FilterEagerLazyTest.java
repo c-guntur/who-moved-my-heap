@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import conf.session.JolMemoryTestUtil;
 import org.eclipse.collections.api.factory.Sets;
 import org.eclipse.collections.api.factory.primitive.IntSets;
 import org.eclipse.collections.api.list.ImmutableList;
@@ -36,6 +37,7 @@ public class FilterEagerLazyTest
                         .collect(Collectors.toSet());
 
         assertEquals(EXPECTED, lessThanOrEqualTest);
+        JolMemoryTestUtil.assertGraphMemoryEquals(28_208L, 24_192L, lessThanOrEqualTest);
     }
 
     @Test
@@ -45,6 +47,7 @@ public class FilterEagerLazyTest
                 ecList.select(each -> each <= test, Sets.mutable.empty());
 
         assertEquals(EXPECTED, lessThanOrEqualTest);
+        JolMemoryTestUtil.assertGraphMemoryEquals(12_144L, 12_136L, lessThanOrEqualTest);
     }
 
     @Test
@@ -54,6 +57,7 @@ public class FilterEagerLazyTest
                 ecIntList.select(each -> each <= test, IntSets.mutable.empty());
 
         assertEquals(EXPECTED_INT, lessThanOrEqualTest);
+        JolMemoryTestUtil.assertGraphMemoryEquals(4_152L, 4_144L, lessThanOrEqualTest);
     }
 
     @Test
@@ -63,6 +67,7 @@ public class FilterEagerLazyTest
                 ecList.selectWith((each, compare) -> each <= compare, this.test, Sets.mutable.empty());
 
         assertEquals(EXPECTED, lessThanOrEqualTest);
+        JolMemoryTestUtil.assertGraphMemoryEquals(12_144L, 12_136L, lessThanOrEqualTest);
     }
 
     @Test
@@ -72,6 +77,7 @@ public class FilterEagerLazyTest
                 ecList.asLazy().select(each -> each <= test).toSet();
 
         assertEquals(EXPECTED, lessThanOrEqualTest);
+        JolMemoryTestUtil.assertGraphMemoryEquals(12_144L, 12_136L, lessThanOrEqualTest);
     }
 
     @Test
@@ -81,5 +87,6 @@ public class FilterEagerLazyTest
                 ecIntList.asLazy().select(each -> each <= test).toSet();
 
         assertEquals(EXPECTED_INT, lessThanOrEqualTest);
+        JolMemoryTestUtil.assertGraphMemoryEquals(4_152L, 4_144L, lessThanOrEqualTest);
     }
 }

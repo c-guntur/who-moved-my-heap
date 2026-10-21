@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import conf.session.JolMemoryTestUtil;
 import org.eclipse.collections.api.list.ImmutableList;
 import org.eclipse.collections.api.multimap.set.MutableSetMultimap;
 import org.eclipse.collections.impl.factory.Multimaps;
@@ -29,6 +30,7 @@ public class GroupByEagerLazyTest
                 .collect(Collectors.groupingBy(each -> each % test, Collectors.toSet()));
 
         assertEquals(100, grouped.size());
+        JolMemoryTestUtil.assertGraphMemoryEquals(66_720L, 57_104L, grouped);
     }
 
     @Test
@@ -38,6 +40,7 @@ public class GroupByEagerLazyTest
                 ecList.groupBy(each -> each % test, Multimaps.mutable.set.empty());
 
         assertEquals(100, grouped.sizeDistinct());
+        JolMemoryTestUtil.assertGraphMemoryEquals(34_328, 32_264L, grouped);
     }
 
     @Test
@@ -47,5 +50,6 @@ public class GroupByEagerLazyTest
                 ecList.asLazy().groupBy(each -> each % test, Multimaps.mutable.set.empty());
 
         assertEquals(100, grouped.sizeDistinct());
+        JolMemoryTestUtil.assertGraphMemoryEquals(34_328, 32_264L, grouped);
     }
 }
