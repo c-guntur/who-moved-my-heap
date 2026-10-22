@@ -19,7 +19,7 @@ Top of `jmap -histo` against the SonarQube for IDE plugin process.
 [source,text,subs="+quotes",role=jmap]
 ----
 $ jmap -histo 3256 | grep "ReferencePipeline\|Lambda\|Collector\|MatchOp\|FindOp\|ReduceOp" | head -n 17
-  12:        174991        9799496  java.util.stream.ReferencePipeline$Head (java.base@25.0.4)
+**  12:        174991        9799496  java.util.stream.ReferencePipeline$Head (java.base@25.0.4)
   29:        150249        3605976  org.sonar.java.model.JSema$$Lambda/0x0000007e02e649b0
   34:         55799        3124744  java.util.stream.ReferencePipeline$3 (java.base@25.0.4)
   39:         44798        2508688  java.util.stream.ReferencePipeline$2 (java.base@25.0.4)
@@ -35,7 +35,7 @@ $ jmap -histo 3256 | grep "ReferencePipeline\|Lambda\|Collector\|MatchOp\|FindOp
   84:         29993         959776  java.util.stream.ReduceOps$3ReducingSink (java.base@25.0.4)
   99:         13687         766472  java.util.stream.ReferencePipeline$7 (java.base@25.0.4)
  102:         44153         706448  java.util.regex.Pattern$$Lambda/0x800000042 (java.base@25.0.4)
- 154:         15432         370368  java.util.regex.Pattern$$Lambda/0x800000047 (java.base@25.0.4)
+ 154:         15432         370368  java.util.regex.Pattern$$Lambda/0x800000047 (java.base@25.0.4) **
 ----
 
 [.notes]

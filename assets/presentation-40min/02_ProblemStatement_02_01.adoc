@@ -21,19 +21,19 @@ Top of `jmap -histo` against a running IntelliJ IDEA.
 $ jmap -histo:live 3235 | head -n 17
  num     #instances         #bytes  class name (module)
 -------------------------------------------------------
-   1:       3047126      214370048  [B (java.base@25.0.4)
-   2:       2953580       70885920  java.lang.String (java.base@25.0.4)
+**   1:       3047126      214370048  [B (java.base@25.0.4) **
+**   2:       2953580       70885920  java.lang.String (java.base@25.0.4) **
    3:        239547       67348200  [I (java.base@25.0.4)
    4:        548566       44839048  [Ljava.lang.Object; (java.base@25.0.4)
    5:        176462       41384928  [J (java.base@25.0.4)
-   6:        901804       28857728  java.util.HashMap$Node (java.base@25.0.4)
+**   6:        901804       28857728  java.util.HashMap$Node (java.base@25.0.4) **
    7:         25466       20614184  [F (java.base@25.0.4)
    8:          6422       12487128  [C (java.base@25.0.4)
    9:         97291       12185312  java.lang.Class (java.base@25.0.4)
   10:         26398       11857104  [Ljdk.internal.vm.FillerElement; (java.base@25.0.4)
-  11:         73634       11262664  [Ljava.util.HashMap$Node; (java.base@25.0.4)
+**  11:         73634       11262664  [Ljava.util.HashMap$Node; (java.base@25.0.4) **
   12:        457776       10986624  java.util.ArrayList (java.base@25.0.4)
-  13:        328491       10511712  java.util.concurrent.ConcurrentHashMap$Node (java.base@25.0.4)
+**  13:        328491       10511712  java.util.concurrent.ConcurrentHashMap$Node (java.base@25.0.4) **
   14:        366274        8790576  com.intellij.util.keyFMap.OneElementFMap
   15:        259627        8308064  com.intellij.openapi.editor.impl.IntervalTreeImpl$WeakReferencedGetter
 ----
