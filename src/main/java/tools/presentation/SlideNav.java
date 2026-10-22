@@ -1,6 +1,7 @@
 package tools.presentation;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,8 +18,10 @@ import java.util.regex.Pattern;
  * For every series this program:
  *   * rewrites the navigation block at the end of each slide file (everything after NAV_MARKER):
  *     Previous / Index / Next across all decks of the series, in file-name order, plus the slide number;
- *   * rewrites the deck file <series>_<deck>.adoc, which includes the deck's slides in order
+ *   * writes the deck file <series>_<deck>.adoc, which includes the deck's slides in order
  *     (used for the reveal.js and PDF builds; the :deck: attribute hides the per-slide header and links).
+ * The slide sources are only read: with a third argument (target/slides/src in the build) the folder is copied there
+ * first and everything is written into the copy, so nothing in assets/presentation-40min is ever changed or deleted.
  * The index is <series>_00_02.adoc (the agenda), or the first slide when there is no 00_02. When one of the opening
  * pages has the attribute line :talk-index: (an index of the whole talk, e.g. 00_Index_03.adoc), every Index link
  * points to that page instead, the opening pages' links included.
@@ -34,7 +37,7 @@ import java.util.regex.Pattern;
  * first series, and the first slide of the first series links back to the last opening page.
  *
  * No dependencies, so it runs straight from source.
- * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideNav.java . [slide folder]
+ * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideNav.java . [slide folder] [work copy folder]
  * The slide folder is relative to the project root (or absolute); without it, assets/presentation-40min.
  * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/presentation-40min).
  * Run it after adding, removing or renumbering slide files.
@@ -51,11 +54,18 @@ public class SlideNav
     private static final String COVER = "index.adoc";
     private static final Pattern OPENING = Pattern.compile("^(index|00_Index_\\d\\d)\\.adoc$");
     private static final Pattern DESCRIPTION = Pattern.compile("^:description: (.*)$", Pattern.MULTILINE);
+    // A slide with this attribute line is hidden: no navigation links, no number, not in the deck files (and so not in the PDF)
+    static final Pattern HIDDEN = Pattern.compile("^:slide-hidden:\\s*$", Pattern.MULTILINE);
     private static final Pattern TALK_INDEX = Pattern.compile("^:talk-index:\\s*$", Pattern.MULTILINE);
 
     public static void main(String[] args) throws IOException
     {
-        Path folder = slidesFolder(args);
+        // The slide sources are only read. Everything this program writes (navigation, numbers, deck files) goes into a
+        // work copy of the folder (third argument, target/slides/src in the build; without it the sources themselves)
+        Path sources = slidesFolder(args);
+        Path folder = args.length > 2 ? workCopy(sources, Path.of(args[2]).toAbsolutePath().normalize()) : sources;
+        Path decksFolder = folder;
+        String slidesFromDecks = "";
         List<String> names = new ArrayList<>();
         List<String> opening = new ArrayList<>();
         try (var files = Files.list(folder))
@@ -63,11 +73,17 @@ public class SlideNav
             files.forEach(file ->
             {
                 String name = file.getFileName().toString();
-                if (SLIDE.matcher(name).matches())
+                // Only slide and opening files are read (the folder can hold others, e.g. .DS_Store)
+                boolean slide = SLIDE.matcher(name).matches();
+                if (!(slide || OPENING.matcher(name).matches()) || !Files.isRegularFile(file) || isHidden(file))
+                {
+                    return;
+                }
+                if (slide)
                 {
                     names.add(name);
                 }
-                else if (OPENING.matcher(name).matches())
+                else
                 {
                     opening.add(name);
                 }
@@ -123,8 +139,8 @@ public class SlideNav
                 List<String> slides = matching(ordered, "deck", deck);
                 String first = Files.readString(folder.resolve(slides.getFirst()), StandardCharsets.UTF_8);
                 Matcher description = DESCRIPTION.matcher(first);
-                String content = deckFile(series, deck, slides, description.find() ? description.group(1) : "");
-                writeIfChanged(folder.resolve(series + "_" + deck + ".adoc"), content);
+                String content = deckFile(series, deck, slides, description.find() ? description.group(1) : "", slidesFromDecks);
+                writeIfChanged(decksFolder.resolve(series + "_" + deck + ".adoc"), content);
             }
             System.out.println(series + ": " + decks.size() + " decks, " + ordered.size() + " slides, index " + index
                     + ", numbers " + (talkOrder.indexOf(ordered.getFirst()) + 1) + " to " + (talkOrder.indexOf(ordered.getLast()) + 1));
@@ -142,6 +158,53 @@ public class SlideNav
             }
             System.out.println("opening: " + opening + ", next " + names.getFirst()
                     + (talkIndex != null ? ", talk index " + talkIndex : ""));
+        }
+    }
+
+    // A fresh copy of the slide folder (files and the demo folder), so the sources stay untouched
+    private static Path workCopy(Path sources, Path work) throws IOException
+    {
+        if (work.startsWith(sources) || sources.startsWith(work))
+        {
+            throw new IllegalArgumentException("The work folder " + work + " must be apart from the slide sources " + sources);
+        }
+        if (Files.exists(work))
+        {
+            try (var walk = Files.walk(work))
+            {
+                for (Path path : walk.sorted(java.util.Comparator.reverseOrder()).toList())
+                {
+                    Files.delete(path);
+                }
+            }
+        }
+        try (var walk = Files.walk(sources))
+        {
+            for (Path path : walk.toList())
+            {
+                Path target = work.resolve(sources.relativize(path).toString());
+                if (Files.isDirectory(path))
+                {
+                    Files.createDirectories(target);
+                }
+                else
+                {
+                    Files.copy(path, target);
+                }
+            }
+        }
+        return work;
+    }
+
+    static boolean isHidden(Path file)
+    {
+        try
+        {
+            return HIDDEN.matcher(Files.readString(file, StandardCharsets.UTF_8)).find();
+        }
+        catch (IOException e)
+        {
+            throw new UncheckedIOException(e);
         }
     }
 
@@ -225,7 +288,7 @@ public class SlideNav
                 + "endif::[]\n";
     }
 
-    private static String deckFile(String series, String deck, List<String> slides, String description)
+    private static String deckFile(String series, String deck, List<String> slides, String description, String prefix)
     {
         List<String> lines = new ArrayList<>(List.of(
                 "// Deck " + deck + " of " + series + ": assembled from its slide files by src/main/java/tools/presentation/SlideNav.java.",
@@ -236,11 +299,11 @@ public class SlideNav
         {
             lines.add(":description: " + description);
         }
-        lines.add("include::_deck-settings.adoc[]");
+        lines.add("include::" + prefix + "_deck-settings.adoc[]");
         lines.add("");
         for (String slide : slides)
         {
-            lines.add("include::" + slide + "[]\n");
+            lines.add("include::" + prefix + slide + "[]\n");
         }
         return String.join("\n", lines);
     }

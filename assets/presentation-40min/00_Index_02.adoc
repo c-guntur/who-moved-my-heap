@@ -1,4 +1,5 @@
 // Opening page 3: the mind map as the map of the talk.
+:slide-hidden:
 ifndef::deck[]
 :deck-number: 00
 :description: Who moved my heap in 40 minutes: the map of the talk

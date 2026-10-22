@@ -434,221 +434,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
-<style>
-pre.rouge table td { padding: 5px; }
-pre.rouge table pre { margin: 0; }
-pre.rouge .cm {
-  color: #999988;
-  font-style: italic;
-}
-pre.rouge .cp {
-  color: #999999;
-  font-weight: bold;
-}
-pre.rouge .c1 {
-  color: #999988;
-  font-style: italic;
-}
-pre.rouge .cs {
-  color: #999999;
-  font-weight: bold;
-  font-style: italic;
-}
-pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
-  color: #999988;
-  font-style: italic;
-}
-pre.rouge .err {
-  color: #a61717;
-  background-color: #e3d2d2;
-}
-pre.rouge .gd {
-  color: #000000;
-  background-color: #ffdddd;
-}
-pre.rouge .ge {
-  color: #000000;
-  font-style: italic;
-}
-pre.rouge .gr {
-  color: #aa0000;
-}
-pre.rouge .gh {
-  color: #999999;
-}
-pre.rouge .gi {
-  color: #000000;
-  background-color: #ddffdd;
-}
-pre.rouge .go {
-  color: #888888;
-}
-pre.rouge .gp {
-  color: #555555;
-}
-pre.rouge .gs {
-  font-weight: bold;
-}
-pre.rouge .gu {
-  color: #aaaaaa;
-}
-pre.rouge .gt {
-  color: #aa0000;
-}
-pre.rouge .kc {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .kd {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .kn {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .kp {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .kr {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .kt {
-  color: #445588;
-  font-weight: bold;
-}
-pre.rouge .k, pre.rouge .kv {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .mf {
-  color: #009999;
-}
-pre.rouge .mh {
-  color: #009999;
-}
-pre.rouge .il {
-  color: #009999;
-}
-pre.rouge .mi {
-  color: #009999;
-}
-pre.rouge .mo {
-  color: #009999;
-}
-pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
-  color: #009999;
-}
-pre.rouge .sa {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .sb {
-  color: #d14;
-}
-pre.rouge .sc {
-  color: #d14;
-}
-pre.rouge .sd {
-  color: #d14;
-}
-pre.rouge .s2 {
-  color: #d14;
-}
-pre.rouge .se {
-  color: #d14;
-}
-pre.rouge .sh {
-  color: #d14;
-}
-pre.rouge .si {
-  color: #d14;
-}
-pre.rouge .sx {
-  color: #d14;
-}
-pre.rouge .sr {
-  color: #009926;
-}
-pre.rouge .s1 {
-  color: #d14;
-}
-pre.rouge .ss {
-  color: #990073;
-}
-pre.rouge .s, pre.rouge .dl {
-  color: #d14;
-}
-pre.rouge .na {
-  color: #008080;
-}
-pre.rouge .bp {
-  color: #999999;
-}
-pre.rouge .nb {
-  color: #0086B3;
-}
-pre.rouge .nc {
-  color: #445588;
-  font-weight: bold;
-}
-pre.rouge .no {
-  color: #008080;
-}
-pre.rouge .nd {
-  color: #3c5d5d;
-  font-weight: bold;
-}
-pre.rouge .ni {
-  color: #800080;
-}
-pre.rouge .ne {
-  color: #990000;
-  font-weight: bold;
-}
-pre.rouge .nf, pre.rouge .fm {
-  color: #990000;
-  font-weight: bold;
-}
-pre.rouge .nl {
-  color: #990000;
-  font-weight: bold;
-}
-pre.rouge .nn {
-  color: #555555;
-}
-pre.rouge .nt {
-  color: #000080;
-}
-pre.rouge .vc {
-  color: #008080;
-}
-pre.rouge .vg {
-  color: #008080;
-}
-pre.rouge .vi {
-  color: #008080;
-}
-pre.rouge .nv, pre.rouge .vm {
-  color: #008080;
-}
-pre.rouge .ow {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .o {
-  color: #000000;
-  font-weight: bold;
-}
-pre.rouge .w {
-  color: #bbbbbb;
-}
-pre.rouge {
-  background-color: #f8f8f8;
-}
-</style>
 <!--
   Slide format for the HTML preview (asciidoctor html5 backend, IntelliJ AsciiDoc preview).
   Every "==" section is one 16:9 slide sized to the window: no slide ever needs scrolling,
@@ -803,28 +588,54 @@ pre.rouge {
 <div class="paragraph track">
 <p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="rouge highlight"><code data-lang="java"><span class="nd">@Benchmark</span>
-<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">jdkAnyMatch</span><span class="o">()</span>
-<span class="o">{</span>
-    <span class="k">return</span> <span class="n">jdkList</span><span class="o">.</span><span class="na">stream</span><span class="o">().</span><span class="na">anyMatch</span><span class="o">(</span><span class="nc">Integer</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">test</span><span class="o">)::</span><span class="n">equals</span><span class="o">);</span>
-<span class="o">}</span>
-
-<span class="nd">@Benchmark</span>
-<span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">ecAnySatisfyWith</span><span class="o">()</span>
-<span class="o">{</span>
-    <span class="k">return</span> <span class="nc">Iterate</span><span class="o">.</span><span class="na">anySatisfyWith</span><span class="o">(</span><span class="n">jdkList</span><span class="o">,</span> <span class="nl">Integer:</span><span class="o">:</span><span class="n">equals</span><span class="o">,</span> <span class="k">this</span><span class="o">.</span><span class="na">test</span><span class="o">);</span>
-<span class="o">}</span></code></pre>
-</div>
-</div>
+<table class="tableblock frame-none grid-rows stretch">
+<colgroup>
+<col style="width: 35.7142%;">
+<col style="width: 64.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">anyMatch version</th>
+<th class="tableblock halign-left valign-top"><code>return</code> expression</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JDK list.stream().anyMatch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>jdkList.stream().anyMatch(Integer.valueOf(this.test)::equals)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EC Iterate.anySatisfy (JDK list)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iterate.anySatisfy(jdkList, Integer.valueOf(this.test)::equals)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EC Iterate.anySatisfyWith (JDK list)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Iterate.anySatisfyWith(jdkList, Integer::equals, this.test)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EC ImmutableList.anySatisfy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ecList.anySatisfy(Integer.valueOf(this.test)::equals)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EC ImmutableList.anySatisfyWith</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ecList.anySatisfyWith(Integer::equals, this.test)</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">EC ImmutableList.asLazy().anySatisfy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ecList.asLazy().anySatisfy(Integer.valueOf(this.test)::equals)</code></p></td>
+</tr>
+</tbody>
+</table>
 <div class="ulist">
 <ul>
 <li>
-<p><code>-prof gc</code> reports <code>gc.alloc.rate.norm</code>: bytes allocated per call.</p>
+<p>Source: two JMH classes in the <code>test</code> directory.</p>
 </li>
 <li>
-<p><code>-prof prof.HistoProfiler</code> counts the objects per call.</p>
+<p>Rows 1 to 3: <code>AnyMatchUtilityBenchmark</code>.</p>
+</li>
+<li>
+<p>Rows 1 and 4 to 6: <code>AnyMatchEagerLazyBenchmark</code>.</p>
 </li>
 </ul>
 </div>
@@ -840,7 +651,7 @@ compact headers on, off, and with escape analysis off. A full run takes hours: n
 </div>
 </div>
 <div class="paragraph slide-no">
-<p>43</p>
+<p>38</p>
 </div>
 <div class="paragraph deck-nav">
 <p><a href="04_Solutions_01_04.html">‹ Previous</a> &#160;|&#160; <a href="00_Index_03.html">⌂ Index</a> &#160;|&#160; <a href="04_Solutions_01_06.html">Next ›</a></p>

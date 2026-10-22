@@ -1,6 +1,6 @@
 import org.openjdk.jol.info.ClassLayout;
 
-// Demo 2: the layout of one HashMap entry. Run it twice, compact object headers off and on.
+// Demo: the layout of one HashMap entry. Run it twice, compact object headers off and on.
 public class NodeLayout
 {
     public static void main(String[] args) throws Exception

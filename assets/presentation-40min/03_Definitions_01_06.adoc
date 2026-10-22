@@ -1,5 +1,6 @@
 // Seven terms: slide 6 of 8. The deck file 03_Definitions_01.adoc includes it.
 // 40-minute track: starts at 20:50, about 60 s; copied from assets/presentation/03_Definitions_05_06.adoc
+:slide-hidden:
 ifndef::deck[]
 :deck-number: 01
 :description: Who moved my heap in 40 minutes, definitions 01: Seven terms

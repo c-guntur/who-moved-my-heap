@@ -806,7 +806,7 @@ list before reporting (S8, M6).
 - **D1.4** References link to Oracle pages only (for example the Java SE documentation on
   docs.oracle.com); no Eclipse Collections or other links.
 - **D1.5** No JavaScript anywhere in the decks. Code colouring is done by rouge at build time.
-- **D1.6** The deck files `<series>_<deck>.adoc` are generated include-assemblers; do not edit them by hand.
+- **D1.6** The deck files `<series>_<deck>.adoc` are generated include-assemblers, written by `SlideNav.java` into the work copy `target/slides/src` (never into the slide folder); do not edit them by hand.
 - **D1.7** Every slide has a guarded header (`ifndef::deck[]`) and a navigation block after a marker
   comment; `SlideNav.java` rewrites both (D2.3).
 - **D1.8** `index.adoc` is the cover of the whole talk (title, Duke image, QR code and link to the
@@ -826,6 +826,14 @@ list before reporting (S8, M6).
   generated block, so it shows in the plain HTML, the reveal.js slides and the PDF, and it is recomputed on
   every build (renaming or moving slides renumbers them). reveal.js's own per-deck number is off
   (`:revealjs_slideNumber: false` in `_deck-settings.adoc`).
+  A slide with the attribute line `:slide-hidden:` (above `ifndef::deck[]`) is hidden: `SlideNav.java` skips
+  it (no links to it, no number, not in the deck files or the PDF) and `SlidePublish.java` does not publish
+  its page; Previous/Next of its neighbours skip over it. Delete the line to show the slide again.
+  The slide sources folder (`assets/presentation-40min`) is never deleted or changed by any build step: `SlideNav.java`
+  only reads it, copies it to `target/slides/src` and writes the navigation, slide numbers and deck files into that
+  copy, which is what gets converted; the profile only cleans `target/slides` and empties the output folder
+  (`assets/presentation`), and `SlidePublish.java` refuses an output folder that is, or contains, the slide sources.
+  The navigation blocks inside the source files are therefore no longer updated (the published pages get the current ones).
 - **D1.9** `07_Appendix` collects reference links at the end of the talk: `07_Appendix_00_00.adoc` (title,
   `banner-appendix-00.svg`) and one references slide per series, several sections on one slide as a
   table (Section | Reference, at most 7 rows, D1.2). `07_Appendix_00_01.adoc` holds the `01_Intro`

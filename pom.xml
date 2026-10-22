@@ -275,7 +275,7 @@
           plain/; SlidesToPdf.java prints the reveal.js decks and joins them into the PDF.
           The PDF uses Google Chrome if installed (or the CHROME environment variable); otherwise Playwright
           downloads its own Chromium once.
-          Java runs SlideNav.java (links and deck files) and SlideImages.java (title and diagram images) first.
+          Java runs SlideNav.java (copies the sources to target/slides/src and writes links, numbers and deck files there; the sources are never changed) and SlideImages.java (title and diagram images) first.
           Diagram blocks ([plantuml], [mermaid], ...; e.g. the QR code on index.adoc) are drawn by a Kroki
           server through asciidoctorj-diagram, so the build needs network access to it. Default https://kroki.io;
           a local one (docker run -p 8000:8000 yuzutech/kroki) with -Dkroki.url=http://localhost:8000
@@ -336,6 +336,7 @@
                                         <argument>${slides.tools}/SlideNav.java</argument>
                                         <argument>${project.basedir}</argument>
                                         <argument>${slides.src}</argument>
+                                        <argument>${slides.work}/src</argument>
                                     </arguments>
                                 </configuration>
                             </execution>
@@ -367,6 +368,8 @@
                                         <argument>${slides.tools}/SlidePublish.java</argument>
                                         <argument>${slides.work}/plain</argument>
                                         <argument>${slides.out}</argument>
+                                        <argument>${slides.work}/src</argument>
+                                        <argument>${slides.src}</argument>
                                     </arguments>
                                 </configuration>
                             </execution>
@@ -474,7 +477,7 @@
                             </dependency>
                         </dependencies>
                         <configuration>
-                            <sourceDirectory>${slides.src}</sourceDirectory>
+                            <sourceDirectory>${slides.work}/src</sourceDirectory>
                             <requires>
                                 <require>asciidoctor-diagram</require>
                             </requires>
