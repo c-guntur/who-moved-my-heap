@@ -594,10 +594,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Integer cache: <code>Integer.valueOf</code> reuses -128 to 127; <code>-XX:AutoBoxCacheMax=&lt;n&gt;</code> raises the upper bound.</p>
+<p>Integer cache: <code>Integer.valueOf</code> reuses -128 to 127. <code>-XX:AutoBoxCacheMax=&lt;n&gt;</code> raises the upper bound.</p>
 </li>
 <li>
-<p>String interning: <code>String.intern()</code>; <code>-XX:+UseStringDeduplication</code> shares the <code>byte[]</code> of equal Strings.</p>
+<p>String interning: <code>String.intern()</code>. <code>-XX:+UseStringDeduplication</code> shares the <code>byte[]</code> of equal Strings.</p>
 </li>
 <li>
 <p>Object interning: keep your own pool of immutable values, strong or weak.</p>
