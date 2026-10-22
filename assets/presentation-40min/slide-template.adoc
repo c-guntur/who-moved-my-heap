@@ -10,7 +10,7 @@ Files
   and the deck file <series>_<deck>.adoc, which includes the slides for the reveal.js and PDF builds.
   Never edit below the marker or the deck files by hand.
 * A new deck also needs a title image: add its number, title and subtitle to SECTIONS (or its series' own array, e.g. PROBLEM_SECTIONS) in
-  src/main/java/tools/presentation/SlideImages.java (the build draws images/banner-<deck>.svg).
+  src/main/java/tools/presentation/SlideImages.java (the build draws the banners into assets/images/).
 
 What fits on one slide (one heading "==", nothing may need scrolling); pick one main element:
   - text:    a [.lead] sentence + up to 4 one-line bullets (about 12 words each)
@@ -24,23 +24,22 @@ What fits on one slide (one heading "==", nothing may need scrolling); pick one 
   - references (last slide of a deck): [.refs,background-color="#EAF2F8"] == References, Oracle links only;
              01_Intro keeps its references in the appendix instead: 07_Appendix_00_01.adoc, a Section | Reference table
   - diagram block: [plantuml] / [mermaid] / ... drawn by Kroki at build time (pom.xml, -Dkroki.url=...);
-             a QR code is <qrcode:URL{scale=6}> inside a PlantUML legend (00_Index.adoc uses images/qrcode.png,
+             a QR code is <qrcode:URL{scale=6}> inside a PlantUML legend (index.adoc uses assets/images/qrcode.png,
              and that PlantUML QR code from kroki.io only on GitHub)
 If it does not fit, split it into two slides or shorten the sentences.
 Project numbers and extra detail go in [.notes] (speaker notes; hidden on the plain pages).
 
-The cover of the whole talk is 00_Index.adoc (role "cover"), followed by opening pages 00_Index_01.adoc, ...
+The cover of the whole talk is index.adoc (role "cover"), followed by opening pages 00_Index_01.adoc, ...
 (00_Index_01 is the audience question, role "question" with one [.ask] line); they are not part of a series.
 
 Presenting
-* mvn -Pslides process-resources builds build/plain/<slide>.html (one page per slide, no JavaScript,
-  click Next / Previous / Index), build/slides/<deck>.html (reveal.js) and build/pdf/<deck>.pdf
-  (mvn -Pslides generate-resources skips the PDFs).
+* mvn -Pslides process-resources empties assets/presentation and writes there <slide>.html (one page per slide,
+  no JavaScript, click Next / Previous / Index) and Who-Moved-My-Heap.pdf (the whole talk).
 * The IntelliJ preview shows the content only; the slide look needs the build.
 
 40-minute deck (this folder, assets/presentation-40min)
-* A parallel copy of the talk cut to 40 minutes; assets/presentation is unchanged. Slides copied from there say so
-  in their second comment line ("copied from assets/presentation/...").
+* The talk cut to 40 minutes from the original long deck (now archived). Slides copied from it say so
+  in their second comment line ("copied from assets/presentation/...", the long deck's old folder).
 * Series follow the mind map (assets/images/Who Moved My Heap.png): 01_Intro, 02_ProblemStatement, 03_Definitions,
   04_Solutions, 05_AISkills, 06_WrapUp, then 07_Appendix with everything that did not fit.
 * Every slide has a section role, which sets its accent colour from the mind map:
@@ -51,9 +50,9 @@ Presenting
 * Demo slides add role "demo" and background-color="#1B2A41": dark slide, DEMO badge before the title.
 * Timing: the [.notes] of every timed slide start with "⏱ mm:ss, stay about N s", and its second comment line
   repeats the start time. The appendix slide 07_Appendix_00_03 has the section-by-section plan.
-* Banners are images/banner-40-NN.svg, drawn by SlideImages.java from _banners.txt (edit that file, not the SVGs).
-* Build from the project root: mvn -Pslides process-resources -Dslides.dir=assets/presentation-40min
-  (HTML only: generate-resources). Output in assets/presentation-40min/build/{plain,slides,pdf}.
+* Banners are assets/images/<series>.svg (e.g. 01_Intro.svg; shown as image::01_Intro.svg[...]), drawn by SlideImages.java from _banners.txt (edit that file, not the SVGs).
+* Build from the project root: mvn -Pslides process-resources (this folder is the default slide source).
+  Output in assets/presentation (published pages and PDF); work files in target/slides.
 ////
 // <Deck title>: slide <n>. The deck file <series>_<deck>.adoc includes it.
 ifndef::deck[]

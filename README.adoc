@@ -104,7 +104,7 @@ java src/main/java/tools/Pipeline.java <stage> [RUN_TS] [shakers|movers] [--dry-
 
 |`run` |builds the benchmark jar and runs the shakers benchmarks, the object counts and the movers JOL tests, writing raw output for a new run
 |`reports` |writes the reports, charts and summaries from raw output already on disk (newest run when no `RUN_TS` is given)
-|`slides` |builds the slide HTML and PDFs (`mvn -Pslides process-resources`); `--slides-dir=assets/presentation-40min` builds the 40-minute cut instead
+|`slides` |builds the slide HTML pages and the talk PDF from `assets/presentation-40min` into `assets/presentation` (`mvn -Pslides process-resources`); `--slides-dir=<folder>` takes the sources from another folder
 |`all` |`run`, then `reports`, then `slides`
 |===
 
@@ -115,7 +115,6 @@ java src/main/java/tools/Pipeline.java run shakers                    # only the
 java src/main/java/tools/Pipeline.java run 20261015-0406 movers       # add movers to an existing run
 java src/main/java/tools/Pipeline.java reports 20261017-1708          # reports from raw files on disk
 java src/main/java/tools/Pipeline.java slides                         # slides only
-java src/main/java/tools/Pipeline.java slides --slides-dir=assets/presentation-40min   # the 40-minute deck
 java src/main/java/tools/Pipeline.java all --dry-run                  # print every command, run nothing
 java src/main/java/tools/Pipeline.java all 20261017-1708 --resume     # continue an interrupted run
 ----

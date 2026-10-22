@@ -23,7 +23,7 @@ jmap -dump:live,format=b,file=heap.hprof <pid>   # full heap dump for an analyze
 ----
 
 * A histogram is cheap and small; a dump holds every object and field value.
-* `:live` hides garbage, which is exactly what allocation tuning needs to see.
+* `:live` forces a Full GC, so insights into existing garbage are lost.
 
 [.notes]
 --

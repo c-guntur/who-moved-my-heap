@@ -1,8 +1,8 @@
-# Title-slide banners of this deck, drawn by src/main/java/tools/presentation/SlideImages.java into images/.
+# Title-slide banners of this deck, drawn by src/main/java/tools/presentation/SlideImages.java into assets/images/.
 # file | kicker | number | title | subtitle | accent | track (label=colour, * marks the current section)
-banner-40-01.svg | WHO MOVED MY HEAP  ·  01 INTRO | 01 | Intro | A few JDK tools and a library for looking at the heap | #F26B6B | *Intro=#F26B6B, Problem=#F59A5C, Definitions=#8FD3B0, Solutions=#7FDDD3, AI skills=#6CC6F2, Wrap-up=#E69F00
-banner-40-02.svg | WHO MOVED MY HEAP  ·  02 PROBLEM STATEMENT | 02 | Problem statement | What JDK collections and streams leave on the heap | #F59A5C | Intro=#F26B6B, *Problem=#F59A5C, Definitions=#8FD3B0, Solutions=#7FDDD3, AI skills=#6CC6F2, Wrap-up=#E69F00
-banner-40-03.svg | WHO MOVED MY HEAP  ·  03 DEFINITIONS | 03 | Definitions | The vocabulary behind who moved my heap | #8FD3B0 | Intro=#F26B6B, Problem=#F59A5C, *Definitions=#8FD3B0, Solutions=#7FDDD3, AI skills=#6CC6F2, Wrap-up=#E69F00
-banner-40-04.svg | WHO MOVED MY HEAP  ·  04 SOLUTIONS | 04 | Solutions | Tools, runtime options and code that move less heap | #7FDDD3 | Intro=#F26B6B, Problem=#F59A5C, Definitions=#8FD3B0, *Solutions=#7FDDD3, AI skills=#6CC6F2, Wrap-up=#E69F00
-banner-40-05.svg | WHO MOVED MY HEAP  ·  05 AI SKILLS | 05 | AI skills | Let an assistant read the heap with you | #6CC6F2 | Intro=#F26B6B, Problem=#F59A5C, Definitions=#8FD3B0, Solutions=#7FDDD3, *AI skills=#6CC6F2, Wrap-up=#E69F00
-banner-40-07.svg | WHO MOVED MY HEAP  ·  07 APPENDIX | 07 | Appendix | Everything that did not fit in 40 minutes | #A9B4C0 | 
+01_Intro.svg | WHO MOVED MY HEAP  ·  01 INTRO | 01 | Intro | A few JDK tools and a library for looking at the heap | #F26B6B | *Intro=#F26B6B, Problem=#F59A5C, Definitions=#8FD3B0, Solutions=#7FDDD3, AI skills=#6CC6F2, Wrap-up=#E69F00
+02_ProblemStatement.svg | WHO MOVED MY HEAP  ·  02 PROBLEM STATEMENT | 02 | Problem statement | What JDK collections and streams leave on the heap | #F59A5C | Intro=#F26B6B, *Problem=#F59A5C, Definitions=#8FD3B0, Solutions=#7FDDD3, AI skills=#6CC6F2, Wrap-up=#E69F00
+03_Definitions.svg | WHO MOVED MY HEAP  ·  03 DEFINITIONS | 03 | Definitions | The vocabulary behind who moved my heap | #8FD3B0 | Intro=#F26B6B, Problem=#F59A5C, *Definitions=#8FD3B0, Solutions=#7FDDD3, AI skills=#6CC6F2, Wrap-up=#E69F00
+04_Solutions.svg | WHO MOVED MY HEAP  ·  04 SOLUTIONS | 04 | Solutions | Tools, runtime options and code that move less heap | #7FDDD3 | Intro=#F26B6B, Problem=#F59A5C, Definitions=#8FD3B0, *Solutions=#7FDDD3, AI skills=#6CC6F2, Wrap-up=#E69F00
+05_AISkills.svg | WHO MOVED MY HEAP  ·  05 AI SKILLS | 05 | AI skills | Let an assistant read the heap with you | #6CC6F2 | Intro=#F26B6B, Problem=#F59A5C, Definitions=#8FD3B0, Solutions=#7FDDD3, *AI skills=#6CC6F2, Wrap-up=#E69F00
+07_Appendix.svg | WHO MOVED MY HEAP  ·  07 APPENDIX | 07 | Appendix | Everything that did not fit in 40 minutes | #A9B4C0 | 

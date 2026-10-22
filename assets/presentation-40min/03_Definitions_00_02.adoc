@@ -18,13 +18,13 @@ The words the solutions need, one slide each.
 [cols="^1,5,8",options="header",frame=none,grid=rows]
 |===
 | # | Term | In one line
-| 01 | "Dollar" classes | Anonymous classes and their `Outer$1` names
-| 02 | Object pooling | Reusing objects; the `Integer` cache
-| 03 | Compressed OOPs | 4-byte references on a 64-bit JVM
-| 04 | Compact object headers | One 8-byte header word (JDK 25)
+| 01 | Compressed OOPs | 4-byte references on a 64-bit JVM
+| 02 | Compact Object Headers | One 8-byte header word (JDK 25+)
+| 03 | "Dollar" classes | Anonymous classes and their `Outer$1` names
+| 04 | Escape analysis | When the JIT removes _unescaped_ allocations
 | 05 | Stream API | Lazy intermediate, eager terminal operations
 | 06 | Lambdas | Capturing vs fat-free
-| 07 | Escape analysis | When the JIT removes an allocation
+| 07 | Immutable Data Object pooling | De-duplicating Objects
 |===
 
 [.notes]

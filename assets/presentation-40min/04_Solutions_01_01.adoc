@@ -18,12 +18,12 @@ Two class histograms around a workload show what it allocated.
 [source,shell]
 ----
 jps -l                                                  # find <pid>
-jcmd <pid> GC.class_histogram -all > before.txt
+jmap -histo <pid> | grep "Lambda\|ReferencePipeline\|CollectorImpl\|HashMap\|HashSet\|ArrayList\|Integer\|Long\|Double\|Float\|Pair\|String\|\[B" | head -n 27 > before.txt
 # ... run the workload ...
-jcmd <pid> GC.class_histogram -all > after.txt
+jmap -histo <pid> | grep "Lambda\|ReferencePipeline\|CollectorImpl\|HashMap\|HashSet\|ArrayList\|Integer\|Long\|Double\|Float\|Pair\|String\|\[B" | head -n 27 > after.txt
 ----
 
-* `-all` also counts unreachable objects, so garbage shows up, and no full GC runs first.
+* Focus on the big ticket memory occupiers.
 * Subtract per class: that is how `prof.HistoProfiler` counts objects per call.
 
 [.notes]

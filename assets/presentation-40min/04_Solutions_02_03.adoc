@@ -24,6 +24,9 @@ Iterate.anySatisfyWith(list, Integer::equals, test);
 * Escape analysis off: 32 B capturing, 16 B fat-free (only the `Integer` box).
 * Move captured values into parameters: the `*With` methods.
 
+[.footnote-line]
+Not all `anySatisfyWith()` methods in EC are non-capturing (fat-free).
+
 [.notes]
 --
 ⏱ 32:35, stay about 45 s. Solutions: 24:00 to 34:00 (10 min).

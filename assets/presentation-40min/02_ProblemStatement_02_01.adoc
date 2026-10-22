@@ -15,7 +15,7 @@ Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 [.lead]
 Top of `jmap -histo` against a running IntelliJ IDEA.
 
-// Screenshot to add: save it as images/screenshot-problem-02-jmap-intellij.png and replace the placeholder line below with
+// Screenshot to add: save it as assets/images/screenshot-problem-02-jmap-intellij.png and replace the placeholder line below with
 // image::screenshot-problem-02-jmap-intellij.png[jmap -histo output of IntelliJ IDEA,role=screenshot]
 image::placeholder-problem-02-jmap-intellij.svg[jmap -histo output of IntelliJ IDEA,role=screenshot]
 

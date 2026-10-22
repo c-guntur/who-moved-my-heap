@@ -12,17 +12,20 @@ import java.util.Map;
 
 /**
  * Draws the title-slide (banner-NN, banner-intro-NN, banner-problem-NN, banner-appendix-NN), diagram and placeholder SVGs
- * for the slides of one slide folder (default assets/presentation), into its images folder.
+ * for the slides of one slide folder (default assets/presentation-40min), into assets/images.
  *
  * When the slide folder has a _banners.txt, its lines replace the built-in banner list (see listedBanners):
  *   file | kicker | number | title | subtitle [| accent [| track]]
+ * Every image this tool draws (banners, diagrams, screenshot placeholders) goes into the shared assets/images folder:
+ * one copy of each image for the whole project. The slides name them without a path (:imagesdir: ../images in
+ * _deck-settings.adoc); the build points imagesdir at ../images for the published pages in assets/presentation.
  * The track is the row of section pills at the bottom, label=colour separated by commas; * before a label marks the
  * current section. Lines starting with # are comments. Example: assets/presentation-40min/_banners.txt.
  *
  * No dependencies, so it runs straight from source.
  * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideImages.java . [slide folder]
- * The slide folder is relative to the project root (or absolute); without it, assets/presentation.
- * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/presentation).
+ * The slide folder is relative to the project root (or absolute); without it, assets/presentation-40min.
+ * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/presentation-40min).
  *
  * Colours: a navy slide palette plus the Okabe-Ito colours the charts use
  * (orange = JDK, sky blue = EC capturing, dark blue = fat-free, reddish purple = lazy).
@@ -67,8 +70,9 @@ public class SlideImages
 
     public static void main(String[] args) throws IOException
     {
-        Path folder = SlideNav.slidesFolder(args);
-        Path out = folder.resolve("images");
+        Path root = Path.of(args.length > 0 ? args[0] : ".");
+        Path folder = args.length > 1 ? root.resolve(args[1]) : root.resolve(Path.of("assets", "presentation-40min"));
+        Path out = root.resolve(Path.of("assets", "images"));
         Files.createDirectories(out);
         Map<String, String> files = new LinkedHashMap<>();
         Path listed = folder.resolve("_banners.txt");
@@ -100,7 +104,7 @@ public class SlideImages
         System.out.println(files.size() + " SVGs in " + out);
     }
 
-    // The banners of assets/presentation (used when the slide folder has no _banners.txt)
+    // The banners of the original long deck, now archived (used when the slide folder has no _banners.txt)
     private static void builtInBanners(Map<String, String> files)
     {
         for (String[] section : SECTIONS)
@@ -520,7 +524,7 @@ public class SlideImages
                 + "' stroke-width='3' stroke-dasharray='14 10'/>"
                 + text(700, 250, "Screenshot to add", 36, MUTED, "bold", "middle", false)
                 + text(700, 310, command, 26, INK, "normal", "middle", true)
-                + text(700, 370, "images/" + file, 22, MUTED, "normal", "middle", true);
+                + text(700, 370, "assets/images/" + file, 22, MUTED, "normal", "middle", true);
         return svg(1400, 580, b, PAPER);
     }
 }

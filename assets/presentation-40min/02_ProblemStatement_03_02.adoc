@@ -13,12 +13,12 @@ endif::[]
 Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 
 [.lead]
-`HashMap` and `HashSet` wrap each entry in a `HashMap$Node`.
+`HashMap` wraps each entry in a `HashMap$Node`.
 
-* A node is 24 B with compact headers, 32 B without.
-* `HashSet` is a `HashMap` inside: 32.4 MB before counting the ``Integer``s.
+* Each node instance is 24 B with *Compact Object Headers (COH)* on, 32 B with COH off.
+* A `HashSet` contains a `HashMap`, thus also inherits the problem.
+* Thus, `Node` plus `Integer` (16 B) ≈ 40 (or 48 B COH off) of heap per element to hold one `int`.
 * EC `UnifiedSet` keeps the elements in its table: 8.4 MB, 4x less.
-* Node plus box: about 48 B of heap per element to hold one `int`.
 
 [.notes]
 --

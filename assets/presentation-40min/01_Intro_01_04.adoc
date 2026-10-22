@@ -21,7 +21,8 @@ endif::[]
    3:         15273         366552  java.lang.String (java.base@25.0.4.1)
 ----
 
-* `#bytes` divided by `#instances` is the average object size: 24 B for `String`.
+* `[B` on the first line is a `byte[]` - a String-backed array.
+* `#bytes` divided by `#instances` is the average object size.
 * Two histograms around a workload, subtracted, give the garbage it created.
 
 [.notes]

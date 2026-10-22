@@ -22,7 +22,7 @@ import org.openjdk.jol.info.GraphLayout;
 
 System.out.println(ClassLayout.parseClass(String.class).toPrintable());
 
-long bytes = GraphLayout.parseInstance(list).totalSize();   // the object and all it references
+long bytes = GraphLayout.parseInstance(array).toFootprint();
 ----
 
 * `ClassLayout` shows one object; `GraphLayout` adds up everything reachable from it.

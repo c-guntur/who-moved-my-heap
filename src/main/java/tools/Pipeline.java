@@ -25,9 +25,9 @@ import java.util.stream.Stream;
  *            (a new RUN_TS unless one is given; a given one reuses its meta.txt)
  *   reports  write the reports, charts, Mermaid files and summaries from the raw files of RUN_TS
  *            (default: the newest run folder)
- *   slides   build the slide HTML and PDFs (mvn -Pslides process-resources); RUN_TS and part are ignored.
- *            --slides-dir=<folder> builds another slide folder (relative to the project root, default
- *            assets/presentation), e.g. --slides-dir=assets/presentation-40min
+ *   slides   build the slide HTML pages and the talk PDF into assets/presentation (mvn -Pslides process-resources);
+ *            RUN_TS and part are ignored. --slides-dir=<folder> takes the slide sources from another folder
+ *            (relative to the project root, default assets/presentation-40min)
  *   all      run, then reports, then slides
  * Without a part, a stage does shakers and movers. --dry-run prints the commands without running them.
  * --resume (needs a RUN_TS) continues an interrupted run: the jar, the benchmark and object-count steps and the

@@ -263,36 +263,61 @@
             </build>
         </profile>
         <!--
-          Slides: converts the AsciiDoc slides in assets/presentation (or -Dslides.dir) to HTML with AsciidoctorJ and to PDF
-          with Playwright for Java (no Ruby, no Node.js).
-            mvn -Pslides generate-resources     HTML only
-            mvn -Pslides process-resources      HTML and PDFs
-          Any other slide folder (same file naming) with -Dslides.dir, relative to the project root, e.g.
-            mvn -Pslides process-resources -Dslides.dir=assets/presentation-40min
-          Output in <slide folder>/build, default assets/presentation/build (not compiled or packaged with the code):
-            plain/<series>_<deck>_<slide>.html  one page per slide, no JavaScript, Previous / Index / Next links
-            slides/<series>_<deck>.html         whole decks as reveal.js (reveal.js from its WebJar, works offline)
-            pdf/<series>_<deck>.pdf             whole decks, one slide per page (SlidesToPdf.java prints the reveal.js decks)
-            <slide folder name>.pdf             the whole talk in one PDF to hand out (SlidesToPdf.java joins the deck PDFs)
-          The PDFs use Google Chrome if installed (or the CHROME environment variable); otherwise Playwright
+          Slides: converts the AsciiDoc slides in assets/presentation-40min (or -Dslides.dir) to HTML with AsciidoctorJ
+          and to one PDF with Playwright for Java (no Ruby, no Node.js).
+            mvn -Pslides process-resources
+          Any other slide folder (same file naming) with -Dslides.dir, relative to the project root.
+          Output in assets/presentation (-Dslides.out), emptied first; only this, nothing else is written there:
+            <series>_<deck>_<slide>.html, index.html, 00_Index_NN.html  one page per slide, no JavaScript, Previous / Index / Next links
+            Who-Moved-My-Heap.pdf (-Dslides.pdf.name)    the whole talk in one PDF to hand out
+          Work files in target/slides (generate-resources stops here): plain/ (every converted page) and slides/ (the
+          reveal.js decks, with reveal.js from its WebJar). SlidePublish.java copies the slide pages from
+          plain/; SlidesToPdf.java prints the reveal.js decks and joins them into the PDF.
+          The PDF uses Google Chrome if installed (or the CHROME environment variable); otherwise Playwright
           downloads its own Chromium once.
           Java runs SlideNav.java (links and deck files) and SlideImages.java (title and diagram images) first.
-          Diagram blocks ([plantuml], [mermaid], ...; e.g. the QR code on 00_Index.adoc) are drawn by a Kroki
+          Diagram blocks ([plantuml], [mermaid], ...; e.g. the QR code on index.adoc) are drawn by a Kroki
           server through asciidoctorj-diagram, so the build needs network access to it. Default https://kroki.io;
           a local one (docker run -p 8000:8000 yuzutech/kroki) with -Dkroki.url=http://localhost:8000
         -->
         <profile>
             <id>slides</id>
             <properties>
-                <!-- The slide folder, relative to the project root: -Dslides.dir=assets/presentation-40min builds another one -->
-                <slides.dir>assets/presentation</slides.dir>
+                <!-- The slide sources, relative to the project root: -Dslides.dir=<folder> builds another one -->
+                <slides.dir>assets/presentation-40min</slides.dir>
                 <slides.src>${project.basedir}/${slides.dir}</slides.src>
                 <slides.tools>${project.basedir}/src/main/java/tools/presentation</slides.tools>
-                <slides.out>${slides.src}/build</slides.out>
+                <!-- The published slides: emptied and rewritten by every build -->
+                <slides.out>${project.basedir}/assets/presentation</slides.out>
+                <slides.pdf.name>Who-Moved-My-Heap.pdf</slides.pdf.name>
+                <!-- Work files (converted pages and reveal.js decks), not published -->
+                <slides.work>${project.build.directory}/slides</slides.work>
                 <kroki.url>https://kroki.io</kroki.url>
             </properties>
             <build>
                 <plugins>
+                    <!-- 0. Fresh work files, so pages of renamed or removed slides are never published -->
+                    <plugin>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>slides-work</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>clean</goal>
+                                </goals>
+                                <configuration>
+                                    <excludeDefaultDirectories>true</excludeDefaultDirectories>
+                                    <filesets>
+                                        <fileset>
+                                            <directory>${slides.work}</directory>
+                                        </fileset>
+                                    </filesets>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
                     <!-- 1. Navigation links, deck files and images -->
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
@@ -329,7 +354,23 @@
                                     </arguments>
                                 </configuration>
                             </execution>
-                            <!-- 4. PDFs, after the HTML (generate-resources) is written -->
+                            <!-- 4. Publish: the slide pages into slides.out, after the HTML (generate-resources) is written -->
+                            <execution>
+                                <id>slide-publish</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>${java.home}/bin/java</executable>
+                                    <arguments>
+                                        <argument>${slides.tools}/SlidePublish.java</argument>
+                                        <argument>${slides.work}/plain</argument>
+                                        <argument>${slides.out}</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <!-- 5. The talk PDF, from the reveal.js decks -->
                             <execution>
                                 <id>slide-pdfs</id>
                                 <phase>process-resources</phase>
@@ -342,15 +383,15 @@
                                         <argument>-classpath</argument>
                                         <classpath/>
                                         <argument>${slides.tools}/SlidesToPdf.java</argument>
-                                        <argument>${slides.out}/slides</argument>
-                                        <argument>${slides.out}/pdf</argument>
+                                        <argument>${slides.work}/slides</argument>
+                                        <argument>${slides.out}/${slides.pdf.name}</argument>
                                     </arguments>
                                 </configuration>
                             </execution>
                         </executions>
                     </plugin>
 
-                    <!-- 2. reveal.js from its WebJar into build/slides/reveal.js -->
+                    <!-- 2. reveal.js from its WebJar into target/slides/slides/reveal.js (for the PDF) -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>
@@ -368,7 +409,7 @@
                                             <groupId>org.webjars.npm</groupId>
                                             <artifactId>reveal.js</artifactId>
                                             <version>${revealjs.version}</version>
-                                            <outputDirectory>${slides.out}/slides/reveal.js</outputDirectory>
+                                            <outputDirectory>${slides.work}/slides/reveal.js</outputDirectory>
                                             <overWrite>true</overWrite>
                                             <includes>META-INF/resources/webjars/reveal.js/${revealjs.version}/**
                                             </includes>
@@ -387,7 +428,34 @@
                         </executions>
                     </plugin>
 
-                    <!-- 3. HTML: plain pages (html5) and reveal.js decks -->
+                    <!-- 2b. The shared images (assets/images/*.svg and *.png) next to the work files, where the ../images links of the work pages
+                         point (target/slides/{plain,slides}); the published pages use assets/images itself -->
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>slides-shared-images</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${slides.work}/images</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${project.basedir}/assets/images</directory>
+                                            <includes>
+                                                <include>*.svg</include>
+                                                <include>*.png</include>
+                                            </includes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- 3. HTML work files: plain pages (html5) and reveal.js decks -->
                     <plugin>
                         <groupId>org.asciidoctor</groupId>
                         <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -411,18 +479,16 @@
                                 <require>asciidoctor-diagram</require>
                             </requires>
                             <attributes>
+                                <!-- The sources use :imagesdir: ../images (assets/images from the slide folder); the same value is set here so the pages are
+                                     built in target/slides/{plain,slides} and published in assets/presentation, where the shared
+                                     images are one level up (the copy step above puts them next to the work files too) -->
+                                <imagesdir>../images</imagesdir>
                                 <diagram-server-url>${kroki.url}</diagram-server-url>
                                 <diagram-server-type>kroki_io</diagram-server-type>
                                 <!-- Kroki runs the PlantUML preprocessor itself, so no local PlantUML: any value but "true" turns the
                                      local step off ("false" would unset the attribute and leave it on) -->
                                 <plantuml-preprocess>off</plantuml-preprocess>
                             </attributes>
-                            <resources>
-                                <resource>
-                                    <directory>${slides.src}/images</directory>
-                                    <targetPath>images</targetPath>
-                                </resource>
-                            </resources>
                         </configuration>
                         <executions>
                             <execution>
@@ -433,7 +499,7 @@
                                 </goals>
                                 <configuration>
                                     <backend>html5</backend>
-                                    <outputDirectory>${slides.out}/plain</outputDirectory>
+                                    <outputDirectory>${slides.work}/plain</outputDirectory>
                                 </configuration>
                             </execution>
                             <execution>
@@ -444,7 +510,7 @@
                                 </goals>
                                 <configuration>
                                     <backend>revealjs</backend>
-                                    <outputDirectory>${slides.out}/slides</outputDirectory>
+                                    <outputDirectory>${slides.work}/slides</outputDirectory>
                                     <attributes>
                                         <revealjsdir>reveal.js</revealjsdir>
                                     </attributes>

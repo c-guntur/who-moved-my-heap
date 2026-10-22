@@ -15,16 +15,17 @@ Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 [.lead]
 Bytes and objects per call, match at element 500, compact headers on.
 
-[cols="5,2,2,3",options="header",frame=none,grid=rows]
+[cols="4,2,2,3",options="header",frame=none,grid=rows]
 |===
-| Operation | JDK stream | Objects | EC, every version
-| `anyMatch` / `anySatisfy` | 176 B | 7 | 0 B
-| `filter().findFirst()` / `detect` | 216 B | 8 | 0 B
-| `filter().count()` / `count` | 224 B | 8 | 0 B
+| Operation | JDK Object Count |JDK Stream Size  |  Equivalent EC Size
+| `anyMatch` / `anySatisfy` ^| 7 ^| 176 B ^| 0 B
+| `*filter().findFirst()*` / `detect` ^| *8* ^| *216 B* ^| *0 B*
+| `filter().count()` / `count` ^| 8 ^| 224 B ^| 0 B
 |===
 
 * The stream's own cost is per call: the same at element 1 as at 1000.
 * EC versions: capturing or fat-free, eager or lazy, all 0 B.
+* => *Let's dig deeper into the JDK `filter().findFirst()` to look at the 216 B allocation*.
 
 [.notes]
 --

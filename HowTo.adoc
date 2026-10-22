@@ -18,7 +18,7 @@ java src/main/java/tools/Pipeline.java all
 java src/main/java/tools/Pipeline.java run
 java src/main/java/tools/Pipeline.java reports 20261015-0406
 java src/main/java/tools/Pipeline.java slides
-java src/main/java/tools/Pipeline.java slides --slides-dir=assets/presentation-40min
+java src/main/java/tools/Pipeline.java slides --slides-dir=<folder>
 java src/main/java/tools/Pipeline.java all --dry-run
 java src/main/java/tools/Pipeline.java all 20261017-1708 --resume
 ----
@@ -28,8 +28,8 @@ java src/main/java/tools/Pipeline.java all 20261017-1708 --resume
    JOL tests, writing the raw output of a new run (see <<run-ts>> to <<movers-run>>).
 .. `reports`: writes the reports, charts and summaries from raw output already on disk (see
    <<shakers-gen>> to <<run-summary>>). Without a run timestamp it uses the newest run.
-.. `slides`: builds the slide HTML and PDFs (see <<slides-maven>>). `--slides-dir=<folder>` builds another
-   slide folder, e.g. the 40-minute cut in `assets/presentation-40min`.
+.. `slides`: builds the slide HTML pages and the talk PDF into `assets/presentation/` (see <<slides-maven>>).
+   `--slides-dir=<folder>` takes the slide sources from another folder (default `assets/presentation-40min`).
 .. `all`: `run`, then `reports`, then `slides`.
 . Without `shakers` or `movers` at the end, a stage does both parts. `run 20261015-0406 movers`
   adds the movers part to an existing run.
@@ -70,8 +70,8 @@ mvn test-compile
   (benchmark jar). It does the same with `-Pbench` or `-Pslides` added.
 . `mvn test-compile` compiles `src/main/java` (the tools and `prof/HistoProfiler`) into `target/classes`
   and everything under `src/test/java` (benchmarks, JOL tests) into `target/test-classes`. Use it to check the code compiles.
-. The slide output in `assets/presentation/build/` and the run output in `generated/` are not
-  Maven build folders, so `mvn clean` leaves them alone.
+. The published slides in `assets/presentation/` and the run output in `generated/` are not
+  Maven build folders, so `mvn clean` leaves them alone (it does remove the slide work files in `target/slides/`).
 
 == Run a unit test
 
@@ -299,32 +299,26 @@ java src/main/java/tools/analysis/RunSummary.java . ${RUN_TS}
 
 [source,bash]
 ----
-mvn -Pslides generate-resources
 mvn -Pslides process-resources
-open assets/presentation/build/plain/03_Definitions_00_01.html
-mvn -Pslides process-resources -Dslides.dir=assets/presentation-40min
-open assets/presentation-40min/build/plain/00_Index.html
+open assets/presentation/index.html
+open assets/presentation/Who-Moved-My-Heap.pdf
 ----
 
 . Needs only Java 25 and Maven (no Python, Ruby gems or Node.js), plus network access to Kroki for diagrams (below).
-. `generate-resources` makes the HTML only. It runs `SlideNav.java` (rewrites each slide's Previous /
-  Index / Next links and the deck files) and `SlideImages.java` (draws the title and diagram images),
-  then converts the AsciiDoc with AsciidoctorJ.
-. `process-resources` does all of that and then the PDFs: `SlidesToPdf.java` (in
-  `src/main/java/tools/presentation`) opens each reveal.js deck in headless Chrome through Playwright for
-  Java and prints it, one slide per page. Then it joins those PDFs in talk order into one PDF of the
-  whole talk with Apache PDFBox. The PDFs leave out the Previous / Index / Next links.
-. `-Dslides.dir=<folder>` (relative to the project root, default `assets/presentation`) builds any other
-  folder with the same file naming, such as the 40-minute cut `assets/presentation-40min` (no Kroki diagrams,
-  so it builds offline). The folder needs its own `_deck-settings.adoc`, `docinfo*.html` and `images/`.
-. Output in `<slide folder>/build/`, by default `assets/presentation/build/`:
-.. `plain/<series>_<deck>_<slide>.html`: one page per slide, no JavaScript. Present from here.
-.. `slides/<series>_<deck>.html`: each whole deck as reveal.js (F full screen, S speaker notes),
-   with reveal.js unpacked next to it so it works offline.
-.. `pdf/<series>_<deck>.pdf`: each whole deck, one 16:9 slide per page (`process-resources` only), plus `pdf/00_Index*.pdf` (the opening pages).
-.. `<slide folder name>.pdf` (e.g. `assets/presentation-40min/build/presentation-40min.pdf`): the whole talk in one PDF to distribute (`process-resources` only).
-.. The deck files and `slide-template.adoc` are converted to HTML as well; those extra pages can be ignored.
-. The PDFs use the browser named in the `CHROME` environment variable
+. The slide sources are in `assets/presentation-40min/`; `assets/presentation/` is build output only.
+. The build runs `SlideNav.java` (rewrites each slide's Previous / Index / Next links and the deck files) and
+  `SlideImages.java` (draws the title, diagram and placeholder images into `assets/images/`), then converts the AsciiDoc with AsciidoctorJ into
+  work files in `target/slides/` (plain HTML pages and reveal.js decks; emptied at the start of every build).
+. It then empties `assets/presentation/` and writes there, and nothing else:
+.. `<series>_<deck>_<slide>.html` and `index.html`, `00_Index_NN.html`: one page per slide, no JavaScript. Present from here.
+.. `Who-Moved-My-Heap.pdf`: the whole talk in one PDF to distribute. `SlidesToPdf.java` prints each reveal.js
+   deck in headless Chrome through Playwright for Java and joins them with Apache PDFBox. The PDF leaves out
+   the Previous / Index / Next links. Another name: `-Dslides.pdf.name=<file>.pdf`.
+. `-Dslides.dir=<folder>` (relative to the project root, default `assets/presentation-40min`) takes the slides
+  from another folder with the same file naming. The folder needs its own `_deck-settings.adoc`, `docinfo*.html`
+  and `:imagesdir: ../images`. All images live once in `assets/images/`.
+. `mvn -Pslides generate-resources` stops after the work files and publishes nothing.
+. The PDF uses the browser named in the `CHROME` environment variable
   (`CHROME=/path/to/chrome mvn -Pslides process-resources`), else an installed Google Chrome or
   Chromium (macOS or Linux), else the Chromium pre-installed under `PLAYWRIGHT_BROWSERS_PATH` (the
   cloud sandbox has one). Without any of these, Playwright downloads its own Chromium once into its cache.
@@ -333,37 +327,35 @@ open assets/presentation-40min/build/plain/00_Index.html
   `docker run -p 8000:8000 yuzutech/kroki` and add `-Dkroki.url=http://localhost:8000`. When the server
   cannot be reached the build still succeeds, but the slide shows "Failed to generate image" instead.
 . `open` (macOS) shows the first slide in the browser; on Linux use `xdg-open`. Follow the Next links from there.
-  `plain/00_Index.html` is the cover of the whole talk; Next goes to the audience question
+  `index.html` is the cover of the whole talk; Next goes to the audience question
   (`00_Index_01.html`) and then starts `01_Intro`.
 
 == Add or change a slide
 
 [source,bash]
 ----
-cp assets/presentation/slide-template.adoc assets/presentation/03_Definitions_05_09.adoc
+cp assets/presentation-40min/slide-template.adoc assets/presentation-40min/03_Definitions_01_09.adoc
 java src/main/java/tools/presentation/SlideNav.java .
 java src/main/java/tools/presentation/SlideImages.java .
-java src/main/java/tools/presentation/SlideNav.java . assets/presentation-40min
-java src/main/java/tools/presentation/SlideImages.java . assets/presentation-40min
 ----
 
 . Each slide is its own file, `<series>_<deck>_<slide>.adoc`. Start from `slide-template.adoc`,
   which also lists how much fits on one slide.
 . `SlideNav.java` rewrites the Previous / Index / Next links at the bottom of every slide (in file-name
-  order) and regenerates the deck files `<series>_<deck>.adoc`. The opening pages (`00_Index.adoc`, then
+  order) and regenerates the deck files `<series>_<deck>.adoc`. The opening pages (`index.adoc`, then
   `00_Index_01.adoc`, ...) link to each other and on to the first slide, and each series continues into the
   next (the last Intro slide goes on to `02_ProblemStatement_00_00`); the last slide of the talk has no Next link. When an opening page has the attribute line `:talk-index:`
   (an index of the whole talk, like `assets/presentation-40min/00_Index_03.adoc`), every Index link points to it. It also numbers every slide once across the whole talk (a `[.slide-no]` paragraph shown in the plain HTML, the reveal.js slides and the PDF; reveal.js's own per-deck number is off). Run it after adding, removing or
   renaming a slide. The Maven build runs it for you.
-. `SlideImages.java` redraws the title banners (`banner-*.svg`), the `diagram-*.svg` images and the `placeholder-*.svg` screenshot frames in `assets/presentation/images/`.
+. `SlideImages.java` redraws the title banners, the `diagram-*.svg` images and the `placeholder-*.svg` screenshot frames in `assets/images/`.
   Run it after changing a title or diagram in it (a new title slide needs a row in `SECTIONS`, `INTRO_SECTIONS`, `PROBLEM_SECTIONS` or `APPENDIX_SECTIONS`, one array per series). The Maven build runs it for you.
-. Both take the slide folder as an optional second argument (default `assets/presentation`). With a
+. Both take the slide folder as an optional second argument (default `assets/presentation-40min`). With a
   `_banners.txt` in the folder, `SlideImages.java` draws the banners listed there instead of its built-in ones:
   one line per banner, `file | kicker | number | title | subtitle | accent | track`, where the track is
   `label=#colour` pills separated by commas and `*` marks the current section (see
-  `assets/presentation-40min/_banners.txt`).
+  `assets/presentation-40min/_banners.txt`). Each banner file is named after its series, e.g. `01_Intro.svg`, and lives only in `assets/images/`; slides show it as `image::01_Intro.svg[]`, resolved through `imagesdir` (`../images` in the sources and in the built pages).
 . Both are plain Java 25 source files with no dependencies, so `java <file>.java` runs them directly.
-. Output: changed `.adoc` files and images in the slide folder; nothing in `build/`.
+. Output: changed `.adoc` files and images in the slide folder; nothing in `assets/presentation/`.
 
 == Files that are not commands
 

@@ -13,11 +13,10 @@ endif::[]
 Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 
 [.lead]
-Stream garbage grows with calls per second, not with the number of elements.
+Stream garbage grows with calls, not with the number of elements.
 
 * One JDK `anyMatch` call leaves 176 B, wherever the match is.
-* At 10 M calls/s that is 1.76 GB/s of young-generation garbage.
-* A 10 s spike at that rate allocates about 17.6 GB.
+* At 10 M calls that is 1.76 GB of young-generation garbage.
 * The same operation using Eclipse Collections allocates 0 B.
 
 [.notes]

@@ -15,7 +15,7 @@ Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 [.lead]
 Top of `jmap -histo` against the SonarQube for IDE plugin process.
 
-// Screenshot to add: save it as images/screenshot-problem-02-jmap-sonarqube.png and replace the placeholder line below with
+// Screenshot to add: save it as assets/images/screenshot-problem-02-jmap-sonarqube.png and replace the placeholder line below with
 // image::screenshot-problem-02-jmap-sonarqube.png[jmap -histo output of the SonarQube for IDE process,role=screenshot]
 image::placeholder-problem-02-jmap-sonarqube.svg[jmap -histo output of the SonarQube for IDE process,role=screenshot]
 

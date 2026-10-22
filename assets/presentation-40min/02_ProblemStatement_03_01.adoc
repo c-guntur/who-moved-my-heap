@@ -7,7 +7,7 @@ include::_deck-settings.adoc[]
 endif::[]
 
 [.sec-problem,background-color="#F5F7FA"]
-== Boxing is the cost
+== Boxing is a big cost
 
 [.track]
 Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up

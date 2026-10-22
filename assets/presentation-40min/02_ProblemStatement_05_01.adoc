@@ -13,12 +13,13 @@ endif::[]
 Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 
 [.lead]
-JDK collections and streams cost heap twice: in what they hold and in what they drop.
+JDK Collections and Stream impact the heap.
 
-* Baseline: boxes and nodes make 1 M ``int``s take 20 to 48 MB.
-* Volatile: 160 to 224 B of pipeline garbage on every stream call.
-* Neither shows in the code, and escape analysis does not remove the stream's.
-* Goal: smaller footprint and less garbage, so a spike finds free heap.
+* *Baseline*: Collections have Boxed primitives / extra classes like `HashMap$Node`.
+* *Volatile*: Streams produce additional 160 B - 224 B of pipeline garbage on every stream call.
+* *Volatile*: Streams do not benefit from *Escape Analysis*. +
+&nbsp;
+* *Statement*: Larger baselines, increased volatility risk instability if there are spikes.
 
 [.notes]
 --

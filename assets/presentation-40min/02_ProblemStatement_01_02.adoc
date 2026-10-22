@@ -7,7 +7,7 @@ include::_deck-settings.adoc[]
 endif::[]
 
 [.sec-problem,background-color="#F5F7FA"]
-== Baseline, churn and a spike
+== Movers and Shakers
 
 [.track]
 Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
@@ -16,6 +16,8 @@ image::diagram-problem-01-baseline-volatile.svg[Heap used over time: a baseline,
 
 * Headroom is what is left above the baseline for garbage.
 * A spike multiplies the garbage rate; the baseline stays where it was.
+* *Movers* focus on baseline memory.
+* *Shakers* focus on volatile memory.
 
 [.notes]
 --

@@ -13,12 +13,12 @@ endif::[]
 Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 
 [.lead]
-JDK collections and streams spend heap on objects the code never mentions.
+JDK Collections and Stream create objects on the heap that a developer may not know about.
 
-* Boxed ``Integer``s and per-entry nodes inflate what a collection holds.
-* Every stream call builds a pipeline of objects and drops it.
-* How much garbage depends on the JIT, the `Integer` cache and the headers.
-* Fat-free (non-capturing) lambdas and plain loops leave far less behind.
+* Boxed primitives and per-entry nodes inflate what a collection holds.
+* Every stream call builds a pipeline of objects and drops it after.
+* Amount of garbage produced depends on the effectiveness of the JVM's *Escape Analysis*.
+* *Capturing lambdas* have potential to leave garbage on the heap.
 
 [.notes]
 --

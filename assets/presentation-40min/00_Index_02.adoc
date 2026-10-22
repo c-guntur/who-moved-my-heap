@@ -8,7 +8,7 @@ endif::[]
 [.sec-wrap.mindmap,background-color="#F5F7FA"]
 == The map of this talk
 
-image::mindmap.png[Mind map: Intros, Problem statement(s), Some definitions, Solutions, AI skills,role=mindmap]
+image::Who Moved My Heap.png[Mind map: Intros, Problem statement(s), Some definitions, Solutions, AI skills,role=mindmap]
 
 [.notes]
 --

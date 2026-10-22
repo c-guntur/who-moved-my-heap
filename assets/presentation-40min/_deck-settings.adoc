@@ -1,6 +1,6 @@
 // Shared settings for every slide and deck file in this folder. Include it at the top of each file,
 // right after :deck-number: and :description: (see slide-template.adoc).
-:imagesdir: images
+:imagesdir: ../images
 // Code colouring is done at build time (rouge): no JavaScript and nothing loaded from the network.
 :source-highlighter: rouge
 :rouge-style: github

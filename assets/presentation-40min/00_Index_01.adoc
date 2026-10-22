@@ -1,4 +1,4 @@
-// Opening page 2: an audience question, between the cover 00_Index.adoc and the first 01_Intro slide.
+// Opening page 2: an audience question, between the cover index.adoc and the first 01_Intro slide.
 // SlideNav.java writes its navigation block (Previous = the cover, Next = 01_Intro_00_00.adoc).
 ifndef::deck[]
 :deck-number: 00
@@ -30,5 +30,5 @@ Ask the room and take a few answers before moving on to the intro.
 
 ifndef::deck[]
 [.deck-nav]
-xref:00_Index.adoc[‹ Previous] {nbsp}|{nbsp} xref:00_Index_03.adoc[⌂ Index] {nbsp}|{nbsp} xref:00_Index_02.adoc[Next ›]
+xref:index.adoc[‹ Previous] {nbsp}|{nbsp} xref:00_Index_03.adoc[⌂ Index] {nbsp}|{nbsp} xref:00_Index_02.adoc[Next ›]
 endif::[]
