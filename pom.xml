@@ -20,6 +20,7 @@
         <jol.version>0.17</jol.version>
 
         <playwright.version>1.56.0</playwright.version>
+        <pdfbox.version>3.0.8</pdfbox.version>
         <asciidoctor-maven-plugin.version>3.2.0</asciidoctor-maven-plugin.version>
         <asciidoctorj-revealjs.version>5.2.0</asciidoctorj-revealjs.version>
         <revealjs.version>4.1.3</revealjs.version>
@@ -58,6 +59,13 @@
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
             <version>${playwright.version}</version>
+        </dependency>
+
+        <!-- Joins the deck PDFs into one PDF of the whole talk (SlidesToPdf) -->
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${pdfbox.version}</version>
         </dependency>
 
         <!--HTML: plain pages (html5) and reveal.js decks -->
@@ -265,6 +273,7 @@
             plain/<series>_<deck>_<slide>.html  one page per slide, no JavaScript, Previous / Index / Next links
             slides/<series>_<deck>.html         whole decks as reveal.js (reveal.js from its WebJar, works offline)
             pdf/<series>_<deck>.pdf             whole decks, one slide per page (SlidesToPdf.java prints the reveal.js decks)
+            <slide folder name>.pdf             the whole talk in one PDF to hand out (SlidesToPdf.java joins the deck PDFs)
           The PDFs use Google Chrome if installed (or the CHROME environment variable); otherwise Playwright
           downloads its own Chromium once.
           Java runs SlideNav.java (links and deck files) and SlideImages.java (title and diagram images) first.

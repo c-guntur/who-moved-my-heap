@@ -846,12 +846,16 @@ list before reporting (S8, M6).
   headless Chrome through Playwright for Java, one slide per page. Browser: `CHROME`, else an
   installed Google Chrome or Chromium (macOS or Linux), else the Chromium under
   `PLAYWRIGHT_BROWSERS_PATH` (the cloud sandbox has one); without any, Playwright downloads its own
-  Chromium once.
+  Chromium once. It then joins the deck PDFs in talk order (file name order) into one PDF of the whole
+  talk with Apache PDFBox (D2.5.4). The PDFs hide the Previous / Index / Next links
+  (`html.print-pdf .reveal .deck-nav` in `docinfo-revealjs.html`), since they are for reading and handing out.
 - **D2.5** Output in `<slide folder>/build/`, by default `assets/presentation/build/`:
   - **D2.5.1** `plain/<series>_<deck>_<slide>.html`: one page per slide, no JavaScript. Present from here.
   - **D2.5.2** `slides/<series>_<deck>.html`: each whole deck as reveal.js, with reveal.js unpacked
     next to it so it works offline.
   - **D2.5.3** `pdf/<series>_<deck>.pdf`: each whole deck, one 16:9 slide per page.
+  - **D2.5.4** `<slide folder name>.pdf` (e.g. `assets/presentation-40min/build/presentation-40min.pdf`):
+    the whole talk in one PDF to distribute, every slide once with its running number. Links do not work in it.
 - **D2.6** After adding, removing or renaming a slide, or changing a title or diagram, run the
   build (or `java src/main/java/tools/presentation/SlideNav.java . [slide folder]` and
   `SlideImages.java . [slide folder]` by hand). A new title slide needs a row in `SlideImages.java`: `SECTIONS` for `03_Definitions`

@@ -11,15 +11,19 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.WaitUntilState;
+import org.apache.pdfbox.io.IOUtils;
+import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.factory.Lists;
 
 /**
- * Prints each reveal.js deck in build/slides to a PDF in build/pdf, one slide per page.
+ * Prints each reveal.js deck in build/slides to a PDF in build/pdf, one slide per page, then joins those PDFs
+ * in talk order into one PDF of the whole talk to hand out: build/<slide folder name>.pdf
+ * (e.g. assets/presentation-40min/build/presentation-40min.pdf). Links between slides do not work in it.
  * Replaces decktape: Playwright drives a headless Chrome or Chromium from Java, so no Node.js or Ruby.
  *
  * Run by the slides profile in pom.xml (mvn -Pslides process-resources), or by hand with Java 25:
- *   java -cp <playwright and eclipse-collections jars> src/main/java/tools/presentation/SlidesToPdf.java <slides dir> <pdf dir>
+ *   java -cp <playwright, pdfbox and eclipse-collections jars> src/main/java/tools/presentation/SlidesToPdf.java <slides dir> <pdf dir>
  *
  * Browser: the CHROME environment variable if set, else an installed Google Chrome or Chromium
  * (macOS or Linux), else a Chromium pre-installed under PLAYWRIGHT_BROWSERS_PATH (as in the cloud
@@ -80,6 +84,28 @@ public class SlidesToPdf
             }
         }
         System.out.println("PDFs: " + decks.size() + " in " + pdf + (chrome != null ? " (browser: " + chrome + ")" : ""));
+
+        // build/slides -> build; the slide folder's name names the PDF
+        Path build = slides.getParent();
+        Path talk = build.resolve(build.getParent().getFileName() + ".pdf");
+        join(decks.collect(deck -> pdf.resolve(deck.getFileName().toString().replaceFirst("\\.html$", ".pdf"))), talk);
+    }
+
+    /**
+     * Joins the deck PDFs, already in talk order (deck file names sort that way), into one PDF.
+     */
+    private static void join(MutableList<Path> deckPdfs, Path talk) throws IOException
+    {
+        PDFMergerUtility merger = new PDFMergerUtility();
+        for (Path deckPdf : deckPdfs)
+        {
+            merger.addSource(deckPdf.toFile());
+        }
+        // PDFBox warns when it overwrites a file it may still be reading, so the last build's talk PDF goes first
+        Files.deleteIfExists(talk);
+        merger.setDestinationFileName(talk.toString());
+        merger.mergeDocuments(IOUtils.createMemoryOnlyStreamCache());
+        System.out.println("Talk PDF: " + talk + " (" + deckPdfs.size() + " decks)");
     }
 
     private static void print(Browser browser, Path deck, Path pdfDir)

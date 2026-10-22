@@ -22,6 +22,8 @@
   .reveal .deck-nav { position: absolute; left: 70px; right: 70px; bottom: 30px; text-align: center; font-size: .7em;
       border-top: 1px solid #C9D2DC; padding-top: .5em; }
   .reveal .deck-nav a { color: #0072B2; }
+  /* the PDFs (?print-pdf, reveal.js adds class print-pdf to html) are for reading and handing out: no links */
+  html.print-pdf .reveal .deck-nav { display: none; }
   /* top, not bottom: in the PDF (?print-pdf) the section is taller than the 900 px slide */
   .reveal .slide-no { position: absolute; right: 40px; top: 852px; margin: 0; font-size: .5em; color: #8A96A3; z-index: 2; }
   .reveal .slide-no p { margin: 0; }

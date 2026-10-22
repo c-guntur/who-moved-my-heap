@@ -312,7 +312,8 @@ open assets/presentation-40min/build/plain/00_Index.html
   then converts the AsciiDoc with AsciidoctorJ.
 . `process-resources` does all of that and then the PDFs: `SlidesToPdf.java` (in
   `src/main/java/tools/presentation`) opens each reveal.js deck in headless Chrome through Playwright for
-  Java and prints it, one slide per page.
+  Java and prints it, one slide per page. Then it joins those PDFs in talk order into one PDF of the
+  whole talk with Apache PDFBox. The PDFs leave out the Previous / Index / Next links.
 . `-Dslides.dir=<folder>` (relative to the project root, default `assets/presentation`) builds any other
   folder with the same file naming, such as the 40-minute cut `assets/presentation-40min` (no Kroki diagrams,
   so it builds offline). The folder needs its own `_deck-settings.adoc`, `docinfo*.html` and `images/`.
@@ -321,6 +322,7 @@ open assets/presentation-40min/build/plain/00_Index.html
 .. `slides/<series>_<deck>.html`: each whole deck as reveal.js (F full screen, S speaker notes),
    with reveal.js unpacked next to it so it works offline.
 .. `pdf/<series>_<deck>.pdf`: each whole deck, one 16:9 slide per page (`process-resources` only), plus `pdf/00_Index*.pdf` (the opening pages).
+.. `<slide folder name>.pdf` (e.g. `assets/presentation-40min/build/presentation-40min.pdf`): the whole talk in one PDF to distribute (`process-resources` only).
 .. The deck files and `slide-template.adoc` are converted to HTML as well; those extra pages can be ignored.
 . The PDFs use the browser named in the `CHROME` environment variable
   (`CHROME=/path/to/chrome mvn -Pslides process-resources`), else an installed Google Chrome or
