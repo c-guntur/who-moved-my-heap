@@ -819,23 +819,12 @@ pre.rouge {
 <div class="ulist">
 <ul>
 <li>
-<p><code>ClassLayout</code> shows one object; <code>GraphLayout</code> adds up everything reachable from it.</p>
+<p><code>ClassLayout</code> shows one object while a <code>GraphLayout</code> adds up everything reachable from it.</p>
 </li>
 <li>
-<p>JOL is an OpenJDK project, added as a library; it is not part of the JDK.</p>
+<p>JOL is an OpenJDK project, added as a library. It is not part of the JDK.</p>
 </li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 25:40, stay about 40 s. Solutions: 24:00 to 34:00 (10 min).</p>
-</div>
-<div class="paragraph">
-<p>The movers tests need <code>-XX:+EnableDynamicAgentLoading -Djdk.attach.allowAttachSelf=true</code> so that JOL
-can attach to its own VM. They run twice: compact object headers off, then on.</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>35</p>

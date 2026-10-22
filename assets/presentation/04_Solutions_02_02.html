@@ -852,17 +852,6 @@ jcmd &lt;pid&gt; VM.flags <span class="nt">-all</span> | <span class="nb">grep <
 </li>
 </ul>
 </div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 31:50, stay about 45 s. Solutions: 24:00 to 34:00 (10 min).</p>
-</div>
-<div class="paragraph">
-<p>JOL retained sizes, movers run 20261015-1503. A <code>HashMap$Node</code> goes from 32 B to 24 B, the whole 8 MB saved.
-An <code>Integer</code> stays 16 B either way. Stream garbage drops 16 to 24 B per call (7 to 11%); the object count stays.</p>
-</div>
-</div>
-</div>
 <div class="paragraph slide-no">
 <p>41</p>
 </div>

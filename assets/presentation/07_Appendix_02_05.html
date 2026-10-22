@@ -607,16 +607,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>Escape analysis: JDK bytes per call are identical with <code>-XX:-DoEscapeAnalysis</code>. Why it gives up on the pipeline
-(linked objects passed through interface calls) is inferred, not confirmed with JIT logs.
-Library details matter too: in EC 13.0.0, <code>ImmutableList.anySatisfyWith</code>, <code>countWith</code> and <code>detectWithIfNone</code>
-go through <code>Predicates.bind</code> and allocate a wrapper per call when escape analysis is off.</p>
-</div>
-</div>
-</div>
 <div class="paragraph slide-no">
 <p>64</p>
 </div>

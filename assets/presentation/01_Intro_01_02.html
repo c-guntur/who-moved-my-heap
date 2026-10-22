@@ -817,23 +817,15 @@ pre.rouge {
 <div class="ulist">
 <ul>
 <li>
-<p>Each line is a pid and a main class or JAR; <code>-l</code> prints the full name.</p>
+<p>Each line is a pid and a main class or JAR.</p>
 </li>
 <li>
-<p><code>-v</code> adds the JVM flags, which shows whether compact object headers are on.</p>
+<p>Adding a <code>-l</code> prints the full name.</p>
+</li>
+<li>
+<p><code>-v</code> adds the JVM flags, which can show if the CompactObjectHeaders flag is turned on.</p>
 </li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 02:35, stay about 25 s. Intro: 02:00 to 07:00 (5 min).</p>
-</div>
-<div class="paragraph">
-<p>Run <code>jps -v</code> or <code>jcmd</code> and look for <code>-XX:+UseCompactObjectHeaders</code>. A forked benchmark JVM or surefire
-test JVM appears here while it runs, so you can attach <code>jmap</code>, <code>jcmd</code> or <code>jstat</code> to it.</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>6</p>

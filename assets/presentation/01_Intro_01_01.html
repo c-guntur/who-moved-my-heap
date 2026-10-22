@@ -600,22 +600,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Fewer and smaller objects mean fewer GCs and more headroom for a spike.</p>
 </li>
 <li>
-<p><code>jps</code> finds the JVM; <code>jmap</code> and <code>jcmd</code> look inside it; <code>jstat</code> watches its GCs.</p>
+<p><code>jps</code> finds the JVM.</p>
 </li>
 <li>
-<p>JOL, a library, measures single objects; garbage per call (JMH) comes with the solutions.</p>
+<p><code>jmap</code> and <code>jcmd</code> look inside it.</p>
+</li>
+<li>
+<p>JOL, a library, measures object sizes</p>
+</li>
+<li>
+<p>JMH - to measure garbage per call (covered later).</p>
 </li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 02:05, stay about 30 s. Intro: 02:00 to 07:00 (5 min).</p>
-</div>
-<div class="paragraph">
-<p>The <code>jcmd</code> command table, more <code>jstat</code> and more JOL output are in the appendix (Intro extras).</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>5</p>

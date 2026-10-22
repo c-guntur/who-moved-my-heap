@@ -827,15 +827,6 @@ Space losses: 0 bytes internal + 4 bytes external = 4 bytes total</code></pre>
 </li>
 </ul>
 </div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>Same code as the Intro JOL slide, jol-core 0.17 on JDK 25. "Lilliput" is the OpenJDK project behind compact
-object headers (JEP 450 in JDK 24, JEP 519 in JDK 25). Objects whose size crosses an 8 B boundary do shrink:
-<code>HashMap$Node</code> goes from 32 B to 24 B.</p>
-</div>
-</div>
-</div>
 <div class="paragraph slide-no">
 <p>57</p>
 </div>

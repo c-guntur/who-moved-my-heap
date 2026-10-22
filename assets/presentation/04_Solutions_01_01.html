@@ -824,17 +824,6 @@ jmap <span class="nt">-histo</span> &lt;pid&gt; | <span class="nb">grep</span> <
 </li>
 </ul>
 </div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 24:50, stay about 50 s. Solutions: 24:00 to 34:00 (10 min).</p>
-</div>
-<div class="paragraph">
-<p><code>prof.HistoProfiler</code> (src/main/java/prof) is a JMH profiler that takes a histogram before and after each iteration.
-It writes the jcmd output to a temp file because reading it through a pipe can deadlock on JDK 25.</p>
-</div>
-</div>
-</div>
 <div class="paragraph slide-no">
 <p>34</p>
 </div>

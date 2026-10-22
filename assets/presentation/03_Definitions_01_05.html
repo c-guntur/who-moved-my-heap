@@ -599,20 +599,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="ulist">
 <ul>
 <li>
-<p>Every call builds this graph again; escape analysis removes none of it.</p>
+<p>Every call builds this graph again</p>
+</li>
+<li>
+<p><strong>Escape Analysis</strong> cannot eliminate any of the produced objects.</p>
 </li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 19:40, stay about 70 s. Definitions: 15:00 to 24:00 (9 min).</p>
-</div>
-<div class="paragraph">
-<p>Measured per call: source 80 B (head 48 B + spliterator 32 B), filter stage 72 B, anyMatch 64 B,
-findFirst 32 B, count 40 B.</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>29</p>

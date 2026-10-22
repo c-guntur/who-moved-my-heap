@@ -388,6 +388,7 @@
                                         <argument>${slides.tools}/SlidesToPdf.java</argument>
                                         <argument>${slides.work}/slides</argument>
                                         <argument>${slides.out}/${slides.pdf.name}</argument>
+                                        <argument>${slides.work}/src</argument>
                                     </arguments>
                                 </configuration>
                             </execution>

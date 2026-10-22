@@ -858,15 +858,6 @@ pre.rouge {
 </li>
 </ul>
 </div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>Real <code>toFootprint()</code> output of jol-core 0.17 on JDK 25, run with <code>-XX:-UseCompactObjectHeaders</code> and then
-<code>-XX:+UseCompactObjectHeaders</code>. Only the array shrinks: 16 B header plus three 4 B references is 28 B, padded
-to 32 B; with compact headers 12 B plus 12 B is exactly 24 B. The movers measure whole collections this way.</p>
-</div>
-</div>
-</div>
 <div class="paragraph slide-no">
 <p>58</p>
 </div>

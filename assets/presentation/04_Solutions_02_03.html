@@ -825,18 +825,6 @@ pre.rouge {
 <div class="paragraph footnote-line">
 <p>Not all <code>anySatisfyWith()</code> methods in EC are non-capturing (fat-free).</p>
 </div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 32:35, stay about 45 s. Solutions: 24:00 to 34:00 (10 min).</p>
-</div>
-<div class="paragraph">
-<p>With escape analysis on, both EC calls are 0 B. The JDK stream has no <code>*With</code> form: even a non-capturing predicate
-leaves its 176 B pipeline behind. In EC 13.0.0, <code>ImmutableList.anySatisfyWith</code>, <code>countWith</code> and <code>detectWithIfNone</code>
-go through <code>Predicates.bind</code>, so they are not fat-free.</p>
-</div>
-</div>
-</div>
 <div class="paragraph slide-no">
 <p>42</p>
 </div>

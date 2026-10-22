@@ -602,22 +602,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li>
 <p>Thus, <code>Node</code> plus <code>Integer</code> (16 B) ≈ 40 (or 48 B COH off) of heap per element to hold one <code>int</code>.</p>
 </li>
-<li>
-<p>EC <code>UnifiedSet</code> keeps the elements in its table: 8.4 MB, 4x less.</p>
-</li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 11:00, stay about 40 s. Problem statement: 07:00 to 15:00 (8 min).</p>
-</div>
-<div class="paragraph">
-<p>1,000,000 elements, compact headers on, "structure only" rows (the <code>Integer</code>s subtracted).
-<code>HashSet</code> 32.4 MB ≈ 1,000,000 nodes × 24 B + 2^21 table slots × 4 B (derived).
-<code>HashMap</code> structure 32.4 MB against <code>UnifiedMap</code> 16.8 MB, which stores key and value side by side in one array.</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>18</p>

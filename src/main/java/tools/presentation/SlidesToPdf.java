@@ -1,6 +1,7 @@
 package tools.presentation;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
@@ -26,7 +27,7 @@ import org.eclipse.collections.impl.factory.Lists;
  * Replaces decktape: Playwright drives a headless Chrome or Chromium from Java, so no Node.js or Ruby.
  *
  * Run by the slides profile in pom.xml (mvn -Pslides process-resources), or by hand with Java 25:
- *   java -cp <playwright, pdfbox and eclipse-collections jars> src/main/java/tools/presentation/SlidesToPdf.java <reveal.js decks folder> <talk pdf>
+ *   java -cp <playwright, pdfbox and eclipse-collections jars> src/main/java/tools/presentation/SlidesToPdf.java <reveal.js decks folder> <talk pdf> [<converted slide sources folder>]
  *
  * Browser: the CHROME environment variable if set, else an installed Google Chrome or Chromium
  * (macOS or Linux), else a Chromium pre-installed under PLAYWRIGHT_BROWSERS_PATH (as in the cloud
@@ -38,6 +39,8 @@ public class SlidesToPdf
     // land in the decks folder when Maven converts every .adoc file, and are skipped.
     private static final Pattern DECK = Pattern.compile("\\d+_[A-Za-z]+_\\d\\d\\.html|index\\.html|00_Index_\\d\\d\\.html");
 
+    private static final Pattern HIDDEN = Pattern.compile("^:slide-hidden:\\s*$", Pattern.MULTILINE);
+
     private static final String[] INSTALLED_CHROME = {
             "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
             "/Applications/Chromium.app/Contents/MacOS/Chromium",
@@ -45,10 +48,31 @@ public class SlidesToPdf
             "/usr/bin/chromium",
             "/usr/bin/chromium-browser"};
 
+    // A page is hidden when the AsciiDoc source of the same name has a :slide-hidden: line
+    private static boolean hidden(Path sources, Path page)
+    {
+        if (sources == null)
+        {
+            return false;
+        }
+        String name = page.getFileName().toString();
+        Path source = sources.resolve(name.substring(0, name.length() - ".html".length()) + ".adoc");
+        try
+        {
+            return Files.exists(source) && HIDDEN.matcher(Files.readString(source)).find();
+        }
+        catch (IOException e)
+        {
+            throw new UncheckedIOException(e);
+        }
+    }
+
     public static void main(String[] args) throws IOException
     {
         Path slides = Path.of(args[0]).toAbsolutePath();
         Path talk = Path.of(args[1]).toAbsolutePath();
+        // Optional third argument: the converted AsciiDoc sources, to skip pages with a :slide-hidden: line
+        Path sources = args.length > 2 ? Path.of(args[2]).toAbsolutePath() : null;
         Files.createDirectories(talk.getParent());
 
         MutableList<Path> decks = Lists.mutable.empty();
@@ -56,7 +80,7 @@ public class SlidesToPdf
         {
             files.forEach(file ->
             {
-                if (DECK.matcher(file.getFileName().toString()).matches())
+                if (DECK.matcher(file.getFileName().toString()).matches() && !hidden(sources, file))
                 {
                     decks.add(file);
                 }

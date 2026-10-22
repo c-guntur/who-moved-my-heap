@@ -589,7 +589,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Intro · Problem · <span class="on">Definitions</span> · Solutions · AI skills · Wrap-up</p>
 </div>
 <div class="paragraph lead">
-<p>A capturing lambda holds values from its scope; a fat-free one uses only its parameters.</p>
+<p>A capturing lambda holds values from its scope. A fat-free one uses only its parameters.</p>
 </div>
 <div class="imageblock diagram">
 <div class="content">
@@ -605,18 +605,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Capturing: a new object that holds the captured values, per evaluation.</p>
 </li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 21:50, stay about 70 s. Definitions: 15:00 to 24:00 (9 min).</p>
-</div>
-<div class="paragraph">
-<p>With escape analysis off, capturing <code>Iterate.anySatisfy</code> leaves 16 to 32 B per call; fat-free <code>anySatisfyWith</code>
-0 to 16 B. The JLS allows either a new or an existing instance (15.27.4); reusing non-capturing
-instances is HotSpot behaviour.</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>30</p>

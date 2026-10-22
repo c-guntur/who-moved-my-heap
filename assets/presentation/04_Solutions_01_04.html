@@ -807,7 +807,7 @@ pre.rouge {
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">org.openjdk.jol.info.ClassLayout</span><span class="o">;</span>
 
-<span class="c1">// Demo 2: the layout of one HashMap entry. Run it twice, compact object headers off and on.</span>
+<span class="c1">// Demo: the layout of one HashMap entry. Run it twice, compact object headers off and on.</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">NodeLayout</span>
 <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span>
@@ -830,19 +830,6 @@ java <span class="nt">-cp</span> jol-core-0.17.jar <span class="nt">-XX</span>:+
 <p>Same fields, 4 B less header, and the 4 B alignment gap is gone.</p>
 </li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 27:00, stay about 150 s. Solutions: 24:00 to 34:00 (10 min).</p>
-</div>
-<div class="paragraph">
-<p>The full file is demo/NodeLayout.java in this folder; it runs as a single source file on JDK 25 in about 2 s.
-Tested in the cloud sandbox on JDK 25.0.4.1: 32 bytes off, 24 bytes on.
-JOL prints attach and Unsafe warnings first; add <code>2&gt;/dev/null | grep -v WARNING</code> to hide them.
-Fallback: the previous slide has the same two sizes.</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>37</p>

@@ -633,18 +633,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <strong>EC Boxed:</strong> <code>FastList&lt;Integer&gt;</code> (presized), <code>UnifiedSet&lt;Integer&gt;</code>, <code>UnifiedMap&lt;Integer, Integer&gt;</code>.<br>
 <strong>EC Primitive:</strong> <code>IntArrayList</code>, <code>IntHashSet</code>, <code>IntIntHashMap</code>, no <code>Integer</code> boxes.</p>
 </div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 10:15, stay about 45 s. Problem statement: 07:00 to 15:00 (8 min).</p>
-</div>
-<div class="paragraph">
-<p>JOL retained sizes, movers run 20261015-1503. Per element is the total divided by n (derived).
-In the maps key and value are the same <code>Integer</code>, so each map holds one box per entry.
-Values up to 127 come from the <code>Integer</code> cache: under 0.13% of the boxes here.</p>
-</div>
-</div>
-</div>
 <div class="paragraph slide-no">
 <p>17</p>
 </div>

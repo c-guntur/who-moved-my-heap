@@ -637,15 +637,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>The 16 B left in the fat-free row is the <code>Integer</code> the caller passes in; at element 1 it is 0 B.
-Capturing adds the lambda (16 B); lazy adds a <code>LazyIterableAdapter</code> (16 B). Escape analysis gives up on cold code,
-large methods and megamorphic call sites, which real applications have plenty of.</p>
-</div>
-</div>
-</div>
 <div class="paragraph slide-no">
 <p>65</p>
 </div>

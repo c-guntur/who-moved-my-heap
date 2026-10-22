@@ -816,22 +816,15 @@ jmap <span class="nt">-dump</span>:live,format<span class="o">=</span>b,file<spa
 <div class="ulist">
 <ul>
 <li>
-<p>A histogram is cheap and small; a dump holds every object and field value.</p>
+<p>A histogram is cheap and small.</p>
+</li>
+<li>
+<p>A heap dump holds every object and field value.</p>
 </li>
 <li>
 <p><code>:live</code> forces a Full GC, so insights into existing garbage are lost.</p>
 </li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 03:00, stay about 35 s. Intro: 02:00 to 07:00 (5 min).</p>
-</div>
-<div class="paragraph">
-<p>HistoProfiler (shakers) wants the garbage, so it never uses <code>:live</code>; see the jcmd slides.</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>7</p>

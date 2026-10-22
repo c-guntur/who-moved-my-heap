@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="description" content="Who moved my heap in 40 minutes, definitions 01: Seven terms">
-<title>Compressed OOPs</title>
+<title>Compressed OOPs (Ordinary Object Pointer)s</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -583,13 +583,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1 sec-defs">
-<h2 id="_compressed_oops">Compressed OOPs</h2>
+<h2 id="_compressed_oops_ordinary_object_pointers">Compressed OOPs (Ordinary Object Pointer)s</h2>
 <div class="sectionbody">
 <div class="paragraph track">
 <p>Intro · Problem · <span class="on">Definitions</span> · Solutions · AI skills · Wrap-up</p>
 </div>
 <div class="paragraph lead">
-<p>A 4-byte offset that HotSpot stores instead of an 8-byte reference, for heaps under 32 GB.</p>
+<p>For all under 32 GB heaps, Compressed OOPs produces a 4-byte offset that HotSpot stores instead of an 8-byte reference.</p>
 </div>
 <div class="imageblock diagram">
 <div class="content">
@@ -605,16 +605,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>On by default (<code>-XX:+UseCompressedOops</code>).</p>
 </li>
 </ul>
-</div>
-<div class="openblock notes">
-<div class="content">
-<div class="paragraph">
-<p>⏱ 15:35, stay about 55 s. Definitions: 15:00 to 24:00 (9 min).</p>
-</div>
-<div class="paragraph">
-<p>All movers numbers (JOL) were taken with compressed oops on (2 GB heap). Above 32 GB of heap references double in size.</p>
-</div>
-</div>
 </div>
 <div class="paragraph slide-no">
 <p>25</p>
