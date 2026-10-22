@@ -12,16 +12,16 @@ endif::[]
 [.track]
 Intro · Problem · Definitions · [.on]#Solutions# · AI skills · Wrap-up
 
-[cols="4,7,6",options="header",frame=none,grid=rows]
+[cols="4,7",options="header",frame=none,grid=rows]
 |===
-| Solution | Use it to | Measured here
-| JDK CLI tooling | See what is on the heap, and what a workload drops | Measure first
-| Java Object Layout | Size one object or a whole collection | `HashMap$Node` 32 B to 24 B
-| Java Microbenchmark Harness | Count bytes and objects per call | 176 B per `anyMatch`
-| Object pooling | Reuse costly objects, not small ones | `Integer` -128 to 127
-| Compact object headers | Shrink every header by 4 B | 14% off a `HashMap`
-| Non-capturing lambdas | Share one lambda instance | 32 B to 16 B per call (EA off)
-| Eclipse Collections | Primitives, and loops without a pipeline | 48 B to 8 B per element; 0 B per call
+| Solution | Use it to
+| JDK CLI tooling | See what is on the heap
+| Java Object Layout | Size of one object Graph or Class
+| Java Microbenchmark Harness | Measure performance and throughput. Count bytes and objects per call
+| Object pooling | De-duplicate objects
+| Compact object headers | Shrink every header by 4 B
+| Non-capturing lambdas | Share one lambda instance
+| Eclipse Collections | Primitives, Eager & Lazy, Rich Iteration patterns
 |===
 
 [.notes]

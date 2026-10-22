@@ -17,16 +17,17 @@ Java Object Layout (JOL) is a small OpenJDK library that shows the header, field
 
 [source,java]
 ----
-System.out.println(ClassLayout.parseInstance(Integer.valueOf(500)).toPrintable());
+List<Integer> list = new ArrayList<>(List.of(500, 501, 502));
+System.out.println(GraphLayout.parseInstance(list).toFootprint());
 ----
 
 [source,text]
 ----
-OFF  SZ   TYPE DESCRIPTION               VALUE
-  0   8        (object header: mark)     0x0000000000000001 (non-biasable; age: 0)
-  8   4        (object header: class)    0x0019e5d0
- 12   4    int Integer.value             500
-Instance size: 16 bytes
+     COUNT       AVG       SUM   DESCRIPTION
+         1        32        32   [Ljava.lang.Object;
+         3        16        48   java.lang.Integer
+         1        24        24   java.util.ArrayList
+         5                 104   (total)
 ----
 
 * A library, not a JDK tool: add `org.openjdk.jol:jol-core` to the build.

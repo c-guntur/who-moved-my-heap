@@ -7,22 +7,23 @@ include::_deck-settings.adoc[]
 endif::[]
 
 [.sec-solutions,background-color="#F5F7FA"]
-== Eclipse Collections: primitives and no pipeline
+== Eclipse Collections: Primitives, Eager and Lazy options
 
 [.track]
 Intro · Problem · Definitions · [.on]#Solutions# · AI skills · Wrap-up
 
-[cols="5,4,4",options="header",frame=none,grid=rows]
+[cols="5,3,3,3,3",options="header",frame=none,grid=rows]
 |===
-| | JDK | Eclipse Collections
-| 1 M ``int``s in a list | 20.0 MB `ArrayList<Integer>` | 4.0 MB `IntArrayList`
-| 1 M ``int``s in a set | 48.4 MB `HashSet<Integer>` | 8.4 MB `IntHashSet`
-| `anyMatch`, match at 500 | 176 B per call | 0 B `anySatisfy`
-| `filter().count()` | 224 B per call | 0 B `count`
+| ^| JDK Size ^|JDK Use ^| EC Size ^| EC Use
+| List of 1M ``int``s ^| 20.0 MB ^| `ArrayList<Integer>` ^| 4.0 MB ^| `IntArrayList`
+| Set of 1M ``int``s ^| 48.4 MB ^| `HashSet<Integer>` ^| 8.4 MB ^| `IntHashSet`
+| Match at element 500 ^| 176 B per call ^| `anyMatch` ^| 0 B ^| `anySatisfy`
+| Count  ^| 224 B per call ^| `filter().count()` ^| 0 B ^| `count`
 |===
 
-* Primitive collections drop the boxes; eager methods loop without a pipeline.
-* `*With` methods keep the lambda fat-free.
+* Primitive collections drop the need for boxed values.
+* Eager methods iterate without additional garbage.
+* Most of the `*With` methods keep the lambda fat-free.
 
 [.notes]
 --

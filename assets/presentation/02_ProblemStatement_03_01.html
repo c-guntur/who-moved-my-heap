@@ -508,6 +508,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
   #content > .sect1.title-slide .paragraph.slide-no { color: #8FA3B8; }
 
+  /* two code columns side by side (table role code-grid, cells are AsciiDoc blocks) */
+  #content > .sect1 table.code-grid { width: 100%; margin: .2em 0; border: none; background: none; table-layout: fixed; }
+  #content > .sect1 table.code-grid td { border: none; background: none; padding: 0 .5em .3em 0; vertical-align: top; }
+  #content > .sect1 table.code-grid .listingblock { margin-bottom: .3em; }
+  #content > .sect1 table.code-grid .listingblock pre { font-size: .57em; padding: .6em .8em; }
+  /* highlighted text inside jmap output (role jmap, markup [.hl]#text#) */
+  #content > .sect1 .listingblock.jmap pre { font-size: .5em; }
+  #content > .sect1 .listingblock.jmap pre strong { background: #FFE066; color: #000; display: inline-block; width: 100%; font-weight: bold; }
   /* cover page (index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
   #content > .sect1.cover > h2 { font-size: 2.2em; }
   #content > .sect1.cover table.cover-grid { width: 100%; margin: .2em 0; border: none; background: none; font-size: .9em; }
@@ -584,51 +592,47 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>An <code>Integer</code> takes 16 B to hold a 4 B <code>int</code>, plus a 4 B reference to it.</p>
 </div>
 <table class="tableblock frame-none grid-rows stretch">
+<caption class="title">1,000,000 elements, compact headers on: retained size (per element)</caption>
 <colgroup>
-<col style="width: 55.5555%;">
-<col style="width: 22.2222%;">
-<col style="width: 22.2223%;">
+<col style="width: 18.1818%;">
+<col style="width: 27.2727%;">
+<col style="width: 27.2727%;">
+<col style="width: 27.2728%;">
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">1,000,000 elements, compact headers on</th>
-<th class="tableblock halign-left valign-top">Retained</th>
-<th class="tableblock halign-left valign-top">Per element</th>
+<th class="tableblock halign-left valign-top"></th>
+<th class="tableblock halign-left valign-top">JDK Boxed</th>
+<th class="tableblock halign-left valign-top">EC Boxed</th>
+<th class="tableblock halign-left valign-top">EC Primitive</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDK <code>ArrayList&lt;Integer&gt;</code>, presized</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20.0 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20 B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20.0 MB (20 B)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20.0 MB (20 B)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4.0 MB (4 B)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EC <code>IntArrayList</code> (primitive)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.0 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4 B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48.4 MB (48 B)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24.4 MB (24 B)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8.4 MB (8 B)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDK <code>HashSet&lt;Integer&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48.4 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48 B</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EC <code>IntHashSet</code> (primitive)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8.4 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8 B</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JDK <code>HashMap&lt;Integer, Integer&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48.4 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48 B</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">EC <code>IntIntHashMap</code> (primitive)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">16.8 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">17 B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48.4 MB (48 B)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32.8 MB (32 B)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16.8 MB (16 B)</p></td>
 </tr>
 </tbody>
 </table>
+<div class="paragraph footnote-line">
+<p><strong>JDK Boxed:</strong> <code>ArrayList&lt;Integer&gt;</code> (presized), <code>HashSet&lt;Integer&gt;</code>, <code>HashMap&lt;Integer, Integer&gt;</code>.<br>
+<strong>EC Boxed:</strong> <code>FastList&lt;Integer&gt;</code> (presized), <code>UnifiedSet&lt;Integer&gt;</code>, <code>UnifiedMap&lt;Integer, Integer&gt;</code>.<br>
+<strong>EC Primitive:</strong> <code>IntArrayList</code>, <code>IntHashSet</code>, <code>IntIntHashMap</code>, no <code>Integer</code> boxes.</p>
+</div>
 <div class="openblock notes">
 <div class="content">
 <div class="paragraph">

@@ -195,6 +195,26 @@ public class SlideImages
                 + "' font-weight='" + weight + "' text-anchor='" + anchor + "' " + font + ">" + esc(value) + "</text>";
     }
 
+    // Subtitle text where `backticked` words are drawn in the fixed-width (code) font
+    private static String subtitle(int x, int y, String value, int size, String fill)
+    {
+        StringBuilder out = new StringBuilder("<text x='" + x + "' y='" + y + "' font-size='" + size + "' fill='" + fill
+                + "' font-weight='normal' text-anchor='start'>");
+        String[] parts = value.split("`", -1);
+        for (int i = 0; i < parts.length; i++)
+        {
+            if (i % 2 == 1)
+            {
+                out.append("<tspan ").append(MONO).append(">").append(esc(parts[i])).append("</tspan>");
+            }
+            else
+            {
+                out.append(esc(parts[i]));
+            }
+        }
+        return out.append("</text>").toString();
+    }
+
     private static String text(Number x, Number y, String value, int size, String fill, String weight)
     {
         return text(x, y, value, size, fill, weight, "start", false);
@@ -267,7 +287,7 @@ public class SlideImages
                 + text(120, 300, kicker, 30, SKY, "bold")
                 + "<rect x='120' y='330' width='160' height='6' fill='" + ORANGE + "'/>"
                 + text(120, 470, title, 104, "white", "bold")
-                + text(120, 560, subtitle, 44, "#D8E1EA")
+                + subtitle(120, 560, subtitle, 44, "#D8E1EA")
                 + text(1460, 820, number, 150, "white", "bold", "end", false);
         return svg(1600, 900, body, null);
     }
@@ -284,7 +304,7 @@ public class SlideImages
                 + text(120, 280, kicker, 30, accent, "bold")
                 + "<rect x='120' y='310' width='160' height='6' fill='" + accent + "'/>"
                 + text(120, 450, title, 104, "white", "bold")
-                + text(120, 540, subtitle, 44, "#D8E1EA"));
+                + subtitle(120, 540, subtitle, 44, "#D8E1EA"));
         int x = 120;
         for (String[] pill : track)
         {
@@ -390,8 +410,8 @@ public class SlideImages
         StringBuilder b = new StringBuilder(text(40, 50, "list.stream().filter(p).findFirst(): what one call allocates",
                 26, INK, "bold"));
         String[][] stages = {{"list.stream()", "Head + Spliterator", "80 B"},
-                {".filter(p)", "StatelessOp stage", "72 B"},
-                {".findFirst()", "Sink + Optional", "32 B"}};
+                {".filter(p)", "StatelessOp + Sink", "56 B + 16 B = 72 B"},
+                {".findFirst()", "FindSink + Optional", "32 B"}};
         for (int i = 0; i < stages.length; i++)
         {
             int x = 40 + i * 400;
@@ -467,13 +487,13 @@ public class SlideImages
         String b = text(40, 42, "After inlining, C2 asks: can anyone outside this method see the new object?", 24, INK, "bold")
                 + plain(40, 105, 300, 50, "new Object()", 22, INK, true)
                 + arrow(340, 130, 440, 90) + arrow(340, 130, 440, 170)
-                + box(450, 65, 300, 50, BLUE, "does not escape", 22)
+                + box(450, 65, 300, 50, BLUE, "stays in the method", 22)
                 + arrow(750, 90, 830, 90)
                 + box(840, 65, 520, 50, "white", "scalar replaced: fields in registers, 0 B", 22, BLUE, BLUE)
-                + box(450, 145, 300, 50, ORANGE, "escapes", 22, INK)
+                + box(450, 145, 300, 50, ORANGE, "leaves the method", 22, INK)
                 + arrow(750, 170, 830, 170)
                 + box(840, 145, 520, 50, "white", "allocated on the heap, collected by GC", 22, INK, ORANGE)
-                + text(40, 238, "Escapes = stored in a field, returned, or passed to code that was not inlined.  "
+                + text(40, 238, "Leaves the method = stored in a field, returned, or passed to code that was not inlined.  "
                         + "Turn it off: -XX:-DoEscapeAnalysis", 20, MUTED);
         return svg(1400, 258, b, PAPER);
     }

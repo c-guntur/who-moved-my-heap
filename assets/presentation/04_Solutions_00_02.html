@@ -508,6 +508,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
   #content > .sect1.title-slide .paragraph.slide-no { color: #8FA3B8; }
 
+  /* two code columns side by side (table role code-grid, cells are AsciiDoc blocks) */
+  #content > .sect1 table.code-grid { width: 100%; margin: .2em 0; border: none; background: none; table-layout: fixed; }
+  #content > .sect1 table.code-grid td { border: none; background: none; padding: 0 .5em .3em 0; vertical-align: top; }
+  #content > .sect1 table.code-grid .listingblock { margin-bottom: .3em; }
+  #content > .sect1 table.code-grid .listingblock pre { font-size: .57em; padding: .6em .8em; }
+  /* highlighted text inside jmap output (role jmap, markup [.hl]#text#) */
+  #content > .sect1 .listingblock.jmap pre { font-size: .5em; }
+  #content > .sect1 .listingblock.jmap pre strong { background: #FFE066; color: #000; display: inline-block; width: 100%; font-weight: bold; }
   /* cover page (index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
   #content > .sect1.cover > h2 { font-size: 2.2em; }
   #content > .sect1.cover table.cover-grid { width: 100%; margin: .2em 0; border: none; background: none; font-size: .9em; }
@@ -582,52 +590,43 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <table class="tableblock frame-none grid-rows stretch">
 <colgroup>
-<col style="width: 23.5294%;">
-<col style="width: 41.1764%;">
-<col style="width: 35.2942%;">
+<col style="width: 36.3636%;">
+<col style="width: 63.6364%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Solution</th>
 <th class="tableblock halign-left valign-top">Use it to</th>
-<th class="tableblock halign-left valign-top">Measured here</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JDK CLI tooling</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">See what is on the heap, and what a workload drops</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Measure first</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See what is on the heap</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Java Object Layout</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Size one object or a whole collection</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>HashMap$Node</code> 32 B to 24 B</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Size of one object Graph or Class</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Java Microbenchmark Harness</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Count bytes and objects per call</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">176 B per <code>anyMatch</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Measure performance and throughput. Count bytes and objects per call</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Object pooling</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reuse costly objects, not small ones</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Integer</code> -128 to 127</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">De-duplicate objects</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Compact object headers</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Shrink every header by 4 B</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">14% off a <code>HashMap</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Non-capturing lambdas</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Share one lambda instance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">32 B to 16 B per call (EA off)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Eclipse Collections</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Primitives, and loops without a pipeline</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48 B to 8 B per element; 0 B per call</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Primitives, Eager &amp; Lazy, Rich Iteration patterns</p></td>
 </tr>
 </tbody>
 </table>

@@ -15,7 +15,7 @@ Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 [.lead]
 Stream garbage grows with calls, not with the number of elements.
 
-* One JDK `anyMatch` call leaves 176 B, wherever the match is.
+* One JDK `anyMatch` call leaves 176 B (or 160 B when using a cached `Integer`).
 * At 10 M calls that is 1.76 GB of young-generation garbage.
 * The same operation using Eclipse Collections allocates 0 B.
 

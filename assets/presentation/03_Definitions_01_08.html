@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="description" content="Who moved my heap in 40 minutes, definitions 01: Seven terms">
-<title>Escape analysis</title>
+<title>Immutable Data Object Pooling</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -434,6 +434,221 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
 <!--
   Slide format for the HTML preview (asciidoctor html5 backend, IntelliJ AsciiDoc preview).
   Every "==" section is one 16:9 slide sized to the window: no slide ever needs scrolling,
@@ -508,6 +723,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
   #content > .sect1.title-slide .paragraph.slide-no { color: #8FA3B8; }
 
+  /* two code columns side by side (table role code-grid, cells are AsciiDoc blocks) */
+  #content > .sect1 table.code-grid { width: 100%; margin: .2em 0; border: none; background: none; table-layout: fixed; }
+  #content > .sect1 table.code-grid td { border: none; background: none; padding: 0 .5em .3em 0; vertical-align: top; }
+  #content > .sect1 table.code-grid .listingblock { margin-bottom: .3em; }
+  #content > .sect1 table.code-grid .listingblock pre { font-size: .57em; padding: .6em .8em; }
+  /* highlighted text inside jmap output (role jmap, markup [.hl]#text#) */
+  #content > .sect1 .listingblock.jmap pre { font-size: .5em; }
+  #content > .sect1 .listingblock.jmap pre strong { background: #FFE066; color: #000; display: inline-block; width: 100%; font-weight: bold; }
   /* cover page (index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
   #content > .sect1.cover > h2 { font-size: 2.2em; }
   #content > .sect1.cover table.cover-grid { width: 100%; margin: .2em 0; border: none; background: none; font-size: .9em; }
@@ -575,29 +798,39 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1 sec-defs">
-<h2 id="_escape_analysis">Escape analysis</h2>
+<h2 id="_immutable_data_object_pooling">Immutable Data Object Pooling</h2>
 <div class="sectionbody">
 <div class="paragraph track">
 <p>Intro · Problem · <span class="on">Definitions</span> · Solutions · AI skills · Wrap-up</p>
 </div>
 <div class="paragraph lead">
-<p>A C2<sup>1</sup> JIT<sup>2</sup> check: when no one outside the method can see a new object, the allocation is removed.</p>
+<p>A pool hands out one shared copy of equal immutable objects instead of many.</p>
 </div>
-<div class="imageblock diagram">
+<div class="listingblock">
 <div class="content">
-<img src="../images/diagram-07-escape-analysis.svg" alt="Escape analysis decision">
+<pre class="rouge highlight"><code data-lang="java"><span class="nc">String</span> <span class="n">s1</span> <span class="o">=</span> <span class="s">"Heap"</span><span class="o">;</span>                        <span class="c1">// 1. literals are interned automatically</span>
+<span class="nc">String</span> <span class="n">s2</span> <span class="o">=</span> <span class="s">"Heap"</span><span class="o">;</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s2</span><span class="o">);</span>              <span class="c1">// true: same object in the String pool</span>
+
+<span class="nc">String</span> <span class="n">s3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"Heap"</span><span class="o">);</span>            <span class="c1">// 2. explicit creation: a separate heap object</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s3</span><span class="o">);</span>              <span class="c1">// false</span>
+
+<span class="nc">String</span> <span class="n">s4</span> <span class="o">=</span> <span class="n">s3</span><span class="o">.</span><span class="na">intern</span><span class="o">();</span>                   <span class="c1">// 3. manual interning returns the pooled copy</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s4</span><span class="o">);</span>              <span class="c1">// true: same as s1</span></code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Works only on compiled, inlined code, after warm-up.</p>
+<p>JVM setting: <code>-XX:+UseStringDeduplication</code> lets the GC share the <code>byte[]</code> of equal Strings.</p>
+</li>
+<li>
+<p>A pool can be strong (entries stay until removed) or weak (the GC reclaims entries nobody uses).</p>
+</li>
+<li>
+<p>Libraries with pools: Guava <code>Interners</code>, Apache Commons, Eclipse Collections <code>Pool</code>.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph footnote-line">
-<p><sup>1</sup> C2: the HotSpot server compiler, the optimizing compiler for hot methods (C1 is the fast client compiler).<br>
-<sup>2</sup> JIT: just-in-time compiler, which turns frequently run bytecode into machine code while the program runs.</p>
 </div>
 <div class="openblock notes">
 <div class="content">
@@ -605,8 +838,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>⏱ 23:00, stay about 60 s. Definitions: 15:00 to 24:00 (9 min).</p>
 </div>
 <div class="paragraph">
-<p><code>-XX:-DoEscapeAnalysis</code> shows what a design really creates. The escape-analysis-off runs are an upper bound, not a typical JVM. Escape analysis gives up on cold code,
-large methods and megamorphic call sites.</p>
+<p>This is why the shakers benchmarks show an extra 16 B <code>Integer</code> box at match positions 500 and 1000,
+but not at position 1.</p>
 </div>
 </div>
 </div>

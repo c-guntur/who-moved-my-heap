@@ -434,6 +434,221 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 #footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
+<style>
+pre.rouge table td { padding: 5px; }
+pre.rouge table pre { margin: 0; }
+pre.rouge .cm {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cp {
+  color: #999999;
+  font-weight: bold;
+}
+pre.rouge .c1 {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .cs {
+  color: #999999;
+  font-weight: bold;
+  font-style: italic;
+}
+pre.rouge .c, pre.rouge .ch, pre.rouge .cd, pre.rouge .cpf {
+  color: #999988;
+  font-style: italic;
+}
+pre.rouge .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+pre.rouge .gd {
+  color: #000000;
+  background-color: #ffdddd;
+}
+pre.rouge .ge {
+  color: #000000;
+  font-style: italic;
+}
+pre.rouge .gr {
+  color: #aa0000;
+}
+pre.rouge .gh {
+  color: #999999;
+}
+pre.rouge .gi {
+  color: #000000;
+  background-color: #ddffdd;
+}
+pre.rouge .go {
+  color: #888888;
+}
+pre.rouge .gp {
+  color: #555555;
+}
+pre.rouge .gs {
+  font-weight: bold;
+}
+pre.rouge .gu {
+  color: #aaaaaa;
+}
+pre.rouge .gt {
+  color: #aa0000;
+}
+pre.rouge .kc {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kd {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kn {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kp {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kr {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .kt {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .k, pre.rouge .kv {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .mf {
+  color: #009999;
+}
+pre.rouge .mh {
+  color: #009999;
+}
+pre.rouge .il {
+  color: #009999;
+}
+pre.rouge .mi {
+  color: #009999;
+}
+pre.rouge .mo {
+  color: #009999;
+}
+pre.rouge .m, pre.rouge .mb, pre.rouge .mx {
+  color: #009999;
+}
+pre.rouge .sa {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .sb {
+  color: #d14;
+}
+pre.rouge .sc {
+  color: #d14;
+}
+pre.rouge .sd {
+  color: #d14;
+}
+pre.rouge .s2 {
+  color: #d14;
+}
+pre.rouge .se {
+  color: #d14;
+}
+pre.rouge .sh {
+  color: #d14;
+}
+pre.rouge .si {
+  color: #d14;
+}
+pre.rouge .sx {
+  color: #d14;
+}
+pre.rouge .sr {
+  color: #009926;
+}
+pre.rouge .s1 {
+  color: #d14;
+}
+pre.rouge .ss {
+  color: #990073;
+}
+pre.rouge .s, pre.rouge .dl {
+  color: #d14;
+}
+pre.rouge .na {
+  color: #008080;
+}
+pre.rouge .bp {
+  color: #999999;
+}
+pre.rouge .nb {
+  color: #0086B3;
+}
+pre.rouge .nc {
+  color: #445588;
+  font-weight: bold;
+}
+pre.rouge .no {
+  color: #008080;
+}
+pre.rouge .nd {
+  color: #3c5d5d;
+  font-weight: bold;
+}
+pre.rouge .ni {
+  color: #800080;
+}
+pre.rouge .ne {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nf, pre.rouge .fm {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nl {
+  color: #990000;
+  font-weight: bold;
+}
+pre.rouge .nn {
+  color: #555555;
+}
+pre.rouge .nt {
+  color: #000080;
+}
+pre.rouge .vc {
+  color: #008080;
+}
+pre.rouge .vg {
+  color: #008080;
+}
+pre.rouge .vi {
+  color: #008080;
+}
+pre.rouge .nv, pre.rouge .vm {
+  color: #008080;
+}
+pre.rouge .ow {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .o {
+  color: #000000;
+  font-weight: bold;
+}
+pre.rouge .w {
+  color: #bbbbbb;
+}
+pre.rouge {
+  background-color: #f8f8f8;
+}
+</style>
 <!--
   Slide format for the HTML preview (asciidoctor html5 backend, IntelliJ AsciiDoc preview).
   Every "==" section is one 16:9 slide sized to the window: no slide ever needs scrolling,
@@ -508,6 +723,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
   #content > .sect1.title-slide .paragraph.slide-no { color: #8FA3B8; }
 
+  /* two code columns side by side (table role code-grid, cells are AsciiDoc blocks) */
+  #content > .sect1 table.code-grid { width: 100%; margin: .2em 0; border: none; background: none; table-layout: fixed; }
+  #content > .sect1 table.code-grid td { border: none; background: none; padding: 0 .5em .3em 0; vertical-align: top; }
+  #content > .sect1 table.code-grid .listingblock { margin-bottom: .3em; }
+  #content > .sect1 table.code-grid .listingblock pre { font-size: .57em; padding: .6em .8em; }
+  /* highlighted text inside jmap output (role jmap, markup [.hl]#text#) */
+  #content > .sect1 .listingblock.jmap pre { font-size: .5em; }
+  #content > .sect1 .listingblock.jmap pre strong { background: #FFE066; color: #000; display: inline-block; width: 100%; font-weight: bold; }
   /* cover page (index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
   #content > .sect1.cover > h2 { font-size: 2.2em; }
   #content > .sect1.cover table.cover-grid { width: 100%; margin: .2em 0; border: none; background: none; font-size: .9em; }
@@ -583,9 +806,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph lead">
 <p>Top of <code>jmap -histo</code> against a running IntelliJ IDEA.</p>
 </div>
-<div class="imageblock screenshot">
+<div class="listingblock jmap">
 <div class="content">
-<img src="../images/placeholder-problem-02-jmap-intellij.svg" alt="jmap -histo output of IntelliJ IDEA">
+<pre class="rouge highlight"><code data-lang="text">$ jmap -histo:live 3235 | head -n 17
+ num     #instances         #bytes  class name (module)
+-------------------------------------------------------
+   1:       3047126      214370048  [B (java.base@25.0.4)
+   2:       2953580       70885920  java.lang.String (java.base@25.0.4)
+   3:        239547       67348200  [I (java.base@25.0.4)
+   4:        548566       44839048  [Ljava.lang.Object; (java.base@25.0.4)
+   5:        176462       41384928  [J (java.base@25.0.4)
+   6:        901804       28857728  java.util.HashMap$Node (java.base@25.0.4)
+   7:         25466       20614184  [F (java.base@25.0.4)
+   8:          6422       12487128  [C (java.base@25.0.4)
+   9:         97291       12185312  java.lang.Class (java.base@25.0.4)
+  10:         26398       11857104  [Ljdk.internal.vm.FillerElement; (java.base@25.0.4)
+  11:         73634       11262664  [Ljava.util.HashMap$Node; (java.base@25.0.4)
+  12:        457776       10986624  java.util.ArrayList (java.base@25.0.4)
+  13:        328491       10511712  java.util.concurrent.ConcurrentHashMap$Node (java.base@25.0.4)
+  14:        366274        8790576  com.intellij.util.keyFMap.OneElementFMap
+  15:        259627        8308064  com.intellij.openapi.editor.impl.IntervalTreeImpl$WeakReferencedGetter</code></pre>
 </div>
 </div>
 <div class="openblock notes">
@@ -594,7 +834,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>⏱ 09:10, stay about 35 s. Problem statement: 07:00 to 15:00 (8 min).</p>
 </div>
 <div class="paragraph">
-<p>Screenshot to come. Point at the boxes, nodes and arrays in the top rows, and at the total line.</p>
+<p>Point at the boxes, nodes and arrays in the top rows, and at the total line.</p>
 </div>
 </div>
 </div>

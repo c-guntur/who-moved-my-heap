@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="description" content="Who moved my heap in 40 minutes, solutions 02: Patterns and options">
-<title>Eclipse Collections: primitives and no pipeline</title>
+<title>Eclipse Collections: Primitives, Eager and Lazy options</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -508,6 +508,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
   #content > .sect1.title-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
   #content > .sect1.title-slide .paragraph.slide-no { color: #8FA3B8; }
 
+  /* two code columns side by side (table role code-grid, cells are AsciiDoc blocks) */
+  #content > .sect1 table.code-grid { width: 100%; margin: .2em 0; border: none; background: none; table-layout: fixed; }
+  #content > .sect1 table.code-grid td { border: none; background: none; padding: 0 .5em .3em 0; vertical-align: top; }
+  #content > .sect1 table.code-grid .listingblock { margin-bottom: .3em; }
+  #content > .sect1 table.code-grid .listingblock pre { font-size: .57em; padding: .6em .8em; }
+  /* highlighted text inside jmap output (role jmap, markup [.hl]#text#) */
+  #content > .sect1 .listingblock.jmap pre { font-size: .5em; }
+  #content > .sect1 .listingblock.jmap pre strong { background: #FFE066; color: #000; display: inline-block; width: 100%; font-weight: bold; }
   /* cover page (index.adoc, role "cover"): Duke and the QR code side by side, disclaimer above the links */
   #content > .sect1.cover > h2 { font-size: 2.2em; }
   #content > .sect1.cover table.cover-grid { width: 100%; margin: .2em 0; border: none; background: none; font-size: .9em; }
@@ -575,54 +583,69 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="content">
 <div class="sect1 sec-solutions">
-<h2 id="_eclipse_collections_primitives_and_no_pipeline">Eclipse Collections: primitives and no pipeline</h2>
+<h2 id="_eclipse_collections_primitives_eager_and_lazy_options">Eclipse Collections: Primitives, Eager and Lazy options</h2>
 <div class="sectionbody">
 <div class="paragraph track">
 <p>Intro · Problem · Definitions · <span class="on">Solutions</span> · AI skills · Wrap-up</p>
 </div>
 <table class="tableblock frame-none grid-rows stretch">
 <colgroup>
-<col style="width: 38.4615%;">
-<col style="width: 30.7692%;">
-<col style="width: 30.7693%;">
+<col style="width: 29.4117%;">
+<col style="width: 17.647%;">
+<col style="width: 17.647%;">
+<col style="width: 17.647%;">
+<col style="width: 17.6473%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-left valign-top">JDK</th>
-<th class="tableblock halign-left valign-top">Eclipse Collections</th>
+<th class="tableblock halign-center valign-top">JDK Size</th>
+<th class="tableblock halign-center valign-top">JDK Use</th>
+<th class="tableblock halign-center valign-top">EC Size</th>
+<th class="tableblock halign-center valign-top">EC Use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 M <code>int</code>s in a list</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">20.0 MB <code>ArrayList&lt;Integer&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">4.0 MB <code>IntArrayList</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of 1M <code>int</code>s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">20.0 MB</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>ArrayList&lt;Integer&gt;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4.0 MB</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>IntArrayList</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1 M <code>int</code>s in a set</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">48.4 MB <code>HashSet&lt;Integer&gt;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8.4 MB <code>IntHashSet</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set of 1M <code>int</code>s</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">48.4 MB</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>HashSet&lt;Integer&gt;</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8.4 MB</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>IntHashSet</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>anyMatch</code>, match at 500</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">176 B per call</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 B <code>anySatisfy</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Match at element 500</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">176 B per call</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>anyMatch</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 B</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>anySatisfy</code></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter().count()</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">224 B per call</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0 B <code>count</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Count</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">224 B per call</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>filter().count()</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 B</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>count</code></p></td>
 </tr>
 </tbody>
 </table>
 <div class="ulist">
 <ul>
 <li>
-<p>Primitive collections drop the boxes; eager methods loop without a pipeline.</p>
+<p>Primitive collections drop the need for boxed values.</p>
 </li>
 <li>
-<p><code>*With</code> methods keep the lambda fat-free.</p>
+<p>Eager methods iterate without additional garbage.</p>
+</li>
+<li>
+<p>Most of the <code>*With</code> methods keep the lambda fat-free.</p>
 </li>
 </ul>
 </div>

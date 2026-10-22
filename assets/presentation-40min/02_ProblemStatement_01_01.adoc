@@ -13,7 +13,7 @@ endif::[]
 Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 
 [.lead]
-JDK Collections and Stream create objects on the heap that a developer may not know about.
+JDK Collections and `Stream` create objects on the heap that a developer may not know about.
 
 * Boxed primitives and per-entry nodes inflate what a collection holds.
 * Every stream call builds a pipeline of objects and drops it after.

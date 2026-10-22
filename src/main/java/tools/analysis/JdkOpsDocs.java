@@ -477,7 +477,7 @@ public class JdkOpsDocs
         String[] names = new String[rows.length];
         for (int i = 0; i < rows.length; i++)
         {
-            names[i] = rows[i][2] + "  [" + KIND.get(kind(rows[i][0], rows[i][1])) + "]";
+            names[i] = rows[i][2];
         }
         plot.categories(ys, names, 10);
         plot.limits(0, maxLeft * 1.55);
@@ -493,7 +493,7 @@ public class JdkOpsDocs
         plot.title(op + ": what one call leaves behind, JDK stream vs Eclipse Collections");
         plot.subtitle(Py.wrap("Lower is better. Escape analysis off, so every object the code creates is counted. The JDK stream "
                 + "leaves " + f0(jdk) + " B; EC versions leave " + f0(ecMin) + " to " + f0(ecMax) + " B, with no pipeline at all. "
-                + "On a normal JVM (in brackets) the JIT removes every EC object; the JDK objects stay.", 130));
+                + "On a normal JVM (in parentheses) the JIT removes every EC object; the JDK objects stay.", 130));
         plot.legend(legend, 6, 10);
         plot.save(layout.images.resolve(name + ".png"));
 

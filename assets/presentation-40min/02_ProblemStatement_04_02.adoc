@@ -19,7 +19,7 @@ Intro · [.on]#Problem# · Definitions · Solutions · AI skills · Wrap-up
 |===
 | Origin | Objects | Bytes
 | Stream source: `ReferencePipeline$Head`, spliterator | 2 | 80 B
-| `filter` stage and its sink | 2 | 72 B
+| `filter` `StatelessOp` (56 B) and its `Sink.ChainedReference` (16 B) | 2 | 72 B
 | terminal op: `FindSink`, `Optional` | 2 | 32 B
 | caller lambda `Integer.valueOf(test)::equals` | 1 | 16 B
 | `Integer` box, outside the cache | 1 | 16 B

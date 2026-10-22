@@ -14,8 +14,7 @@ Intro · Problem · Definitions · [.on]#Solutions# · AI skills · Wrap-up
 
 [source,java]
 ----
-Class<?> node = Class.forName("java.util.HashMap$Node");
-System.out.println(ClassLayout.parseClass(node).toPrintable());
+include::demo/NodeLayout.java[]
 ----
 
 [source,shell]

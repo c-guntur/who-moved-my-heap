@@ -895,7 +895,7 @@ list before reporting (S8, M6).
   and `:imagesdir: ../images`. `SlideImages.java` writes all drawn images (banners, diagrams, placeholders) to the one shared `assets/images/`.
 - **D3.3** Banners: with a `_banners.txt` in the folder, `SlideImages.java` draws the banners listed there
   instead of the built-in ones (D2.6). One line per banner,
-  `file | kicker | number | title | subtitle | accent | track`; the track is `label=#colour` pills separated
+  `file | kicker | number | title | subtitle | accent | track`; `backticked` words in the subtitle are drawn in the code font; the track is `label=#colour` pills separated
   by commas, `*` before the label marks the current section; lines starting with `#` are comments. A banner
   file is named after its series (`01_Intro.svg` for the `01_Intro_00_01.adoc` title slide) and is written
   once, to the shared `assets/images/`. Slides refer to images by bare name (`image::01_Intro.svg[]`), resolved

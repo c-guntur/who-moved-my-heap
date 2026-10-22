@@ -7,18 +7,18 @@ include::_deck-settings.adoc[]
 endif::[]
 
 [.sec-solutions,background-color="#F5F7FA"]
-== Object pooling: pool resources, not small objects
+== Object pooling: de-duplicate immutable objects
 
 [.track]
 Intro · Problem · Definitions · [.on]#Solutions# · AI skills · Wrap-up
 
 [.lead]
-A pool pays off for costly objects; for small ones, allocate fewer instead.
+Share one copy of equal immutable objects instead of allocating many.
 
-* Pool threads, connections and direct buffers.
-* The JDK already pools `Integer` -128 to 127 through `Integer.valueOf`.
-* For small objects: presize collections, use primitives, avoid boxing.
-* A pooled object lives long, gets promoted, and needs locking.
+* Integer cache: `Integer.valueOf` reuses -128 to 127; `-XX:AutoBoxCacheMax=<n>` raises the upper bound.
+* String interning: `String.intern()`; `-XX:+UseStringDeduplication` shares the `byte[]` of equal Strings.
+* Object interning: keep your own pool of immutable values, strong or weak.
+* Libraries with pools: Guava `Interners`, Apache Commons, Eclipse Collections `Pool`.
 
 [.notes]
 --
