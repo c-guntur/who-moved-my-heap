@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="description" content="Who moved my heap in 40 minutes, AI skills 01: AI skills">
-<title>Demo: who moved my heap?</title>
+<title>A skill that suggests the fix</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
@@ -797,21 +797,40 @@ pre.rouge {
 <div id="header">
 </div>
 <div id="content">
-<div class="sect1 sec-ai demo">
-<h2 id="_demo_who_moved_my_heap">Demo: who moved my heap?</h2>
+<div class="sect1 sec-ai">
+<h2 id="_a_skill_that_suggests_the_fix">A skill that suggests the fix</h2>
 <div class="sectionbody">
 <div class="paragraph track">
 <p>Intro · Problem · Definitions · Solutions · <span class="on">AI skills</span> · Wrap-up</p>
 </div>
-<div class="paragraph lead">
-<p>The histogram from the first demo, pasted into an AI assistant.</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="text">This is `jcmd &lt;pid&gt; GC.class_histogram` of a running JVM.
-Who moved my heap? Name the top 5 classes by bytes, say which are
-boxes, nodes, arrays or lambdas, and what I could change.</code></pre>
+<pre class="rouge highlight"><code data-lang="markdown"><span class="nn">---</span>
+<span class="na">name</span><span class="pi">:</span> <span class="s">heap-fix</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s">Turn class histogram findings into memory fixes for a JVM</span>
+<span class="nn">---</span>
+<span class="p">1.</span> Run "jps -l", then "jmap -histo <span class="nt">&lt;pid&gt;</span>" before and after the workload.
+<span class="p">2.</span> For each top grower, suggest the matching fix:
+<span class="p">   -</span> Heap near 32 GB: stay below it, so "-XX:+UseCompressedOops" stays on.
+<span class="p">   -</span> Object headers: try "-XX:+UseCompactObjectHeaders" on JDK 25.
+<span class="p">   -</span> Equal immutable objects: pool them, "String.intern()" or a shared pool.
+<span class="p">   -</span> "$$Lambda" and "ReferencePipeline": non-capturing lambdas, plain loops.
+<span class="p">   -</span> "HashMap$Node" and boxes: Eclipse Collections, "UnifiedMap", primitive lists.
+<span class="p">3.</span> Re-run both histograms and report the bytes saved per class.</code></pre>
 </div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Each finding maps to one fix.</p>
+</li>
+<li>
+<p>[Measure &#8658; Execute &#8658; Fix] after every major code change.</p>
+</li>
+<li>
+<p>Remember, you don&#8217;t just check the basement when the house is built, you check periodically.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph slide-no">
 <p>48</p>

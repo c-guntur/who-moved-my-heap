@@ -263,7 +263,7 @@
             </build>
         </profile>
         <!--
-          Slides: converts the AsciiDoc slides in assets/presentation-40min (or -Dslides.dir) to HTML with AsciidoctorJ
+          Slides: converts the AsciiDoc slides in assets/docs (or -Dslides.dir) to HTML with AsciidoctorJ
           and to one PDF with Playwright for Java (no Ruby, no Node.js).
             mvn -Pslides process-resources
           Any other slide folder (same file naming) with -Dslides.dir, relative to the project root.
@@ -284,7 +284,7 @@
             <id>slides</id>
             <properties>
                 <!-- The slide sources, relative to the project root: -Dslides.dir=<folder> builds another one -->
-                <slides.dir>assets/presentation-40min</slides.dir>
+                <slides.dir>assets/docs</slides.dir>
                 <slides.src>${project.basedir}/${slides.dir}</slides.src>
                 <slides.tools>${project.basedir}/src/main/java/tools/presentation</slides.tools>
                 <!-- The published slides: emptied and rewritten by every build -->

@@ -7,7 +7,7 @@ and build the slides, all at once or one stage at a time from outputs already on
 - **Shakers**: the JMH benchmarks in `src/test/java/conf/session/shakers/`, comparing the JDK Stream
   API with Eclipse Collections (EC) for throughput, garbage per call and object counts.
 - **Movers**: the JOL footprint tests in `src/test/java/conf/session/movers/` (no JMH).
-- **Slides**: the slide sources in `assets/presentation-40min/` (the 40-minute talk); the build publishes the
+- **Slides**: the slide sources in `assets/docs/` (the 40-minute talk); the build publishes the
   slide pages and the talk PDF to `assets/presentation/` (D2.5).
 
 `HowTo.adoc` is the short command guide for other users of the project. Where it and this file
@@ -792,7 +792,7 @@ list before reporting (S8, M6).
 
 ### D1. Sources
 
-- **D1.1** The slides live in `assets/presentation-40min/` (the source; `assets/presentation/` is build
+- **D1.1** The slides live in `assets/docs/` (the source; `assets/presentation/` is build
   output, D2.5). Each slide is its own file,
   `<series>_<deck>_<slide>.adoc` (e.g. `03_Definitions_01_02.adoc`). Start a new one from
   `slide-template.adoc`, which also says how much fits on one slide.
@@ -819,7 +819,7 @@ list before reporting (S8, M6).
   The last slide of the last series (the end of the talk) has no Next link.
   An opening page with the attribute line `:talk-index:` is the index of the whole talk: every Index
   link (opening pages included) points to it instead of the series agenda or the cover
-  (`assets/presentation-40min/00_Index_03.adoc`, one link per section).
+  (`assets/docs/00_Index_03.adoc`, one link per section).
   `SlidesToPdf.java` prints each opening page as `pdf/index.pdf, 00_Index_NN.pdf`.
   Every slide carries one running number for the whole talk (cover = 1, then the opening pages, then the
   series in file-name order): `SlideNav.java` writes it as a `[.slide-no]` paragraph at the top of the
@@ -829,7 +829,7 @@ list before reporting (S8, M6).
   A slide with the attribute line `:slide-hidden:` (above `ifndef::deck[]`) is hidden: `SlideNav.java` skips
   it (no links to it, no number, not in the deck files or the PDF) and `SlidePublish.java` does not publish
   its page; Previous/Next of its neighbours skip over it. Delete the line to show the slide again.
-  The slide sources folder (`assets/presentation-40min`) is never deleted or changed by any build step: `SlideNav.java`
+  The slide sources folder (`assets/docs`) is never deleted or changed by any build step: `SlideNav.java`
   only reads it, copies it to `target/slides/src` and writes the navigation, slide numbers and deck files into that
   copy, which is what gets converted; the profile only cleans `target/slides` and empties the output folder
   (`assets/presentation`), and `SlidePublish.java` refuses an output folder that is, or contains, the slide sources.
@@ -896,7 +896,7 @@ list before reporting (S8, M6).
 ### D3. Other slide folders
 
 - **D3.1** The slide build works on any source folder with the D1 file naming: property `slides.dir` in
-  the `slides` profile (relative to the project root, default `assets/presentation-40min`), or
+  the `slides` profile (relative to the project root, default `assets/docs`), or
   `Pipeline.java slides --slides-dir=<folder>`. `SlideNav.java` and `SlideImages.java` take the folder as
   their second argument (same default); the output still goes to `assets/presentation/` (D2.5).
 - **D3.2** A folder needs its own `_deck-settings.adoc`, `docinfo.html`, `docinfo-revealjs.html` and
@@ -909,7 +909,7 @@ list before reporting (S8, M6).
   once, to the shared `assets/images/`. Slides refer to images by bare name (`image::01_Intro.svg[]`), resolved
   through `imagesdir`: `../images` in the sources and in the built pages. No other folder holds a
   copy (the build copies the shared images into `target/slides/images/` only for its work files).
-- **D3.4** `assets/presentation-40min/` is the 40-minute talk (sections Intro, Problem, Definitions,
+- **D3.4** `assets/docs/` is the 40-minute talk (sections Intro, Problem, Definitions,
   Solutions, AI skills, Wrap-up, Appendix; timing in each slide's notes), cut from the original long
   deck, which is archived outside the project. It has no Kroki diagram blocks, so it builds offline.
 

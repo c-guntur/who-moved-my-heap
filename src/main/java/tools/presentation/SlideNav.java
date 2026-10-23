@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Keeps the slide files of one slide folder (default assets/presentation-40min) linked and assembled.
+ * Keeps the slide files of one slide folder (default assets/docs) linked and assembled.
  *
  * Slide files are named <series>_<deck>_<slide>.adoc, e.g. 03_Definitions_01_02.adoc (deck 01, slide 02).
  * For every series this program:
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
  *   * writes the deck file <series>_<deck>.adoc, which includes the deck's slides in order
  *     (used for the reveal.js and PDF builds; the :deck: attribute hides the per-slide header and links).
  * The slide sources are only read: with a third argument (target/slides/src in the build) the folder is copied there
- * first and everything is written into the copy, so nothing in assets/presentation-40min is ever changed or deleted.
+ * first and everything is written into the copy, so nothing in assets/docs is ever changed or deleted.
  * The index is <series>_00_02.adoc (the agenda), or the first slide when there is no 00_02. When one of the opening
  * pages has the attribute line :talk-index: (an index of the whole talk, e.g. 00_Index_03.adoc), every Index link
  * points to that page instead, the opening pages' links included.
@@ -38,8 +38,8 @@ import java.util.regex.Pattern;
  *
  * No dependencies, so it runs straight from source.
  * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideNav.java . [slide folder] [work copy folder]
- * The slide folder is relative to the project root (or absolute); without it, assets/presentation-40min.
- * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/presentation-40min).
+ * The slide folder is relative to the project root (or absolute); without it, assets/docs.
+ * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/docs).
  * Run it after adding, removing or renumbering slide files.
  */
 public class SlideNav
@@ -208,11 +208,11 @@ public class SlideNav
         }
     }
 
-    // The slide folder: the second argument (relative to the project root, or absolute), default assets/presentation-40min
+    // The slide folder: the second argument (relative to the project root, or absolute), default assets/docs
     static Path slidesFolder(String[] args)
     {
         Path root = Path.of(args.length > 0 ? args[0] : ".");
-        return args.length > 1 ? root.resolve(args[1]) : root.resolve(Path.of("assets", "presentation-40min"));
+        return args.length > 1 ? root.resolve(args[1]) : root.resolve(Path.of("assets", "docs"));
     }
 
     // The values of one name part (series or deck), in file-name order, without repeats

@@ -808,9 +808,10 @@ pre.rouge {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="rouge highlight"><code data-lang="text">Here are two `jcmd GC.class_histogram -all` outputs, before and after one request.
+<pre class="rouge highlight"><code data-lang="text">Here are two jmap -histo &lt;pid&gt; outputs, before and after one request.
 Which classes grew most, in instances and in bytes?
-Which are boxes, map nodes, arrays or lambdas, and what code likely made them?</code></pre>
+Look for HashMap$Node, arrays, lambdas and Stream ReferencePipeline stages.
+Which code most likely allocated them?</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -820,6 +821,9 @@ Which are boxes, map nodes, arrays or lambdas, and what code likely made them?</
 </li>
 <li>
 <p>Ask for the arithmetic, then check two rows yourself.</p>
+</li>
+<li>
+<p><strong>Also try</strong>: Prompt to run <code>jps</code> followed by two executions of <code>jmap</code> to produce the above.</p>
 </li>
 </ul>
 </div>

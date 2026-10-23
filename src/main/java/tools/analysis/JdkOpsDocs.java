@@ -638,7 +638,7 @@ public class JdkOpsDocs
         for (Map.Entry<String, String[][]> e : IMPLS.entrySet())
         {
             String op = e.getKey();
-            a.add("." + op + ": bytes per call by origin, escape analysis off (normal JVM in brackets)");
+            a.add("." + op + ": bytes per call by origin, escape analysis off (normal JVM in parentheses)");
             a.addAll(embedTail(op + ": JDK stream vs Eclipse Collections, escape analysis off", charts.get(op) + ".png", charts.get(op) + ".mmd"));
             a.addAll(List.of("[cols=\"3,2,5,1,1\",options=\"header\"]", "|===",
                     "|Implementation |Lambda |Objects per call |Objects |B per call"));

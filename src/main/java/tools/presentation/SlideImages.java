@@ -12,7 +12,7 @@ import java.util.Map;
 
 /**
  * Draws the title-slide (banner-NN, banner-intro-NN, banner-problem-NN, banner-appendix-NN), diagram and placeholder SVGs
- * for the slides of one slide folder (default assets/presentation-40min), into assets/images.
+ * for the slides of one slide folder (default assets/docs), into assets/images.
  *
  * When the slide folder has a _banners.txt, its lines replace the built-in banner list (see listedBanners):
  *   file | kicker | number | title | subtitle [| accent [| track]]
@@ -20,12 +20,12 @@ import java.util.Map;
  * one copy of each image for the whole project. The slides name them without a path (:imagesdir: ../images in
  * _deck-settings.adoc); the build points imagesdir at ../images for the published pages in assets/presentation.
  * The track is the row of section pills at the bottom, label=colour separated by commas; * before a label marks the
- * current section. Lines starting with # are comments. Example: assets/presentation-40min/_banners.txt.
+ * current section. Lines starting with # are comments. Example: assets/docs/_banners.txt.
  *
  * No dependencies, so it runs straight from source.
  * Usage (Java 25, from the project root): java src/main/java/tools/presentation/SlideImages.java . [slide folder]
- * The slide folder is relative to the project root (or absolute); without it, assets/presentation-40min.
- * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/presentation-40min).
+ * The slide folder is relative to the project root (or absolute); without it, assets/docs.
+ * The slides profile in pom.xml runs it before converting the slides (folder: -Dslides.dir, default assets/docs).
  *
  * Colours: a navy slide palette plus the Okabe-Ito colours the charts use
  * (orange = JDK, sky blue = EC capturing, dark blue = fat-free, reddish purple = lazy).
@@ -71,7 +71,7 @@ public class SlideImages
     public static void main(String[] args) throws IOException
     {
         Path root = Path.of(args.length > 0 ? args[0] : ".");
-        Path folder = args.length > 1 ? root.resolve(args[1]) : root.resolve(Path.of("assets", "presentation-40min"));
+        Path folder = args.length > 1 ? root.resolve(args[1]) : root.resolve(Path.of("assets", "docs"));
         Path out = root.resolve(Path.of("assets", "images"));
         Files.createDirectories(out);
         Map<String, String> files = new LinkedHashMap<>();

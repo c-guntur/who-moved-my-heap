@@ -809,11 +809,12 @@ pre.rouge {
 <span class="na">name</span><span class="pi">:</span> <span class="s">heap-check</span>
 <span class="na">description</span><span class="pi">:</span> <span class="s">Compare class histograms of a running JVM before and after a workload</span>
 <span class="nn">---</span>
-<span class="p">1.</span> Run <span class="sb">`jps -l`</span> and pick the pid of the app.
-<span class="p">2.</span> Run <span class="sb">`jcmd &lt;pid&gt; GC.class_histogram -all`</span> before and after the workload.
-<span class="p">3.</span> Subtract per class; list the top 10 by bytes.
-<span class="p">4.</span> Flag boxes, <span class="sb">`HashMap$Node`</span>, <span class="sb">`Object[]`</span> and <span class="sb">`$$Lambda`</span> classes.
-<span class="p">5.</span> Compare with the last baseline in <span class="sb">`heap-baseline.txt`</span>.</code></pre>
+<span class="p">1.</span> Run "jps -l" and pick the pid of the app.
+<span class="p">2.</span> Run "jmap -histo <span class="nt">&lt;pid&gt;</span> | head -n 27 &gt; before.txt" before the workload.
+<span class="p">3.</span> Run "jmap -histo <span class="nt">&lt;pid&gt;</span> | head -n 27 &gt; after.txt" after the workload.
+<span class="p">4.</span> Subtract per class; list the top 10 by bytes.
+<span class="p">5.</span> Flag "HashMap$Node", arrays, "Lambda" and "Stream" "ReferencePipeline" stages.
+<span class="p">6.</span> Compare with the last baseline in "heap-baseline.txt".</code></pre>
 </div>
 </div>
 <div class="ulist">

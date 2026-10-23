@@ -35,7 +35,7 @@ public class SlidePublish
             throw new IllegalArgumentException("The output folder " + out + " must not contain the work folder " + work);
         }
 
-        // The output folder is emptied: it must never be, or contain, the slide sources (assets/presentation-40min)
+        // The output folder is emptied: it must never be, or contain, the slide sources (assets/docs)
         Path original = args.length > 3 ? Path.of(args[3]).toAbsolutePath().normalize() : sources;
         if (original != null && original.startsWith(out))
         {

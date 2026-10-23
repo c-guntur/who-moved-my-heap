@@ -809,15 +809,21 @@ pre.rouge {
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="shell">jps <span class="nt">-l</span>                                                  <span class="c"># find &lt;pid&gt;</span>
-jmap <span class="nt">-histo</span> &lt;pid&gt; | <span class="nb">grep</span> <span class="s2">"Lambda</span><span class="se">\|</span><span class="s2">ReferencePipeline</span><span class="se">\|</span><span class="s2">CollectorImpl</span><span class="se">\|</span><span class="s2">HashMap</span><span class="se">\|</span><span class="s2">HashSet</span><span class="se">\|</span><span class="s2">ArrayList</span><span class="se">\|</span><span class="s2">Integer</span><span class="se">\|</span><span class="s2">Long</span><span class="se">\|</span><span class="s2">Double</span><span class="se">\|</span><span class="s2">Float</span><span class="se">\|</span><span class="s2">Pair</span><span class="se">\|</span><span class="s2">String</span><span class="se">\|\[</span><span class="s2">B"</span> | <span class="nb">head</span> <span class="nt">-n</span> 27 <span class="o">&gt;</span> before.txt
+jmap <span class="nt">-histo</span> &lt;pid&gt; <span class="se">\</span>
+  | <span class="nb">grep</span> <span class="s2">"Lambda</span><span class="se">\|</span><span class="s2">ReferencePipeline</span><span class="se">\|</span><span class="s2">CollectorImpl</span><span class="se">\|</span><span class="s2">HashMap</span><span class="se">\|</span><span class="s2">HashSet</span><span class="se">\|</span><span class="s2">ArrayList</span><span class="se">\</span><span class="s2">
+</span><span class="se">\|</span><span class="s2">Integer</span><span class="se">\|</span><span class="s2">Long</span><span class="se">\|</span><span class="s2">Double</span><span class="se">\|</span><span class="s2">Float</span><span class="se">\|</span><span class="s2">Pair</span><span class="se">\|</span><span class="s2">String</span><span class="se">\|\[</span><span class="s2">B"</span> <span class="se">\</span>
+  | <span class="nb">head</span> <span class="nt">-n</span> 27 <span class="o">&gt;</span> before.txt
 <span class="c"># ... run the workload ...</span>
-jmap <span class="nt">-histo</span> &lt;pid&gt; | <span class="nb">grep</span> <span class="s2">"Lambda</span><span class="se">\|</span><span class="s2">ReferencePipeline</span><span class="se">\|</span><span class="s2">CollectorImpl</span><span class="se">\|</span><span class="s2">HashMap</span><span class="se">\|</span><span class="s2">HashSet</span><span class="se">\|</span><span class="s2">ArrayList</span><span class="se">\|</span><span class="s2">Integer</span><span class="se">\|</span><span class="s2">Long</span><span class="se">\|</span><span class="s2">Double</span><span class="se">\|</span><span class="s2">Float</span><span class="se">\|</span><span class="s2">Pair</span><span class="se">\|</span><span class="s2">String</span><span class="se">\|\[</span><span class="s2">B"</span> | <span class="nb">head</span> <span class="nt">-n</span> 27 <span class="o">&gt;</span> after.txt</code></pre>
+jmap <span class="nt">-histo</span> &lt;pid&gt; <span class="se">\</span>
+  | <span class="nb">grep</span> <span class="s2">"Lambda</span><span class="se">\|</span><span class="s2">ReferencePipeline</span><span class="se">\|</span><span class="s2">CollectorImpl</span><span class="se">\|</span><span class="s2">HashMap</span><span class="se">\|</span><span class="s2">HashSet</span><span class="se">\|</span><span class="s2">ArrayList</span><span class="se">\</span><span class="s2">
+</span><span class="se">\|</span><span class="s2">Integer</span><span class="se">\|</span><span class="s2">Long</span><span class="se">\|</span><span class="s2">Double</span><span class="se">\|</span><span class="s2">Float</span><span class="se">\|</span><span class="s2">Pair</span><span class="se">\|</span><span class="s2">String</span><span class="se">\|\[</span><span class="s2">B"</span> <span class="se">\</span>
+  | <span class="nb">head</span> <span class="nt">-n</span> 27 <span class="o">&gt;</span> after.txt</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Focus on the big ticket memory occupiers.</p>
+<p>Focus on the big ticket memory occupiers (here we did the top 25 using <code>head -n 27</code>).</p>
 </li>
 <li>
 <p>Subtract per class: that is how <code>prof.HistoProfiler</code> counts objects per call.</p>

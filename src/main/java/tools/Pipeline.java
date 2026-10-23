@@ -27,7 +27,7 @@ import java.util.stream.Stream;
  *            (default: the newest run folder)
  *   slides   build the slide HTML pages and the talk PDF into assets/presentation (mvn -Pslides process-resources);
  *            RUN_TS and part are ignored. --slides-dir=<folder> takes the slide sources from another folder
- *            (relative to the project root, default assets/presentation-40min)
+ *            (relative to the project root, default assets/docs)
  *   all      run, then reports, then slides
  * Without a part, a stage does shakers and movers. --dry-run prints the commands without running them.
  * --resume (needs a RUN_TS) continues an interrupted run: the jar, the benchmark and object-count steps and the
