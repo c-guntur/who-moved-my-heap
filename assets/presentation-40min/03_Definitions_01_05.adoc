@@ -11,8 +11,8 @@ endif::[]
 Intro · Problem · [.on]#Definitions# · Solutions · AI skills · Wrap-up
 
 [.lead]
-The *intermediate operations* (`filter`, `map`) are lazy. +
-The *terminal operation* (`anyMatch`, `count`) is eager and runs the pipeline.
+The chained *intermediate operations* (e.g. `filter`, `map`) are lazy. +
+The *terminal operation* (`anyMatch` or `findFirst`) is eager and runs the pipeline.
 
 image::diagram-05-pipeline.svg[Objects allocated per stream call,role=diagram]
 

@@ -21,7 +21,7 @@ Bytes and objects per call, match at element 500, compact headers on.
 | `filter().count()` / `count` ^| 8 ^| 224 B ^| 0 B
 |===
 
-* The stream's own cost is per call: the same at element 1 as at 1000.
+* The `Stream` cost is per call: the same cost at element 1 as at element 1000.
 * EC versions: capturing or fat-free, eager or lazy, all 0 B.
 * => *Let's dig deeper into the JDK `filter().findFirst()` to look at the 216 B allocation*.
 

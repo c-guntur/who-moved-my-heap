@@ -813,7 +813,7 @@ pre.rouge {
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span>
     <span class="o">{</span>
         <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">node</span> <span class="o">=</span> <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"java.util.HashMap$Node"</span><span class="o">);</span>
-        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">ClassLayout</span><span class="o">.</span><span class="na">parseClass</span><span class="o">(</span><span class="n">node</span><span class="o">).</span><span class="na">toPrintable</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">ClassLayout</span><span class="o">.</span><span class="na">parseClass</span><span class="o">(</span><span class="n">node</span><span class="o">).</span><span class="na">instanceSize</span><span class="o">()</span> <span class="o">+</span> <span class="s">" bytes"</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre>
 </div>

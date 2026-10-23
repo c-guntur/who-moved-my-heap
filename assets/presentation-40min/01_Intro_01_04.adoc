@@ -19,7 +19,7 @@ endif::[]
    3:         15273         366552  java.lang.String (java.base@25.0.4.1)
 ----
 
-* `[B` on the first line is a `byte[]` - a String-backed array.
+* `[B` on the first line is a `byte[]` - the backing array for `String`.
 * `#bytes` divided by `#instances` is the average object size.
 * Comparisons between two timed histograms for a workload, can show the garbage created.
 

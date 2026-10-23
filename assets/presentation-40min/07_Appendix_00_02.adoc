@@ -13,7 +13,7 @@ endif::[]
 [cols="^1,5,8",options="header",frame=none,grid=rows]
 |===
 | # | Part | What it holds
-| 00 | Timing plan | The 40 minutes, section by section
+| 00 | Links | Some relevant blogs
 | 01 | Intro | `jcmd` command table, `jstat -gc` and options, more JOL output, adding JOL
 | 02 | Problem statement | Two heaps, histograms, slack, compact headers, escape analysis
 | 03 | Definitions | The full definitions: what, in code, inside the JDK

@@ -810,10 +810,10 @@ pre.rouge {
 <div class="content">
 <pre class="rouge highlight"><code data-lang="java"><span class="kn">import</span> <span class="nn">org.openjdk.jol.info.ClassLayout</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.openjdk.jol.info.GraphLayout</span><span class="o">;</span>
-
+<span class="o">...</span>
 <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">ClassLayout</span><span class="o">.</span><span class="na">parseClass</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">class</span><span class="o">).</span><span class="na">toPrintable</span><span class="o">());</span>
-
-<span class="kt">long</span> <span class="n">bytes</span> <span class="o">=</span> <span class="nc">GraphLayout</span><span class="o">.</span><span class="na">parseInstance</span><span class="o">(</span><span class="n">array</span><span class="o">).</span><span class="na">toFootprint</span><span class="o">();</span></code></pre>
+<span class="o">...</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">GraphLayout</span><span class="o">.</span><span class="na">parseInstance</span><span class="o">(</span><span class="n">myArray</span><span class="o">).</span><span class="na">toFootprint</span><span class="o">());</span></code></pre>
 </div>
 </div>
 <div class="ulist">

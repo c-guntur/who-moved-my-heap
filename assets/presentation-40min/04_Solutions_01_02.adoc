@@ -17,10 +17,10 @@ Java Object Layout (JOL) reports how the JVM lays an object out: header, fields,
 ----
 import org.openjdk.jol.info.ClassLayout;
 import org.openjdk.jol.info.GraphLayout;
-
+...
 System.out.println(ClassLayout.parseClass(String.class).toPrintable());
-
-long bytes = GraphLayout.parseInstance(array).toFootprint();
+...
+System.out.println(GraphLayout.parseInstance(myArray).toFootprint());
 ----
 
 * `ClassLayout` shows one object while a `GraphLayout` adds up everything reachable from it.

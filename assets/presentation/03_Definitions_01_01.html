@@ -589,7 +589,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Intro · Problem · <span class="on">Definitions</span> · Solutions · AI skills · Wrap-up</p>
 </div>
 <div class="paragraph lead">
-<p>For all under 32 GB heaps, Compressed OOPs produces a 4-byte offset that HotSpot stores instead of an 8-byte reference.</p>
+<p>For heaps under 32 GB, Compressed OOPs managed most pointers as 32-bit object offsets from the 64-bit Java heap base address, for upto 4 billion objects.</p>
 </div>
 <div class="imageblock diagram">
 <div class="content">
@@ -602,7 +602,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>Every reference field and <code>Object[]</code> slot shrinks from 8 to 4 bytes.</p>
 </li>
 <li>
-<p>On by default (<code>-XX:+UseCompressedOops</code>).</p>
+<p>On by default since Java 6u23 (default on flag: <code>-XX:+UseCompressedOops</code> ).</p>
 </li>
 </ul>
 </div>
