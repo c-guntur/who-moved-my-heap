@@ -11,7 +11,7 @@ endif::[]
 Intro · Problem · [.on]#Definitions# · Solutions · AI skills · Wrap-up
 
 [.lead]
-The object header shrinks from 12 bytes to one 8-byte word (JEP 519, JDK 25).
+The object header shrinks from 12 bytes to 8-bytes (JEP 519, JDK 25).
 
 image::diagram-04-object-headers.svg[HashMap$Node 32 B vs 24 B,role=diagram]
 
