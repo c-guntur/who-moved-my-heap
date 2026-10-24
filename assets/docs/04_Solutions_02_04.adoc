@@ -12,11 +12,11 @@ Intro · Problem · Definitions · [.on]#Solutions# · AI skills · Wrap-up
 
 [cols="5,3,3,3,3",options="header",frame=none,grid=rows]
 |===
-| ^| JDK Size ^|JDK Use ^| EC Size ^| EC Use
-| List of 1M ``int``s ^| 20.0 MB ^| `ArrayList<Integer>` ^| 4.0 MB ^| `IntArrayList`
-| Set of 1M ``int``s ^| 48.4 MB ^| `HashSet<Integer>` ^| 8.4 MB ^| `IntHashSet`
-| Match at element 500 ^| 176 B per call ^| `anyMatch` ^| 0 B ^| `anySatisfy`
-| Count  ^| 224 B per call ^| `filter().count()` ^| 0 B ^| `count`
+| ^|JDK Use ^| JDK Size ^| EC Use ^| EC Size
+| List of 1M ``int``s ^| `ArrayList<Integer>` ^| 20.0 MB ^| `IntArrayList` ^| 4.0 MB
+| Set of 1M ``int``s ^| `HashSet<Integer>` ^| 48.4 MB ^| `IntHashSet` ^| 8.4 MB
+| Match at element 500 ^| `anyMatch()` ^| 176 B per call  ^| `anySatisfy()` ^| 0 B per call
+| Count  ^| `filter().count()` ^| 224 B per call ^| `count`() ^| 0 B per call
 |===
 
 * Primitive collections drop the need for boxed values.
