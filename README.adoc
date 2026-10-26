@@ -168,6 +168,9 @@ The tools run straight from source (`java <file>.java`); no build is needed firs
   file layout, ground rules, chart and report rules) for AI.
 * link:HowTo.adoc[`HowTo.adoc`]: every command, one task per section, including building the
   benchmark jar, running one unit test.
+* link:assets/presentation/Who-Moved-My-Heap.pdf[`Who-Moved-My-Heap.pdf`]: slides rendered as a presentation.
+* link:assets/presentation/index.html[`index.html`]: presentation slides to be opened in a browser.
+* link:assets/docs/index.adoc[`index.adoc`]: presentation slides to be opened in IntelliJ or VSCode.
 
 == License
 
