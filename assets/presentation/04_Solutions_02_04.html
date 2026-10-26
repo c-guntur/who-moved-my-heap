@@ -599,40 +599,40 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top"></th>
-<th class="tableblock halign-center valign-top">JDK Size</th>
 <th class="tableblock halign-center valign-top">JDK Use</th>
-<th class="tableblock halign-center valign-top">EC Size</th>
+<th class="tableblock halign-center valign-top">JDK Size</th>
 <th class="tableblock halign-center valign-top">EC Use</th>
+<th class="tableblock halign-center valign-top">EC Size</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">List of 1M <code>int</code>s</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">20.0 MB</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>ArrayList&lt;Integer&gt;</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">4.0 MB</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">20.0 MB</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>IntArrayList</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">4.0 MB</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set of 1M <code>int</code>s</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">48.4 MB</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>HashSet&lt;Integer&gt;</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">8.4 MB</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">48.4 MB</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>IntHashSet</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">8.4 MB</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Match at element 500</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>anyMatch()</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">176 B per call</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>anyMatch</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0 B</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>anySatisfy</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>anySatisfy()</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 B per call</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Count</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">224 B per call</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>filter().count()</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">0 B</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>count</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">224 B per call</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><code>count</code>()</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">0 B per call</p></td>
 </tr>
 </tbody>
 </table>
