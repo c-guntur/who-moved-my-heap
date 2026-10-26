@@ -10,27 +10,41 @@ toc::[]
 
 == The idea
 
-*Fat-free lambdas make less garbage.* A fat-free lambda (or method reference) captures nothing, so
-the JVM can reuse one instance forever. A capturing ("fat") lambda closes over a value, and may
-create a new object, plus a boxed value, on every call.
-
 The point is memory, not only speed. Code that allocates less per call needs less heap headroom to
 absorb a traffic spike, collects less often, and does not have to be over-provisioned "just in
 case". So every result here looks at footprint, garbage per call and spike headroom next to
 throughput.
 
-Two effects are kept apart throughout:
+Three effects are kept apart throughout:
 
-* *Pipeline garbage*: the objects a JDK `stream()` builds on every call (spliterator, pipeline
+* *Stream Pipeline garbage*: the objects a JDK `stream()` builds on every call (spliterator, pipeline
   stages, sink, `Optional`). Eclipse Collections' eager methods iterate directly and build none.
   Intermediate stream operations are lazy; terminal operations (`anyMatch`, `count`, `findFirst`)
   are eager.
-* *Lambda garbage*: the captured lambda and any boxed `Integer` outside the -128..127 cache.
-
-JDK 25's compact object headers (`-XX:+UseCompactObjectHeaders`) shrink every object header, so
+* *Fat-free lambdas* make less garbage. A fat-free (non-capturing) lambda (or method reference) captures nothing, so
+the JVM can reuse one instance forever. A capturing ("fat") lambda closes over a value, and may
+create a new object, plus a boxed value, on every call.
+* *JDK 25's compact object headers* (`-XX:+UseCompactObjectHeaders`) shrink every object header, so
 every measurement is taken with the flag off and on to show what it saves.
 
-== The two parts
+== The three parts
+
+=== Movers: footprint (JOL)
+
+JUnit tests in `src/test/java/conf/session/movers/` print retained sizes with
+https://openjdk.org/projects/code-tools/jol/[JOL]: what a filled collection or an unevaluated
+pipeline holds in memory. Footprint only, no JMH, no speed. Each test runs with compact headers
+off, then on.
+
+[cols="1,3"]
+|===
+|Test |Compares
+
+|`ListMemoryTest` |`ArrayList` vs `FastList` vs `IntArrayList`, grown and presized, 100k to 1M elements
+|`SetMemoryTest` |`HashSet` vs `UnifiedSet` vs `IntHashSet`, plus structure only
+|`MapMemoryTest` |`HashMap` vs `UnifiedMap` vs the EC primitive maps, plus structure only
+|`StreamVsLazyIterableMemoryTest` |unevaluated `Stream` vs `LazyIterable` pipelines
+|===
 
 === Shakers: garbage per call (JMH)
 
@@ -59,22 +73,12 @@ class histogram before and after each iteration).
 Each class runs with compact headers on, off, and with escape analysis off. The escape-analysis-off
 run shows what the lambda shape costs where the JIT cannot remove it; read it as an upper bound.
 
-=== Movers: footprint (JOL)
+=== Movers and Shakers: Result footprint (JOL) and garbage per call (JMH)
 
-JUnit tests in `src/test/java/conf/session/movers/` print retained sizes with
-https://openjdk.org/projects/code-tools/jol/[JOL]: what a filled collection or an unevaluated
-pipeline holds in memory. Footprint only, no JMH, no speed. Each test runs with compact headers
-off, then on.
-
-[cols="1,3"]
-|===
-|Test |Compares
-
-|`ListMemoryTest` |`ArrayList` vs `FastList` vs `IntArrayList`, grown and presized, 100k to 1M elements
-|`SetMemoryTest` |`HashSet` vs `UnifiedSet` vs `IntHashSet`, plus structure only
-|`MapMemoryTest` |`HashMap` vs `UnifiedMap` vs the EC primitive maps, plus structure only
-|`StreamVsLazyIterableMemoryTest` |unevaluated `Stream` vs `LazyIterable` pipelines
-|===
+JUnit tests in `src/test/java/conf/session/moversandshakers/`. These tests illustrate and compare the cost and memory
+required for methods that apply and return collection results for `filtering`, `groupingBy`, and `countingBy`. There are
+JMH benchmarks and unit tests. The unit tests assert memory expectations using a utility class called `JolMemoryTestUtil`.
+Memory assertions require passing in separate values for Compact Object Headers enabled and disabled.
 
 == Requirements
 
