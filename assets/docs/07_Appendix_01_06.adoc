@@ -4,7 +4,7 @@ ifndef::deck[]
 include::_deck-settings.adoc[]
 endif::[]
 
-[.sec-appendix,background-color="#F5F7FA"]
+[.sec-appendix.code-tight,background-color="#F5F7FA"]
 == Adding JOL to a project
 
 [.track]

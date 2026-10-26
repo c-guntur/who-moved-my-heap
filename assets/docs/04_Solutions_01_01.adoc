@@ -4,7 +4,7 @@ ifndef::deck[]
 include::_deck-settings.adoc[]
 endif::[]
 
-[.sec-solutions,background-color="#F5F7FA"]
+[.sec-solutions.code-tight,background-color="#F5F7FA"]
 == Measure first: before and after
 
 [.track]

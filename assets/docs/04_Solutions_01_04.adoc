@@ -4,7 +4,7 @@ ifndef::deck[]
 include::_deck-settings.adoc[]
 endif::[]
 
-[.sec-solutions.demo,background-color="#1B2A41"]
+[.sec-solutions.demo.code-tight,background-color="#1B2A41"]
 == Demo: one map entry, headers off and on
 
 [.track]

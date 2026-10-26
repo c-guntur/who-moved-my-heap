@@ -18,6 +18,8 @@ java src/main/java/tools/Pipeline.java all
 java src/main/java/tools/Pipeline.java run
 java src/main/java/tools/Pipeline.java reports 20261015-0406
 java src/main/java/tools/Pipeline.java slides
+java src/main/java/tools/Pipeline.java slides-dark
+java src/main/java/tools/Pipeline.java slides-light
 java src/main/java/tools/Pipeline.java slides --slides-dir=<folder>
 java src/main/java/tools/Pipeline.java all --dry-run
 java src/main/java/tools/Pipeline.java all 20261017-1708 --resume
@@ -28,9 +30,11 @@ java src/main/java/tools/Pipeline.java all 20261017-1708 --resume
    JOL tests, writing the raw output of a new run (see <<run-ts>> to <<movers-run>>).
 .. `reports`: writes the reports, charts and summaries from raw output already on disk (see
    <<shakers-gen>> to <<run-summary>>). Without a run timestamp it uses the newest run.
-.. `slides`: builds the slide HTML pages and the talk PDF into `assets/presentation/` (see <<slides-maven>>).
+.. `slides`: builds both modes, the light slide HTML pages and the talk PDF into `assets/presentation/` and the dark slide HTML pages into `assets/pres-dark/` (see <<slides-maven>>, <<slides-dark>>).
    `--slides-dir=<folder>` takes the slide sources from another folder (default `assets/docs`).
-.. `all`: `run`, then `reports`, then `slides`.
+.. `slides-light`: only the light pages and the PDF in `assets/presentation/`.
+.. `slides-dark`: only the dark pages in `assets/pres-dark/` (nothing is written to `assets/presentation/`).
+.. `all`: `run`, then `reports`, then `slides` (light and dark).
 . Without `shakers` or `movers` at the end, a stage does both parts. `run 20261015-0406 movers`
   adds the movers part to an existing run.
 . `--dry-run` prints every command without running anything.
@@ -294,6 +298,20 @@ java src/main/java/tools/analysis/RunSummary.java . ${RUN_TS}
 . Output: `generated/runs/<RUN_TS>/<RUN_TS>-Summary.adoc`, the shakers and movers summaries in one doc,
   with every link pointing into the part's `reports/` folder. A part the run does not have is named as missing.
 
+[[slides-dark]]
+== Dark-mode slides
+
+[source,bash]
+----
+java src/main/java/tools/Pipeline.java slides-dark
+open assets/pres-dark/index.html
+----
+
+. `Pipeline.java` runs `mvn -Pslides generate-resources` (the HTML work files in `target/slides/plain`, nothing published) and then
+  `src/main/java/tools/dark/DarkSlides.java`, which adds `src/main/java/tools/dark/dark-slides.css` as the last style block of each page.
+. `assets/pres-dark/` is emptied first and holds only the dark pages, one per visible slide (no PDF). The pages show the shared images from `../images`.
+. `slides` builds the light and the dark pages in one go; `slides-light` builds only `assets/presentation/`.
+
 [[slides-maven]]
 == Turn the slides into HTML and PDF with Maven
 
@@ -318,6 +336,7 @@ open assets/presentation/Who-Moved-My-Heap.pdf
   from another folder with the same file naming. The folder needs its own `_deck-settings.adoc`, `docinfo*.html`
   and `:imagesdir: ../images`. All images live once in `assets/images/`.
 . `mvn -Pslides generate-resources` stops after the work files and publishes nothing.
+. The dark pages are made from these work files, see <<slides-dark>>.
 . The PDF uses the browser named in the `CHROME` environment variable
   (`CHROME=/path/to/chrome mvn -Pslides process-resources`), else an installed Google Chrome or
   Chromium (macOS or Linux), else the Chromium pre-installed under `PLAYWRIGHT_BROWSERS_PATH` (the

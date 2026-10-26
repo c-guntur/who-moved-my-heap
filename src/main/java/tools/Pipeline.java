@@ -25,10 +25,13 @@ import java.util.stream.Stream;
  *            (a new RUN_TS unless one is given; a given one reuses its meta.txt)
  *   reports  write the reports, charts, Mermaid files and summaries from the raw files of RUN_TS
  *            (default: the newest run folder)
- *   slides   build the slide HTML pages and the talk PDF into assets/presentation (mvn -Pslides process-resources);
+ *   slides   build the light slide HTML pages and the talk PDF into assets/presentation (mvn -Pslides process-resources)
+ *            and the dark slide HTML pages into assets/pres-dark (tools/dark/DarkSlides.java, no PDF);
  *            RUN_TS and part are ignored. --slides-dir=<folder> takes the slide sources from another folder
  *            (relative to the project root, default assets/docs)
- *   all      run, then reports, then slides
+ *   slides-light  only the light pages and the PDF in assets/presentation
+ *   slides-dark   only the dark pages in assets/pres-dark (nothing is written to assets/presentation)
+ *   all      run, then reports, then slides (light and dark)
  * Without a part, a stage does shakers and movers. --dry-run prints the commands without running them.
  * --resume (needs a RUN_TS) continues an interrupted run: the jar, the benchmark and object-count steps and the
  * movers tests that already finished are skipped, the rest run again (instructions.md P7).
@@ -82,7 +85,7 @@ public class Pipeline
             {
                 runTs = a;
             }
-            else if (stage == null && List.of("run", "reports", "slides", "all").contains(a))
+            else if (stage == null && List.of("run", "reports", "slides", "slides-light", "slides-dark", "all").contains(a))
             {
                 stage = a;
             }
@@ -115,7 +118,7 @@ public class Pipeline
             }
             reports(runTs, parts);
         }
-        if (stage.equals("slides") || stage.equals("all"))
+        if (stage.equals("slides") || stage.equals("slides-light") || stage.equals("all"))
         {
             List<String> mvn = new ArrayList<>(List.of("mvn", "-B", "-Pslides", "process-resources"));
             if (slidesDir != null)
@@ -124,12 +127,28 @@ public class Pipeline
             }
             exec(mvn, null);
         }
+        if (stage.equals("slides-dark"))
+        {
+            // Only the HTML work files are built (nothing is published), the dark pages are made from them
+            List<String> mvn = new ArrayList<>(List.of("mvn", "-B", "-Pslides", "generate-resources"));
+            if (slidesDir != null)
+            {
+                mvn.add("-Dslides.dir=" + slidesDir);
+            }
+            exec(mvn, null);
+        }
+        if (stage.equals("slides") || stage.equals("slides-dark") || stage.equals("all"))
+        {
+            // The work files of the build above (target/slides/plain) become the dark pages in assets/pres-dark
+            exec(List.of(JAVA, "src/main/java/tools/dark/DarkSlides.java", "target/slides/plain", "assets/pres-dark",
+                    "target/slides/src", slidesDir != null ? slidesDir : "assets/docs"), null);
+        }
     }
 
     private static void usage(String problem)
     {
         System.err.println(problem);
-        System.err.println("usage: java src/main/java/tools/Pipeline.java <run|reports|slides|all> [RUN_TS] [shakers|movers] [--dry-run] [--resume] [--slides-dir=<folder>]");
+        System.err.println("usage: java src/main/java/tools/Pipeline.java <run|reports|slides|slides-light|slides-dark|all> [RUN_TS] [shakers|movers] [--dry-run] [--resume] [--slides-dir=<folder>]");
         System.exit(2);
     }
 

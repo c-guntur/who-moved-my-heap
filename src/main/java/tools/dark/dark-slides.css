@@ -1,0 +1,54 @@
+/* Dark mode for the published slide pages. Injected last by DarkSlides.java, so it overrides docinfo.html. */
+:root { --navy: #0B1220; --navy2: #8FB4DE; --paper: #131C2A; --refs: #101A2B; --ink: #DCE5EE; --line: #2C3A4D;
+        --blue: #5BB0F0; --orange: #F0A81C; }
+html { color-scheme: dark; }
+body { background: #070C14; color: var(--ink); }
+#content > .sect1 { box-shadow: 0 1vh 3vh rgba(0, 0, 0, .6); }
+#content > .sect1 > h2, #content > .sect1.question .paragraph.ask p { color: #F2F6FA; }
+#content > .sect1 .lead p { color: var(--navy2); }
+#content > .sect1 h1, #content > .sect1 h3, #content > .sect1 h4, #content > .sect1 h5, #content > .sect1 h6,
+#content > .sect1 th, #content > .sect1 strong, #content > .sect1 b { color: #F2F6FA; }
+#content > .sect1 p, #content > .sect1 li, #content > .sect1 td, #content > .sect1 dd, #content > .sect1 dt { color: var(--ink); }
+#content a, #content > .sect1 a { color: var(--blue); }
+#content > .sect1 :not(pre) > code { background: #1E2B3D; color: #F5C77A; }
+#content > .sect1 .listingblock pre, #content > .sect1 .literalblock pre { background: #0A111C; color: #D6E0EA; border-color: var(--line); }
+#content > .sect1 .listingblock pre code, #content > .sect1 pre code { color: #D6E0EA; background: none; }
+#content > .sect1 .listingblock.jmap pre strong { background: #7A6212; color: #FFF3C2; }
+#content > .sect1 .imageblock.diagram img, #content > .sect1 .imageblock.screenshot img { background: #fff; border-color: var(--line); }
+#content > .sect1 table.tableblock { background: transparent; border-color: var(--line); }
+#content > .sect1 table.tableblock th, #content > .sect1 table.tableblock td { border-color: var(--line); color: var(--ink); }
+#content > .sect1 table.tableblock thead, #content > .sect1 table.tableblock tfoot { background: #1B2738; }
+#content > .sect1 table.tableblock thead th, #content > .sect1 table.tableblock tfoot th { background: #1B2738; color: #F2F6FA; }
+#content > .sect1 table.tableblock tbody tr, table.stripes-even > * > tr:nth-of-type(even),
+#content > .sect1 table.tableblock tr.even, #content > .sect1 table.tableblock tr.alt { background: transparent; }
+#content > .sect1 table.tableblock tbody tr:nth-child(even) { background: #17212F; }
+#content > .sect1 table.tableblock tbody tr th, #content > .sect1 tbody tr th { background: #1B2738; color: #F2F6FA; }
+.deck-nav a { background: transparent; color: var(--blue); border-color: var(--blue); }
+.deck-nav a:hover { background: var(--blue); color: #08111D; }
+#content > .sect1 .paragraph.slide-no, #content > .sect1 .paragraph.track, #content > .sect1.cover .paragraph.disclaimer { color: #7C8DA0; }
+.track .on { color: #08111D; }
+#content > .sect1 .paragraph.footnote-line { border-top-color: var(--line); }
+#content > .sect1 .paragraph.footnote-line p { color: #98A8B9; }
+#content > .sect1.talk-index table.index-grid td:first-child { color: #7C8DA0; }
+#content > .sect1.demo { background: #060B13; color: #D8E1EA; }
+#content > .sect1.demo > h2 { color: #fff; }
+#content > .sect1.demo > h2::before { color: #060B13; }
+#content > .sect1.title-slide { background: #060B13; }
+#preamble { background: #060B13; }
+.admonitionblock td.content, .quoteblock, blockquote { color: var(--ink); }
+.exampleblock > .content, .sidebarblock { background: #17212F !important; border-color: var(--line); }
+/* syntax highlighting (rouge): a dark palette for the code tokens */
+#content > .sect1 pre.rouge { color: #D6E0EA; }
+#content pre.rouge .c, #content pre.rouge .c1, #content pre.rouge .cm, #content pre.rouge .cs { color: #8795A5; }
+#content pre.rouge .k, #content pre.rouge .kd, #content pre.rouge .kn, #content pre.rouge .kt, #content pre.rouge .kc,
+#content pre.rouge .kp, #content pre.rouge .kr, #content pre.rouge .nt, #content pre.rouge .ow { color: #6CB6FF; }
+#content pre.rouge .s, #content pre.rouge .s1, #content pre.rouge .s2, #content pre.rouge .sb, #content pre.rouge .sc,
+#content pre.rouge .dl, #content pre.rouge .ss, #content pre.rouge .sx, #content pre.rouge .sr { color: #F0A38A; }
+#content pre.rouge .se, #content pre.rouge .si { color: #FF7B9C; }
+#content pre.rouge .nb, #content pre.rouge .bp, #content pre.rouge .na, #content pre.rouge .nv, #content pre.rouge .vc,
+#content pre.rouge .vg, #content pre.rouge .vi, #content pre.rouge .nl, #content pre.rouge .no { color: #4EC9B0; }
+#content pre.rouge .nc, #content pre.rouge .nn, #content pre.rouge .nd, #content pre.rouge .ne { color: #8ED1FC; }
+#content pre.rouge .nf, #content pre.rouge .fm { color: #F4D58D; }
+#content pre.rouge .m, #content pre.rouge .mi, #content pre.rouge .mf, #content pre.rouge .mh, #content pre.rouge .il { color: #B5E3A0; }
+#content pre.rouge .o, #content pre.rouge .on, #content pre.rouge .p, #content pre.rouge .pi, #content pre.rouge .n,
+#content pre.rouge .w { color: #D6E0EA; }

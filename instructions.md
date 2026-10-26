@@ -31,8 +31,10 @@ Every item has an ID so a change can be pinpointed: `Q` = quick start, `G` = gro
   |---|---|---|---|---|
   | Q2.1 | `run` | the source tree | raw output in `generated/runs/<RUN_TS>/<part>/raw/` | P1 |
   | Q2.2 | `reports` | the raw output of `RUN_TS` | reports, charts, Mermaid files and summaries of `RUN_TS` | P2 |
-  | Q2.3 | `slides` | the slide sources | slide HTML pages and the talk PDF in `assets/presentation/` | P3 |
-  | Q2.4 | `all` | the source tree | `run`, then `reports`, then `slides` | P4 |
+  | Q2.3 | `slides` | the slide sources | light slide HTML pages and the talk PDF in `assets/presentation/`, dark slide HTML pages in `assets/pres-dark/` | P3 |
+  | Q2.3.1 | `slides-light` | the slide sources | only the light pages and the PDF in `assets/presentation/` | P3 |
+  | Q2.3.2 | `slides-dark` | the slide sources | only the dark pages in `assets/pres-dark/` (`DarkSlides.java`, `dark-slides.css`; no PDF) | P3 |
+  | Q2.4 | `all` | the source tree | `run`, then `reports`, then `slides` (light and dark) | P4 |
 
 - **Q3** Without a part, a stage does shakers and movers. Examples:
 
@@ -44,7 +46,9 @@ Every item has an ID so a change can be pinpointed: `Q` = quick start, `G` = gro
   | Q3.4 | `java src/main/java/tools/Pipeline.java run 20261015-0406 movers` | adds movers to an existing run (keeps its `meta.txt`) |
   | Q3.5 | `java src/main/java/tools/Pipeline.java reports 20261015-0406` | reports from raw files already on disk |
   | Q3.6 | `java src/main/java/tools/Pipeline.java reports` | the same for the newest run folder |
-  | Q3.7 | `java src/main/java/tools/Pipeline.java slides` | slide HTML pages and the talk PDF only |
+  | Q3.7 | `java src/main/java/tools/Pipeline.java slides` | light and dark slide HTML pages and the talk PDF only |
+  | Q3.7.1 | `java src/main/java/tools/Pipeline.java slides-dark` | only the dark pages in `assets/pres-dark/` |
+  | Q3.7.2 | `java src/main/java/tools/Pipeline.java slides-light` | only the light pages and the talk PDF in `assets/presentation/` |
   | Q3.8 | `java src/main/java/tools/Pipeline.java all --dry-run` | prints every command without running anything |
   | Q3.9 | `java src/main/java/tools/Pipeline.java all 20261017-1708 --resume` | continues an interrupted run: finished steps are skipped (P7) |
   | Q3.10 | `java src/main/java/tools/Pipeline.java slides --slides-dir=<folder>` | the same from another slide source folder (D3) |
@@ -843,7 +847,7 @@ list before reporting (S8, M6).
 
 - **D2.1** Commands:
   ```
-  mvn -Pslides process-resources                            # what Pipeline.java slides runs
+  mvn -Pslides process-resources                            # what Pipeline.java slides-light runs (slides adds the dark pages, D2.9)
   mvn -Pslides process-resources -Dslides.dir=<folder>       # another slide source folder (D3)
   ```
 - **D2.2** Needs only Java 25 and Maven (no Python, Ruby gems or Node.js), plus network access to the
@@ -892,6 +896,10 @@ list before reporting (S8, M6).
   `plantuml-preprocess` is `off` so no local PlantUML is needed. A local server:
   `docker run -p 8000:8000 yuzutech/kroki`, then `mvn -Pslides process-resources -Dkroki.url=http://localhost:8000`.
   If the server cannot be reached the build still succeeds and the slide shows "Failed to generate image".
+- **D2.9** Dark mode: `Pipeline.java slides-dark` runs `mvn -Pslides generate-resources` (HTML work files only) and then
+  `src/main/java/tools/dark/DarkSlides.java`, which injects `dark-slides.css` into each visible slide page of `target/slides/plain`
+  and writes it to `assets/pres-dark/` (emptied first, no PDF, images from `../images`). `slides` and `all` build light and dark;
+  `slides-light` only `assets/presentation/`.
 
 ### D3. Other slide folders
 

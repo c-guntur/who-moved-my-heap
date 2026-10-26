@@ -4,7 +4,7 @@ ifndef::deck[]
 include::_deck-settings.adoc[]
 endif::[]
 
-[.sec-defs,background-color="#F5F7FA"]
+[.sec-defs.code-tight,background-color="#F5F7FA"]
 == "Dollar" classes
 
 [.track]

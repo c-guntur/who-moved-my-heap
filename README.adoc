@@ -85,95 +85,14 @@ Memory assertions require passing in separate values for Compact Object Headers 
 * JDK 25 on `PATH`, with `java` and `jcmd` from the same JDK.
 * Maven 3.9 or later, *running on JDK 25*: set `JAVA_HOME` to the JDK 25 home and check that
   `mvn -v` prints `Java version: 25...`.
-* No Python, Ruby or Node.js. Optional: Mermaid CLI (`MMDC=<path to mmdc>`) to parse-check the
-  generated `.mmd` charts, and Google Chrome or Chromium for the slide PDFs.
-* Network access to a Kroki server for diagram blocks in the slides (default
-  `https://kroki.io`, or a local one with `-Dkroki.url=...`).
-* About 16 GB of free RAM for the object-count runs (12 GB heap).
 
 Libraries (from `pom.xml`): JMH 1.37, JOL 0.17, Eclipse Collections 13.0.0, JUnit 6.
 
-== Quick start
-
-One command runs any stage, from the project root:
-
-[source,bash]
-----
-java src/main/java/tools/Pipeline.java <stage> [RUN_TS] [shakers|movers] [--dry-run] [--resume]
-----
-
-[cols="1,3"]
-|===
-|Stage |Does
-
-|`run` |builds the benchmark jar and runs the shakers benchmarks, the object counts and the movers JOL tests, writing raw output for a new run
-|`reports` |writes the reports, charts and summaries from raw output already on disk (newest run when no `RUN_TS` is given)
-|`slides` |builds the slide HTML pages and the talk PDF from `assets/docs` into `assets/presentation` (`mvn -Pslides process-resources`); `--slides-dir=<folder>` takes the sources from another folder
-|`all` |`run`, then `reports`, then `slides`
-|===
-
-[source,bash]
-----
-java src/main/java/tools/Pipeline.java all                            # everything, new run
-java src/main/java/tools/Pipeline.java run shakers                    # only the JMH benchmarks
-java src/main/java/tools/Pipeline.java run 20261015-0406 movers       # add movers to an existing run
-java src/main/java/tools/Pipeline.java reports 20261017-1708          # reports from raw files on disk
-java src/main/java/tools/Pipeline.java slides                         # slides only
-java src/main/java/tools/Pipeline.java all --dry-run                  # print every command, run nothing
-java src/main/java/tools/Pipeline.java all 20261017-1708 --resume     # continue an interrupted run
-----
-
-* Without `shakers` or `movers`, a stage does both parts.
-* A full `run` takes several hours, mostly the shakers benchmarks. Use a quiet machine on mains power.
-* `--resume` needs the `RUN_TS` of the interrupted run. It skips the jar when it exists, every JMH
-  step whose console output has finished, and every movers test whose Maven output ends in a
-  build result, and runs the rest. Check first with `--dry-run --resume`.
-
-== Where the output goes
-
-Every run is named by one timestamp, `RUN_TS` (`yyyyMMdd-HHmm`), shared by both parts:
-
-----
-generated/runs/<RUN_TS>/
-├── <RUN_TS>-Summary.adoc            full run summary, both parts
-├── shakers/
-│   ├── raw/                         JMH tables, console logs, object counts, meta.txt
-│   ├── summary.json
-│   └── reports/                     results and analysis docs, part summary
-│       ├── images/                  PNG charts
-│       └── mermaid/                 Mermaid sources of the same charts
-└── movers/
-    ├── raw/                         Maven output of each JOL test, meta.txt
-    └── reports/                     analysis docs, part summary, images/, mermaid/
-----
-
-Every sentence and number in the reports is generated from the raw files; nothing is written by
-hand. `mvn clean` does not touch `generated/`.
-
-== Project layout
-
-[cols="2,3"]
-|===
-|Path |Contents
-
-|`src/test/java/conf/session/shakers/` |JMH benchmarks
-|`src/test/java/conf/session/movers/` |JOL footprint tests
-|`src/main/java/prof/HistoProfiler.java` |JMH profiler that counts objects per call
-|`src/main/java/tools/Pipeline.java` |the one launcher for every stage
-|`src/main/java/tools/analysis/` |report, chart and summary generators (source files)
-|`generated/runs/` |one folder per run
-|===
-
-The tools run straight from source (`java <file>.java`); no build is needed first.
-
 == More
 
-* link:instructions.md[`instructions.md`]: the full, authoritative instructions (every stage,
-  file layout, ground rules, chart and report rules) for AI.
-* link:HowTo.adoc[`HowTo.adoc`]: every command, one task per section, including building the
-  benchmark jar, running one unit test.
 * link:assets/presentation/Who-Moved-My-Heap.pdf[`Who-Moved-My-Heap.pdf`]: slides rendered as a presentation.
-* link:assets/presentation/index.html[`index.html`]: presentation slides to be opened in a browser.
+* link:assets/presentation/index.html[`presentation/index.html`]: light-mode presentation slides to be opened in a browser.
+* link:assets/pres-dark/index.html[`pres-dark/index.html`]: dark-mode presentation slides to be opened in a browser.
 * link:assets/docs/index.adoc[`index.adoc`]: presentation slides to be opened in IntelliJ or VSCode.
 
 == License

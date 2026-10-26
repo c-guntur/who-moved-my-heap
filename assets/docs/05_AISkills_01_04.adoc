@@ -4,7 +4,7 @@ ifndef::deck[]
 include::_deck-settings.adoc[]
 endif::[]
 
-[.sec-ai,background-color="#F5F7FA"]
+[.sec-ai.code-tight,background-color="#F5F7FA"]
 == A skill that suggests the fix
 
 [.track]
